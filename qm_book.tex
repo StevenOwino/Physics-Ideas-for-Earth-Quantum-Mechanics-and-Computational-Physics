@@ -590,10 +590,10 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item First Few Laguerre, and Associated Laguerre Polynomials
 \item First Six Legendre Polynomials
 \item Stationary, and Non-Stationary States
-\item Decay Parameters
+\item Decay Parameters of Energy
 \item Orbital vs. Spin Parameters
-\item
-\item
+\item Comparison of Electrons' Classical Self-Rotation, and Quantum Intrinsic Spin
+\item Radiation Absorption vs. Scattering
 \item
 
 
@@ -2287,9 +2287,11 @@ $\frac{d \sigma}{d \Omega}$ = $\mid f_k(\theta, \phi) \mid^2$,  \\
 
 $\sigma$ = $\int \mid f_k(\theta, \phi) \mid^2 d \Omega$.  \\
 
-$\bullet$ (61) Rayleigh:  \\
+$\bullet$ (61) Rayleigh Wave Scaterring:  \\
 
-$e^{ikz}$ = ${\sqrt 4 \pi} \sum_{\ell = 0}^\infty {\sqrt{2 \ell + 1}}$ $i^\ell \mathbf Y_{\ell 0}(\theta) j_\ell(kr)$.  \\
+\begin{equation} \label{eq:Rayleigh Wave Scaterring}
+e^{ikz} = {\sqrt 4 \pi} \sum_{\ell = 0}^\infty {\sqrt{2 \ell + 1}} i^\ell \mathbf Y_{\ell 0}(\theta) j_\ell(kr)
+\end{equation}
 
 $\bullet$ (62) Phase shifts\index{Phase shifts}: \\ 
 
@@ -4026,9 +4028,175 @@ The concept of spin is a one-to-one correlation, and precisely define Mathematic
 
 \section{Self-rotation of the Electron}
 
-Spin is an abstract property(A small rigid particle, rotating about an axis), exceeding the speed of light (C).
+Spin is an Abstract Property()Classically, its' a small Rigid Particle, Rotating about an Axis), exceeding the speed of light (C)).  \\
+
+The concept of the \textbf{Self-Rotation of the Electron} is the Classical Intuition used to explain \textbf{Electron Spin}. However, it is critical to distinguish between the *Classical Analogy*, and the *Quantum Mechanics*.  \\
+
+    1. The Classical Analogy (The "Spinning Ball" Model)  \\
+
+\noindent
+
+Classically, one might imagine the Electron as a small, Rigid Sphere of Charge with Mass $m_e$, and Radius $R$, Rotating about its' own Axis, with Angular Velocity $\omega$. This Rotation would create an Intrinsic Angular Momentum $\mathbf{S}$, and a Magnetic Dipole Moment $\boldsymbol{\mu}_s$.  \\
+
+The Classical Magnetic Moment is:  \\
+$ \boldsymbol{\mu}_s = I \boldsymbol{\omega} = \frac{q}{2m_e} \mathbf{S} $  \\
+Where $I$ is the Current Loop created by the Rotating Charge.  \\
+
+    2. The Theoretical Breakdown  \\
+
+\noindent
+
+When we apply the known values of the Electrons' Spin ($\pm \hbar/2$), and its' Mass to this Classical Model, we encounter a Physical impossibility:  \\
+
+    1.  \textbf{The Velocity Problem}: For a reasonable estimate of the Electrons' "Radius" (e.g., the Classical Electron Radius $r_e \approx 2.8 \times 10^{-15}$ m), the surface of the Electron would need to Rotate at a Speed $v$, far exceeding the Speed of light ($v \gg c$).  \\
+    2.  \textbf{The Point-Particle Problem}: In the Standard Model, the Electron is treated as a \textbf{Point Particle}, with Zero Radius ($R=0$). A Point Particle cannot "Rotate" in the Classical sense, because it has no internal structure, or distribution of Mass/Charge.  \\
+
+    3. The Quantum Mechanical Intrinsic Spin  \\
+
+\noindent
+
+Because the Classical "Self-Rotation" Model fails, Spin is defined as an \textbf{Intrinsic Property} of the Electron, similar to Mass or Charge. It is not caused by Physical Rotation in Space, but is a Fundamental Quantum Degree of Freedom.  \\
+
+    4. The Spin Operator  \\
+
+\noindent
+
+Spin, is described by the Spin Angular Momentum Operator $\mathbf{S}$. For an Electron (a Spin-$\frac{1}{2}$ Particle), the components are proportional to the \textbf{Pauli Matrices} $\sigma_x, \sigma_y, \sigma_z$:  \\
+$ \hat{S}_i = \frac{\hbar}{2} \sigma_i $  \\
+The Eigenvalues of $\hat{S}_z$ are $\pm \hbar/2$, denoted as "Spin-Up" $|\uparrow\rangle$, and "Spin-Down" $|\downarrow\rangle$.  \\
+
+     \textbf{The Gyromagnetic Ratio, and the g-factor}  \\
+
+The relationship between the Spin Angular Momentum $\mathbf{S}$, and the Magnetic Moment $\boldsymbol{\mu}_s$ is:  \\
+$ \boldsymbol{\mu}_s = -g_e \frac{e}{2m_e} \mathbf{S} $  \\
+Where $g_e$ is the \textbf{Electron g-factor}.   \\ 
+  Diracs' Relativistic Theory predicted $g_e = 2$.  \\
+  \textbf{Quantum Electrodynamics (QED) corrects this slightly: ($g_e \approx 2.002319$), making it one of the most Accurately Tested Predictions in Physics}.
+
+\noindent
+
+     Comparison  \\
+
+\noindent
+
+\begin{table}[ht]
+\centering
+\begin{tabularx}{\linewidth}{
+  >{\raggedright\arraybackslash}p{0.20\linewidth}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}X
+}
+\toprule
+\textbf{Feature} & \textbf{Classical Self-Rotation} &
+\textbf{Quantum Intrinsic Spin} \\
+\midrule
+\textbf{Mechanism} & Physical rotation of a sphere &
+Intrinsic quantum property \\
+
+\textbf{Size} & Requires a finite radius $R$ &
+Point particle ($R=0$) \\
+
+\textbf{Velocity} & Exceeds the speed of light $c$ in the classical
+electron-spin model &
+No physical rotation velocity \\
+
+\textbf{Quantization} & Continuous $\omega$ &
+Quantized $\pm \hbar/2$ \\
+
+\textbf{Origin} & Mechanical rotation &
+Relativistic symmetry (Dirac equation) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
 
 \chapter{Spherical Harmonics}
+
+\textbf{Spherical Harmonics} $Y_\ell^m(\theta, \phi)$ are a set of Orthogonal Functions, defined on the surface of a Sphere. They arise as the Angular part of the solution to Laplaces' Equation $\nabla^2 \psi = 0$, and the Schr$\ddot{o}$dinger Equation, for Centrally Symmetric Potentials (like the Hydrogen Atom).  \\
+
+    1. Mathematical Definition  \\
+
+\noindent
+
+Spherical Harmonics, are the Eigenfunctions of the Angular Momentum Operators $\hat{L}^2$, and $\hat{L}_z$:
+$ \hat{L}^2 Y_\ell^m(\theta, \phi) = \ell(\ell+1)\hbar^2 Y_\ell^m(\theta, \phi) $  \\
+$ \hat{L}_z Y_\ell^m(\theta, \phi) = m\hbar Y_\ell^m(\theta, \phi) $  \\
+
+The Explicit Formula is:  \\
+$ Y_\ell^m(\theta, \phi) = \sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m)!}} P_\ell^m(\cos \theta) e^{im\phi} $  \\
+
+Where:  \\
+  $\ell$ is the \textbf{Orbital Quantum Number} ($\ell = 0, 1, 2, \dots$).  \\
+  $m$ is the \textbf{Magnetic Quantum Number} ($m = -\ell, -\ell+1, \dots, 0, \dots, \ell-1, \ell$).  \\
+  $P_\ell^m(\cos \theta)$ are the \textbf{Associated Legendre Polynomials}. See (\pageref{ssec:Legendre Polynomials}).  \\ 
+
+
+
+    2. Key Properties  \\
+
+\noindent
+
+     Orthogonality  \\
+
+\emph{Spherical Harmonics form an Orthonormal Basis for Functions on a Sphere}. The Integral over the entire Solid Angle $\Omega$ (where $d\Omega = \sin\theta d\theta d\phi$) is:  \\
+$ \int_0^{2\pi} \int_0^\pi Y_\ell^m(\theta, \phi) Y_{\ell'}^{m' *}(\theta, \phi) \sin\theta \, d\theta \, d\phi = \delta_{\ell\ell'} \delta_{mm'} $.  \\
+
+    Completeness  \\
+
+\noindent
+
+Any Square-Integrable Function $f(\theta, \phi)$ on a Sphere, can be Expanded as a Linear Combination of Spherical Harmonics:  \\
+$ f(\theta, \phi) = \sum_{\ell=0}^\infty \sum_{m=-\ell}^\ell c_{\ell m} Y_\ell^m(\theta, \phi) $  \\
+
+     Parity  \\
+
+\noindent
+
+Under the Parity Operation (inversion through the origin), $\mathbf{r} \to -\mathbf{r}$, which corresponds to $\theta \to \pi - \theta$, and $\phi \to \phi + \pi$:  \\
+$ Y_\ell^m(\pi - \theta, \phi + \pi) = (-1)^\ell Y_\ell^m(\theta, \phi) $  \\
+Thus, the Parity is determined solely by $\ell$.  \\
+
+    3. Physical Interpretation, and Visualization  \\
+
+\noindent
+
+The Indices $\ell$, and $m$, determine the shape of the "Orbitals" in Quantum Mechanics:  \\
+  \textbf{$\ell=0$ (s-Orbitals)}: $Y_0^0$ is a Constant. The distribution is perfectly Spherical.  \\
+  \textbf{$\ell=1$ (p-Orbitals)}: These have a \emph{Nodal Plane through the Nucleus}, creating Two Lobes (dumbbell shape).  \\
+  \textbf{$\ell=2$ (d-Orbitals)}: These generally have Two Nodal Cones or Planes.  \\
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c l c l}
+\toprule
+$\ell$ & \textbf{Name} & \textbf{Number of $m$ states} & \textbf{Shape} \\
+\midrule
+0 & s & 1 & Spherical \\
+1 & p & 3 & Polar/lobed \\
+2 & d & 5 & Complex lobes \\
+3 & f & 7 & Multi-lobed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+    \noindent\textbf{Common Applications}  \\
+
+\begin{tabularx}{\linewidth}{
+  @{}>{\bfseries}l @{\quad} X@{}
+}
+Atomic Physics: & Defining the Angular part of Electron Wave Functions in Atoms. \\
+Geophysics:     & Modeling Earth's Gravitational, and Magnetic Fields. \\
+Chemistry:      & Describing Molecular Orbitals, and Chemical-Bonding Symmetry. \\
+\end{tabularx}
+
+\noindent
+
+\medskip
+
+     \noindent\textbf{Summary}  \\
 
 Space-Inversion, or Parity\index{Parity} transformation property of the wave-function is:  \\
 $Y^m_\ell (\theta, \phi)$ $\rightarrow$ $\boxed{Y^m_\ell(\pi - \theta, \phi + \pi) = (-1)^{\ell}$ $Y^m_\ell$ $(\theta, \phi)}$, $\boxed{\ell = \nu_1 + \nu_2 + \nu_3}$, which is a homogeneous polynomial of rank $\ell$ in the unit vector $\vec{x}$.  \\
@@ -4041,8 +4209,107 @@ $\left\{
 \end{array}
 \right.$
 
+\newpage
 
-\chapter{Scattering and Absorption of Radiation by a Bound System/S-Matrix Elements}
+\chapter{Field Scattering, and Absorption of Radiation in a Bound System}
+
+When an External Field (such as an Electromagnetic Wave) Interacts with a Bound System (such as an Atom, Ion, or Quantum dot), the System can either Scatter the incoming Radiation, or Absorb it, to reach an Excited State. This is typically analyzed using \textbf{Time-Dependent Perturbation Theory}.  \\
+
+    1. The Interaction Hamiltonian  \\
+
+\noindent
+
+A Bound System described by an Unperturbed Hamiltonian $H_0$, is subjected to a Time-Dependent Perturbation $V(t)$. For an Electromagnetic Wave, the Interaction is often treated in the \textbf{Electric Dipole Approximation}:  \\
+$ V(t) = -\mathbf{d} \cdot \mathbf{E}_0 \cos(\omega t) $  \\
+Where $\mathbf{d} = q\mathbf{r}$, is the Electric Dipole Operator, and $\mathbf{E}_0$, is the Amplitude of the Electric Field.  \\
+
+    2. Absorption: Transitions to Excited States  \\
+
+\noindent
+
+Absorption occurs when the Frequency of the incoming Field $\omega$, matches the Energy difference between the \emph{Ground State} $|i\rangle$, and an Excited State $|f\rangle$.  \\
+
+     Fermis' Golden Rule  \\
+
+\noindent
+
+The Transition Rate $W_{i \to f}$ (probability per unit time) for Absorption, is given by Fermis' Golden Rule:  \\
+$ W_{i \to f} = \frac{2\pi}{\hbar} |\langle f | V | i \rangle|^2 \delta(E_f - E_i - \hbar\omega) $  \\
+The Dirac Delta Function $\delta(E_f - E_i - \hbar\omega)$, enforces the \textbf{*Conservation of Energy}. The term $|\langle f | V | i \rangle|^2$, determines the strength of the Transition, based on the Overlap of the Wave-Functions, and the Selection Rules. See (\pageref{para:Wignar-Eckart Theorem})  \\
+
+    3. Scattering: Elastic, and Inelastic  \\
+
+\noindent
+
+Scattering occurs, when the System Interacts with the Field, and re-Emits a Photon.  \\
+
+    Elastic Scattering, (Rayleigh Scattering) See equation \eqref{eq:Rayleigh Wave Scaterring}  \\
+
+In Elastic Scattering, the System returns to its' Original State $|i\rangle$, after the Interaction. There is no Net Change in the Systems' Energy, so the Emitted Photon has the same Frequency as the Incident Photon ($\omega_{out} = \omega_{in}$).  \\
+  \emph{This is viewed as a Transition to a \textbf{Virtual State\index{Virtual State}—a Non-Resonant Superposition of all Possible Excited States}}.  \\
+
+    Inelastic Scattering (Raman Scattering)  \\
+
+\noindent
+
+In Inelastic Scattering, the System ends in a different Final State $|f\rangle$ (usually a Vibrationally, or Rotationally Excited State).  \\
+  \textbf{Stokes Scattering}: The System gains Energy; the Emitted Photon has Lower Energy ($\hbar\omega_{out} < \hbar\omega_{in}$).  \\
+  \textbf{Anti-Stokes Scattering}: The System was already Excited, and loses Energy to the Photon; the Emitted Photon has Higher Energy ($\hbar\omega_{out} > \hbar\omega_{in}$).  \\
+
+    4. The Complex Refractive Index  \\
+
+\noindent
+
+The combined Effect of Scattering and Absorption, is described Macroscopically by the Complex Refractive Index $\tilde{n}$:  \\
+$ \tilde{n}(\omega) = n(\omega) + i\kappa(\omega) $  \\
+  \textbf{Real part $n(\omega)$}: Describes the Phase Velocity, and the Dispersive (Scattering) Properties.  \\
+  \textbf{Imaginary part $\kappa(\omega)$}: The \textbf{Extinction Coefficient}, which describes the Absorption of the Wave, as it Propagates through the medium.  \\
+
+The Absorption Coefficient $\alpha$, is related to $\kappa$ by:  \\
+$ \alpha = \frac{2\omega \kappa}{c} $  \\
+
+    5. Absorption vs. Scattering  \\
+
+\begin{table}[ht]
+\centering
+\begin{tabularx}{\linewidth}{
+  >{\raggedright\arraybackslash}p{0.20\linewidth}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}X
+}
+\toprule
+\textbf{Feature} & \textbf{Absorption} & \textbf{Scattering} \\
+\midrule
+\textbf{Final State} & Excited state $\lvert f\rangle$ &
+Usually original state $\lvert i\rangle$ \\
+
+\textbf{Energy Change} & System gains $\hbar\omega$ &
+No net change (if elastic) \\
+
+\textbf{Requirement} & Resonance ($\omega \approx \omega_{if}$) &
+Can occur off-resonance \\
+
+\textbf{Outcome} & Internal energy increase &
+Change in photon direction or phase \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\chapter{S-Matrix Elements}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4339,7 +4606,7 @@ for the convention in which $z_j=(x_j-ip_j)/\sqrt{2}$, and $[\hat{x}_j,\hat{p}_k
 \newpage
 
 \paragraph{Wignar-Eckart Theorem}
-
+\label{para:Wignar-Eckart Theorem}
 Let $T^{(k)}_q$ be the $q$th component of an Irreducible Spherical Tensor Operator of Rank $k$. For Angular-Momentum Eigenstates $|j,m,\alpha\rangle$, the Matrix Elements Factor into a Geometric Coefficient, and a Reduced Matrix Element:
 \[
 \langle j'm'\alpha'|T^{(k)}_q|jm\alpha\rangle
@@ -4727,7 +4994,7 @@ Describes the Propagation of Oscillations (Sound, Light, Strings). It features a
 $\frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u$
    \textbf{Behavior}: Conservative. Information travels at a Finite Speed $c$, and Signals maintain their shape as they propagate.
 
-    The Schr$\ddot{o}$}dinger Equation (Quantum Mechanics)  \\
+    The Schr$\ddot{o}$dinger Equation (Quantum Mechanics)  \\
 
 A Complex-Valued Equation describing the Evolution of a Quantum State.
 $i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{x}, t) = \left[ -\frac{\hbar^2}{2m} \nabla^2 + V(\mathbf{x}, t) \right] \Psi(\mathbf{x}, t)$
