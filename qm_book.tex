@@ -66,6 +66,7 @@
 %\usetikzlibrary{arrows.meta}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+\usepackage{array}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -409,7 +410,7 @@ DP@rint:#1\endcsname\relax\phantom
     \date{May, 18, 2026}
     %\version{1.0}
     \bioinfo{Bio}{https://github.com/StevenOwino}
-    \extrainfo{A Theory cannot be both soluble and relativistic - Steven Weinberg}
+    \extrainfo{}
 \end{titlepage}
 %\makecoverpage % This prints the cover with the equation
 
@@ -538,12 +539,15 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 
 \newpage
 
-\section{List of Figures in Chapters}
+\section{List of Figures}
 
 \begin{enumerate}
 
 \item Hydrogen Spectrum
-\item Stern-Gerlach projection
+\item Closed Semi-Circle Radius
+\item Upper-Half Curved Arc Diameter Line
+\item Bounds in Cylindrical Coordinates
+\item Stern-Gerlach Projection
 \item Binary Entropy Diagram
 \item Vector pointing towards the Sun
 \item Time-Dilation Lorenzt Factor
@@ -576,6 +580,35 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 
 \newpage
 
+\section{List Of Tables}
+
+\begin{enumerate}
+
+\item Historical Timeline of the Quantization of Light
+\item Wave-Function Approach For A Finite Number Of Particles
+\item Historical Milestones of Quantum Field Theory
+\item First Few Laguerre, and Associated Laguerre Polynomials
+\item First Six Legendre Polynomials
+\item Stationary, and Non-Stationary States
+\item Decay Parameters
+\item Orbital vs. Spin Parameters
+\item
+\item
+\item
+
+
+
+
+
+\item Limitations of Nuclear Mean-Field Calculations for the Periodic Table
+\item Symptoms Inherent on the Periodic Table, and its' limitation
+\item 
+
+\end{enumerate}
+
+
+
+
 \section{Diagnostic}
 
 %%%% PG BOILERPLATE %%%%
@@ -601,9 +634,202 @@ Therefore, the general solution to this differential equation is y(x) = $e^x(c_1
 
 NOTE: $\frac{\hbar}{i}$ = -i$\hbar$ (Multiplying by -i is the same as dividing by i.)  \\
 
-(e) $\int (a_0 x^4 + 4a_1 x^3 + 6a_2 x^2 + 4a_3 x + a_4)^{- \frac{1}{2}}$ $\rightarrow$  \\
+(e) $\int (a_0 x^4 + 4a_1 x^3 + 6a_2 x^2 + 4a_3 x + a_4)^{- \frac{1}{2}}$ dx $\rightarrow$ NO ANTIDERIVATIVE.  \\
+
+PS: Many functions don't have anti-derivatives. The above example is a "purple flourencense hair dye, its' BOGUS! -- E.T.Jaynes"  \\
+
+(f) $\int_{\theta=0}^{2 \pi}$ $\int_{\phi=0}^{\frac{\pi}{3}}$ $\int_{\rho=1}^{2 \cos \phi}$ $p^2 \sin \phi$ d$\rho$ d$\phi$ d$\theta$ = $\frac{11 \pi}{24}$  \\
+
+    \textbf{Cylindrical Coordinates(A combination of both Polar, and Cartesian Cordinates)}  \\
+
+$\int_{-3}^{3}$ $\int_{0}^{\sqrt{9 - x^2}}$ $\int_{0}^{9 - x^2 - y^2}$ $\sqrt{x^2 + y^2}$ dz dy dx = \ldots
+
+Polar Conversion of (x,y,z), is (r, $\theta$, z) \ldots where $r^2$ = $x^2 + y^2$, Tan$\theta$ = $\frac{y}{x}$, and z = z.  \\
+
+For (r, $\theta$, z) $\to$ (x,y,z), we have x = r Cos$\Theta$, y = r Sin$\Theta$, and z = z.  \\
+
+Here, the "Floor" is r, $\Theta$, giving the Volume being Integrated over as the Intervals, ($-3 \leq x \leq 3$), and ($0 \leq y \leq \sqrt{9 - x^2}$) \ldots Which is "the Floor".  \\ 
+
+The $\sqrt{9 - x^2}$, is the closed semi-circle in the region of Integration.[Upper Half- Circle, with Radius = 3].  \\
+
+\begin{tikzpicture}
+    % Draw the arc from 0 to 180 degrees
+    % start angle=0, end angle=180, radius=3
+    \draw[thick] (0,0) -- (3,0) arc (0:180:3) -- cycle;
+    
+    % Optional: Add axes for context
+    \draw[->, gray!50] (-3.5,0) -- (3.5,0) node[right] {$x$};
+    \draw[->, gray!50] (0,-0.5) -- (0,3.5) node[above] {$y$};
+    
+    % Optional: Label radius
+    \draw[dashed] (0,0) -- (2.12, 2.12) node[midway, above left] {$r=3$};
+\end{tikzpicture}
+
+Or \ldots  \\
+
+\begin{tikzpicture}
+    % Draw only the curved part
+    \draw[ultra thick, blue] (3,0) arc (0:180:3);
+    
+    % Mark the start and end points
+    \filldraw (3,0) circle (2pt) node[below right] {(3,0)};
+    \filldraw (-3,0) circle (2pt) node[below left] {(-3,0)};
+\end{tikzpicture}
 
 
+$\therefore$. $0 \leq \theta \leq \pi$, and $0 \leq r \leq 3$. For the height (z), its' Integration Bounds are: $0 \leq z \leq 9 - x^2 - y^2$, o $\implies$ the (x-y) Plane,
+and $9 -x^2 - y^2$, is Paraboloid opening down Vertex at z = 9.[a semi-cylindrical base topped with a Parabolic Dome.]  \\
+
+In Polar/Cylindrical, $9 - x^2 - y^2$ = $9 - (x^2 + y^2)$ = $9 - r^2$.   \\
+
+\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0cm,1cm)}, z={(0cm,0cm)}] 
+% Note: I am using a custom projection for a 3D-like effect. 
+% x and y are defined to create a perspective view.
+
+% Define a coordinate system for 3D feel
+\begin{scope}[scale=0.7]
+    
+    % 1. Draw the base semi-circle on the XY plane
+    \draw[thick, fill=gray!20, opacity=0.5] (0,0) arc (0:180:3) -- cycle;
+    \node[below] at (0,0) {Origin};
+
+    % 2. Draw the Paraboloid surface using a loop of ellipses
+    % We draw ellipses that shrink as z increases from 0 to 9
+   \foreach \z in {0,...,9} {
+    % Radius = sqrt(9 - z)
+    \pgfmathsetmacro{\rad}{sqrt(9-\z)}
+    \draw[blue!60, thin]
+        ({\rad},0)
+        arc[start angle=0, end angle=180, radius=\rad]
+        -- (0,0) -- cycle;
+}
+   
+    % 3. Draw the outer vertical boundary (the semi-cylinder wall)
+    \draw[thick, blue] (3,0) -- (3,0); % Start point
+    \draw[thick, blue] (3,0) arc (0:180:3); % Bottom edge
+    \draw[thick, blue] (-3,0) -- (0,9); % Connection to peak
+    \draw[thick, blue] (3,0) -- (0,9);  % Connection to peak
+    
+    % 4. Highlight the peak (The maximum z value)
+    \filldraw[red] (0,9) circle (2pt) node[above] {$z=9$};
+
+    % 5. Axis labels
+    \draw[->, thick] (0,0) -- (4,0) node[right] {$x$};
+    \draw[->, thick] (0,0) -- (0,4) node[right] {$y$};
+    \draw[->, thick] (0,0) -- (0,0) ++(0,0) node[left] {$z$}; 
+    % Since Z is vertical in this projection, we label the height
+    \draw[->, thick] (0,0) -- (0,10) node[above] {$z$};
+
+    % 6. Label the surface
+    \node[blue, rotate=45] at (1,5) {$z = 9 - x^2 - y^2$};
+
+\end{scope}
+\end{tikzpicture}
+
+The new Bounds in Cylindrial Coordinates are: $0 \leq r \leq 3$, $0 \leq \theta \leq \pi$, and $0 \leq z \leq 9 - r^2$.  \\
+
+\textbf{NOTE}: [dy, dx], become [r dr d$\theta$].  \\
+
+The original Integral, now becomes: $\int_{\theta=0}^{\pi}$ $\int_{r=0}^3$ $\int_{z=0}^{9 -r^2}$ $r^2$ dz dr d$\theta$:
+\[
+\begin{aligned}
+\int_{0}^{\pi}\int_{0}^{3}\int_{0}^{9-r^2} r^2\,dz\,dr\,d\theta
+&=\int_{0}^{\pi}\int_{0}^{3} r^2(9-r^2)\,dr\,d\theta\\
+&=\int_{0}^{\pi}\left[\frac{9r^3}{3}-\frac{r^5}{5}\right]_{0}^{3}\,d\theta\\
+&=\int_{0}^{\pi}\frac{162}{5}\,d\theta\\
+&=\boxed{\frac{162\pi}{5}}.
+\end{aligned}
+\]
+
+\textbf{NOTE}: While Integrating w.r.t (r), applying the Power Rule, we have:  \\
+
+$
+\int 9r^2\,dr=3r^3,\qquad \int r^4\,dr=\frac{r^5}{5}.
+$
+
+\noindent
+
+Therefore,
+
+$
+\int_{0}^{3}(9r^2-r^4)\,dr
+=
+\left[3r^3-\frac{r^5}{5}\right]_{0}^{3}.
+$
+
+\noindent
+
+Equivalently, writing $3r^3=\frac{9r^3}{3}$,
+
+$
+\left[\frac{9r^3}{3}-\frac{r^5}{5}\right]_{0}^{3}.
+$
+
+\noindent
+
+At $r=3$,
+
+$
+3(3)^3-\frac{(3)^5}{5}
+=
+3(27)-\frac{243}{5}
+=
+81-\frac{243}{5}.
+$
+
+\noindent
+
+Converting $81$ to fifths:
+
+$
+81=\frac{405}{5},
+$
+
+\noindent
+
+So,
+
+$
+81-\frac{243}{5}
+=
+\frac{405-243}{5}
+=
+\frac{162}{5}.
+$
+
+\noindent
+
+At $r=0$, both terms are $0$. Hence,
+
+$
+\int_{0}^{3}r^2(9-r^2)\,dr=\frac{162}{5}.
+$
+
+\noindent
+
+Integrating  w.r.t $\theta$, we have: 
+
+$
+\int_{0}^{\pi}\frac{162}{5}\,d\theta
+=
+\frac{162}{5}\int_{0}^{\pi}d\theta
+=
+\frac{162}{5}[\theta]_{0}^{\pi}.
+$
+
+\noindent
+
+Since $\pi-0=\pi$,
+
+$
+\frac{162}{5}\pi
+=
+\boxed{\frac{162\pi}{5}}.
+$
+ 
+\noindent
+
+For lessons on Integration, see \url{https://mediaspace.itap.purdue.edu/media/Spring+2023+-+MA261+-+Chen+%287A30%29/1_y3xfdsxr}.  \\
 
 
 PROCEED  \\
@@ -612,7 +838,7 @@ PROCEED  \\
 
 \begin{note}
 
-Elementary logic functions(Boolean gates), or Disjunctive Normal Forms, Computation complexities, Algorithms, and Quantum circuits, are not part of this material.
+Elementary logic functions(Boolean gates), or Disjunctive Normal Forms, and Quantum Circuits, are not part of this material.
 
 $\bullet$ Schr$\ddot{o}$dinger Equation: General linear homogeneous solution(from translation operators), to the Time-Dependent Schr$\ddot{o}$dinger Equation $\longrightarrow$ \\
 
@@ -1223,8 +1449,8 @@ of T, is $\equiv$ to M restricted to the Closure\index{Closure} the Range of T. 
   
 Degeneracy\index{Degeneracy} $\longrightarrow$ Occurrence of multiple eigenvalues/states sharing the same energy. \\ 
 
-Zeeman-effect\index{Zeeman-effect} $\longrightarrow$ Splitting apart of eigenvalues, hence of spectral lines, in a magnetic field. \\
-  
+Zeeman-effect\index{Zeeman-effect} $\longrightarrow$ Splitting apart of Eigenvalues, hence of Spectral Lines, in a Magnetic Field. \\
+
 Kronocker-delta\index{Kronocker-delta}(Orthonormality condition\index{Orthonormality condition}) $\longrightarrow$
 $\delta_{ij}$ = $\left\{
 \begin{array}{ll}
@@ -1983,16 +2209,22 @@ $\delta \mathbf H (t)$ $\equiv$ $e^{i \hat{\mathbf H}^{(0)}{\frac{t}{\hbar}}} \d
 $\mid \tilde \Psi (t) \rangle$ = $ \mid \Psi(0) \rangle + \int_0^t \frac{ \delta \mathbf H(t')} {i \hbar} \mid \Psi(0) \rangle \mathbf dt' + \mathcal O( \delta \mathbf H^2)$  \\
 
 $\bullet$ (53) Fermis'-golden-rule\index{Fermis'-golden-rule}:  \\
+\label{Fermis'-golden-rule}
 
-$\hat{\mathbf H}$ = $\hat{\mathbf H^{(0)}}$ + V,
 
-$\hat{\mathbf H}$ = $\hat{\mathbf H^{(0)}}$ + $2 \mathbf H' \cos \omega t$,  \\
+$\hat{\mathbf H}$ = $\hat{\mathbf H^{(0)}}$ + V,  \\
 
-w = $\frac{2 \pi}{\hbar} \mid \mathbf V_f \mid^2 \rho(\mathbf E_f)$, \\
+$\hat{\mathbf H}$ = $\hat{\mathbf H^{(0)}}$ + $2 \mathbf H' \cos \omega t$  \\
+
+\label{eq:Fermis'-golden-rule}
+\begin{equation}
+w = \frac{2 \pi}{\hbar} \mid \mathbf V_f \mid^2 \rho(\mathbf E_f)
+\end{equation}
 
 w = $\frac{2 \pi}{\hbar} \mid \mathbf H'_f \mid 2 \rho(\mathbf E_f)$  \\
 
-The constant transition rate of Energy to a final state.  \\
+
+The Constant Transition Rate of Energy, to a Final State.  \\
 
 %$\hat{\mathbf{\textbf{H}}}$ = $\hat{\mathbf{\textbf{H}^{(0)}}}$ + $V$, \\
 
@@ -2083,13 +2315,68 @@ To find the correct initial guess $\alpha$, root-finding methods are used, to sy
 
 \chapter{Stationary-State\index{Stationary-State}}
 
-There is time-dependence on a stationary-state. If we separate the variables of the wave-function $\Psi(x,t)$, to $\psi(x)$, and $\phi(t)$, we have a constant on the (t) component: $\psi(x)e^{\frac{-i E}{\hbar}t}$; The probability density of the wave-function(or the magnitude squared), complex conjugated, guarantees oscillation in establishing a \emph{time-independent wave-function:} $\Big| \Psi(x,t) \Big|^2$ = $\psi^{*}(x) e^{ + \frac{i E}{\hbar}t}$ \quad $\psi(x) e^{ - \frac{i E}{\hbar}t}$ = $e^{0} (\psi^{*}(x) \psi(x))$ = $\Big| \psi(x) \Big|^2$, where $\mathbf{e^{0}}$ = $\mathbf{1}$.  \\
-$\therefore$ with an index (n) on the $\psi$'s, and (E), we can obtain the ($n^{th}$) (E) of the time-independent Schr$\ddot{o}$dinger wave-function.  \\
-Stationary, and static aren't the same! \\
+A \textbf{Stationary State} in Quantum Mechanics, is a State of a System, where all Observable Properties (Probability Density, Expectation Values) are Constant in Time. These States are the Eigenfunctions of the Hamiltonian Operator.  \\
 
-In general, $\Psi(x,t)$ = $\sum_{n = 1}^\infty$ $C_n$ $\Psi(x,t)$ = $\sum_{n = 1}^\infty$ $\psi(x) e^{\frac{i E}{\hbar}t}$, with constant ($C_n$ = $a_n + i b_n$). The evolution of the wave-function is Linear, and collapses, when there's a measurement.  \\
+    1. Mathematical Definition  \\
+
+A State $|\Psi(t)\rangle$ is Stationary, if it is an Eigenstate of the Hamiltonian $\hat{H}$, with Energy Eigenvalue $E$: \\ 
+$ \hat{H} |\psi_n\rangle = E_n |\psi_n\rangle $\\
+The full Time-Dependent Wave-Function, is obtained by multiplying the Spatial part $\psi_n(\mathbf{r})$, by the Time-Evolution Factor: \\
+$\Psi(\mathbf{r}, t) = \psi_n(\mathbf{r}) e^{-i E_n t / \hbar}$.  \\
+
+
+    2. Why it is called "Stationary"?  \\
+
+Although the Wave-Function $\Psi(\mathbf{r}, t)$, Oscillates in the Complex Plane, with Frequency $\omega = E_n/\hbar$, the \textbf{Observable Physical quantities} do not change.  \\
+
+     Probability Density  \\
+
+The Probability Density $\rho$, is given by the Product of the Wave-Function, and its' Complex Conjugate:  \\
+$\rho(\mathbf{r}, t) = \Psi^* \Psi = \left( \psi_n^*(\mathbf{r}) e^{i E_n t / \hbar} \right) \left( \psi_n(\mathbf{r}) e^{-i E_n t / \hbar} \right) = |\psi_n(\mathbf{r})|^2$.  \\
+Since the Time-Dependent Phase Factors cancel out, $\rho$ is independent of Time.  \\
+
+    Expectation Values  \\
+
+For any Time-Independent Operator $\hat{A}$, the Expectation Value is:  \\
+$\langle A \rangle_t = \langle \Psi(t) | \hat{A} | \Psi(t) \rangle = \langle \psi_n | e^{i E_n t / \hbar} \hat{A} e^{-i E_n t / \hbar} | \psi_n \rangle = \langle \psi_n | \hat{A} | \psi_n \rangle$  \\
+Because the Phase Factors cancel, $\langle A \rangle$ is Constant.  \\
+
+    3. Non-Stationary States (Superpositions)  \\
+
+A State is \textbf{not} Stationary, if it is a Superposition of two or more Stationary States, with different Energies $E_1$ and $E_2$:  \\
+$ |\Psi(t)\rangle = c_1 e^{-i E_1 t / \hbar} |\psi_1\rangle + c_2 e^{-i E_2 t / \hbar} |\psi_2\rangle$
+In this case, the Probability Density $\rho(\mathbf{r}, t)$, contains \textbf{interference terms}:  \\
+$\rho(\mathbf{r}, t) = |c_1 \psi_1|^2 + |c_2 \psi_2|^2 + 2 \text{Re} \left( c_1^* c_2 \psi_1^* \psi_2 e^{-i(E_2 - E_1)t/\hbar} \right)$
+The term $e^{-i(E_2 - E_1)t/\hbar}$ causes the Probability Density to Oscillate with the \textbf{Bohr Frequency} $\omega_{21} = (E_2 - E_1)/\hbar$. This is the Mechanism behind Quantum Beats, and Transitions.  \\
+
+    4. Comparison  \\
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Feature} & \textbf{Stationary State} & \textbf{Non-Stationary State} \\
+\hline
+\textbf{Hamiltonian} & Eigenstate of $\hat{H}$ & Superposition of $\hat{H}$ eigenstates \\
+\hline
+\textbf{Energy} & Well-defined (definite $E$) & Uncertain (distribution of $E_n$) \\
+\hline
+\textbf{Prob.\ Density} & Constant in time & Oscillates in time \\
+\hline
+\textbf{Time Evolution} & Pure phase change $e^{-iEt/\hbar}$ & Relative phase changes $\Delta \phi(t)$ \\
+\hline
+\textbf{Observables} & Constant expectation values & Time-varying expectation values \\
+\hline
+\end{tabular}
+\end{table}
+
+Stationary, and Static aren't the same! \\
+
+In general, $\Psi(x,t)$ = $\sum_{n = 1}^\infty$ $C_n$ $\Psi(x,t)$ = $\sum_{n = 1}^\infty$ $\psi(x) e^{\frac{i E}{\hbar}t}$, with Constant ($C_n$ = $a_n + i b_n$). The Evolution of the Wave-Function is Linear, and \emph{Collapses}, when there's a Measurement.  \\
+
 At $t = 0$, the \emph{Initial-State}\index{Initial-State}, $\psi(x,0)$ = $\sum_{n = 1}^\infty$ $C_n$ $\psi_{n} (x)$.  \\
-Any $t^{'}$, can be approximated, with this set of wave-function.
+
+Any $t^{'}$, can be \emph{Approximated}, with this Set of Wave-Function.
 
 \newpage
 
@@ -2252,39 +2539,409 @@ Just as with the finite potential well, the functions have to join smoothly at t
 
 
 
-\chapter{Decay}
-\paragraph{Beta Decay; Mixed Neutrino Eigenstates}
+\chapter{Decay of States}
+
+In Quantum Mechanics, \textbf{Decay}, describes a process where a Non-stable State $|\psi_i\rangle$ (the "Parent" State) Evolves into a different State $|\psi_f\rangle$ (the "Daughter" State) over Time. Unlike a Stable Bound State, a Decaying State is a \textbf{Quasi-Stationary State}, with a Complex Energy.
+
+    1. The Complex Energy Formalism  \\
+
+A Stable State, has a Real Energy $E_0$, and Evolves as $e^{-i E_0 t / \hbar}$. A Decaying State, is modeled by adding an Imaginary part to the Energy:  \\
+$ E = E_0 - i\frac{\Gamma}{2} $.  \\
+Where $\Gamma$, is the \textbf{Decay Width}, or Resonance Width. The Time Evolution of the State is:  \\
+$ |\psi(t)\rangle = e^{-i(E_0 - i\Gamma/2)t/\hbar} |\psi(0)\rangle = e^{-i E_0 t / \hbar} e^{-\Gamma t / 2\hbar} |\psi(0)\rangle $.  \\
+
+The Probability of finding the System in the Initial State at Time $t$ is:  \\
+$ P(t) = |\langle \psi(0) | \psi(t) \rangle|^2 = e^{-\Gamma t / \hbar} $.  \\
+
+    2. Decay Rate, and Lifetime  \\
+
+The Probability $P(t)$, follows the Classic \textbf{Exponential Decay Law}:  \\
+$ P(t) = e^{-t/\tau} $  \\
+Comparing the two expressions, we find the relationship between the Decay Width $\Gamma$, and the Mean Lifetime $\tau$:  \\
+$ \tau = \frac{\hbar}{\Gamma} $  \\
+This is a manifestation of the \textbf{Energy-Time Uncertainty Principle}:  \\
+$ \Delta E \Delta t \approx \hbar \implies \Gamma \tau \approx \hbar $  \\
+The more Unstable the State (shorter $\tau$), the broader the Uncertainty in its' Energy ($\Gamma$).  \\
+
+    3. Fermis' Golden Rule \eqref{eq:Fermis'-golden-rule} \\
+
+To Calculate the Transition Rate $W$, (the Probability of Decay per Unit Time), we use \textbf{Fermis' Golden Rule}. If the Decay is caused by a Perturbation $V$, that Couples the Initial State $|i\rangle$ to a Continuum of Final States $|f\rangle$:  \\
+$ W = \frac{2\pi}{\hbar} |\langle f | V | i \rangle|^2 \rho(E_f) $  \\
+Where:  \\
+ $\langle f | V | i \rangle$, is the Transition Matrix Element.  \\
+ $\rho(E_f)$ is the \textbf{Density of Final States} (number of available States per Unit Energy).  \\
+
+The Decay Width is then, $\Gamma = \hbar W$.  \\
+
+    4. Spectral Line Shape (Lorentzian)  \\
+
+Because the State has a Finite Lifetime $\tau$, the Energy of the Emitted Particle (e.g., a Photon), is not a single Delta-Function Peak, but a \emph{Distribution}. Taking the Fourier Transform of the Decaying Exponential, $e^{-\Gamma t / 2\hbar}$ leads to the \textbf{Lorentzian (Cauchy) Distribution}:  \\
+$ I(E) \propto \frac{1}{(E - E_0)^2 + (\Gamma/2)^2} $  \\
+The Full Width at Half Maximum (FWHM) of this Peak, is exactly $\Gamma$. See \ref{fig:BW.png}.  \\
+
+    \textbf{Decay Parameters}  \\
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|c|l|l|}
+\hline
+\textbf{Parameter} & \textbf{Symbol} & \textbf{Definition/Relation} & \textbf{Physical Meaning} \\
+\hline
+\textbf{Decay Width} & $\Gamma$ & $\Gamma = \hbar W$ & Uncertainty in energy / Line width \\
+\hline
+\textbf{Mean Lifetime} & $\tau$ & $\tau = 1/W$ & Average time until decay \\
+\hline
+\textbf{Probability} & $P(t)$ & $e^{-t/\tau}$ & Survival probability \\
+\hline
+\textbf{Transition Rate} & $W$ & $\Gamma/\hbar$ & Probability of decay per second \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{Beta Decay, and Mixed Neutrino Eigenstates}
+
+\noindent
+
+In Beta Decay, Neutrinos are produced through the Weak Interaction in Flavor States, not as States of Definite Mass. The Electron-Flavor Neutrino, is a Quantum Superposition of Mass Eigenstates. This distinction connects Beta-Decay production, to Neutrino Oscillations, and to Direct Measurements of Neutrino Mass.  \\
+
+See \url{https://www-sk.icrr.u-tokyo.ac.jp/en/sk/}  \\
+
+\noindent
+
+\subsection{Flavor, and Mass Eigenstates}
+
+The Neutrino States that propagate with Definite Masses, denoted $\lvert \nu_i\rangle$ for $i=1,2,3$, are related to the Weak-Interaction Flavor States by the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) Matrix:  \\
+\begin{equation}
+  \lvert \nu_\alpha\rangle
+  = \sum_{i=1}^{3} U_{\alpha i}^{*}\lvert \nu_i\rangle,
+  \qquad \alpha=e,\mu,\tau.
+\end{equation}
+Thus, in Beta-Minus Decay,
+\begin{equation}
+  n \longrightarrow p + e^- + \bar{\nu}_e,
+\end{equation}
+the Emitted Electron Antineutrino is produced, to a good approximation, in the flavor state
+\begin{equation}
+  \lvert \bar{\nu}_e\rangle
+  = \sum_{i=1}^{3} U_{ei}\lvert \bar{\nu}_i\rangle.
+\end{equation}
+The Complex Conjugation differs between Neutrino, and Antineutrino Conventions. The Observable Decay Rate, is Calculated by Summing Over the Kinematically allowed Mass Eigenstates.  \\
+
+\noindent
+
+\subsection{What "Mixed" means in Beta Decay} 
+
+\noindent
+
+The Weak Interaction Couples the Electron to a Coherent Combination of Neutrino Mass Eigenstates. Whether the Emitted Neutrino remains Coherent depends on whether the DecayProcess, and the experimental setup candistinguish the different Masses through their Kinematics. If the Mass-Dependent Recoil, or Energy differences are unresolvable, the Neutrino Components are produced Coherently, and can later Interfere, giving rise to Oscillations.  \\
+
+If the Components are Distinguishable, or if Environmental Interactions destroy their Relative Phase, the produced State is instead described Incoherently, for the relevant Measurement. This does not mean that \emph{Neutrino Mixing} has disappeared; It means that, \textbf{Interference between the
+Mass Components is not Observable, in that situation}.  \\
+
+\subsection{Oscillation after Production}  
+
+\noindent
+
+For Relativistic Neutrinos traveling a distance $L$, the Mass Eigenstates acquire different Phases. In Units where $c=\hbar=1$, \\
+\begin{equation}
+  \lvert \bar{\nu}_e(L)\rangle
+  \simeq \sum_i U_{ei}
+  \exp\!\left(-i\frac{m_i^2L}{2E}\right)
+  \lvert \bar{\nu}_i\rangle,
+\end{equation}
+where $E$ is the Neutrino Energy. The Probability of detecting an Electron Antineutrino is
+\begin{equation}
+  P_{\bar{\nu}_e\to\bar{\nu}_e}(L)
+  = 1 - 4\sum_{i<j}|U_{ei}|^2|U_{ej}|^2
+  \sin^2\!\left(\frac{\Delta m_{ij}^2 L}{4E}\right),
+\end{equation}
+with $\Delta m_{ij}^2=m_i^2-m_j^2$. In Practical Units, the argument of
+the Sine is approximately $1.27\,\Delta m_{ij}^2[\mathrm{eV}^2]\,L[\mathrm{km}]/E[\mathrm{GeV}]$.  \\
+
+\subsection{Connection to Beta-Decay Mass Measurements}  
+
+Oscillation Experiments Measure Mass-Squared differences, and Mixing Parameters, but not the Absolute Neutrino-Mass Scale. Direct Beta-Decay Experiments instead, study the Electron Energy Spectrum, near its' endpoint. For an allowed Beta Decay, the \emph{Spectrum}, depends on an Effective Mass Parameter
+\begin{equation}
+  m_\beta^2 = \sum_i |U_{ei}|^2 m_i^2.
+\end{equation}
+This expression results from the unresolved contributions of the different Mass Eigenstates, near the endpoint. If an Experiment had \emph{sufficient Energy resolution} to distinguish Separate Mass Thresholds, the individual contributions could appear separately \ldots; Otherwise, the Spectrum is effectively described by $m_\beta$.  \\
+
+Beta Decay produces Neutrinos, through Flavor-Dependent Weak Interactions. The Electron-Flavor State is a Superposition of Mass Eigenstates, provided the production process does not resolve their Kinematic differences. Their subsequent Relative Phase Evolution allows \textbf{Neutrino Oscillations}, while precision Beta-Decay Endpoint Measurements, probe a Mixing-Weighted Combination of the Neutrino Masses.  \\
+
+    \textbf{The Pontecorvo-Maki-Nakagawa-Sakata (PMNS) Matrix}  \\
+
+\noindent
+
+The PMNS Matrix describes the Mixing between Neutrino Flavor States, which participate in Weak Interactions, and Neutrino Mass Eigenstates, which propagate with definite Masses. \emph{Its' Parameters determine the Amplitudes, for Neutrino Flavor Transitions, and are central to the Physics of Neutrino Oscillations}.
+
+\subsection{Flavor and mass states}
+
+\noindent
+
+Neutrinos are produced, and detected through Weak Interactions, in Flavor States $\lvert \nu_\alpha\rangle$, where $\alpha=e,\mu,\tau$. These States are Superpositions of Mass Eigenstates $\lvert \nu_i\rangle$, where $i=1,2,3$: \\
+\begin{equation}
+  \lvert \nu_\alpha\rangle
+  = \sum_{i=1}^{3} U_{\alpha i}^{*}\lvert \nu_i\rangle,
+  \qquad
+  \lvert \nu_i\rangle
+  = \sum_{\alpha=e,\mu,\tau} U_{\alpha i}\lvert \nu_\alpha\rangle.
+\end{equation}
+Here, $U$ is the Unitary PMNS matrix. The Complex Conjugates in these relations follow the Stated Convention; Equivalent Conventions are used.
+
+\subsection{Standard Parameterization}
+
+For Three Neutrino Flavors, the PMNS Matrix can be written as  \\
+\begin{equation}
+U =
+\begin{pmatrix}
+c_{12}c_{13} & s_{12}c_{13} & s_{13}e^{-i\delta_{\rm CP}} \\
+-s_{12}c_{23}-c_{12}s_{23}s_{13}e^{i\delta_{\rm CP}}
+& c_{12}c_{23}-s_{12}s_{23}s_{13}e^{i\delta_{\rm CP}}
+& s_{23}c_{13} \\
+s_{12}s_{23}-c_{12}c_{23}s_{13}e^{i\delta_{\rm CP}}
+& -c_{12}s_{23}-s_{12}c_{23}s_{13}e^{i\delta_{\rm CP}}
+& c_{23}c_{13}
+\end{pmatrix}
+\begin{pmatrix}
+1&0&0\\
+0&e^{i\alpha_{21}/2}&0\\
+0&0&e^{i\alpha_{31}/2}
+\end{pmatrix},
+\end{equation}
+where $s_{ij}=\sin\theta_{ij}$, $c_{ij}=\cos\theta_{ij}$, and
+$\theta_{12},\theta_{23},\theta_{13}$ are the Three Mixing Angles. The Phase $\delta_{\rm CP}$, is the Dirac Charge Parity-Violating Phase. The Phases $\alpha_{21}$, and $\alpha_{31}$, are Majorana Phases, relevant only if Neutrinos are Majorana Particles.  \\
+
+\subsection{Neutrino Oscillations}
+
+\noindent
+
+As Neutrinos Propagate, their Mass Components acquire different Quantum-Mechanical Phases. In Vacuum, the Probability that a Neutrino produced with Flavor $\alpha$, is detected with Flavor $\beta$ is  \\
+\begin{equation}
+P_{\nu_\alpha\to\nu_\beta}(L)
+=
+\left|
+\sum_{i=1}^{3}
+U_{\beta i}U_{\alpha i}^{*}
+\exp\!\left(-i\frac{m_i^2L}{2E}\right)
+\right|^2,
+\end{equation}
+using Units, $\hbar=c=1$. Here, $L$ is the Propagation Distance, $E$ is the Neutrino Energy, and $m_i$, is the Mass of Eigenstate $i$. Oscillations depend on Mass-Squared differences $\Delta m_{ij}^{2}=m_i^2-m_j^2$, rather than on the Absolute Mass Scale.  \\
+
+For Antineutrinos, the Mixing Factors are Complex-Conjugated:  \\
+\begin{equation}
+P_{\bar{\nu}_\alpha\to\bar{\nu}_\beta}
+=
+\left|
+\sum_{i=1}^{3}
+U_{\beta i}^{*}U_{\alpha i}
+\exp\!\left(-i\frac{m_i^2L}{2E}\right)
+\right|^2.
+\end{equation}
+Differences between Neutrino and Antineutrino Oscillation Probabilitiescan arise from the Phase $\delta_{\rm CP}$.  \\
+
+\subsection{Physical Significance, and Limitations}  
+
+The PMNS Matrix is the Leptonic Analogue of the Quark-Sector Cabibbo–Kobayashi–Maskawa(CKM) Matrix. Its' Mixing Angles, describe the strength of mMixing between Flavors, and Mass States, while its' Complex Phase allows Charge Parity Violation in Neutrino Oscillations. In Matter, Coherent Forward Scattering, modifies Neutrino Propagation, so the Effective Oscillation Probabilities differ from their Vacuum Expressions.  \\
+
+Oscillation Measurements, determine Mixing Parameters, and Mass-Squared differences, but do not by themselves determine the Absolute Neutrino Masses. In addition, Majorana Phases, cancel from ordinary Flavor-Oscillation Probabilities; \emph{They can enter Processes that Violate Lepton number, such as Neutrinoless Double-Beta Decay}.  \\
+
+\subsection{Summary} 
+
+The PMNS Matrix connects Neutrino Flavor, to Neutrino Mass. Its' Three Mixing Angles, and Dirac Phase, govern Three-Flavor Oscillations, while possible Majorana Phases, matter only in Lepton-Number-Violating Observables. Together with the Neutrino Mass-Squared differences, the Matrix provides the standard framework for describing Neutrino
+Oscillation Phenomena.
 
 
-
-
-
+\newpage
 
 \chapter{Magnetic Dipole of the Electron}
 
+\noindent
+
+The \textbf{Magnetic Dipole Moment} of the Electron, is a Quantum Mechanical Property, that describes how the Electron Interacts, with an External Magnetic Field. It arises from two sources: the Orbital Motion of the Electron around a Nucleus (Orbital Magnetic Moment), and the Intrinsic Spin of the Electron Spin Magnetic Moment.  \\
+
+    1. Orbital Magnetic Dipole Moment  \\
+
+Classically, a Charge $q$, moving in a Circle, creates a Current Loop. The Magnetic Moment $\boldsymbol{\mu}_L$, is Proportional to the Orbital Angular Momentum $\mathbf{L}$:  \\
+$ \boldsymbol{\mu}_L = -\frac{e}{2m_e} \mathbf{L} $  \\
+Where $e$, is the Elementary Charge, and $m_e$ is the Electron Mass. The constant $\gamma_L = -\frac{e}{2m_e}$, is the \textbf{gyromagnetic ratio}.  \\
+
+    2. Spin Magnetic Dipole Moment  \\
+
+The Electron possesses an Intrinsic Angular Momentum $\mathbf{S}$, known as Spin. Unlike the Orbital Moment, this is not due to Physical Rotation. The Spin Magnetic Moment $\boldsymbol{\mu}_S$, is expressed as:  \\
+$ \boldsymbol{\mu}_S = -g_e \frac{e}{2m_e} \mathbf{S} $  \\
+Where $g_e$, is the \textbf{Electron g-factor}.  \\ 
+
+  \textbf{Dirac Theory}  \\
+
+\noindent
+
+ The Dirac Equation predicts $g_e = 2$.
+  \textbf{Quantum Electrodynamics(QED) Corrections}: Quantum Electrodynamics reveals that $g_e$, is slightly larger than 2, due to the Electrons' Interaction with Virtual Photons (Vacuum Fluctuations): $ g_e \approx 2.002319 $.  \\
+
+    3. Total Magnetic Moment  \\
+
+The Total Magnetic Dipole Moment $\boldsymbol{\mu}_{tot}$ of an Electron is the Vector Sum of its' Orbital, and Spin Components:  \\
+$ \boldsymbol{\mu}_{tot} = \boldsymbol{\mu}_L + \boldsymbol{\mu}_S = -\frac{e}{2m_e} ( \mathbf{L} + g_e \mathbf{S} ) $  \\
+Because $g_e \approx 2$, the Spin contributes roughly twice as much to the Magnetic Moment, as an equivalent amount of Orbital Angular Momentum.  \\
+
+
+
+    4. Interaction Energy (Zeeman Effect) Find its' definition in Page \pageref{sec:Definitions} \\
+
+When an Electron is placed in an Dxternal Magnetic Field $\mathbf{B}$, it possesses Potential Energy $U$, due to the Alignment of its' Dipole Moment:  \\
+$ U = -\boldsymbol{\mu}_{tot} \cdot \mathbf{B} $.  \\
+If the Field is Aligned along the $z$-axis ($\mathbf{B} = B\hat{z}$), and considering only the Spin Component:  \\
+$ U = -\mu_{Sz} B = g_e \frac{e}{2m_e} S_z B $  \\
+Substituting $S_z = \pm \hbar/2$: $ U = \pm \frac{1}{2} g_e \mu_B B $  \\
+Where $\mu_B = \frac{e\hbar}{2m_e}$ is the \textbf{Bohr Magneton}, the Unit of the Electrons' Magnetic Dipole Moment.  \\
+
+\newpage
+
+   \textbf{Orbital vs. Spin}  \\
+
+\begin{table}[ht]
+\centering
+\begin{tabularx}{\linewidth}{
+  >{\raggedright\arraybackslash}p{0.18\linewidth}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}X
+}
+\toprule
+\textbf{Property}
+& \textbf{Orbital Moment ($\boldsymbol{\mu}_L$)}
+& \textbf{Spin Moment ($\boldsymbol{\mu}_S$)} \\
+\midrule
+\textbf{Origin}
+& Motion through space
+& Intrinsic property \\
+
+\textbf{Operator}
+& $\mathbf{L} = \mathbf{r} \times \mathbf{p}$
+& $\mathbf{S} = \frac{\hbar}{2}\boldsymbol{\sigma}$ \\
+
+\textbf{$g$-factor}
+& $g_L = 1$
+& $g_S \approx 2.0023$ \\
+
+\textbf{Quantization}
+& $L^2 = \ell(\ell+1)\hbar^2$
+& $S^2 = s(s+1)\hbar^2$, with $s=\frac{1}{2}$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
 \chapter{Energy of a Recoil Nucleus}
 
+When a Nucleus in an Excited State undergoes a Transition to a Lower Energy State by Emitting a Photon, the Photon carries away not only Energy, but also Momentum. To Conserve the Total Momentum of the System, the Nucleus must Recoil in the opposite direction.  \\
+
+\noindent
+
+    1. Conservation Laws  \\
+
+\noindent
+
+Let the Initial State be an Excited Nucleus of Mass $M$ at rest.
+
+  \textbf{Energy Conservation}:  \\
+
+\noindent
+
+  $ E_{initial} = E_{final} \implies E_{ex} = E_\gamma + E_R $
+  Where $E_{ex}$ is the Excitation Energy, $E_\gamma$ is the Energy of the Emitted Photon, and $E_R$ is the Recoil Kinetic Energy of the Nucleus.  \\
+
+  \textbf{Momentum Conservation}:  \\
+
+\noindent
+
+  Since the Initial Momentum is Zero:  \\
+  $ \mathbf{p}_{nucleus} + \mathbf{p}_\gamma = 0 \implies p_R = p_\gamma $  \\
+  The Momentum of a Photon is $p_\gamma = \frac{E_\gamma}{c}$.  \\
+
+    2. Calculating the Recoil Energy  \\
+
+\noindent
+
+The Recoil Energy $E_R$ of the Nucleus is treated Non-Relativistically, since the Nucleus is much heavier than the Photon:  \\
+$ E_R = \frac{p_R^2}{2M} = \frac{p_\gamma^2}{2M} = \frac{E_\gamma^2}{2Mc^2} $  \\
+
+Since $E_R \ll E_\gamma$, we can approximate $E_\gamma \approx E_{ex}$, to find the Magnitude of the Recoil Energy:
+$ E_R \approx \frac{E_{ex}^2}{2Mc^2} $  \\
+
+    3. Impact on Photon Energy  \\
+
+\noindent
+
+Because some of the Excitation Energy is "lost" to the Kinetic Energy of the Nucleus, the Emitted Photon has slightly less Energy than the Electronic Transition $\Delta E = E_{ex}$.  \\
+$ E_\gamma = E_{ex} - E_R = E_{ex} - \frac{E_\gamma^2}{2Mc^2} $  \\
+Solving the Quadratic for $E_\gamma$ (or using the Approximation $E_\gamma \approx E_{ex}$):  \\
+$ E_\gamma \approx E_{ex} - \frac{E_{ex}^2}{2Mc^2} $  \\
+
+    4. Physical Significance: The M$\ddot{o}$ssbauer Effect  \\
+
+\noindent
+
+In a Free Nucleus, the Recoil Energy $E_R$ is often much larger than the Linewidth $\Gamma$ of the Nuclear Transition. This means the Emitted Photon is "Shifted" away from the Resonance Frequency, and a Second Nucleus cannot absorb it.  \\
+
+However, in the \textbf{M$\ddot{o}$ssbauer Effect}, the Nucleus is Bound within a Crystal Lattice. The Recoil is not absorbed by a single Nucleus, but by the \textbf{entire crystal} of Mass $M_{crystal}$. Since $M_{crystal} \to \infty$:  \\
+$ E_R = \frac{E_\gamma^2}{2M_{crystal}c^2} \approx 0 $  \\
+This allows for \textbf{Recoil-Free Emission, and Absorption}, enabling extremely precise Measurements of Energy Shifts (e.g., detecting the Gravitational Redshift, or changes in the Earths' Diameter).  \\
 
 
 
+The M$\ddot{o}$ssbauer Effect is the Recoil-Free Emission, and Resonant Absorption of Gamma Rays by Nuclei Bound in a Solid. By suppressing Recoil Energy Losses, it makes extremely narrow Nuclear Resonances Observable. This sensitivity has enabled precise Measurements of Nuclear Energy Levels, Local Chemical Environments, and Small Energy Shifts.  \\
 
+\subsection{The Recoil Problem}
 
+\noindent
 
+A Free Nucleus Emitting a Gamma Ray Recoils to Conserve Momentum. For a Nucleus of Mass $M$ Emitting a Photon of Energy $E_\gamma$, the Recoil Energy is approximately  \\
+\begin{equation}
+  E_R \simeq \frac{E_\gamma^2}{2Mc^2}.
+\end{equation}
+The Emitting Nucleus, therefore gives the Photon slightly less Energy than the Nuclear Transition Energy. A Free Absorbing Nucleus also Recoils, requiring additional Energy. These Recoil Shifts, can prevent the Emitted Photon from matching the Absorption Resonance.  \\
 
+\subsection{Recoil-Free Emission, and Absorption}
 
+In a Solid, a Nucleus is Bound within a Crystal Lattice. In some Emission and Absorption events, Momentum is transferred to the Lattice as a whole, rather than exciting a Lattice Vibration (a Phonon). Because the Effective Mass of the Lattice is enormous, the associated Recoil Energy is negligible. Such events are called Recoil-Free  \\
 
+When both Emission and Absorption occur without Phonon Creation, or Excitation, the Gamma-Ray Energy can match the Nuclear Transition Energy, producing Resonant Absorption. The Probability of a Recoil-Free Event is the \emph{Recoil-Free Fraction}, often denoted
+$f$. It depends on factors including the Isotope, the Lattice, and the Temperature; lower Temperatures generally favor \textbf{Recoil-Free Events}.  \\
 
+\subsection{Resonance and Doppler Spectroscopy}
 
+Nuclear Excited States, have very narrow  Linewidths. A Source
+and Absorber, can therefore be brought into or out of Resonance, by
+changing their Relative Velocity. To First Order, the Doppler Energy
+Shift is  \\
+\begin{equation}
+  \Delta E \simeq E_\gamma\frac{v}{c},
+\end{equation}
+where $v$, is the Relative Velocity along the Gamma-Ray direction.
+Measuring Absorption as a Function of Velocity yields a M$\ddot{o}$ssbauer Spectrum.  \\
 
+The Spectrum can reveal small changes in Nuclear Transition Energy. commonly studied Effects include:  \\
+\begin{itemize}
+  \item \textbf{Isomer Shift:} A Shift associated with the electron
+        density at the Nucleus, sensitive to Chemical Bonding, and
+        Oxidation State.
+  \item \textbf{Quadrupole Splitting:} Splitting of Nuclear Levels due
+        to the Interaction between a Nuclear Quadrupole Moment, and an
+        Electric-Field Gradient.
+  \item \textbf{Magnetic Hyperfine Splitting:} Splitting caused by the
+        Interaction ofNuclear Magnetic Moments withL Local Magnetic
+        Fields.
+\end{itemize}
 
+\subsection{Applications}
 
+M$\ddot{o}$ssbauer Spectroscopy is used to study the Oxidation States, Chemical bonding, and Magnetic Properties of Materials, especially \emph{Iron-Containing Compounds}. Its' High Energy Resolution, also makes it useful for investigating subtle changes in Nuclear Energy Levels. Historically, the Effect enabled a precise test of the Gravitational Redshift of Gamma Rays.  \\
 
+The M$\ddot{o}$ssbauer Effect, occurs when a Nucleus in a Solid Emits, or Absorbs a Gamma Ray, without Creating, or Exciting a Lattice Vibration. The Lattice takes up the Recoil with negligible Energy Loss, allowing narrow Nuclear Resonances to Overlap. The resulting precision makes M$\ddot{o}$ssbauer Spectroscopy, a valuable probe of the Local Chemical,
+Structural, and Magnetic Environment of Nuclei.
 
-
-
-
-
-
+\newpage
 
 \chapter{The Simple Harmonic Oscillator}
 
@@ -3389,14 +4046,17 @@ $\left\{
 
 
 
-\chapter{Transitions}
+\chapter{Energy Transitions}
 
 Consider Dyson Series, up to the $2^{nd}$ term. The probability of a perturbed wave-function from its' initial state(i), to the final state(f), is given by:
 \begin{equation}
 P_{fi} = \left| - \frac{i}{\hbar} \int_{0}^t \langle \psi_f \mid \hat V (t^{\prime}) \mid \psi_i \rangle e^{i \omega_{fi} (t^{\prime})} dt^{\prime} \right|^2
 \end{equation}
-Where $\hat V(t)$, is a time-dependent operator, and $\omega_{fi}$ = $\frac{E_f -  E_i}{\hbar}$ = $\frac{i}{\hbar}$ $\left[\langle \psi_f \mid \hat H_0 \mid \psi_f \rangle - \langle \psi_i \mid \hat H_0 \mid \psi_i \rangle \right]$ = Transition frequency. As a function of $\omega_{fi}$, the transition probability has a diffraction pattern. See Figure~\ref{fig:Interference-pattern-intensity-recorded-by-the-3000-pixel-line-camera.pdf}.  \\
-The transition probability of finding the system in a state $\mid \psi_f \rangle$, of Energy ($E_f$), is \emph{maximum only when} $E_i$ = $E_f$, or $\omega_{fi} \simeq 0$. The central peak becomes narrower, and higher as time increases(A property of the Dirac Delta Function)See Equation~\ref{eq:Dirac Delta Function}, hence yields a transition probability of $\mathbf{\textbf{unit time}}$, and guarantees conservation of Energy, in the limit (t) $\rightarrow$ $\infty$. Note that $\iff$ $E_f$ $\neq$ $E_i$ = $0$. A constant \emph{Perturbation}\index{Perturbation} (time-independent), neither removes, nor adds Energy to a system, it causes Energy conservation transitions.
+Where $\hat V(t)$, is a time-dependent operator, and $\omega_{fi}$ = $\frac{E_f -  E_i}{\hbar}$ = $\frac{i}{\hbar}$ $\left[\langle \psi_f \mid \hat H_0 \mid \psi_f \rangle - \langle \psi_i \mid \hat H_0 \mid \psi_i \rangle \right]$ = Transition frequency. As a function of $\omega_{fi}$, the transition probability has a diffraction pattern. \\
+
+The transition probability of finding the system in a state $\mid \psi_f \rangle$, of Energy ($E_f$), is \emph{maximum only when} $E_i$ = $E_f$, or $\omega_{fi} \simeq 0$. The central peak becomes narrower, and higher as time increases(A property of the Dirac Delta Function)See Equation~\ref{eq:Dirac Delta Function}, hence yields a transition probability of $\mathbf{\textbf{unit time}}$, and guarantees conservation of Energy, in the limit (t) $\rightarrow$ $\infty$. Note that $\iff$ $E_f$ $\neq$ $E_i$ = $0$. A constant \emph{Perturbation}\index{Perturbation} (time-independent), neither removes, nor adds Energy to a system, it causes Energy conservation transitions. \\
+
+
 
 
 
@@ -3437,7 +4097,9 @@ p_{fi} (t) = \frac{\Big| \langle \psi_f \mid \hat V (t) \mid \psi_i \rangle \Big
 
 
 \chapter{Related Theorems}
+
 \paragraph{Blochs' Theorem}\index{Blochs' Theorem}  
+
 \noindent
 
 Blochs' Theorem describes the behavior of Electrons (or other Particles), in a perfectly Periodic Potential, such as the Ions in a Crystal Lattice. It proves that the Eigenstates of the Hamiltonian for such a System are not arbitrary, but are \emph{Plane Waves Modulated by a Periodic Function}.  \\
@@ -3759,13 +4421,149 @@ Here, the Inner Product is taken to be Conjugate-Linear in its' first argument. 
 
 \paragraph{Optical Theorem}
 
+\noindent
+
+For Elastic Scattering of a Plane Wave with Wave Number $k$, let $f(\theta)$ denote the Scattering Smplitude, Normalized so that
+\[
+\frac{d\sigma}{d\Omega}=|f(\theta)|^2.
+\]
+The Optical Theorem Relates the Total Cross Section, to the Imaginary part
+of the Forward-Scattering Amplitude:
+\[
+\sigma_{\mathrm{tot}}
+=
+\frac{4\pi}{k}\,\operatorname{Im} f(0).
+\]
+Here $f(0)$, is the Amplitude at Zero Scattering Angle. The Theorem follows from Conservation of Probability (Unitarity): the Interference
+between the Incident and Forward-Scattered Waves accounts for the scattering out of the Incident Beam.  \\
+
+The Numerical Prefactor, depends on the convention used to define $f(\theta)$; the Formula above, uses the stated Differential-Cross-Section Normalization.
+
+\newpage
+
 \paragraph{Wicks' Theorem}
+
+\noindent
+
+For Time-Ordered Products of Free Bosonic Fields in a Gaussian Gacuum State, Wicks' Theorem expresses the Vacuum Expectation Value as a Sum Over All Pairings:
+\[
+\langle 0|\,T\{\phi_1\phi_2\cdots\phi_{2n}\}\,|0\rangle
+=
+\sum_{\text{pairings }P}
+\prod_{(i,j)\in P}
+\langle 0|\,T\{\phi_i\phi_j\}\,|0\rangle .
+\]
+For an Odd Number of Fields,
+\[
+\langle 0|\,T\{\phi_1\phi_2\cdots\phi_{2n+1}\}\,|0\rangle=0.
+\]
+Here, $T$ denotes Time Ordering, and each Pairing Partitions the Field Operators into Disjoint Pairs. The two-point Functions, are also called
+Contractions, or Propagators. For example,
+\[
+\langle 0|\,T\{\phi_1\phi_2\phi_3\phi_4\}\,|0\rangle
+=
+\langle T\{\phi_1\phi_2\}\rangle\langle T\{\phi_3\phi_4\}\rangle
++\langle T\{\phi_1\phi_3\}\rangle\langle T\{\phi_2\phi_4\}\rangle
++\langle T\{\phi_1\phi_4\}\rangle\langle T\{\phi_2\phi_3\}\rangle .
+\]
+
+For Fermionic Operators, the same Pairing Expansion applies, with a minus sign for each Pairing Permutation, that is Odd. Wicks' Theorem is a key tool in Perturbative Quantum Field Theory, because it reduces higher-point Free-Field Correlation Functions, to Products of two-point Functions.
+
+\newpage
 
 \paragraph{Parsevals' Theorem}
 
-\paragraph{Cauchy Residue Formula/Yukawa Potential}
+\noindent
+
+Let $\{e_n\}_{n\in\mathbb{Z}}$ be a complete Orthonormal System in a Hilbert Space, and let
+\[
+c_n=\langle e_n,f\rangle.
+\]
+Then every $f$ in the Space satisfies
+\[
+\|f\|^2=\sum_{n\in\mathbb{Z}}|c_n|^2.
+\]
+Thus, the Squared Norm of a Function equals the sum of the Squared Magnitudes of its' Coefficients, in a complete Orthonormal Expansion.  \\
+
+For example, if $f\in L^2([-\pi,\pi])$ has Fourier Coefficients
+\[
+c_n=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}\,dx,
+\]
+then
+\[
+\frac{1}{2\pi}\int_{-\pi}^{\pi}|f(x)|^2\,dx
+=
+\sum_{n=-\infty}^{\infty}|c_n|^2.
+\]
+The Identity holds for Square-Integrable Functions, with the Fourier Series understood in $L^2$.
+
+\newpage
+
+\paragraph{Cauchy Residue Formula}
+
+\noindent
+
+Let $f$ be Meromorphic inside, and on a Positively Oriented, simple Closed Contour $C$, with no Poles on $C$. If $a_1,\ldots,a_N$ are the Poles of $f$ inside $C$, then
+\[
+\oint_C f(z)\,dz
+=
+2\pi i\sum_{k=1}^{N}\operatorname{Res}(f,a_k),
+\]
+where $\operatorname{Res}(f,a_k)$ denotes the Residue of $f$ at $a_k$.  \\
+
+For a Pole of Order $m$ at $a$, the Residue is
+\[
+\operatorname{Res}(f,a)
+=
+\frac{1}{(m-1)!}
+\lim_{z\to a}
+\frac{d^{\,m-1}}{dz^{\,m-1}}
+\left[(z-a)^m f(z)\right].
+\]
+In particular, for a Simple Pole,
+\[
+\operatorname{Res}(f,a)=\lim_{z\to a}(z-a)f(z).
+\]
+
+\newpage
+
+\paragraph{Yukawa Potential}
+
+\noindent
+
+The Yukawa Potential, is a Central Potential, with an Exponentially screened Coulomb Form:
+\[
+V(r)
+=
+-\frac{g^2}{4\pi}\frac{e^{-\mu r}}{r},
+\qquad r=|\mathbf{r}|.
+\]
+Here, $g$ is a Coupling Constant, and $\mu>0$ sets the Inverse Range of the Interaction. In Units where $\hbar=c=1$, its' Range is
+\[
+\ell=\frac{1}{\mu}.
+\]
+As $\mu\to 0$, the Potential approaches the \emph{Coulomb Form}, $V(r)=-g^2/(4\pi r)$. For $\mu>0$, it Decays Exponentially at distances large compared with $\ell$.  \\
+
+The Yukawa Potential is the Greens'-Function solution of the screened Poisson Equation:
+\[
+\left(\nabla^2-\mu^2\right)
+\frac{e^{-\mu r}}{r}
+=
+-4\pi\delta^{(3)}(\mathbf{r}).
+\]
+With the Fourier-Transform Convention
+$\widetilde{V}(\mathbf{q})=\int d^3r\,e^{-i\mathbf{q}\cdot\mathbf{r}}V(r)$, its' Transform is
+\[
+\widetilde{V}(\mathbf{q})
+=
+-\frac{g^2}{\mathbf{q}^2+\mu^2}.
+\]
+
+\newpage
 
 \paragraph{Poisson Distribution}
+
+\noindent
 
 A Random Variable $X$, has a Poisson Distribution with parameter
 $\lambda>0$, if its' Probability Mass Function is
@@ -3783,7 +4581,36 @@ The Poisson distribution models the number of events occurring in a fixed interv
 
 \newpage
 
-\paragraph{Ritz Theorem}
+\paragraph{Rayleigh-Ritz Theorem}
+
+\noindent
+
+Let $\hat{H}$ be a Self-Adjoint Operator Bounded from below, and let $E_0$ be its' lowest Eigenvalue(\ref{fig:Ground state search.png}).  For any Normalized Trial State $\psi$ in the Quadratic-Form Domain of $\hat{H}$,
+\[
+\langle \psi|\hat{H}|\psi\rangle \ge E_0.
+\]
+Thus, the Expectation Value of the Hamiltonian, in a Trial State, gives an Upper Bound on the Ground-State Energy. The best estimate within a Finite-Dimensional Trial Subspace $\mathcal{S}$ is
+\[
+E_{\mathrm{Ritz}}
+=
+\min_{\substack{\psi\in\mathcal{S}\\ \|\psi\|=1}}
+\langle \psi|\hat{H}|\psi\rangle,
+\qquad
+E_{\mathrm{Ritz}}\ge E_0.
+\]
+
+In a Basis $\{\phi_1,\ldots,\phi_N\}$, for $\mathcal{S}$, the Ritz Approximation, is obtained by solving the Generalized Eigenvalue Problem
+\[
+H\mathbf{c}=E\,S\mathbf{c},
+\qquad
+H_{ij}=\langle\phi_i|\hat{H}|\phi_j\rangle,
+\qquad
+S_{ij}=\langle\phi_i|\phi_j\rangle.
+\]
+The smallest Ritz Eigenvalue, is the Variational Estimate of the \emph{Ground State Energy}. Enlarging the Trial Subspace, can improve this Estimate;
+for Nested Subspaces, the lowest Ritz Values are nonincreasing, and remain Upper Bounds, to the corresponding exact Eigenvalues.
+
+\newpage
 
 \paragraph{Steiners' Parallel-Axis Theorem}
 
@@ -3806,21 +4633,28 @@ where $\mathbf{a}$, is the Displacement of the chosen Axis from the Center-Of-Ma
 
 \noindent
 
+Consider Particles of Charge $q$, and Mass $m$, moving under Forces Independent of their Velocities in a Uniform Mgnetic Field $\mathbf{B}$. To First Order in $\mathbf{B}$, their Motion is equivalent to the Zero-Field Motion viewed in a Frame Rotating With Angular Velocity
+\[
+\boldsymbol{\Omega}_{\mathrm{L}}
+=
+-\frac{q}{2m}\mathbf{B}.
+\]
+The Magnitude of the Larmor Angular Frequency is therefore
+\[
+\omega_{\mathrm{L}}=\frac{|q|B}{2m}.
+\]
+The sign of $\boldsymbol{\Omega}_{\mathrm{L}}$, depends on the sign of the Charge.  \\
 
+For a Quantum Particle, using the Symmetric Gauge, and neglecting the
+term Quadratic in $\mathbf{B}$, the Hamiltonian is
+\[
+\hat{H}
+\simeq
+\hat{H}_0+\frac{q}{2m}\mathbf{B}\cdot\hat{\mathbf{L}},
+\]
+where $\hat{\mathbf{L}}$ is the Orbital Angular Momentum. This Field-Dependent term, is equivalent to the Rotational contribution $-\boldsymbol{\Omega}_{\mathrm{L}}\cdot\hat{\mathbf{L}}$, in the Rotating Frame. The result assumes a Uniform Field, and applies to the Linear (First-Order) Magnetic-Field contribution.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+\newpage
 
 \paragraph{Noethers' Theorem}
 
@@ -6432,7 +7266,7 @@ Where (Ha) is Hartree Energy. Experiment, and more accurate many-body calculatio
 \end{figure}
 
 
-The Periodic Table presents a uniform-grid(mesh) algorithm, and remains reliable. 
+The Periodic Table presents a Uniform-Grid(Mesh) Algorithm, and \emph{remains reliable}. 
 
 
 
