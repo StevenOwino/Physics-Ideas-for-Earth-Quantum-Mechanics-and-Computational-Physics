@@ -422,23 +422,23 @@ DP@rint:#1\endcsname\relax\phantom
 %\thispagestyle{empty} % Removes page number from cover
 %\hypertarget{toc}{}
 
-\setcounter{page}{1}
+%\setcounter{page}{1}
 \maketitle
-%%\afterpage{\clearpage}
 
 %\thispagestyle{empty}
 %\clearpage
-\nopagecolor
+%\nopagecolor
 
 \setcounter{tocdepth}{4}
-\mbox{}
+%\mbox{}
 %\pagenumbering{arabic}
 
 %\frontmatter
 %\tableofcontents
 
-Table of Contents
-Redefine headings for table of contents and index
+%Table of Contents
+%Redefine headings for table of contents and index
+
 \renewcommand{\contentsname}{%
   \protect\Large\protect\normalfont\protect\centering%
   CONTENTS.\\
@@ -572,7 +572,8 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item First Four Legendre Polynomials
 \item Dominated Convergence
 \item Illustration of the Mandelbrot set
-\item 
+\item Fractal Boundary, and Zooming of the Mandelbrot Set
+\item Illustration of the Julia set
 \item
 \item Exact Inward Intergration
 \item Electronic Density for Helium Atom
@@ -8464,6 +8465,188 @@ appearance and stability of attracting periodic orbits.
 \end{figure}
 
 
+\textbf{Julia Sets: Definition, and Numerical Visualization}  \\
+
+Here is superficial discussion of a Julia set, including the Mathematical definition, an escape-time visualization method, and Python code to generate a figure. \\
+
+\subsection{Julia Set}  
+
+\noindent
+
+A Julia set is a fractal associated with iterating a complex function.
+For the quadratic family, the function is
+\[
+f_c(z)=z^2+c,
+\]
+where \(z\in\mathbb{C}\) is the point being iterated and
+\(c\in\mathbb{C}\) is a fixed parameter.
+
+Starting from an initial point \(z_0\), define the orbit
+\[
+z_{n+1}=f_c(z_n)=z_n^2+c,
+\qquad n=0,1,2,\ldots.
+\]
+The behavior of this orbit depends on both the initial point \(z_0\)
+and the parameter \(c\).
+
+\subsection{Filled Julia Set and Julia Set}
+
+The \emph{filled Julia set} \(K_c\) consists of the initial points whose
+orbits remain bounded:
+\[
+K_c=
+\left\{z_0\in\mathbb{C}:
+\bigl\{f_c^{\,n}(z_0)\bigr\}_{n=0}^{\infty}
+\text{ is bounded}\right\}.
+\]
+Here \(f_c^{\,n}\) means applying \(f_c\) \(n\) times.
+
+The \emph{Julia set} \(J_c\) is the boundary of the filled Julia set:
+\[
+J_c=\partial K_c.
+\]
+Informally, it separates points with bounded orbits from points whose
+orbits escape to infinity. Depending on \(c\), the Julia set may be
+connected or disconnected.
+
+\subsection{Why Escape Can Be Detected}
+
+\noindent
+
+For \(f_c(z)=z^2+c\), once an iterate becomes sufficiently large,
+subsequent iterates grow without bound. A convenient escape radius is
+\[
+R=\max\{2,\lvert c\rvert+1\}.
+\]
+If \(\lvert z_n\rvert>R\), then the orbit escapes to infinity. Therefore,
+a numerical calculation can stop iterating as soon as this condition is
+met.
+
+For example, when \(c=0\), the iteration is \(z_{n+1}=z_n^2\).
+Points with \(\lvert z_0\rvert\leq 1\) have bounded orbits, while points
+with \(\lvert z_0\rvert>1\) escape. Thus the filled Julia set is the
+unit disk and its Julia set is the unit circle.
+
+\subsection{Escape-Time Visualization}
+
+A computer cannot test an infinite orbit. Instead, it tests each point
+for at most \(N_{\max}\) iterations, where \(N_{\max}\) is a chosen
+iteration limit.
+
+For each pixel, interpret its location as a complex starting value
+\(z_0=x+iy\). Iterate
+\[
+z_{n+1}=z_n^2+c
+\]
+until either \(\lvert z_n\rvert>R\), or the iteration limit is reached.
+The number of iterations needed to escape is called the \emph{escape
+time}. Points that do not escape within the limit are treated as
+approximate points of the filled Julia set.
+
+This method produces an approximation, not an exact classification:
+an orbit that has not escaped after \(N_{\max}\) steps might escape later.
+
+\subsection{Pseudocode}
+
+\begin{lstlisting}
+Choose a complex parameter c
+Choose a rectangular region of the complex plane
+For each pixel:
+    Convert the pixel location to z
+    Repeat up to Nmax times:
+        If |z| > R:
+            Record the escape iteration
+            Stop
+        Set z = z*z + c
+    If no escape occurred:
+        Mark the pixel as not escaped
+Color the pixel according to its recorded value
+\end{lstlisting}
+
+\subsection{Python Example}
+
+\noindent
+
+The following script computes and saves an escape-time image. The
+parameter \(c\) controls the shape of the Julia set. For instance,
+\(c=-0.8+0.156i\) gives a commonly illustrated connected Julia set.
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Fixed parameter defining this Julia set
+c = -0.8 + 0.156j
+
+# Viewing window in the complex plane
+width, height = 1000, 800
+x_min, x_max = -1.8, 1.8
+y_min, y_max = -1.44, 1.44
+
+max_iter = 250
+escape_radius = max(2.0, abs(c) + 1.0)
+
+# Create a grid of complex starting points
+x = np.linspace(x_min, x_max, width)
+y = np.linspace(y_min, y_max, height)
+X, Y = np.meshgrid(x, y)
+Z = X + 1j * Y
+
+# Store the iteration at which each point escapes
+escape = np.full(Z.shape, max_iter, dtype=int)
+active = np.ones(Z.shape, dtype=bool)
+
+for n in range(max_iter):
+    Z[active] = Z[active] * Z[active] + c
+    escaped_now = active & (np.abs(Z) > escape_radius)
+    escape[escaped_now] = n + 1
+    active[escaped_now] = False
+
+# Plot and save the escape-time image
+plt.figure(figsize=(8, 6))
+plt.imshow(
+    escape,
+    extent=[x_min, x_max, y_min, y_max],
+    origin="lower",
+    cmap="magma",
+    interpolation="nearest"
+)
+plt.xlabel("Re(z)")
+plt.ylabel("Im(z)")
+plt.title(rf"Julia set for $c={c.real}{c.imag:+.3f}i$")
+plt.colorbar(label="Escape iteration")
+plt.tight_layout()
+plt.savefig("julia_set.png", dpi=200)
+plt.show()
+\end{lstlisting}
+
+The plot colors each pixel according to its escape iteration. Pixels
+that did not escape within the iteration limit receive the maximum
+iteration value. Changing the color map, viewing window, resolution,
+or iteration limit changes the appearance and detail of the image.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Julia Set.pdf}
+  \caption{Illustration of the Julia Set}
+  \label{fig:Julia Set.pdf}
+\end{figure}
+
+\subsection{Interpreting the Image}
+
+\noindent
+
+The boundary between escaping and non-escaping points approximates
+\(J_c\). The colors outside that boundary indicate how quickly points
+escape. Fine filaments and repeated structures arise because nearby
+starting points can have sharply different orbit behavior.
+
+The parameter \(c\) is fixed while the starting point \(z_0\) varies.
+This differs from the Mandelbrot set, where the starting point is fixed
+at \(z_0=0\) and the parameter \(c\) varies. The Mandelbrot set is
+closely related to the quadratic Julia sets: it consists of the
+parameters \(c\) for which the corresponding filled Julia set \(K_c\)
+is connected.
 
 
 \paragraph{Solution of the Generalized Eignenvalue problem}
@@ -8480,16 +8663,194 @@ appearance and stability of attracting periodic orbits.
 \noindent
 
 
+Spherical Bessel functions arise when the time-independent
+Schr\"odinger equation is separated in spherical coordinates for a
+spherically symmetric, constant potential. The angular separation
+produces an orbital-angular-momentum quantum number $\ell$, and the
+radial equation becomes the spherical Bessel equation. Regular
+solutions at the origin are proportional to $j_\ell(kr)$.
 
 
+\subsection{Starting from the Schr\"odinger equation}
 
+\noindent
 
+Consider a particle of mass $m$ in a spherically symmetric potential
+$V(r)$. The time-independent Schr\"odinger equation is
+\begin{equation}
+  \left[-\frac{\hbar^2}{2m}\nabla^2+V(r)\right]\Psi(\mathbf r)
+  =E\Psi(\mathbf r).
+\end{equation}
+In spherical coordinates, separate the wave function as
+\begin{equation}
+  \Psi(r,\theta,\phi)=R_\ell(r)Y_{\ell m}(\theta,\phi),
+\end{equation}
+where $Y_{\ell m}$ are spherical harmonics. They satisfy
+\begin{equation}
+  \nabla^2_{\Omega}Y_{\ell m}
+  =-\ell(\ell+1)Y_{\ell m},
+\end{equation}
+with $\ell=0,1,2,\ldots$ and $m=-\ell,\ldots,\ell$. Here
+$\nabla^2_{\Omega}$ is the angular part of the Laplacian.
 
+Using
+\begin{equation}
+  \nabla^2
+  =\frac{1}{r^2}\frac{\partial}{\partial r}
+       \left(r^2\frac{\partial}{\partial r}\right)
+   +\frac{1}{r^2}\nabla^2_{\Omega},
+\end{equation}
+the radial function obeys
+\begin{equation}
+  \frac{1}{r^2}\frac{d}{dr}
+       \left(r^2\frac{dR_\ell}{dr}\right)
+  +\left[
+       \frac{2m}{\hbar^2}\bigl(E-V(r)\bigr)
+       -\frac{\ell(\ell+1)}{r^2}
+   \right]R_\ell(r)=0.
+  \label{eq:radial-R}
+\end{equation}
 
+\subsection{Constant-potential region}
 
+\noindent
 
+Suppose the potential is constant, $V(r)=V_0$, in the region of
+interest. Define
+\begin{equation}
+  k^2=\frac{2m(E-V_0)}{\hbar^2}.
+\end{equation}
+For $E>V_0$, $k$ is real, and equation~\eqref{eq:radial-R} becomes
+\begin{equation}
+  \frac{1}{r^2}\frac{d}{dr}
+       \left(r^2\frac{dR_\ell}{dr}\right)
+  +\left[k^2-\frac{\ell(\ell+1)}{r^2}\right]R_\ell(r)=0.
+  \label{eq:radial-constant}
+\end{equation}
 
+It is often convenient to define the reduced radial function
+\begin{equation}
+  u_\ell(r)=rR_\ell(r).
+\end{equation}
+Substitution into equation~\eqref{eq:radial-constant} gives
+\begin{equation}
+  \frac{d^2u_\ell}{dr^2}
+  +\left[k^2-\frac{\ell(\ell+1)}{r^2}\right]u_\ell(r)=0.
+  \label{eq:reduced-radial}
+\end{equation}
+The term $\ell(\ell+1)/r^2$ acts as the centrifugal barrier.
 
+\subsection{Reduction to the spherical Bessel equation}
+
+Introduce the dimensionless variable $x=kr$ and write
+\begin{equation}
+  R_\ell(r)=F_\ell(x).
+\end{equation}
+Since $d/dr=k\,d/dx$, equation~\eqref{eq:radial-constant} becomes
+\begin{equation}
+  \frac{d^2F_\ell}{dx^2}
+  +\frac{2}{x}\frac{dF_\ell}{dx}
+  +\left[1-\frac{\ell(\ell+1)}{x^2}\right]F_\ell(x)=0.
+  \label{eq:spherical-bessel}
+\end{equation}
+This is the spherical Bessel differential equation. Its two
+linearly independent solutions are the spherical Bessel functions
+$j_\ell(x)$ and $y_\ell(x)$:
+\begin{equation}
+  R_\ell(r)=A\,j_\ell(kr)+B\,y_\ell(kr),
+  \label{eq:general-solution}
+\end{equation}
+where $A$ and $B$ are constants determined by boundary conditions.
+
+They are related to ordinary Bessel functions by
+\begin{equation}
+  j_\ell(x)=\sqrt{\frac{\pi}{2x}}J_{\ell+\frac12}(x),
+  \qquad
+  y_\ell(x)=\sqrt{\frac{\pi}{2x}}Y_{\ell+\frac12}(x).
+\end{equation}
+
+\subsection{Regularity at the origin}
+
+\noindent
+
+Near $x=0$, the two solutions behave as
+\begin{equation}
+  j_\ell(x)\sim \frac{x^\ell}{(2\ell+1)!!},
+  \qquad
+  y_\ell(x)\sim -\frac{(2\ell-1)!!}{x^{\ell+1}},
+\end{equation}
+where $n!!$ denotes the double factorial. Thus, $y_\ell(kr)$ diverges
+at the origin, while $j_\ell(kr)$ remains finite and behaves as
+$r^\ell$. If the physical region includes the origin and the wave
+function must be regular there, the coefficient of $y_\ell$ must
+vanish:
+\begin{equation}
+  R_\ell(r)=A\,j_\ell(kr).
+\end{equation}
+The full separated solution is then
+\begin{equation}
+  \Psi_{\ell m}(r,\theta,\phi)
+  =A\,j_\ell(kr)Y_{\ell m}(\theta,\phi).
+\end{equation}
+
+For $\ell=0$, the spherical Bessel function reduces to
+\begin{equation}
+  j_0(kr)=\frac{\sin(kr)}{kr},
+\end{equation}
+so the regular $s$-wave radial function is proportional to
+$\sin(kr)/(kr)$.
+
+\subsection{Boundary conditions and quantized energies}
+
+\noindent
+
+The spherical Bessel function is a radial solution in a
+constant-potential region, but boundary conditions determine which
+values of $k$ are allowed. For example, consider an infinite spherical
+well of radius $a$, with $V(r)=V_0$ for $r<a$ and an infinite barrier
+at $r=a$. The wave function must vanish at the wall:
+\begin{equation}
+  R_\ell(a)=0.
+\end{equation}
+For a regular solution, this gives
+\begin{equation}
+  j_\ell(ka)=0.
+\end{equation}
+If $\alpha_{\ell n}$ is the $n$th positive zero of $j_\ell$, then
+\begin{equation}
+  k_{\ell n}=\frac{\alpha_{\ell n}}{a},
+  \qquad
+  E_{\ell n}=V_0+\frac{\hbar^2\alpha_{\ell n}^2}{2ma^2}.
+\end{equation}
+Thus, the spherical Bessel functions describe the radial shape, while
+the boundary conditions select the allowed energy levels.
+
+\subsection{When the potential is not constant}
+
+\noindent
+
+For a general central potential $V(r)$, the radial equation contains
+the additional $r$-dependent term $E-V(r)$. Spherical Bessel functions
+are then not generally exact solutions over the entire radial
+domain. They remain useful in regions where the potential is
+constant, and they can also serve as basis functions in expansions
+and numerical methods.
+
+If $E<V_0$ in a constant-potential region, define
+\begin{equation}
+  \kappa^2=\frac{2m(V_0-E)}{\hbar^2}.
+\end{equation}
+The radial solutions are then modified spherical Bessel functions
+rather than oscillatory spherical Bessel functions.
+
+Separation of the Schr\"odinger equation in spherical coordinates
+produces a radial equation containing the angular-momentum term
+$\ell(\ell+1)/r^2$. In a constant-potential region with $E>V_0$,
+the substitution $x=kr$ transforms that equation into the spherical
+Bessel equation. Its solutions are $j_\ell(kr)$ and $y_\ell(kr)$;
+regularity at the origin selects $j_\ell(kr)$. Physical boundary
+conditions then determine the allowed combinations of solutions and,
+in bound-state problems, the permitted energy levels.
 
 
 \paragraph{Radial Schr$\ddot{o}$dinger equation for a Hydrogenic atom}
