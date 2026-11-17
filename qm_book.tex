@@ -67,6 +67,8 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{array}
+\usepackage{physics}
+\usepackage{bm}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -293,10 +295,10 @@ heading_suffix "}\\par\\nobreak"
 \DeclareMathOperator{\Arctan}{arc\,tan}
 \renewcommand{\arctan}{\Arctan}
 
-\DeclareMathOperator{\arcsec}{arc\,sec}
+%\DeclareMathOperator{\arcsec}{arc\,sec}
 \DeclareMathOperator{\cosec}{cosec}
 \DeclareMathOperator{\cotan}{cotan}
-\DeclareMathOperator{\sech}{sech}
+%\DeclareMathOperator{\sech}{sech}
 
 % DPalign
 \makeatletter
@@ -569,12 +571,16 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Laguerre Polynomials
 \item First Four Legendre Polynomials
 \item Dominated Convergence
+\item Illustration of the Mandelbrot set
+\item 
+\item
 \item Exact Inward Intergration
 \item Electronic Density for Helium Atom
 \item Kohm-Sham Asymptotic Behavior
 \item Oxygens' Local Density Approximation(LDA)
 \item Hartree Boundary Condition
 \item Numerovs' solution of Poisons' Equation 
+\item 
 
 \end{enumerate}
 
@@ -2975,11 +2981,11 @@ $\bullet$ Find the Energy values of states with definite Energy, and the corresp
 
 Answer:  \\
 
-The states of definite Energy are those which are solutions of the time-independent Schr$\ddot{o}$dinger equation:  \\
+The states of definite Energy are those which are solutions of the Time-Independent Schr$\ddot{o}$dinger equation:  \\
 
 $\frac{-\hbar^2}{2M}$ $\frac{d^2}{dx^2}$ $\psi$(x) + V(x)$\psi$(x) = E$\psi$(x).  \\
 
-The potential for the infinite square(See \pageref{ch:Special Potentials}) well is given by:  \\
+The Potential for an Infinite Square(See \pageref{ch:Special Potentials}) Well, is given by:  \\
 
 \[
 V(x) = \begin{cases}
@@ -2988,10 +2994,7 @@ V(x) = \begin{cases}
 \end{cases}
 \]
 
-Continuity of the wave-function requires that we impose the boundary conditions $\psi$(x = $\pm$ a;  \\
-
-and so, \\
-
+Continuity of the Wave-Function, requires that we impose the Boundary Conditions $\psi$(x = $\pm$ a.   \\
 
      \textbf{Energy Eigenvalues}  \\
 
@@ -3034,6 +3037,391 @@ $\hat{H}\psi=E\psi$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+The Quantum Harmonic Oscillator describes a particle moving in a
+quadratic potential. It is one of the central exactly solvable models
+in quantum mechanics and provides a useful approximation for small
+oscillations near stable equilibrium. This exposition develops the
+energy spectrum and eigenstates using ladder operators, gives the
+position-space wave functions, and summarizes the oscillator's
+uncertainty, time evolution, coherent states, and thermal properties.
+
+
+\subsection{The classical oscillator}
+
+\noindent
+
+A particle of mass $m$ in a one-dimensional quadratic potential has
+potential energy
+\begin{equation}
+  V(x)=\frac{1}{2}m\omega^2x^2,
+\end{equation}
+where $\omega$ is the angular frequency. The classical Hamiltonian is
+\begin{equation}
+  H_{\mathrm{cl}}=\frac{p^2}{2m}+\frac{1}{2}m\omega^2x^2,
+\end{equation}
+and Hamilton's equations give
+\begin{equation}
+  \ddot{x}+\omega^2x=0.
+\end{equation}
+The classical oscillator can have any nonnegative energy. In quantum
+mechanics, the allowed energies are discrete, and the lowest energy is
+nonzero.
+
+\subsection{Hamiltonian and canonical commutation relation}
+
+\noindent
+
+In quantum mechanics, position and momentum are operators satisfying
+\begin{equation}
+  [\hat{x},\hat{p}]=i\hbar.
+\end{equation}
+The Hamiltonian operator is
+\begin{equation}
+  \hat{H}
+  =\frac{\hat{p}^{\,2}}{2m}
+   +\frac{1}{2}m\omega^2\hat{x}^{\,2}.
+\end{equation}
+The stationary-state Schr\"odinger equation is
+\begin{equation}
+  \hat{H}\psi(x)=E\psi(x).
+\end{equation}
+
+\subsection{Ladder-operator method}
+
+\noindent
+
+Define the annihilation and creation operators
+\begin{align}
+  \hat{a}
+  &=\sqrt{\frac{m\omega}{2\hbar}}\,\hat{x}
+    +\frac{i}{\sqrt{2m\hbar\omega}}\,\hat{p},\\
+  \hat{a}^{\dagger}
+  &=\sqrt{\frac{m\omega}{2\hbar}}\,\hat{x}
+    -\frac{i}{\sqrt{2m\hbar\omega}}\,\hat{p}.
+\end{align}
+Using $[\hat{x},\hat{p}]=i\hbar$, one obtains
+\begin{equation}
+  [\hat{a},\hat{a}^{\dagger}]=1.
+\end{equation}
+The position and momentum operators can be written as
+\begin{align}
+  \hat{x}
+  &=\sqrt{\frac{\hbar}{2m\omega}}
+    \left(\hat{a}+\hat{a}^{\dagger}\right),\\
+  \hat{p}
+  &=-i\sqrt{\frac{m\hbar\omega}{2}}
+    \left(\hat{a}-\hat{a}^{\dagger}\right).
+\end{align}
+Substitution into the Hamiltonian gives
+\begin{equation}
+  \hat{H}
+  =\hbar\omega\left(\hat{a}^{\dagger}\hat{a}
+  +\frac{1}{2}\right).
+\end{equation}
+Define the number operator
+\begin{equation}
+  \hat{N}=\hat{a}^{\dagger}\hat{a}.
+\end{equation}
+Then
+\begin{equation}
+  \hat{H}=\hbar\omega\left(\hat{N}+\frac{1}{2}\right),
+  \qquad
+  [\hat{N},\hat{a}]=-\hat{a},
+  \qquad
+  [\hat{N},\hat{a}^{\dagger}]=\hat{a}^{\dagger}.
+\end{equation}
+
+\subsection{Energy spectrum and number states}
+
+\noindent
+
+Let $\ket{n}$ be an eigenstate of $\hat{N}$:
+\begin{equation}
+  \hat{N}\ket{n}=n\ket{n}.
+\end{equation}
+The ladder operators act as
+\begin{align}
+  \hat{a}\ket{n}&=\sqrt{n}\ket{n-1},\\
+  \hat{a}^{\dagger}\ket{n}&=\sqrt{n+1}\ket{n+1}.
+\end{align}
+Since $\hat{N}=\hat{a}^{\dagger}\hat{a}$ is nonnegative, the ladder
+must terminate at a lowest state $\ket{0}$ satisfying
+\begin{equation}
+  \hat{a}\ket{0}=0.
+\end{equation}
+Applying the creation operator repeatedly generates all number states:
+\begin{equation}
+  \ket{n}=\frac{(\hat{a}^{\dagger})^n}{\sqrt{n!}}\ket{0},
+  \qquad n=0,1,2,\ldots
+\end{equation}
+Their energies are
+\begin{equation}
+  E_n=\hbar\omega\left(n+\frac{1}{2}\right),
+  \qquad n=0,1,2,\ldots
+\end{equation}
+Adjacent levels are equally spaced:
+\begin{equation}
+  E_{n+1}-E_n=\hbar\omega.
+\end{equation}
+The ground-state energy,
+\begin{equation}
+  E_0=\frac{1}{2}\hbar\omega,
+\end{equation}
+is called the zero-point energy. It is nonzero because a state with
+both position and momentum exactly zero would violate the
+Heisenberg uncertainty principle.
+
+\subsection{Position-space eigenfunctions}
+
+\noindent
+
+In the position representation,
+\begin{equation}
+  \hat{x}=x,\qquad
+  \hat{p}=-i\hbar\frac{d}{dx}.
+\end{equation}
+The stationary Schr\"odinger equation becomes
+\begin{equation}
+  \left[
+    -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
+    +\frac{1}{2}m\omega^2x^2
+  \right]\psi_n(x)
+  =E_n\psi_n(x).
+\end{equation}
+Introduce the dimensionless coordinate
+\begin{equation}
+  \xi=\sqrt{\frac{m\omega}{\hbar}}\,x.
+\end{equation}
+The normalized eigenfunctions are
+\begin{equation}
+  \psi_n(x)
+  =
+  \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}
+  \frac{1}{\sqrt{2^n n!}}\,
+  H_n(\xi)e^{-\xi^2/2},
+\end{equation}
+where $H_n(\xi)$ are the physicists' Hermite polynomials. The first
+few are
+\begin{equation}
+  H_0(\xi)=1,\qquad
+  H_1(\xi)=2\xi,\qquad
+  H_2(\xi)=4\xi^2-2.
+\end{equation}
+In particular, the ground-state wave function is
+\begin{equation}
+  \psi_0(x)
+  =\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}
+   \exp\left(-\frac{m\omega x^2}{2\hbar}\right).
+\end{equation}
+The probability density in an energy eigenstate is
+\begin{equation}
+  \rho_n(x)=|\psi_n(x)|^2.
+\end{equation}
+The $n$th eigenfunction has $n$ nodes. Its parity is
+\begin{equation}
+  \psi_n(-x)=(-1)^n\psi_n(x).
+\end{equation}
+
+\subsection{Uncertainty and expectation values}
+
+In a number state $\ket{n}$,
+\begin{equation}
+  \langle \hat{x}\rangle_n=0,\qquad
+  \langle \hat{p}\rangle_n=0,
+\end{equation}
+and
+\begin{align}
+  \langle \hat{x}^{\,2}\rangle_n
+  &=\frac{\hbar}{m\omega}\left(n+\frac{1}{2}\right),\\
+  \langle \hat{p}^{\,2}\rangle_n
+  &=m\hbar\omega\left(n+\frac{1}{2}\right).
+\end{align}
+Therefore,
+\begin{align}
+  \Delta x_n
+  &=\sqrt{\frac{\hbar}{m\omega}\left(n+\frac{1}{2}\right)},\\
+  \Delta p_n
+  &=\sqrt{m\hbar\omega\left(n+\frac{1}{2}\right)}.
+\end{align}
+Their product is
+\begin{equation}
+  \Delta x_n\,\Delta p_n
+  =\hbar\left(n+\frac{1}{2}\right)
+  \geq \frac{\hbar}{2}.
+\end{equation}
+The ground state saturates the uncertainty bound:
+\begin{equation}
+  \Delta x_0\,\Delta p_0=\frac{\hbar}{2}.
+\end{equation}
+The mean kinetic and potential energies are equal in each number
+state:
+\begin{equation}
+  \left\langle\frac{\hat{p}^{\,2}}{2m}\right\rangle_n
+  =
+  \left\langle\frac{1}{2}m\omega^2\hat{x}^{\,2}\right\rangle_n
+  =\frac{E_n}{2}.
+\end{equation}
+
+\subsection{Time evolution}
+
+A number state is an energy eigenstate, so its time evolution is a
+phase:
+\begin{equation}
+  \ket{n,t}
+  =e^{-iE_nt/\hbar}\ket{n}
+  =e^{-i\omega(n+1/2)t}\ket{n}.
+\end{equation}
+The probability density $|\psi_n(x,t)|^2$ is therefore independent of
+time. A superposition of number states,
+\begin{equation}
+  \ket{\Psi(0)}=\sum_{n=0}^{\infty}c_n\ket{n},
+\end{equation}
+evolves as
+\begin{equation}
+  \ket{\Psi(t)}
+  =\sum_{n=0}^{\infty}c_n
+   e^{-i\omega(n+1/2)t}\ket{n}.
+\end{equation}
+Relative phases between different energy components can change with
+time, causing expectation values and probability densities to evolve.
+
+The Heisenberg-picture position operator is
+\begin{equation}
+  \hat{x}(t)
+  =\sqrt{\frac{\hbar}{2m\omega}}
+   \left(\hat{a}e^{-i\omega t}
+   +\hat{a}^{\dagger}e^{i\omega t}\right),
+\end{equation}
+and it satisfies the classical equation
+\begin{equation}
+  \frac{d^2\hat{x}(t)}{dt^2}+\omega^2\hat{x}(t)=0.
+\end{equation}
+
+\subsection{Coherent states}
+
+A coherent state $\ket{\alpha}$ is an eigenstate of the annihilation
+operator:
+\begin{equation}
+  \hat{a}\ket{\alpha}=\alpha\ket{\alpha},
+  \qquad \alpha\in\mathbb{C}.
+\end{equation}
+It can be expanded in number states as
+\begin{equation}
+  \ket{\alpha}
+  =e^{-|\alpha|^2/2}
+   \sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}\ket{n}.
+\end{equation}
+The probability of measuring $n$ quanta is Poisson distributed:
+\begin{equation}
+  P(n)=|\langle n\vert\alpha\rangle|^2
+  =e^{-|\alpha|^2}\frac{|\alpha|^{2n}}{n!}.
+\end{equation}
+The mean number and energy are
+\begin{equation}
+  \langle\hat{N}\rangle=|\alpha|^2,\qquad
+  \langle\hat{H}\rangle
+  =\hbar\omega\left(|\alpha|^2+\frac{1}{2}\right).
+\end{equation}
+For a coherent state, the position and momentum uncertainties are
+\begin{equation}
+  \Delta x=\sqrt{\frac{\hbar}{2m\omega}},
+  \qquad
+  \Delta p=\sqrt{\frac{m\hbar\omega}{2}}.
+\end{equation}
+Their expectation values follow the classical oscillator trajectory:
+\begin{align}
+  \langle\hat{x}(t)\rangle
+  &=\sqrt{\frac{2\hbar}{m\omega}}\,
+    \operatorname{Re}\!\left(\alpha e^{-i\omega t}\right),\\
+  \langle\hat{p}(t)\rangle
+  &=\sqrt{2m\hbar\omega}\,
+    \operatorname{Im}\!\left(\alpha e^{-i\omega t}\right).
+\end{align}
+
+\subsection{Thermal oscillator}
+
+\noindent
+
+At temperature $T$, define
+\begin{equation}
+  \beta=\frac{1}{k_{\mathrm B}T},
+\end{equation}
+where $k_{\mathrm B}$ is Boltzmann's constant. The partition function
+is
+\begin{align}
+  Z
+  &=\sum_{n=0}^{\infty}e^{-\beta E_n}\\
+  &=\frac{e^{-\beta\hbar\omega/2}}
+          {1-e^{-\beta\hbar\omega}}
+   =\frac{1}{2\sinh(\beta\hbar\omega/2)}.
+\end{align}
+The mean occupation number is
+\begin{equation}
+  \langle\hat{N}\rangle
+  =\frac{1}{e^{\beta\hbar\omega}-1},
+\end{equation}
+and the mean energy is
+\begin{equation}
+  \langle\hat{H}\rangle
+  =\hbar\omega\left(
+     \frac{1}{2}+\frac{1}{e^{\beta\hbar\omega}-1}
+   \right).
+\end{equation}
+At low temperature, the mean energy approaches the zero-point value
+$\hbar\omega/2$. At high temperature, it approaches the classical
+result $k_{\mathrm B}T$.
+
+\subsection{Several dimensions and applications}
+
+\noindent
+
+
+For independent oscillations in three dimensions, the Hamiltonian is
+\begin{equation}
+  \hat{H}
+  =\sum_{j=x,y,z}
+   \left[
+    \frac{\hat{p}_j^{\,2}}{2m}
+    +\frac{1}{2}m\omega_j^2\hat{x}_j^{\,2}
+   \right],
+\end{equation}
+with energy levels
+\begin{equation}
+  E_{n_x,n_y,n_z}
+  =\sum_{j=x,y,z}\hbar\omega_j
+   \left(n_j+\frac{1}{2}\right).
+\end{equation}
+If all three frequencies are equal, the system is isotropic and
+different combinations of quantum numbers can have the same energy.
+
+Near a stable equilibrium point, a smooth potential can be
+approximated by a quadratic function:
+\begin{equation}
+  V(x)\simeq V(x_0)
+  +\frac{1}{2}V''(x_0)(x-x_0)^2,
+  \qquad V'(x_0)=0.
+\end{equation}
+The corresponding small-oscillation frequency is
+\begin{equation}
+  \omega=\sqrt{\frac{V''(x_0)}{m}}.
+\end{equation}
+This is why the quantum harmonic oscillator appears in molecular
+vibrations, lattice vibrations (phonons), electromagnetic-field
+modes, and approximations to many systems near equilibrium.
+
+The quantum harmonic oscillator has equally spaced energy levels
+\begin{equation}
+  E_n=\hbar\omega\left(n+\frac{1}{2}\right).
+\end{equation}
+Ladder operators provide a compact way to derive this spectrum and
+construct the eigenstates. The nonzero ground-state energy follows
+from the uncertainty principle; number states have stationary
+probability densities, while superpositions can evolve in time.
+Coherent states are minimum-uncertainty states whose average motion
+follows the classical oscillator. These properties make the model a
+fundamental tool throughout quantum physics.
+
 
 \noindent
 
@@ -6488,7 +6876,7 @@ Contour Integrals $\rightarrow$ If the function f(z) has isolated singularities 
 A polynomial multiplying $e^{\frac{(-u)^2}{2}}$ could be a solution of a differential equation. The solution could take the form $\psi$(u) = h(u)$e^{\frac{(-u)^2}{{2}}}$, where h(u) is a polynomial in (u). \\
 
 An Energy parameter $\epsilon$, takes special values. Any function $\phi$(u) can be written as some other function, times $e^{\frac{(-u)^(2)}{2}}$; if h(u), then we've found $\phi$(u), leading to a second-order linear differential equation for h(u):The polynomial solutions $h_n(u)$ is normalized with a specific choice of the
-leading coefficient, and satisfy a diffrential equation. The first few Hermite polynomials are:  \\
+leading coefficient, and satisfy a differential equation. The first few Hermite polynomials are:  \\
 
 $\bullet$ $H_0(u)$ = $1$  \\
 
@@ -7693,13 +8081,387 @@ Brian C. Hall, Quantum Theory For Mathematicians, (2013)
 
 \chapter{PART II, Computational Physics}
 
-In this section, we'll have hands-on study with Pycharm IDE(Intergrated Develepment Enviroment) of the numerous interactions, Algorithms, and methods in Applied Math(like Integration...) in C++, and Python programming languages. \\
+In this section, we'll have hands-on study in C++,  Pycharm IDE(Intergrated Develepment Enviroment), of the Numerous Interactions of Particles, Algorithms, and methods in Applied Math(like Integration...)  with also Python programming languages. \\
 
 Matters of section I can be computed, and constructed fast considerably. A backround of any programming language shall suffice.
 
-\paragraph{Variational Calculation}
+\paragraph{Gnome Compiler Collection(GCC) Compilation Time, and Runtime of a Compiled Program}
+
+\noindent
+
+This Paragraph explains how to measure \textbf{GCC’s Compilation Time} and, separately, the \textbf{Runtime of a Compiled Program} on terminals.
 
 
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  keepspaces=true
+}
+
+\subsection{What is being measured?}
+
+There are two different durations to consider:
+
+\begin{enumerate}
+  \item \textbf{Compilation time}: how long GCC takes to translate source
+        code into an executable.
+  \item \textbf{Program runtime}: how long the resulting executable takes
+        to run.
+\end{enumerate}
+
+These measurements should be performed separately. Timing the GCC command
+measures compilation; timing the executable measures the program's runtime.
+
+\subsection{Example source file}
+
+Save the following as \texttt{hello.c}:
+
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+
+int main(void) {
+    puts("Hello, world!");
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Measure compilation time on Linux or macOS}
+
+\noindent
+
+Open a terminal, change to the directory containing \texttt{hello.c}, and run:
+
+\begin{lstlisting}
+time gcc hello.c -o hello
+\end{lstlisting}
+
+The \texttt{time} utility reports durations such as:
+
+\begin{lstlisting}
+real    0m0.120s
+user    0m0.080s
+sys     0m0.030s
+\end{lstlisting}
+
+The \texttt{real} value is elapsed wall-clock time. It is usually the most
+useful value when asking how long the command took from the user's
+perspective. The \texttt{user} and \texttt{sys} values report CPU time spent
+in user code and in the operating system, respectively.  \\
+
+To request a simple elapsed-time display in Bash, use:
+
+\begin{lstlisting}
+TIMEFORMAT='Elapsed: %3R seconds'
+time gcc hello.c -o hello
+\end{lstlisting}
+
+\subsection{Measure compilation time on Windows}
+
+\noindent
+
+In PowerShell, run:
+
+\begin{lstlisting}
+Measure-Command { gcc hello.c -o hello.exe }
+\end{lstlisting}
+
+PowerShell prints a time span with fields such as days, hours, minutes,
+seconds, and milliseconds. The \texttt{TotalSeconds} property gives the
+elapsed time in seconds:
+
+\begin{lstlisting}
+(Measure-Command { gcc hello.c -o hello.exe }).TotalSeconds
+\end{lstlisting}
+
+This assumes that GCC is installed and that \texttt{gcc} is available on
+the command search path.
+
+\subsection{Measure the compiled programs' runtime}
+
+Compilation creates an executable. Run and time that executable separately.
+
+On Linux:
+
+\begin{lstlisting}
+time ./hello
+\end{lstlisting}
+
+On macOS:
+
+\begin{lstlisting}
+time ./hello
+\end{lstlisting}
+
+On Windows PowerShell:
+
+\begin{lstlisting}
+Measure-Command { .\hello.exe }
+\end{lstlisting}
+
+These commands measure program execution, not GCC compilation.
+
+\subsection{A note on very short commands}
+
+\noindent
+
+A small compilation or program may finish too quickly for a single timing
+to be very informative. Repeat the operation several times and compare
+the results, or time a larger workload. Keep the test conditions similar:
+use the same source files, compiler options, machine, and background
+workload.  \\
+
+For a more stable estimate over \(n\) runs, let \(t_i\) be the elapsed time
+for run \(i\). The arithmetic mean is
+
+\[
+\bar{t} = \frac{1}{n}\sum_{i=1}^{n} t_i.
+\]
+
+Report the units and specify whether the measured quantity is compilation
+time or program runtime. 
+
+\begin{itemize}
+  \item Linux/macOS compilation: \texttt{time gcc hello.c -o hello}
+  \item Windows PowerShell compilation:
+        \texttt{Measure-Command \{ gcc hello.c -o hello.exe \}}
+  \item Linux/macOS program runtime: \texttt{time ./hello}
+  \item Windows PowerShell program runtime:
+        \texttt{Measure-Command \{ .\textbackslash hello.exe \}}
+\end{itemize}
+
+\paragraph{The Mandelbrot Set}
+
+\noindent
+
+The Mandelbrot set is a fundamental object in complex dynamics. It is
+defined by iterating a simple quadratic map over the complex plane and
+retaining the parameters for which the resulting orbit remains
+bounded. Despite its elementary definition, the set has intricate
+geometry, a fractal boundary, and deep connections to Julia sets,
+periodic orbits, and the stability of dynamical systems.
+
+\subsection{Definition}
+
+\noindent
+
+For each complex parameter $c\in\mathbb{C}$, define the quadratic map
+\begin{equation}
+  f_c(z)=z^2+c.
+\end{equation}
+Starting from $z_0=0$, generate the orbit
+\begin{equation}
+  z_0=0,\qquad z_{n+1}=z_n^2+c,\qquad n=0,1,2,\ldots.
+\end{equation}
+
+\begin{definition}
+The Mandelbrot set is the set of complex parameters for which this
+orbit remains bounded:
+\begin{equation}
+  \mathcal{M}
+  =
+  \left\{c\in\mathbb{C}:
+  \bigl\{z_n(c)\bigr\}_{n=0}^{\infty}
+  \text{ is bounded}\right\}.
+\end{equation}
+\end{definition}
+
+Writing $c=a+bi$ identifies the complex plane with the ordinary
+coordinate plane. A plotted point $(a,b)$ belongs to the Mandelbrot
+set precisely when the orbit of $0$ under $z\mapsto z^2+(a+bi)$ does
+not escape to infinity.
+
+\subsection{The escape criterion}
+
+\noindent
+
+A computer cannot test infinitely many iterations, so numerical plots
+use an escape test. If an orbit becomes sufficiently large, it is
+guaranteed to diverge.
+
+\begin{theorem}[Escape radius]
+If $|z_n|>2$ for some $n$, then the orbit
+$z_{k+1}=z_k^2+c$ diverges to infinity.
+\end{theorem}
+
+\begin{proof}
+For the Mandelbrot-set iteration, $z_1=c$. If $|z_n|>2$ and the orbit
+has not already escaped, then $|c|\leq |z_n|$ is not generally
+required; instead, a standard escape test is applied after each
+iteration using the fact that once $|z_n|>2$ in an orbit starting at
+$z_0=0$, one has
+\[
+  |z_{n+1}|=|z_n^2+c|
+  \geq |z_n|^2-|c|.
+\]
+More generally, the familiar radius-$2$ test is valid for the
+quadratic family when applied to the orbit generated from $z_0=0$:
+a parameter whose orbit crosses radius $2$ subsequently escapes.
+\end{proof}
+
+In numerical work, one chooses a maximum iteration count
+$N_{\max}$. If $|z_n|>2$ for some $n\leq N_{\max}$, the parameter is
+classified as outside the set. If the orbit has not escaped by that
+iteration, the point is treated as a likely member or as close to the
+boundary. Increasing $N_{\max}$ improves the classification near
+complicated boundary regions.
+
+\subsection{Basic properties}
+
+\noindent
+
+The Mandelbrot set is compact and connected. It lies within the disk
+$|c|\leq 2$ and is symmetric about the real axis: if $c\in\mathcal{M}$,
+then $\overline{c}\in\mathcal{M}$. This symmetry follows because
+complex conjugation commutes with the iteration:
+\[
+  \overline{z_{n+1}}
+  =\overline{z_n^2+c}
+  =\overline{z_n}^{\,2}+\overline{c}.
+\]
+
+The set has a large central region, often called the main
+cardioid, together with circular bulbs attached to it. Smaller copies
+and increasingly fine structures appear around the boundary. These
+features arise from changes in the periodic behavior of the map
+$f_c$ as the parameter $c$ varies.
+
+\subsection{A test for the main cardioid}
+
+The main cardioid consists of parameters for which $f_c$ has an
+attracting fixed point. A fixed point $\alpha$ satisfies
+\begin{equation}
+  \alpha=\alpha^2+c,
+  \qquad\text{so}\qquad
+  c=\alpha-\alpha^2.
+\end{equation}
+It is attracting when
+\begin{equation}
+  |f_c'(\alpha)|=|2\alpha|<1.
+\end{equation}
+Writing $\alpha=x+iy$ and eliminating $\alpha$ gives a convenient
+membership test. Define
+\[
+  q=(a-\tfrac14)^2+b^2.
+\]
+A point $c=a+bi$ is in the main cardioid when
+\begin{equation}
+  q\bigl(q+a-\tfrac14\bigr)\leq \frac{b^2}{4}.
+\end{equation}
+This test can speed up rendering by identifying many points known to
+lie inside the set without iterating them.
+
+\subsection{Connection with Julia sets}
+
+\noindent
+
+For a fixed parameter $c$, the filled Julia set is
+\begin{equation}
+  K_c=
+  \left\{z\in\mathbb{C}:
+  \{f_c^{\,n}(z)\}_{n=0}^{\infty}
+  \text{ is bounded}\right\},
+\end{equation}
+where $f_c^{\,n}$ denotes $n$ repeated applications of $f_c$. The
+Julia set $J_c$ is the boundary of $K_c$.
+
+The Mandelbrot set is a parameter-space object: it asks whether the
+critical point $z=0$ has a bounded orbit. For the quadratic map,
+$0$ is the unique critical point, since $f_c'(z)=2z$. A fundamental
+connection is
+\begin{equation}
+  c\in\mathcal{M}
+  \quad\Longleftrightarrow\quad
+  K_c\text{ is connected}.
+\end{equation}
+Thus the Mandelbrot set records, in parameter space, which quadratic
+Julia sets are connected.
+
+\subsection{Periodic orbits and bulbs}
+
+A point $\alpha$ is periodic with period $p$ if
+\begin{equation}
+  f_c^{\,p}(\alpha)=\alpha.
+\end{equation}
+It is attracting if the magnitude of the derivative of the
+$p$-fold iterate at that point is less than one:
+\begin{equation}
+  \left|(f_c^{\,p})'(\alpha)\right|<1.
+\end{equation}
+Regions of parameter space associated with attracting periodic orbits
+form components of the Mandelbrot set, commonly called
+\emph{hyperbolic components}. The main cardioid corresponds to an
+attracting fixed point, while attached bulbs correspond to attracting
+cycles of other periods.
+
+At a boundary between parameter regions, an attracting cycle can
+become neutral. Such transitions produce intricate changes in orbit
+behavior and contribute to the complex structure of the boundary.
+
+\subsection{Numerical visualization}
+
+A basic plotting algorithm tests each pixel's parameter $c$ by
+iterating $z_{n+1}=z_n^2+c$:
+\begin{enumerate}
+  \item Choose a rectangle in the complex plane and map each pixel
+        to a parameter $c=a+bi$.
+  \item Set $z=0$ and iterate $z\leftarrow z^2+c$.
+  \item Stop if $|z|>2$ or if the iteration limit is reached.
+  \item Color points that escape according to their escape iteration;
+        color points that do not escape by the limit as inside.
+\end{enumerate}
+
+For smoother coloring, one can estimate a continuous escape count.
+If the orbit escapes at iteration $n$, a commonly used approximate
+value is
+\begin{equation}
+  \mu
+  = n+1-\frac{\log\!\bigl(\log |z_n|\bigr)}{\log 2}.
+\end{equation}
+This reduces visible bands caused by assigning one color to each
+integer iteration count. The formula is a visualization technique;
+it does not change the definition of the set.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{mandelbrot1.pdf}
+  \caption{Illustration of the Mandelbrot set}
+  \label{fig:mandelbrot1.pdf}
+\end{figure}
+
+\subsection{Fractal boundary and zooming}
+
+\noindent
+
+The boundary of the Mandelbrot set contains detail at arbitrarily
+small scales. Zooming into selected boundary regions reveals
+self-similar patterns, miniature copies, spirals, and branching
+filaments. The visual resemblance of different regions does not mean
+that every feature is an exact scaled copy: the set exhibits both
+repetition and variation.
+
+Finite-resolution images show only an approximation. Features smaller
+than a pixel cannot be resolved, and points close to the boundary may
+require many more iterations than points far outside it. High-quality
+rendering therefore benefits from increased precision, adaptive
+iteration limits, and careful selection of the viewing window.
+
+The Mandelbrot set is defined by the boundedness of the orbit of the
+critical point $0$ under the family of maps $f_c(z)=z^2+c$. Its
+simple iteration rule generates a compact, connected set with a
+highly intricate boundary. The set organizes the dynamics of
+quadratic maps: its points correspond exactly to parameters whose
+filled Julia sets are connected, while its components reflect the
+appearance and stability of attracting periodic orbits.
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Fractal Boundary and Zooming of the Mandelbrot Set.pdf}
+  \caption{Fractal Boundary and Zooming of the Mandelbrot Set}
+  \label{fig:Fractal Boundary and Zooming of the Mandelbrot Set.pdf}
+\end{figure}
 
 
 
@@ -7712,7 +8474,26 @@ Matters of section I can be computed, and constructed fast considerably. A backr
 
 
 
+
+\paragraph{Spherical Bessel Functions, and the Radial Schr\"odinger Equation}
+
+\noindent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \paragraph{Radial Schr$\ddot{o}$dinger equation for a Hydrogenic atom}
+
 \noindent
 
 The Schrödinger equation for now is  \\
@@ -7740,11 +8521,6 @@ The plot shows the numerical inward integration (blue line), closely matching th
 
 The wavefunction for the specified trial Energy ofelements apply the Numerov integration. However, it  alone does not search for an Energy eigenvalue.
 For a trial Energy that is not an eigenvalue, the outward-integrated wavefunction generally grows at large (r).  \\
-
-
-
-
-
 
 \paragraph{Electronic density for Helium atom}
 \noindent
@@ -7978,6 +8754,8 @@ Reduce the mixing fraction or use a more stable mixing method; monitor both dens
 \end{table}
 
 A decisive diagnosis requires Convergence tests: varying **one setting at a time**, and trackig total Electron count, Orbital Energies, Density, and Self-Consitency-Field(SCF) Convergence. If the code is intended for all elements, also check the **Physical Model**: A simple effective-Hydrogenic Potential, is not a self-consistent all-Electron model, and heavy elements may require \emph{Relativistic treatment}.
+
+
 
 \newpage
 
