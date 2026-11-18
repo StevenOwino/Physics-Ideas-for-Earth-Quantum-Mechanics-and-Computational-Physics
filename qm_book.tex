@@ -9335,6 +9335,265 @@ A convergence test varies the grid spacing systematically $\implies$ An empirica
 
 \newpage
 
+\paragraph{Estimating Numerical Error with a Bessel Function}
+
+\noindent
+
+Using the Bessel function \(J_0(x)\) as a test case for estimating numerical error, distinguishes \textbf{truncation error} from \textbf{floating-point error}, and notes why relative error, is misleading near a zero of the function.  \\
+
+A numerical algorithm can be tested by computing a function value for
+which a reliable reference value is available. The Bessel function of
+the first kind and order zero, \(J_0(x)\), is a useful example. Its
+power series is
+\[
+J_0(x)
+=
+\sum_{k=0}^{\infty}
+\frac{(-1)^k}{(k!)^2}
+\left(\frac{x^2}{4}\right)^k.
+\]
+Define the \(k\)-th term by
+\[
+a_k(x)=
+\frac{(-1)^k}{(k!)^2}
+\left(\frac{x^2}{4}\right)^k.
+\]
+A truncated approximation using \(N+1\) terms is
+\[
+J_0^{(N)}(x)=\sum_{k=0}^{N}a_k(x).
+\]
+
+\subsection{Truncation error}
+
+\noindent
+
+The truncation error is
+\[
+E_{\mathrm{trunc}}(x;N)
+=
+\left|J_0(x)-J_0^{(N)}(x)\right|.
+\]
+For \(x=1\), the terms decrease in magnitude and alternate in sign.
+The alternating-series estimate therefore gives
+\[
+E_{\mathrm{trunc}}(1;N)
+\leq |a_{N+1}(1)|
+=
+\frac{1}{4^{N+1}\bigl((N+1)!\bigr)^2}.
+\]
+This bound concerns truncation of the infinite series; it does not
+include floating-point roundoff.
+
+\subsection{Comparison with a reference value}
+
+\noindent
+
+Let \(J_0^{\mathrm{ref}}(x)\) be a value computed using a trusted
+special-function library at higher precision. If an algorithm returns
+\(J_0^{\mathrm{alg}}(x)\), its absolute error is
+\[
+E_{\mathrm{abs}}(x)
+=
+\left|J_0^{\mathrm{alg}}(x)-J_0^{\mathrm{ref}}(x)\right|.
+\]
+When \(J_0^{\mathrm{ref}}(x)\ne0\), the relative error is
+\[
+E_{\mathrm{rel}}(x)
+=
+\frac{E_{\mathrm{abs}}(x)}
+     {|J_0^{\mathrm{ref}}(x)|}.
+\]
+Near a zero of \(J_0\), relative error can become very large even when
+the absolute error is small. In that region, report the absolute error
+or a scaled error instead.
+
+\subsection{Floating-point error}
+
+\noindent
+
+In floating-point arithmetic, the computed sum can be modeled
+approximately as
+\[
+J_0^{\mathrm{alg}}(x)
+=
+J_0^{(N)}(x)+\delta_{\mathrm{round}},
+\]
+where \(\delta_{\mathrm{round}}\) represents accumulated rounding
+error. Comparing the algorithm's result with a high-precision reference
+measures the combined effect of truncation and floating-point error:
+\[
+\left|J_0^{\mathrm{alg}}(x)-J_0^{\mathrm{ref}}(x)\right|.
+\]
+To study roundoff separately, increase \(N\) until the truncation error
+is negligible relative to the precision of the arithmetic.
+
+\noindent{Stable term recurrence}
+
+\noindent
+
+The terms need not be computed using factorials. Starting from
+\(a_0=1\), use
+\[
+a_{k+1}
+=
+-a_k\,\frac{x^2}{4(k+1)^2}.
+\]
+Then accumulate
+\[
+s_0=a_0,\qquad s_{k+1}=s_k+a_{k+1}.
+\]
+This recurrence avoids explicitly evaluating large factorials. For large
+\(\lvert x\rvert\), however, the series may contain large intermediate
+terms that cancel. In that regime, a specialized Bessel-function
+algorithm is generally preferable.
+
+\subsection{Testing procedure}
+
+\noindent
+
+\begin{enumerate}
+  \item Choose test points \(x_1,\ldots,x_m\), including points near
+        zeros if behavior there is important.
+  \item Compute \(J_0^{\mathrm{alg}}(x_j)\) using the algorithm under
+        test.
+  \item Compute \(J_0^{\mathrm{ref}}(x_j)\) with a higher-precision or
+        trusted reference implementation.
+  \item Report the absolute error
+        \[
+        E_{\mathrm{abs}}(x_j)
+        =
+        \left|J_0^{\mathrm{alg}}(x_j)
+        -J_0^{\mathrm{ref}}(x_j)\right|.
+        \]
+  \item Report relative error only when the reference value is not
+        close to zero.
+\end{enumerate}
+
+A numerical experiment should state the precision, the algorithm,
+the stopping rule or truncation index \(N\), and the reference method.
+This makes the reported error reproducible and clarifies whether it
+reflects truncation, roundoff, or both.
+
+
+\paragraph{Testing a Numerical Algorithm with a Bessel Function}
+
+\noindent
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible
+}
+
+\subsection{Test Problem}
+
+The Bessel function of the first kind and order zero has the series
+\[
+J_0(x)
+=
+\sum_{k=0}^{\infty}
+\frac{(-1)^k}{(k!)^2}
+\left(\frac{x^2}{4}\right)^k.
+\]
+We test an algorithm that approximates \(J_0(1)\) by summing the first
+\(N+1\) terms:
+\[
+S_N(1)=\sum_{k=0}^{N}a_k,
+\qquad
+a_k=\frac{(-1)^k}{4^k(k!)^2}.
+\]
+
+To avoid computing factorials repeatedly, use the term recurrence
+\[
+a_0=1,\qquad
+a_{k+1}=-a_k\frac{1}{4(k+1)^2}.
+\]
+
+\subsection{Algorithm}
+
+\noindent
+
+\begin{lstlisting}
+Input: truncation index N
+Set a = 1
+Set S = 1
+
+For k = 0, 1, ..., N-1:
+    a = -a / (4*(k+1)^2)
+    S = S + a
+
+Return S
+\end{lstlisting}
+
+The returned value is \(S_N(1)\). The loop adds terms through \(a_N\).
+
+\subsection{Reference Value and Error}
+
+\noindent
+
+Use a high-precision implementation or trusted special-function
+library to obtain the reference value
+\[
+J_0(1)\approx 0.7651976865579666.
+\]
+For each truncation index \(N\), compute the absolute error
+\[
+E_{\mathrm{abs}}(N)
+=
+\left|S_N(1)-J_0(1)\right|.
+\]
+Since \(J_0(1)\ne 0\), the relative error can also be reported:
+\[
+E_{\mathrm{rel}}(N)
+=
+\frac{E_{\mathrm{abs}}(N)}{|J_0(1)|}.
+\]
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+\(N\) & \(S_N(1)\) & Absolute error & Relative error \\
+\midrule
+2 & \(0.7656250000000000\)
+  & \(4.2731\times 10^{-4}\)
+  & \(5.584\times 10^{-4}\) \\
+4 & \(0.7651977539062500\)
+  & \(6.7348\times 10^{-8}\)
+  & \(8.801\times 10^{-8}\) \\
+5 & \(0.7651976860894035\)
+  & \(4.6856\times 10^{-10}\)
+  & \(6.124\times 10^{-10}\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The error decreases as more terms are included. At \(x=1\), the terms
+alternate in sign and decrease in magnitude. The alternating-series
+estimate gives
+\[
+\left|J_0(1)-S_N(1)\right|
+\leq |a_{N+1}|
+=
+\frac{1}{4^{N+1}\bigl((N+1)!\bigr)^2}.
+\]
+Thus, for \(N=5\),
+\[
+\left|J_0(1)-S_5(1)\right|
+\leq
+\frac{1}{4^6(6!)^2}
+\approx 4.70\times 10^{-10},
+\]
+consistent with the observed error.  \\
+
+This test compares the algorithm's output with an independent
+high-precision reference and reports both absolute and relative error.
+The truncation bound gives an additional check on the result. Relative
+error should be used cautiously when the reference value is near zero;
+in that case, absolute error is more informative.
+
+\newpage
+
 \chapter{Problems}
 \noindent
 1. Using the effective Hydrogenic model, construct spherically averaged densities containing 28, 92, and 94 electrons. Verify that each density integrates to the requested Electron number. \\
