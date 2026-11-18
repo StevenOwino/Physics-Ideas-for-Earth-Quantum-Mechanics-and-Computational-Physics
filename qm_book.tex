@@ -449,10 +449,6 @@ DP@rint:#1\endcsname\relax\phantom
 
 \section{Units}
 
-Space Energy Density
-
-Dielectric Constant
-
 c, G, $\mu_0$, $\epsilon_0$, $\hbar$ = 1  \\
 
 NOTE: The way these constants appear in a solution, is governed by dimensional analysis, not by the differential equation.
@@ -527,7 +523,7 @@ of the identity of $\hbar$, with $\frac{\hbar}{2 \pi}$. Your objective, reader, 
 \emph{asymptotic formulas for the eigenvalue distribution of differential operators}. \\
 Don't try to read these notes linearly, instead, come back here as a formula reference. \\
 
-Look up, and study these topics from the literature: Quantum particle in a box, Tensor fields, the Standard Model of elementary particles, the magnetic dipole moment of the electron, the force of Gravity, High Energy Physics,
+Look up, and study these topics from the literature: Quantum particle in a box, Tensor fields, the Standard Model of elementary particles, the magnetic dipole moment of the electron, the force of Gravity, and High Energy Physics.
 
 \newpage
 
@@ -5533,7 +5529,7 @@ E_{\mathrm{Ritz}}
 E_{\mathrm{Ritz}}\ge E_0.
 \]
 
-In a Basis $\{\phi_1,\ldots,\phi_N\}$, for $\mathcal{S}$, the Ritz Approximation, is obtained by solving the Generalized Eigenvalue Problem
+In a Basis $\{\phi_1,\ldots,\phi_N\}$, for $\mathcal{S}$, the Ritz Approximation, is obtained by solving the Generalized Eigenvalue Problem\index{}
 \[
 H\mathbf{c}=E\,S\mathbf{c},
 \qquad
@@ -8649,13 +8645,302 @@ parameters \(c\) for which the corresponding filled Julia set \(K_c\)
 is connected.
 
 
-\paragraph{Solution of the Generalized Eignenvalue problem}
+\paragraph{Computation of the Generalized Eignenvalue problem}
+
+\noindent
+
+Below is a  generalized eigenvalue problem, covering both the symmetric-definite case, and the general case. It includes practical algorithms, and residual checks.
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible
+}
+
+\subsection{Problem Statement}
+
+\noindent
+
+Given matrices \(A,B\in\mathbb{C}^{n\times n}\), the generalized
+eigenvalue problem is to find scalars \(\lambda\) and nonzero vectors
+\(x\) such that
+\[
+Ax=\lambda Bx.
+\]
+The scalar \(\lambda\) is a generalized eigenvalue, and \(x\) is a
+corresponding generalized eigenvector. Equivalently,
+\[
+(A-\lambda B)x=0.
+\]
+A finite generalized eigenvalue satisfies
+\[
+\det(A-\lambda B)=0.
+\]
+
+If \(B\) is invertible, the problem is mathematically equivalent to
+\[
+B^{-1}Ax=\lambda x.
+\]
+However, explicitly forming \(B^{-1}A\) is generally not recommended:
+it can increase numerical error and computational cost. Stable
+algorithms work with \(A\) and \(B\) directly.
+
+\subsection{Symmetric-Definite Problem}
+
+\noindent
+
+A particularly important case is
+\[
+A=A^*, \qquad B=B^*, \qquad B\text{ positive definite},
+\]
+where \(A^*\) denotes the conjugate transpose. For real matrices,
+\(A^*=A^{\mathsf T}\).
+
+In this case all generalized eigenvalues are real, and the eigenvectors
+can be chosen to be \(B\)-orthonormal:
+\[
+x_i^*Bx_j=\delta_{ij}.
+\]
+
+\subsection{Reduction Using Cholesky Factorization}
+
+\noindent
+
+Since \(B\) is positive definite, it has a Cholesky factorization
+\[
+B=LL^*,
+\]
+where \(L\) is nonsingular and lower triangular. Set
+\[
+y=L^*x,\qquad x=L^{-*}y.
+\]
+Substitute into \(Ax=\lambda Bx\):
+\[
+AL^{-*}y=\lambda LL^*L^{-*}y
+          =\lambda Ly.
+\]
+Multiplying by \(L^{-1}\) on the left gives the standard Hermitian
+eigenvalue problem
+\[
+Cy=\lambda y,
+\qquad
+C=L^{-1}AL^{-*}.
+\]
+The matrix \(C\) is Hermitian. After solving this standard problem,
+recover the original eigenvectors using
+\[
+x=L^{-*}y.
+\]
+
+In computation, the triangular systems involving \(L\) should be solved
+with a linear solver rather than by explicitly forming \(L^{-1}\).
+
+\subsection{Algorithm}
+
+\noindent
+
+\begin{enumerate}
+  \item Compute \(B=LL^*\) using Cholesky factorization.
+  \item Transform the problem to the standard Hermitian eigenproblem
+        \(Cy=\lambda y\), where \(C=L^{-1}AL^{-*}\).
+  \item Solve for the eigenpairs \((\lambda_i,y_i)\) of \(C\).
+  \item Recover \(x_i=L^{-*}y_i\).
+  \item Check the residuals \(r_i=Ax_i-\lambda_iBx_i\).
+\end{enumerate}
+
+\subsection{General Problem}
+
+\noindent
+
+If \(A\) and \(B\) are general square matrices, \(B\) need not be
+positive definite or even invertible. A robust approach is the
+generalized Schur decomposition, also called the QZ decomposition:
+\[
+Q^*AZ=S,\qquad Q^*BZ=T,
+\]
+where \(Q\) and \(Z\) are unitary (orthogonal in the real case), and
+\(S,T\) are upper triangular, or quasi-upper-triangular for real
+arithmetic.
+
+The generalized eigenvalues are represented by the diagonal pairs
+\[
+(\alpha_i,\beta_i)=(S_{ii},T_{ii}),
+\]
+with
+\[
+\lambda_i=\frac{\alpha_i}{\beta_i}
+\quad\text{when }\beta_i\ne 0.
+\]
+If \(\beta_i=0\) and \(\alpha_i\ne0\), the eigenvalue is infinite. If
+both are zero, the pencil may be singular, and further analysis is
+needed.
+
+The QZ method avoids forming \(B^{-1}A\) and is suitable for general
+matrix pencils \(A-\lambda B\).
+
+\subsection{Numerical Residuals}
+
+\noindent
+
+Computed eigenpairs should be checked using the residual
+\[
+r_i=Ax_i-\lambda_iBx_i.
+\]
+A scale-aware relative residual is
+\[
+\eta_i=
+\frac{\|Ax_i-\lambda_iBx_i\|_2}
+{\bigl(\|A\|_2+|\lambda_i|\|B\|_2\bigr)\|x_i\|_2}.
+\]
+A small \(\eta_i\) indicates that the computed pair satisfies the
+generalized eigenvalue equation to small relative error. The vector
+\(x_i\) may be rescaled without changing the eigenpair.
+
+For symmetric-definite problems, also check the \(B\)-orthogonality:
+\[
+x_i^*Bx_j\approx \delta_{ij}.
+\]
+
+\subsection{Software Use}
+
+\noindent
+
+Numerical linear algebra libraries provide specialized routines for
+these problems. For example, in Python with SciPy:
+
+\begin{lstlisting}
+import numpy as np
+from scipy.linalg import eigh, eig
+
+# Symmetric A and symmetric positive-definite B:
+values, vectors = eigh(A, B)
+
+# General A and B:
+values, vectors = eig(A, B)
+\end{lstlisting}
+
+The routine \texttt{eigh(A, B)} is intended for the Hermitian
+symmetric-definite problem. The routine \texttt{eig(A, B)} handles the
+generalized problem and may return infinite eigenvalues when \(B\) is
+singular. In either case, verify results using residuals.
+
+For a symmetric matrix \(A\) and positive-definite matrix \(B\), use a
+Cholesky-based reduction or a specialized symmetric-definite solver.
+For general matrices, use a generalized Schur (QZ) algorithm. Avoid
+explicitly computing \(B^{-1}A\); solve the generalized problem directly
+and assess the computed eigenpairs with residuals.
 
 
 
+    \textbf{Generalized Schur (QZ) Algorithm}  \\
 
+\noindent
 
+The Schur-based approach in the earlier exposition is correct in outline. For a \textbf{generalized} eigenvalue problem, the relevant decomposition is the \textbf{QZ decomposition} (generalized Schur decomposition). Here is a version with the eigenvalue and eigenvector details made explicit.  \\
 
+For general matrices \(A,B\in\mathbb{C}^{n\times n}\), seek
+\[
+Ax=\lambda Bx,
+\qquad x\ne 0.
+\]
+A QZ algorithm computes unitary matrices \(Q\) and \(Z\) such that
+\[
+Q^*AZ=S,
+\qquad
+Q^*BZ=T,
+\]
+where \(S\) and \(T\) are upper triangular in complex arithmetic.
+In real arithmetic, they are generally quasi-upper-triangular, with
+\(1\times1\) and \(2\times2\) diagonal blocks.
+
+The pair \((S,T)\) is the generalized Schur form of the matrix pair
+\((A,B)\). The generalized eigenvalues are represented by the
+corresponding diagonal pairs
+\[
+(\alpha_i,\beta_i)=(S_{ii},T_{ii}).
+\]
+When \(\beta_i\ne0\), the eigenvalue is
+\[
+\lambda_i=\frac{\alpha_i}{\beta_i}.
+\]
+It is often preferable to retain the pair \((\alpha_i,\beta_i)\)
+rather than form the quotient, especially when \(\beta_i\) is small.
+If \(\beta_i=0\) and \(\alpha_i\ne0\), the eigenvalue is infinite.
+
+\subsection{Outline of the algorithm}
+
+\noindent
+
+A typical QZ algorithm proceeds as follows:
+\begin{enumerate}
+  \item Apply unitary transformations to reduce \(A\) to
+        upper Hessenberg form and \(B\) to upper triangular form.
+  \item Apply implicit QZ iterations, preserving these structures,
+        until the diagonal blocks converge to generalized Schur form.
+  \item Read the generalized eigenvalues from the diagonal entries
+        (or diagonal blocks) of \(S\) and \(T\).
+\end{enumerate}
+The transformations are designed to be numerically stable and avoid
+forming \(B^{-1}A\).
+
+\subsection{Recovering right eigenvectors}
+
+\noindent
+
+For a finite eigenvalue \(\lambda\), solve the triangular system
+\[
+(S-\lambda T)y=0
+\]
+for a nonzero vector \(y\). Since \(Q^*AZ=S\) and \(Q^*BZ=T\),
+the corresponding eigenvector of the original problem is
+\[
+x=Zy.
+\]
+In practice, numerical libraries usually compute and return the
+eigenvectors as part of the generalized eigensolver. When an eigenvalue
+is represented as \((\alpha,\beta)\), the corresponding equation can
+instead be written
+\[
+(\beta S-\alpha T)y=0,
+\qquad x=Zy,
+\]
+which avoids explicitly dividing by a small \(\beta\).
+
+\subsection{Residual check}
+
+\noindent
+
+For each computed pair \((\lambda_i,x_i)\), evaluate
+\[
+r_i=Ax_i-\lambda_iBx_i.
+\]
+A scale-aware relative residual is
+\[
+\eta_i=
+\frac{\|Ax_i-\lambda_iBx_i\|_2}
+{\bigl(\|A\|_2+|\lambda_i|\|B\|_2\bigr)\|x_i\|_2}.
+\]
+For an eigenvalue represented by \((\alpha_i,\beta_i)\), check the
+homogeneous residual instead:
+\[
+r_i=\beta_iAx_i-\alpha_iBx_i.
+\]
+A small residual indicates that the computed eigenpair satisfies the
+generalized eigenvalue equation to small relative error.
+
+\subsection{Singular pencils}
+
+\noindent
+
+If \(A-\lambda B\) is singular for every \(\lambda\), the matrix pair
+is a singular pencil and does not have the usual set of \(n\)
+generalized eigenvalues. A zero pair \((\alpha_i,\beta_i)=(0,0)\)
+can signal this situation or a related degeneracy and requires
+additional analysis; it should not be interpreted as an ordinary
+finite or infinite eigenvalue.  \\
+
+The key distinction is that the ordinary Schur decomposition applies to a single matrix, while the QZ decomposition applies to the matrix pair \((A,B)\).
 
 
 \paragraph{Spherical Bessel Functions, and the Radial Schr\"odinger Equation}
@@ -9114,7 +9399,7 @@ Reduce the mixing fraction or use a more stable mixing method; monitor both dens
 \end{tabular}
 \end{table}
 
-A decisive diagnosis requires Convergence tests: varying **one setting at a time**, and trackig total Electron count, Orbital Energies, Density, and Self-Consitency-Field(SCF) Convergence. If the code is intended for all elements, also check the **Physical Model**: A simple effective-Hydrogenic Potential, is not a self-consistent all-Electron model, and heavy elements may require \emph{Relativistic treatment}.
+A decisive diagnosis requires Convergence tests: varying \textbf{one setting at a time}, and trackig total Electron count, Orbital Energies, Density, and Self-Consitency-Field(SCF) Convergence. If the code is intended for all elements, also check the \textbf{Physical Model}: A simple effective-Hydrogenic Potential, is not a self-consistent all-Electron model, and heavy elements may require \emph{Relativistic treatment}.
 
 
 
