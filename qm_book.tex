@@ -16,7 +16,6 @@
 \usepackage{graphicx}
 \usepackage{pdfpages} % For inserting your cover photo as a PDF
 \usepackage{makecell}
-\usepackage{tabularx}
 \usepackage{fancyhdr}
 \usepackage[utf8]{inputenc}
 %\inputpackage{csquotes}
@@ -69,6 +68,7 @@
 \usepackage{array}
 \usepackage{physics}
 \usepackage{bm}
+\usepackage{algorithm,algpseudocode}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -9591,6 +9591,211 @@ high-precision reference and reports both absolute and relative error.
 The truncation bound gives an additional check on the result. Relative
 error should be used cautiously when the reference value is near zero;
 in that case, absolute error is more informative.
+
+\newpage
+
+
+
+\paragraph{The von Neumann Method for Generating Non-uniform Random Numbers}
+
+\noindent
+
+The von Neumann method—more commonly called \textbf{acceptance–rejection sampling}, generates random numbers from a target non-uniform distribution by proposing candidates from an easy-to-sample distribution, and accepting only those that pass a probability test. It was introduced by John von Neumann in 1951.  \\
+
+The von Neumann method, also called the \emph{acceptance--rejection method},
+is a Monte Carlo technique for generating random numbers from a target
+probability density \(f(x)\) when direct sampling from \(f\) is difficult.
+It was introduced by John von Neumann in 1951. The method generates
+candidates from a simpler proposal distribution and accepts each candidate
+with a probability chosen so that the accepted values have the desired
+distribution.
+
+\subsubsection{Problem}
+
+\noindent
+
+Suppose that \(X\) is a random variable with probability density function
+\[
+f(x), \qquad x\in\mathbb{R},
+\]
+and that we wish to generate random samples from \(f\). Direct inversion of
+the cumulative distribution function may be difficult or impossible, so we
+use rejection sampling.
+
+Choose a proposal density \(g(x)\) from which samples can easily be
+generated. We require a constant \(c\geq1\) such that
+\[
+f(x)\leq c\,g(x)
+\qquad\text{for all }x.
+\]
+The function \(c\,g(x)\) is called an \emph{envelope} or \emph{hat function}
+for \(f\).
+
+\subsection{Algorithm}
+
+\noindent
+
+Let \(U_1,U_2,\ldots\) be independent random variables uniformly distributed
+on \((0,1)\). The von Neumann acceptance--rejection algorithm is:
+
+\begin{algorithm}[H]
+\caption{von Neumann acceptance--rejection method}
+\begin{algorithmic}[1]
+\State Generate \(Y\) from the proposal density \(g(y)\).
+\State Generate \(U\sim\mathrm{Uniform}(0,1)\), independent of \(Y\).
+\If{\(U\leq \dfrac{f(Y)}{c\,g(Y)}\)}
+    \State Accept \(X=Y\).
+\Else
+    \State Reject \(Y\) and return to Step 1.
+\EndIf
+\State \Return \(X\) as a sample from \(f(x)\).
+\end{algorithmic}
+\end{algorithm}
+
+Equivalently, the acceptance condition may be written as
+\[
+U\,c\,g(Y)\leq f(Y).
+\]
+
+\subsection{Why the Method Works}
+
+\noindent
+
+For any Borel set \(A\), the probability that an accepted candidate lies in
+\(A\) is
+\[
+\Pr(X\in A\mid \text{accepted})
+=
+\frac{\displaystyle\int_A f(x)\,dx}
+{\displaystyle\int_{\mathbb{R}} f(x)\,dx}.
+\]
+Since \(f\) is a probability density, the denominator equals \(1\). Hence
+\[
+\Pr(X\in A\mid \text{accepted})
+=
+\int_A f(x)\,dx.
+\]
+Therefore, the accepted values are distributed according to the target
+density \(f\).
+
+More explicitly, the joint density of a proposal \(Y=y\) and acceptance is
+proportional to
+\[
+g(y)\frac{f(y)}{c\,g(y)}
+=
+\frac{f(y)}{c}.
+\]
+After conditioning on acceptance, the factor \(1/c\) cancels, leaving the
+target density \(f(y)\).
+
+\subsection{Efficiency}\
+
+\noindent
+
+The probability that a proposed value is accepted is
+\[
+p_{\mathrm{acc}}
+=
+\int_{\mathbb{R}}g(x)\frac{f(x)}{c\,g(x)}\,dx
+=
+\frac{1}{c}.
+\]
+Thus the expected number of proposals needed to obtain one accepted sample
+is
+\[
+\mathbb{E}[N]=c.
+\]
+For efficiency, \(c\) should be as close to \(1\) as possible. A large value
+of \(c\) means that many candidates are rejected, increasing computational
+cost.
+
+\subsection{Special Case: Uniform Proposals}
+
+\noindent
+
+If the target density is supported on a finite interval \([a,b]\) and
+\(f(x)\leq M\) for all \(x\in[a,b]\), we may take
+\[
+g(x)=\frac{1}{b-a},
+\qquad c=M(b-a).
+\]
+The algorithm becomes:
+
+\begin{enumerate}
+    \item Generate \(Y\sim\mathrm{Uniform}(a,b)\).
+    \item Generate \(U\sim\mathrm{Uniform}(0,1)\).
+    \item Accept \(X=Y\) if
+    \[
+    U\leq\frac{f(Y)}{M}.
+    \]
+    \item Otherwise reject \(Y\) and repeat.
+\end{enumerate}
+
+Geometrically, this corresponds to choosing a point uniformly from the
+rectangle
+\[
+[a,b]\times[0,M],
+\]
+and accepting it if it lies below the curve \(y=f(x)\). The accepted
+\(x\)-coordinates are distributed with density \(f\).
+
+\subsection{Example}
+
+\noindent
+
+Suppose that
+\[
+f(x)=\frac{3}{2}x(2-x),
+\qquad 0\leq x\leq2.
+\]
+The maximum value of \(f\) occurs at \(x=1\), where \(f(1)=3/2\). Hence we
+may take \(M=3/2\), \(a=0\), and \(b=2\).
+
+Generate
+\[
+Y\sim\mathrm{Uniform}(0,2),
+\qquad
+U\sim\mathrm{Uniform}(0,1).
+\]
+Accept \(X=Y\) whenever
+\[
+U\leq\frac{f(Y)}{M}=Y(2-Y).
+\]
+The accepted values of \(Y\) are then random samples from the density
+\(f(x)\).
+
+\subsection{Advantages and Limitations}
+
+\noindent
+
+\begin{itemize}
+    \item The method is general and can be applied to many target densities.
+    \item It does not require the cumulative distribution function or its
+    inverse to be known explicitly.
+    \item Its efficiency depends on how tightly \(c\,g(x)\) bounds \(f(x)\).
+    \item If \(c\) is large, many candidates are rejected and the method
+    becomes inefficient.
+    \item The proposal density \(g\) must be easy to sample from and must
+    dominate the target density everywhere.
+\end{itemize}
+
+\medskip
+
+    \textbf{Key Idea}  \\
+
+\noindent
+
+If [f] is the desired density, and [g] is an easy proposal density satisfying [f(x) $\le$ c g(x)], then accepting a proposal [Y] with probability [f(Y)/(c g(Y))] makes the accepted [Y]’s have density [f]. The expected number of trials per accepted sample is [c].  \\
+
+\begin{algorithmic}[1]
+\State Generate \(Y\) from density \(g\)
+\State Generate \(U\sim\mathrm{Uniform}(0,1)\)
+\While{\(U> f(Y)/(c\,g(Y))\)}
+    \State Generate a new \(Y\) from density \(g\)
+    \State Generate a new \(U\sim\mathrm{Uniform}(0,1)\)
+\EndWhile
+\State \Return \(X=Y\)
+\end{algorithmic}
 
 \newpage
 
