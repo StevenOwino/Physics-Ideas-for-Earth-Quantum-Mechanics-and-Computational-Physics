@@ -612,15 +612,6 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 
 \section{Diagnostic}
 
-%%%% PG BOILERPLATE %%%%
-%$\phantomsection
-%\pdfbookmark[0]{Boilerplate}{Boilerplate}
-%\begin{center}
-%\begin{minipage}{\textwidth}
-%\small
-%\section{Diagnostic}
-%\begin{PGtext}
-
 (a) Show that $y = 2x^2$ is a solution to the differential equation: $\frac{1}{2}x^2y''-xy'+y$ = 0, \\
 
 (b) If $y_1(t)$ = $e^{3t}$, and $y_2(t)$ = $e^{-3t}$ are solutions to $y'' - 9y$ = 0, what is the general solution? Note that $y_1$ and  \\
@@ -8083,7 +8074,7 @@ In this section, we'll have hands-on study in C++,  Pycharm IDE(Intergrated Deve
 
 Matters of section I can be computed, and constructed fast considerably. A backround of any programming language shall suffice.
 
-\paragraph{Gnome Compiler Collection(GCC) Compilation Time, and Runtime of a Compiled Program}
+\section{Gnome Compiler Collection(GCC) Compilation Time, and Runtime of a Compiled Program}
 
 \noindent
 
@@ -8229,7 +8220,7 @@ time or program runtime.
         \texttt{Measure-Command \{ .\textbackslash hello.exe \}}
 \end{itemize}
 
-\paragraph{The Mandelbrot Set}
+\section{The Mandelbrot Set}
 
 \noindent
 
@@ -8646,7 +8637,7 @@ parameters \(c\) for which the corresponding filled Julia set \(K_c\)
 is connected.
 
 
-\paragraph{Computation of the Generalized Eignenvalue problem}
+\section{Computation of the Generalized Eignenvalue problem}
 
 \noindent
 
@@ -8944,7 +8935,7 @@ finite or infinite eigenvalue.  \\
 The key distinction is that the ordinary Schur decomposition applies to a single matrix, while the QZ decomposition applies to the matrix pair \((A,B)\).
 
 
-\paragraph{Spherical Bessel Functions, and the Radial Schr\"odinger Equation}
+\section{Spherical Bessel Functions, and the Radial Schr\"odinger Equation}
 
 \noindent
 
@@ -9139,7 +9130,7 @@ conditions then determine the allowed combinations of solutions and,
 in bound-state problems, the permitted energy levels.
 
 
-\paragraph{Radial Schr$\ddot{o}$dinger equation for a Hydrogenic atom}
+\section{Radial Schr$\ddot{o}$dinger equation for a Hydrogenic atom}
 
 \noindent
 
@@ -9183,7 +9174,7 @@ The plot tests normalization, and electron occupation counting,
 
 
 
-\paragraph{Radial Wavefunction for Neutron bound states}
+\section{Radial Wavefunction for Neutron bound states}
 
 
 
@@ -9192,7 +9183,7 @@ The plot tests normalization, and electron occupation counting,
 
 
 
-\paragraph{Atom in Local Density Approximation}
+\section{Atom in Local Density Approximation}
 
 \noindent
 
@@ -9251,7 +9242,7 @@ The Periodic Table presents a Uniform-Grid(Mesh) Algorithm, and \emph{remains re
 
 
 
-\paragraph{Density Functional Theorem}
+\section{Density Functional Theorem}
 
 
 
@@ -9262,7 +9253,7 @@ The Periodic Table presents a Uniform-Grid(Mesh) Algorithm, and \emph{remains re
 
 
 
-\paragraph{The Numerov Algorithm}
+\section{The Numerov Algorithm}
 \noindent
 
 For large $\ell$, accumulated numerical error prevents accurate inward integration all the way to extremely small radii. We introduce a method tailored to second-order equations, without a first-derivative term.  \\
@@ -9336,7 +9327,7 @@ A convergence test varies the grid spacing systematically $\implies$ An empirica
 
 \newpage
 
-\paragraph{Estimating Numerical Error with a Bessel Function}
+\section{Estimating Numerical Error with a Bessel Function}
 
 \noindent
 
@@ -9475,8 +9466,7 @@ the stopping rule or truncation index \(N\), and the reference method.
 This makes the reported error reproducible and clarifies whether it
 reflects truncation, roundoff, or both.
 
-
-\paragraph{Testing a Numerical Algorithm with a Bessel Function}
+\section{Testing a Numerical Algorithm with a Bessel Function}
 
 \noindent
 
@@ -9597,7 +9587,7 @@ in that case, absolute error is more informative.
 
 
 
-\paragraph{The von Neumann Method for Generating Non-uniform Random Numbers}
+\section{The von Neumann Method for Generating Non-uniform Random Numbers}
 
 \noindent
 
@@ -12293,6 +12283,2343 @@ The central update rule is $x_j^{(t)}$ $\approx$ $\pi$ $\left( x_j \vert x_{-j}^
 
 \newpage
 
+\chapter{Statistical Physics}
+
+
+\section{Statistical Ensembles and Thermodynamics}
+
+Statistical mechanics connects the microscopic description of matter---positions,
+momenta, energy levels, and quantum states---to macroscopic thermodynamic
+quantities such as temperature, entropy, pressure, and free energy.
+
+A \emph{statistical ensemble} is a probability distribution over the allowed
+microstates of a system. Instead of following one system in time, one imagines
+many identical copies of the system, each possibly in a different microstate,
+and computes averages over that distribution. [26][27]
+
+\section{Microstates and Observables}
+
+Let a microstate be denoted by \(x\). For a classical system of \(N\) particles,
+a microstate is a point in phase space,
+\[
+x=(\mathbf r_1,\ldots,\mathbf r_N,\mathbf p_1,\ldots,\mathbf p_N),
+\]
+where \(\mathbf r_i\) and \(\mathbf p_i\) are the position and momentum of
+particle \(i\).
+
+For a quantum system, a microstate may be an energy eigenstate \(|n\rangle\)
+with energy \(E_n\).
+
+Given a probability distribution \(p(x)\), the ensemble average of an observable
+\(A(x)\) is
+\[
+\langle A\rangle
+=
+\sum_x p(x)A(x)
+\]
+for a discrete state space, or
+\[
+\langle A\rangle
+=
+\int_{\Gamma} A(x)p(x)\,\mathrm dx
+\]
+for a continuous phase space \(\Gamma\).
+
+\section{Microcanonical Ensemble}
+
+The microcanonical ensemble describes an \emph{isolated} system with fixed
+particle number \(N\), volume \(V\), and energy \(E\). It is often denoted
+\[
+(N,V,E).
+\]
+
+All accessible microstates with energy in a narrow shell around \(E\) are assumed
+equally likely. If \(\Omega(E,V,N)\) is the number of such microstates, the
+Boltzmann entropy is
+\[
+S(E,V,N)
+=
+k_B\ln \Omega(E,V,N),
+\]
+where \(k_B\) is Boltzmann's constant. [24][29]
+
+Temperature is defined thermodynamically by
+\[
+\frac{1}{T}
+=
+\left(\frac{\partial S}{\partial E}\right)_{V,N}.
+\]
+
+Pressure and chemical potential are obtained from
+\[
+p
+=
+T\left(\frac{\partial S}{\partial V}\right)_{E,N},
+\qquad
+\mu
+=
+-T\left(\frac{\partial S}{\partial N}\right)_{E,V}.
+\]
+
+Thus, the microcanonical ensemble provides the most direct microscopic
+interpretation of entropy and the fundamental thermodynamic relation
+\[
+\mathrm dS
+=
+\frac{1}{T}\mathrm dE
++
+\frac{p}{T}\mathrm dV
+-
+\frac{\mu}{T}\mathrm dN.
+\]
+
+\section{Canonical Ensemble}
+
+The canonical ensemble describes a system with fixed \(N\), fixed volume \(V\),
+and fixed temperature \(T\). It is denoted
+\[
+(N,V,T).
+\]
+
+The system is in thermal contact with a large heat bath, so its energy may
+fluctuate, but its temperature is fixed. The probability of a microstate \(x\)
+with energy \(E(x)\) is
+\[
+p(x)
+=
+\frac{e^{-\beta E(x)}}{Z},
+\qquad
+\beta=\frac{1}{k_BT},
+\]
+where
+\[
+Z(N,V,T)
+=
+\sum_x e^{-\beta E(x)}
+\]
+is the canonical partition function. For a continuous classical system,
+\[
+Z(N,V,T)
+=
+\frac{1}{h^{3N}N!}
+\int_{\Gamma}
+e^{-\beta H(\mathbf r,\mathbf p)}
+\,\mathrm d\mathbf r\,\mathrm d\mathbf p,
+\]
+where \(H\) is the Hamiltonian and \(h\) is Planck's constant. [28][29]
+
+The Helmholtz free energy is
+\[
+F(N,V,T)
+=
+-k_BT\ln Z(N,V,T).
+\]
+
+Its differential is
+\[
+\mathrm dF
+=
+-S\,\mathrm dT
+-p\,\mathrm dV
++\mu\,\mathrm dN.
+\]
+
+Therefore,
+\[
+S=-\left(\frac{\partial F}{\partial T}\right)_{V,N},
+\qquad
+p=-\left(\frac{\partial F}{\partial V}\right)_{T,N},
+\qquad
+\mu=\left(\frac{\partial F}{\partial N}\right)_{T,V}.
+\]
+
+The average internal energy is
+\[
+U=\langle E\rangle
+=
+-\frac{\partial}{\partial\beta}\ln Z.
+\]
+
+The heat capacity at constant volume is
+\[
+C_V
+=
+\left(\frac{\partial U}{\partial T}\right)_V
+=
+k_B\beta^2
+\left(
+\langle E^2\rangle-\langle E\rangle^2
+\right).
+\]
+
+\section{Grand Canonical Ensemble}
+
+The grand canonical ensemble describes a system that can exchange both energy
+and particles with a reservoir. It has fixed temperature \(T\), volume \(V\),
+and chemical potential \(\mu\), and is denoted
+\[
+(\mu,V,T).
+\]
+
+For a microstate with energy \(E(x)\) and particle number \(N(x)\), its
+probability is
+\[
+p(x)
+=
+\frac{e^{-\beta[E(x)-\mu N(x)]}}{\Xi},
+\]
+where the grand partition function is
+\[
+\Xi(\mu,V,T)
+=
+\sum_N\sum_x
+e^{-\beta[E(x)-\mu N]}.
+\]
+
+The grand potential is
+\[
+\Omega(\mu,V,T)
+=
+-k_BT\ln\Xi(\mu,V,T).
+\]
+
+Its differential is
+\[
+\mathrm d\Omega
+=
+-S\,\mathrm dT
+-p\,\mathrm dV
+-N\,\mathrm d\mu.
+\]
+
+Hence,
+\[
+S=-\left(\frac{\partial\Omega}{\partial T}\right)_{\mu,V},
+\qquad
+p=-\left(\frac{\partial\Omega}{\partial V}\right)_{\mu,T},
+\qquad
+N=-\left(\frac{\partial\Omega}{\partial\mu}\right)_{T,V}.
+\]
+
+The average energy and particle number are
+\[
+U
+=
+\langle E\rangle
+=
+-\frac{\partial}{\partial\beta}\ln\Xi+\mu\langle N\rangle,
+\]
+and
+\[
+\langle N\rangle
+=
+\frac{1}{\beta}
+\frac{\partial}{\partial\mu}\ln\Xi.
+\]
+
+\section{Comparison of Ensembles}
+
+\begin{center}
+\begin{tabular}{llll}
+\hline
+Ensemble & Fixed variables & Fluctuating variables & Potential \\
+\hline
+Microcanonical & \(N,V,E\) & \(-\) & \(S(E,V,N)\) \\
+Canonical & \(N,V,T\) & \(E\) & \(F(N,V,T)\) \\
+Grand canonical & \(\mu,V,T\) & \(E,N\) & \(\Omega(\mu,V,T)\) \\
+\hline
+\end{tabular}
+\end{center}
+
+The microcanonical ensemble represents an isolated system; the canonical
+ensemble represents a system in thermal equilibrium with a heat bath; and the
+grand canonical ensemble represents a system in thermal and chemical equilibrium
+with a reservoir. [28][29]
+
+\section*{Thermodynamic Potentials}
+
+The main thermodynamic potentials are
+
+\begin{align}
+U &= F+TS,\\
+F &= U-TS,\\
+H &= U+pV,\\
+G &= F+pV=U-TS+pV,\\
+\Omega &= F-\mu N.
+\end{align}
+
+Here \(U\) is internal energy, \(F\) is Helmholtz free energy, \(H\) is
+enthalpy, \(G\) is Gibbs free energy, and \(\Omega\) is the grand potential.
+
+For a system with fixed \(T,V,N\), equilibrium minimizes \(F\). For fixed
+\(T,p,N\), equilibrium minimizes \(G\). For fixed \(T,V,\mu\), equilibrium
+minimizes \(\Omega\).
+
+\section{Second Law and Entropy}
+
+For an isolated system, the second law states that the entropy cannot decrease:
+\[
+\mathrm dS\ge 0.
+\]
+
+In statistical mechanics, this reflects the overwhelming probability that a
+system evolves toward macrostates with a larger number of compatible
+microstates. Since
+\[
+S=k_B\ln\Omega,
+\]
+an increase in entropy corresponds to an increase in the number of accessible
+microstates.
+
+\section{Connection to Thermodynamics}
+
+Statistical mechanics derives thermodynamics from microscopic probabilities.
+The essential bridge is the partition function:
+
+\[
+\text{microscopic model}
+\longrightarrow
+Z
+\longrightarrow
+\text{thermodynamic potentials}
+\longrightarrow
+\text{macroscopic laws}.
+\]
+
+For example, in the canonical ensemble,
+\[
+F=-k_BT\ln Z,
+\]
+and all equilibrium thermodynamic quantities follow from derivatives of \(F\).
+In the thermodynamic limit, where \(N\to\infty\) and \(V\to\infty\) with
+\(N/V\) fixed, the different ensembles often give equivalent predictions for
+bulk thermodynamic quantities. [21][24]
+
+\newpage
+
+
+\section{Ising and Potts Models}
+
+The Ising and Potts models are fundamental lattice models in statistical
+mechanics. They describe interacting degrees of freedom, or spins, placed on
+the sites of a graph or lattice, and are used to study magnetism, phase
+transitions, critical phenomena, and spatially correlated discrete data.
+[31][35]
+
+Let \(G=(V,E)\) be a finite graph, with vertex set \(V\) and edge set \(E\).
+Two vertices \(i,j\in V\) are nearest neighbours if \((i,j)\in E\); this is
+written \(i\sim j\).
+
+\section{Ising Model}
+
+In the Ising model, each site \(i\in V\) carries a spin
+\[
+\sigma_i\in\{-1,+1\}.
+\]
+
+A spin configuration is
+\[
+\sigma=(\sigma_1,\ldots,\sigma_N),
+\qquad
+N=|V|.
+\]
+
+The Hamiltonian is
+\[
+H(\sigma)
+=
+-\sum_{(i,j)\in E}J_{ij}\sigma_i\sigma_j
+-\sum_{i\in V}h_i\sigma_i.
+\]
+
+Here:
+
+\begin{itemize}
+\item \(J_{ij}\) is the coupling between spins at sites \(i\) and \(j\);
+\item \(h_i\) is an external magnetic field at site \(i\);
+\item \(J_{ij}>0\) favors alignment and describes ferromagnetic interaction;
+\item \(J_{ij}<0\) favors anti-alignment and describes antiferromagnetic interaction.
+\end{itemize}
+
+For a uniform ferromagnetic system with nearest-neighbour coupling \(J\) and
+uniform field \(h\),
+\[
+H(\sigma)
+=
+-J\sum_{\langle i,j\rangle}\sigma_i\sigma_j
+-h\sum_{i\in V}\sigma_i,
+\]
+where \(\langle i,j\rangle\) denotes a nearest-neighbour pair.
+
+At inverse temperature \(\beta=1/(k_BT)\), the Gibbs probability of a
+configuration is
+\[
+\pi_\beta(\sigma)
+=
+\frac{1}{Z}\exp[-\beta H(\sigma)],
+\]
+where the partition function is
+\[
+Z
+=
+\sum_{\sigma\in\{-1,+1\}^V}
+\exp[-\beta H(\sigma)].
+\]
+
+For the uniform model,
+\[
+Z
+=
+\sum_{\sigma}
+\exp\left[
+\beta J\sum_{\langle i,j\rangle}\sigma_i\sigma_j
++
+\beta h\sum_i\sigma_i
+\right].
+\]
+
+The expected magnetization is
+\[
+M
+=
+\left\langle\frac{1}{N}\sum_{i=1}^N\sigma_i\right\rangle.
+\]
+
+In the absence of an external field, \(h=0\), the ferromagnetic Ising model has
+a phase transition in dimensions \(d\ge2\). At low temperature, spins tend to
+align, producing a nonzero spontaneous magnetization; at high temperature,
+thermal fluctuations dominate and the average magnetization is zero.
+
+\section{Potts Model}
+
+The \(q\)-state Potts model generalizes the Ising model by allowing each site
+to take one of \(q\) discrete values:
+\[
+\sigma_i\in\{1,2,\ldots,q\}.
+\]
+
+The Hamiltonian is
+\[
+H(\sigma)
+=
+-J\sum_{\langle i,j\rangle}\mathbf 1\{\sigma_i=\sigma_j\},
+\]
+where
+\[
+\mathbf 1\{\sigma_i=\sigma_j\}
+=
+\begin{cases}
+1, & \sigma_i=\sigma_j,\\
+0, & \sigma_i\ne\sigma_j.
+\end{cases}
+\]
+
+Equivalently, using the Kronecker delta,
+\[
+H(\sigma)
+=
+-J\sum_{\langle i,j\rangle}\delta_{\sigma_i,\sigma_j}.
+\]
+
+Thus, a nearest-neighbour pair contributes energy \(-J\) when the two spins
+agree, and energy \(0\) when they differ. For \(J>0\), the model is
+ferromagnetic: neighbouring sites prefer the same state. [35][38]
+
+The Gibbs measure is
+\[
+\pi_\beta(\sigma)
+=
+\frac{1}{Z}
+\exp\left[
+\beta J\sum_{\langle i,j\rangle}
+\delta_{\sigma_i,\sigma_j}
+\right],
+\]
+and the partition function is
+\[
+Z
+=
+\sum_{\sigma\in\{1,\ldots,q\}^V}
+\exp\left[
+\beta J\sum_{\langle i,j\rangle}
+\delta_{\sigma_i,\sigma_j}
+\right].
+\]
+
+\section{Ising as a Potts Model}
+
+The two-state Potts model is equivalent to the Ising model. Let
+\[
+S_i\in\{1,2\}
+\]
+be a Potts spin, and define an Ising spin by
+\[
+\sigma_i=
+\begin{cases}
++1, & S_i=1,\\
+-1, & S_i=2.
+\end{cases}
+\]
+
+For nearest neighbours,
+\[
+2\delta_{S_i,S_j}
+=
+\sigma_i\sigma_j+1.
+\]
+
+Therefore,
+\[
+-J_{\mathrm{Potts}}\sum_{\langle i,j\rangle}\delta_{S_i,S_j}
+=
+-\frac{J_{\mathrm{Potts}}}{2}
+\sum_{\langle i,j\rangle}\sigma_i\sigma_j
+-\frac{J_{\mathrm{Potts}}}{2}|E|.
+\]
+
+The second term is independent of the spin configuration and only shifts the
+total energy by a constant. Hence,
+\[
+J_{\mathrm{Ising}}=\frac{J_{\mathrm{Potts}}}{2}.
+\]
+
+So the Ising model is precisely the \(q=2\) Potts model, up to an additive
+constant and a rescaling of the coupling. [38]
+
+\section{External Fields}
+
+The Ising model naturally includes an external field:
+\[
+H_{\mathrm{Ising}}(\sigma)
+=
+-J\sum_{\langle i,j\rangle}\sigma_i\sigma_j
+-h\sum_i\sigma_i.
+\]
+
+For the Potts model, an external field is less canonical because the \(q\)
+states are symmetric. One common choice is to favor one distinguished state,
+say state \(1\):
+\[
+H_{\mathrm{Potts}}(\sigma)
+=
+-J\sum_{\langle i,j\rangle}\delta_{\sigma_i,\sigma_j}
+-h\sum_i\mathbf 1\{\sigma_i=1\}.
+\]
+
+\section*{Phase Transitions}
+
+The qualitative behavior depends on temperature, dimension, interaction range,
+and the number of states \(q\).
+
+For the ferromagnetic Ising model with \(h=0\):
+
+\begin{itemize}
+\item In one dimension, there is no finite-temperature phase transition.
+\item In two dimensions, there is a continuous phase transition at a critical
+temperature \(T_c\).
+\item In three and higher dimensions, there is also a phase transition; the
+critical behavior is generally different from the two-dimensional case.
+\end{itemize}
+
+The two-dimensional Ising model is especially important because it is exactly
+solvable and provides one of the simplest examples of a continuous phase
+transition. [31][38]
+
+For the \(q\)-state Potts model, the order of the phase transition depends on
+\(q\) and the spatial dimension. In two dimensions, the transition is continuous
+for small \(q\) and first order for sufficiently large \(q\). The Potts model is
+not generally exactly solvable, although certain critical cases have integrable
+representations. [33][38]
+
+\section{Order Parameter}
+
+For the Ising model, the natural order parameter is the magnetization
+\[
+m
+=
+\left\langle\frac{1}{N}\sum_i\sigma_i\right\rangle.
+\]
+
+For the Potts model, a natural order parameter measures the preference for one
+of the \(q\) states. Let \(n_a\) be the number of sites in state \(a\). Then
+\[
+m_{\mathrm{Potts}}
+=
+\left\langle
+\frac{q\,n_1-N}{(q-1)N}
+\right\rangle.
+\]
+
+This quantity is zero when all \(q\) states occur equally often and approaches
+one when the system is fully ordered in state \(1\).
+
+\section{Statistical Interpretation}
+
+In spatial statistics, the Ising model is a model for binary lattice data, while
+the Potts model is a model for categorical lattice data with \(q\) categories.
+The parameter \(\beta J\) controls spatial dependence: when it is zero, sites
+are independent; when it is large and positive, neighbouring sites are likely to
+have the same value. [36]
+
+For example, in image segmentation, sites may represent pixels, spin values may
+represent labels, and the Potts prior encourages neighboring pixels to receive
+the same label.
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Feature & Ising model & \(q\)-state Potts model \\
+\hline
+Spin space & \(\{-1,+1\}\) & \(\{1,\ldots,q\}\) \\
+Interaction & \(J\sigma_i\sigma_j\) & \(J\delta_{\sigma_i,\sigma_j}\) \\
+Special case & \(q=2\) Potts model & Generalizes Ising \\
+Order parameter & Magnetization & State preference \\
+Typical use & Binary magnetization & Multi-category spatial data \\
+\hline
+\end{tabular}
+\end{center}
+
+The Ising model is the binary special case of the Potts model, while the Potts
+model extends the same nearest-neighbour alignment principle to an arbitrary
+finite number of discrete states.
+
+\newpage
+
+
+
+\section{Lattice Gases and Lattice Models}
+
+A lattice gas represents particles by occupation variables on lattice sites, while a lattice model is the broader class of models whose degrees of freedom live on the sites, edges, or faces of a graph.
+
+Lattice models replace continuous physical space by a discrete graph or lattice.
+They are widely used in statistical mechanics because they retain essential
+spatial interactions while making the state space finite or countable.
+
+A \emph{lattice gas} is a lattice model in which each site is either occupied by
+a particle or empty. It is therefore a discrete model of a fluid or gas, with
+particles restricted to prescribed lattice sites. [41][44][47]
+
+\section{Lattices, and Configurations}
+
+Let \(\Lambda\subset\mathbb Z^d\) be a finite set of lattice sites. A lattice
+gas configuration is an occupation-number field
+\[
+\eta=(\eta_i)_{i\in\Lambda},
+\qquad
+\eta_i\in\{0,1\}.
+\]
+
+Here,
+\[
+\eta_i=
+\begin{cases}
+1, & \text{site } i \text{ is occupied},\\
+0, & \text{site } i \text{ is empty}.
+\end{cases}
+\]
+
+The configuration space is therefore
+\[
+\Omega_\Lambda=\{0,1\}^{\Lambda}.
+\]
+
+The total number of particles is
+\[
+N(\eta)=\sum_{i\in\Lambda}\eta_i.
+\]
+
+The particle density is
+\[
+\rho=\frac{N(\eta)}{|\Lambda|}.
+\]
+
+\section{Lattice-Gas Hamiltonian}
+
+A general lattice gas with pairwise interactions has Hamiltonian
+\[
+H(\eta)
+=
+-\sum_{\{i,j\}\subset\Lambda}J_{ij}\eta_i\eta_j
+-\sum_{i\in\Lambda}h_i\eta_i.
+\]
+
+Here:
+
+\begin{itemize}
+\item \(J_{ij}\) is the interaction energy between particles at sites \(i\) and \(j\);
+\item \(h_i\) is an external field or chemical potential contribution at site \(i\);
+\item \(J_{ij}>0\) favors occupation of neighbouring sites;
+\item \(J_{ij}<0\) penalizes simultaneous occupation of neighbouring sites.
+\end{itemize}
+
+For a translation-invariant nearest-neighbour model,
+\[
+H(\eta)
+=
+-J\sum_{\langle i,j\rangle}\eta_i\eta_j
+-h\sum_{i\in\Lambda}\eta_i,
+\]
+where \(\langle i,j\rangle\) denotes a nearest-neighbour pair.
+
+At inverse temperature \(\beta=1/(k_BT)\), the Gibbs measure is
+\[
+\pi_\beta(\eta)
+=
+\frac{1}{Z}
+\exp[-\beta H(\eta)],
+\]
+with partition function
+\[
+Z
+=
+\sum_{\eta\in\{0,1\}^{\Lambda}}
+\exp[-\beta H(\eta)].
+\]
+
+\section{Hard-Core Lattice Gas}
+
+The hard-core lattice gas imposes an exclusion rule: no two particles may occupy
+neighbouring sites. For nearest-neighbour exclusion,
+\[
+\eta_i\eta_j=0
+\qquad
+\text{whenever } i\sim j.
+\]
+
+Thus, the allowed configurations satisfy
+\[
+\Omega_\Lambda^{\mathrm{hc}}
+=
+\left\{
+\eta\in\{0,1\}^{\Lambda}:
+\eta_i\eta_j=0
+\text{ for all } i\sim j
+\right\}.
+\]
+
+With activity or fugacity \(z>0\), the Gibbs measure is
+\[
+\pi_z(\eta)
+=
+\frac{1}{Z_{\mathrm{hc}}}
+z^{N(\eta)}
+\mathbf 1\{\eta\in\Omega_\Lambda^{\mathrm{hc}}\},
+\]
+where
+\[
+Z_{\mathrm{hc}}
+=
+\sum_{\eta\in\Omega_\Lambda^{\mathrm{hc}}}
+z^{N(\eta)}.
+\]
+
+In graph-theoretic language, occupied sites form an independent set: no two
+occupied sites are adjacent. The hard-core lattice gas is therefore equivalent
+to the independent-set model. [42]
+
+\section{Relation to the Ising Model}
+
+The lattice gas is closely related to the Ising model. Let
+\(\sigma_i\in\{-1,+1\}\) be an Ising spin and define an occupation variable by
+\[
+\eta_i=\frac{1+\sigma_i}{2}.
+\]
+
+Thus,
+\[
+\sigma_i=+1
+\quad\Longleftrightarrow\quad
+\eta_i=1,
+\]
+and
+\[
+\sigma_i=-1
+\quad\Longleftrightarrow\quad
+\eta_i=0.
+\]
+
+For nearest neighbours,
+\[
+\eta_i\eta_j
+=
+\frac{1}{4}(1+\sigma_i)(1+\sigma_j)
+=
+\frac{1}{4}
+\left(
+1+\sigma_i+\sigma_j+\sigma_i\sigma_j
+\right).
+\]
+
+Therefore, a nearest-neighbour lattice-gas interaction can be rewritten as an
+Ising interaction, together with one-site terms and a constant. In particular,
+the ferromagnetic Ising model corresponds to a lattice gas with effective
+attraction between particles.
+
+\section{Grand Canonical Ensemble}
+
+For a lattice gas, the natural equilibrium ensemble is the grand canonical
+ensemble, because the number of particles can fluctuate. The grand partition
+function is
+\[
+\Xi(\beta,\mu)
+=
+\sum_{\eta\in\{0,1\}^{\Lambda}}
+\exp\left[
+-\beta H(\eta)+\beta\mu N(\eta)
+\right],
+\]
+where \(\mu\) is the chemical potential.
+
+The probability of a configuration is
+\[
+\pi_{\beta,\mu}(\eta)
+=
+\frac{1}{\Xi}
+\exp\left[
+-\beta H(\eta)+\beta\mu N(\eta)
+\right].
+\]
+
+The expected density is
+\[
+\langle\rho\rangle
+=
+\frac{1}{|\Lambda|}
+\left\langle N(\eta)\right\rangle
+=
+\frac{1}{|\Lambda|}
+\frac{1}{\beta}
+\frac{\partial}{\partial\mu}\ln\Xi.
+\]
+
+The pressure is related to the grand potential by
+\[
+p
+=
+-\frac{1}{|\Lambda|}\Omega,
+\qquad
+\Omega=-\frac{1}{\beta}\ln\Xi.
+\]
+
+Hence,
+\[
+p=\frac{1}{\beta|\Lambda|}\ln\Xi.
+\]
+
+\section{General Lattice Models}
+
+A lattice model assigns a local state to each site of a graph. If
+\(S_i\) is the state at site \(i\), then a configuration is
+\[
+s=(s_i)_{i\in\Lambda},
+\qquad
+s_i\in S_i.
+\]
+
+The configuration space is
+\[
+\Omega_\Lambda=\prod_{i\in\Lambda}S_i.
+\]
+
+A general finite-range lattice Hamiltonian has the form
+\[
+H(s)
+=
+\sum_{A\subset\Lambda}
+\Phi_A(s_A),
+\]
+where \(\Phi_A\) is an interaction potential depending only on the states in
+the finite set \(A\).
+
+Common examples include:
+
+\begin{itemize}
+\item \textbf{Ising model:} \(s_i\in\{-1,+1\}\), with interaction
+\(-J\sigma_i\sigma_j\).
+\item \textbf{Potts model:} \(s_i\in\{1,\ldots,q\}\), with interaction
+\(-J\delta_{s_i,s_j}\).
+\item \textbf{Lattice gas:} \(s_i\in\{0,1\}\), with interaction
+\(-J\eta_i\eta_j\).
+\item \textbf{Hard-core model:} \(s_i\in\{0,1\}\), with the constraint
+\(s_is_j=0\) for \(i\sim j\).
+\item \textbf{\(q\)-coloring model:} \(s_i\in\{1,\ldots,q\}\), with the
+constraint \(s_i\ne s_j\) for \(i\sim j\).
+\end{itemize}
+
+The \(q\)-coloring model is the zero-temperature antiferromagnetic Potts model:
+neighbouring sites must have different colors. [42]
+
+\section{Equilibrium and Phase Transitions}
+
+For a finite lattice, the Gibbs distribution is well defined for every
+\(\beta\) and every interaction potential. Interesting phenomena arise in the
+thermodynamic limit,
+\[
+|\Lambda|\to\infty.
+\]
+
+A phase transition occurs when a thermodynamic quantity, such as density,
+magnetization, or free energy, changes nonanalytically as a control parameter
+such as temperature or chemical potential crosses a critical value.
+
+For lattice gases, a common transition is between a low-density gas phase and a
+high-density liquid or ordered phase. For the hard-core lattice gas, increasing
+the fugacity \(z\) increases the density, and on certain lattices the model can
+exhibit multiple extremal Gibbs measures at high activity. [42][47]
+
+\section*{Dynamical Lattice Gases}
+
+Lattice gases can also be used as dynamical models. In a lattice-gas cellular
+automaton, particles occupy sites and move along discrete directions. At each
+time step, particles stream to neighbouring sites and then collide according to
+local rules that conserve particle number and momentum.
+
+The HPP model uses a square lattice, while the FHP model uses a hexagonal
+lattice. The hexagonal lattice is important because it gives a more isotropic
+macroscopic fluid description. [49][50]
+
+A simple update rule is
+\[
+\eta_i(t+1)
+=
+\eta_{i-\mathbf e}(t),
+\]
+for particles moving in direction \(\mathbf e\), followed by a local collision
+rule at each site.
+
+\section{Lattice Boltzmann Models}
+
+The lattice Boltzmann method replaces discrete particle occupations by
+probability distribution functions. Let \(f_i(\mathbf x,t)\) be the probability
+density of particles at site \(\mathbf x\) moving in direction \(\mathbf e_i\).
+
+The lattice Boltzmann equation is
+\[
+f_i(\mathbf x+\mathbf e_i,t+1)-f_i(\mathbf x,t)
+=
+\Omega_i(f(\mathbf x,t)),
+\]
+where \(\Omega_i\) is a collision operator. A common choice is the
+Bhatnagar--Gross--Krook relaxation form,
+\[
+\Omega_i
+=
+-\frac{1}{\tau}
+\left[
+f_i-f_i^{\mathrm{eq}}
+\right],
+\]
+where \(\tau\) is the relaxation time and \(f_i^{\mathrm{eq}}\) is a local
+equilibrium distribution. [50]
+
+\section*{Applications}
+
+Lattice gases and lattice models are used to study:
+
+\begin{itemize}
+\item Condensation, evaporation, and liquid--vapor coexistence;
+\item Adsorption of particles on surfaces;
+\item Magnetism through Ising and Potts spin systems;
+\item Percolation and independent sets;
+\item Traffic flow and pedestrian dynamics;
+\item Fluid flow through lattice-gas cellular automata and lattice Boltzmann methods;
+\item Epitaxial growth, where atoms occupy predefined crystal-lattice sites. [44][47][50]
+\end{itemize}
+
+\section*{Summary}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Model & Local state & Main feature \\
+\hline
+Lattice gas & \(\{0,1\}\) & Occupied or empty sites \\
+Hard-core gas & \(\{0,1\}\) & Neighbouring sites cannot both be occupied \\
+Ising model & \(\{-1,+1\}\) & Binary spin interaction \\
+Potts model & \(\{1,\ldots,q\}\) & \(q\) discrete states \\
+\(q\)-coloring model & \(\{1,\ldots,q\}\) & Neighbours must differ \\
+Lattice Boltzmann model & Probability distributions & Fluid-flow simulation \\
+\hline
+\end{tabular}
+\end{center}
+
+Lattice gases are occupation-number versions of lattice spin models. Their
+simple local structure makes them especially useful for studying how microscopic
+interaction rules produce macroscopic thermodynamics, phase transitions, and
+fluid-like collective behavior.
+
+\newpage
+
+
+
+\section{Monte Carlo Simulation of Spin Systems}
+
+
+Centered on the Metropolis algorithm for the Ising model, Monte Carlo methods generate spin configurations distributed according to a Boltzmann--Gibbs measure, allowing estimation of thermodynamic averages.
+
+Monte Carlo simulation is a numerical method for sampling spin configurations
+from a probability distribution. In statistical mechanics, the usual target is
+the Boltzmann--Gibbs distribution at inverse temperature
+\(\beta=1/(k_BT)\).
+
+For a spin configuration \(\sigma\), the canonical Gibbs probability is
+\[
+\pi_\beta(\sigma)
+=
+\frac{1}{Z}
+e^{-\beta H(\sigma)},
+\]
+where \(H(\sigma)\) is the Hamiltonian and
+\[
+Z=\sum_\sigma e^{-\beta H(\sigma)}
+\]
+is the partition function. Direct enumeration is usually impossible because the
+number of configurations grows exponentially with the number of spins.
+Monte Carlo sampling avoids this by generating representative configurations
+with the correct probabilities. [57][60]
+
+\subsection{Ising Spin System}
+
+Consider the ferromagnetic Ising model on a \(d\)-dimensional lattice
+\(\Lambda\). Each site \(i\in\Lambda\) carries a spin
+\[
+\sigma_i\in\{-1,+1\}.
+\]
+
+The Hamiltonian is
+\[
+H(\sigma)
+=
+-J\sum_{\langle i,j\rangle}\sigma_i\sigma_j
+-h\sum_{i\in\Lambda}\sigma_i,
+\]
+where:
+
+\begin{itemize}
+\item \(\langle i,j\rangle\) denotes a nearest-neighbour pair;
+\item \(J>0\) favors aligned spins;
+\item \(h\) is an external magnetic field;
+\item \(\beta=1/(k_BT)\).
+\end{itemize}
+
+The Gibbs probability is
+\[
+\pi_\beta(\sigma)
+=
+\frac{1}{Z}
+\exp\left[
+\beta J\sum_{\langle i,j\rangle}\sigma_i\sigma_j
++
+\beta h\sum_i\sigma_i
+\right].
+\]
+
+\subsection{Metropolis Algorithm}
+
+The Metropolis algorithm is a Markov chain Monte Carlo method. It constructs a
+sequence of spin configurations whose stationary distribution is the Gibbs
+measure \(\pi_\beta\). [51][54][57]
+
+Initialize a configuration \(\sigma^{(0)}\). For each Monte Carlo step:
+
+\begin{enumerate}
+\item Choose a site \(i\), either at random or by sweeping systematically
+through the lattice.
+
+\item Propose flipping the spin:
+\[
+\sigma_i'=-\sigma_i,
+\qquad
+\sigma_j'=\sigma_j
+\quad\text{for }j\ne i.
+\]
+
+\item Compute the energy change
+\[
+\Delta E
+=
+H(\sigma')-H(\sigma).
+\]
+
+\item Accept the flip with probability
+\[
+p_{\mathrm{acc}}
+=
+\min\left\{1,e^{-\beta\Delta E}\right\}.
+\]
+
+\item If the move is accepted, set \(\sigma^{(t+1)}=\sigma'\); otherwise set
+\(\sigma^{(t+1)}=\sigma^{(t)}\).
+\end{enumerate}
+
+The acceptance rule is
+\[
+\sigma^{(t+1)}
+=
+\begin{cases}
+\sigma', & \text{with probability }
+\min\{1,e^{-\beta\Delta E}\},\\
+\sigma^{(t)}, & \text{otherwise}.
+\end{cases}
+\]
+
+Thus, energy-lowering moves are always accepted, while energy-raising moves are
+accepted with probability \(e^{-\beta\Delta E}\). [54][60]
+
+\subsection{Local Energy Change}
+
+For the Ising Hamiltonian, the energy change caused by flipping spin
+\(\sigma_i\) can be computed locally. Let
+\[
+s_i=\sum_{j\sim i}\sigma_j
+\]
+be the sum of the neighbouring spins.
+
+Before the flip, the contribution involving site \(i\) is
+\[
+E_i^{\mathrm{old}}
+=
+-J\sigma_i s_i-h\sigma_i.
+\]
+
+After the flip, \(\sigma_i\) becomes \(-\sigma_i\), so
+\[
+E_i^{\mathrm{new}}
+=
+J\sigma_i s_i+h\sigma_i.
+\]
+
+Therefore,
+\[
+\Delta E
+=
+E_i^{\mathrm{new}}-E_i^{\mathrm{old}}
+=
+2\sigma_i(Js_i+h).
+\]
+
+This local formula avoids recomputing the total energy after every proposed
+spin flip.
+
+\subsection{Metropolis Pseudocode}
+
+\begin{verbatim}
+Initialize sigma
+for t = 1 to N_steps:
+    choose a site i
+    s = sum of spins at neighbours of i
+    DeltaE = 2 * sigma[i] * (J * s + h)
+    if DeltaE <= 0:
+        sigma[i] = -sigma[i]
+    else:
+        draw r uniformly from [0,1)
+        if r < exp(-beta * DeltaE):
+            sigma[i] = -sigma[i]
+\end{verbatim}
+
+One \emph{Monte Carlo sweep} usually means \(|\Lambda|\) attempted single-spin
+updates, so that each spin is updated once on average.
+
+\subsection{Equilibrium Observables}
+
+After an initial equilibration period, called \emph{burn-in}, configurations
+are approximately distributed according to \(\pi_\beta\). Observables are then
+estimated by sample averages:
+\[
+\langle A\rangle_\beta
+\approx
+\overline A
+=
+\frac{1}{M}
+\sum_{t=1}^{M}A(\sigma^{(t)}).
+\]
+
+Important observables include:
+
+\begin{align}
+\text{Magnetization:}\quad
+m
+&=
+\left\langle\frac{1}{N}\sum_{i=1}^N\sigma_i\right\rangle,\\[4pt]
+\text{Energy per spin:}\quad
+e
+&=
+\left\langle\frac{1}{N}H(\sigma)\right\rangle,\\[4pt]
+\text{Heat capacity:}\quad
+C
+&=
+\frac{\beta^2}{N}
+\left(
+\langle H^2\rangle-\langle H\rangle^2
+\right),\\[4pt]
+\text{Magnetic susceptibility:}\quad
+\chi
+&=
+\beta N
+\left(
+\langle m^2\rangle-\langle m\rangle^2
+\right).
+\end{align}
+
+At a continuous phase transition, the heat capacity and susceptibility typically
+peak, while the correlation length grows.
+
+\subsection{Finite-Size Effects}
+
+Simulations are performed on finite lattices, so measured quantities depend on
+the linear size \(L\). Near a critical point, finite-size scaling relates the
+peak position of an observable to the system size:
+\[
+T_c(L)
+=
+T_c+aL^{-1/\nu}+\cdots,
+\]
+where \(\nu\) is the correlation-length critical exponent.
+
+Similarly, the peak height of the susceptibility scales as
+\[
+\chi_{\max}(L)
+\sim
+L^{\gamma/\nu},
+\]
+where \(\gamma\) is the susceptibility exponent.
+
+To reduce boundary effects, one commonly uses periodic boundary conditions:
+\[
+\sigma_{i+L}=\sigma_i.
+\]
+
+\subsection{Autocorrelation, and Error Estimation}
+
+Successive Monte Carlo configurations are generally correlated. If
+\(A_t=A(\sigma^{(t)})\), the normalized autocorrelation function is
+\[
+\rho_A(k)
+=
+\frac{
+\langle A_tA_{t+k}\rangle-\langle A\rangle^2
+}{
+\langle A^2\rangle-\langle A\rangle^2
+}.
+\]
+
+The integrated autocorrelation time is
+\[
+\tau_{\mathrm{int},A}
+=
+\frac{1}{2}
++
+\sum_{k=1}^{\infty}\rho_A(k).
+\]
+
+The effective number of statistically independent samples is approximately
+\[
+N_{\mathrm{eff}}
+\approx
+\frac{M}{2\tau_{\mathrm{int},A}}.
+\]
+
+Therefore, the statistical error of an average is roughly
+\[
+\operatorname{SE}(\overline A)
+\approx
+\sqrt{
+\frac{2\tau_{\mathrm{int},A}}{M}
+\left(
+\langle A^2\rangle-\langle A\rangle^2
+\right)
+}.
+\]
+
+Near critical points, single-spin Metropolis updates may suffer from critical
+slowing down, where autocorrelation times grow rapidly with system size.
+Cluster algorithms, such as the Swendsen--Wang and Wolff algorithms, can reduce
+this problem substantially. [56][59]
+
+\subsection{Other Monte Carlo Updates}
+
+Besides single-spin Metropolis updates, common methods include:
+
+\begin{itemize}
+\item \textbf{Glauber dynamics:} a spin is updated with probability depending
+on its local field.
+\item \textbf{Heat-bath algorithm:} a spin is resampled directly from its
+conditional distribution.
+\item \textbf{Cluster algorithms:} groups of similarly oriented spins are
+updated together, improving efficiency near criticality.
+\item \textbf{Parallel tempering:} several simulations at different
+temperatures exchange configurations to explore rugged energy landscapes.
+\item \textbf{Wang--Landau sampling:} estimates the density of states and is
+useful for systems with strong energy barriers. [56]
+\end{itemize}
+
+For continuous spin systems, such as the Heisenberg model, a Metropolis move may
+rotate a spin slightly within a small cone. The cone angle can be tuned to
+maintain a desired acceptance rate, often near \(50\%\). [51][59]
+
+\subsection{Example: Two-Dimensional Ising Model}
+
+For the two-dimensional Ising model with periodic boundaries and \(h=0\), the
+exact critical temperature is
+\[
+T_c
+=
+\frac{2J}{k_B\ln(1+\sqrt2)}.
+\]
+
+A typical simulation procedure is:
+
+\begin{enumerate}
+\item Choose a lattice size \(L\times L\).
+\item Initialize spins randomly or in an ordered state.
+\item Select a temperature \(T\).
+\item Run Metropolis updates for burn-in.
+\item Measure \(m\), \(e\), \(C\), and \(\chi\) during production runs.
+\item Repeat for several \(L\) and analyze finite-size scaling.
+\end{enumerate}
+
+Monte Carlo simulation replaces exhaustive enumeration of spin configurations
+by stochastic sampling from the Gibbs distribution. The Metropolis algorithm is
+the foundational method: propose a local spin change, compute its energy change,
+and accept or reject it according to the Boltzmann factor. [51][54][57]
+
+The main practical issues are equilibration, autocorrelation, finite-size
+effects, and critical slowing down. Careful choice of update algorithm,
+boundary conditions, burn-in length, and error-estimation method is essential
+for reliable thermodynamic estimates.
+
+For a single-spin Ising update, the Energy change is $\Delta$E = $2 \sigma_i \left(Js_i+ h \right)$, where [$s_i$] is the sum of neighbouring spins; this local expression is what makes Metropolis simulations computationally efficient.
+
+\newpage
+
+
+
+\section{Percolation}
+
+Percolation is a fundamental model in probability theory and statistical
+mechanics. It describes how local random connections can produce global
+connectivity, such as fluid flow through a porous medium, disease spread through
+a population, or electrical conduction through a random network. [70]
+
+The central question is: for which probability \(p\) does there exist an
+infinite connected cluster of open sites or bonds?
+
+\subsection{Bond Percolation}
+
+Let \(\mathbb Z^d\) be the \(d\)-dimensional integer lattice. Its vertices are
+\[
+V=\mathbb Z^d,
+\]
+and two vertices are adjacent if they differ by one unit in exactly one
+coordinate.
+
+In bond percolation, each edge \(e\) is declared open with probability \(p\)
+and closed with probability \(1-p\), independently of all other edges. Thus,
+\[
+\mathbb P(e\text{ is open})=p.
+\]
+
+The resulting random subgraph is denoted
+\[
+\mathbb Z^d_p.
+\]
+
+A \emph{cluster} is a connected component of this random subgraph. The cluster
+containing a vertex \(x\) is written
+\[
+C(x).
+\]
+
+The central event is the existence of an infinite cluster:
+\[
+\{|C(0)|=\infty\}.
+\]
+
+The percolation probability is
+\[
+\theta(p)
+=
+\mathbb P_p(|C(0)|=\infty).
+\]
+
+The critical probability is
+\[
+p_c(\mathbb Z^d)
+=
+\inf\{p:\theta(p)>0\}.
+\]
+
+For \(p<p_c\), all clusters are finite almost surely, and the system is said to
+be \emph{subcritical}. For \(p>p_c\), there is a positive probability of an
+infinite cluster, and the system is \emph{supercritical}. [64][70]
+
+\subsection{Site Percolation}
+
+In site percolation, each vertex rather than each edge is open independently
+with probability \(p\):
+\[
+\mathbb P(x\text{ is open})=p.
+\]
+
+A cluster is a connected set of open vertices. Two open vertices belong to the
+same cluster if there is a path between them consisting entirely of open
+vertices.
+
+For the hexagonal lattice, critical site percolation occurs at
+\[
+p_c=\frac12.
+\]
+This means that, when each hexagon is colored independently with probability
+\(1/2\), the system lies at its critical point. [62][63]
+
+\subsection{Cluster Properties}
+
+Let \(C(0)\) be the open cluster containing the origin. Its size is
+\[
+|C(0)|.
+\]
+
+The expected cluster size is
+\[
+\chi(p)
+=
+\mathbb E_p|C(0)|.
+\]
+
+Below the critical probability, it typically behaves as
+\[
+\chi(p)
+\sim
+C|p_c-p|^{-\gamma},
+\qquad
+p\uparrow p_c,
+\]
+where \(\gamma\) is a critical exponent.
+
+The probability that the origin belongs to an infinite cluster behaves as
+\[
+\theta(p)
+\sim
+C(p-p_c)^\beta,
+\qquad
+p\downarrow p_c,
+\]
+where \(\beta\) is another critical exponent.
+
+The correlation length \(\xi\) describes the typical linear size of finite
+clusters near criticality:
+\[
+\xi(p)
+\sim
+|p-p_c|^{-\nu}.
+\]
+
+\subsection{Percolation Threshold}
+
+The percolation threshold \(p_c\) is the transition point between regimes with
+only finite clusters and regimes with an infinite cluster.
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Regime & Probability & Typical behavior \\
+\hline
+Subcritical & \(p<p_c\) & All clusters finite \\
+Critical & \(p=p_c\) & Scale-invariant clusters \\
+Supercritical & \(p>p_c\) & Infinite cluster exists \\
+\hline
+\end{tabular}
+\end{center}
+
+For bond percolation on the square lattice \(\mathbb Z^2\), it is known that
+\[
+p_c=\frac12.
+\]
+
+For site percolation on the triangular lattice, the critical probability is also
+\[
+p_c=\frac12.
+\]
+
+In higher dimensions, exact values of \(p_c\) are generally unknown and must be
+estimated numerically.
+
+\subsection{Finite Lattices}
+
+On a finite lattice \(\Lambda_L=\{1,\ldots,L\}^d\), there are no infinite
+clusters. Instead, one studies a \emph{spanning cluster}: a connected open
+cluster joining opposite sides of the box.
+
+For example, in two dimensions, define the crossing event
+\[
+A_L(p)
+=
+\{\text{there is an open path from the left side to the right side}\}.
+\]
+
+The crossing probability is
+\[
+\pi_L(p)
+=
+\mathbb P_p(A_L).
+\]
+
+As \(L\to\infty\),
+\[
+\pi_L(p)
+\to
+\begin{cases}
+0, & p<p_c,\\
+\theta(p), & p>p_c.
+\end{cases}
+\]
+
+At criticality, the crossing probability approaches a nontrivial limiting value,
+reflecting scale invariance.
+
+\subsection{Percolation, and Random Graphs}
+
+Percolation can be defined on any graph \(G=(V,E)\). Given \(p\in[0,1]\),
+form the random subgraph \(G_p\) by retaining each edge independently with
+probability \(p\).
+
+For a finite graph with \(n\) vertices and bounded maximum degree \(d\), the
+subcritical regime occurs for
+\[
+p=\frac{1-\varepsilon}{d},
+\qquad
+\varepsilon>0.
+\]
+In this regime, the largest component is typically of order \(O(\log n)\).
+
+In the supercritical regime,
+\[
+p=\frac{1+\varepsilon}{d},
+\]
+a giant component emerges, while all remaining components are typically of order
+\(O(\log n)\). [64]
+
+This is analogous to the phase transition in the Erd\H{o}s--R\'enyi random
+graph \(G(n,p)\).
+
+\subsection{Bootstrap Percolation}
+
+Bootstrap percolation is a dynamical variant. Initially, each site is infected
+independently with probability \(p\). At each subsequent step, an uninfected
+site becomes infected if it has at least \(\ell\) infected neighbours.
+
+Formally, if \(A_t\) is the infected set at time \(t\), then
+\[
+A_{t+1}
+=
+A_t
+\cup
+\left\{
+x:
+|N(x)\cap A_t|\ge\ell
+\right\},
+\]
+where \(N(x)\) is the neighbour set of \(x\).
+
+The process \emph{percolates} if eventually every site becomes infected:
+\[
+\bigcup_{t\ge0}A_t=V.
+\]
+
+For majority bootstrap percolation on a finite graph, a site becomes infected
+when at least half of its neighbours are infected. [66]
+
+\subsection{Monte Carlo Simulation}
+
+A simple Monte Carlo simulation of site percolation proceeds as follows:
+
+\begin{enumerate}
+\item Choose a finite \(L\times L\) lattice.
+\item Choose an occupation probability \(p\).
+\item Mark each site open independently with probability \(p\).
+\item Identify connected components of open sites.
+\item Determine whether an open cluster spans the lattice.
+\item Repeat many times to estimate the crossing probability.
+\end{enumerate}
+
+The estimated crossing probability is
+\[
+\widehat\pi_L(p)
+=
+\frac{1}{M}
+\sum_{r=1}^{M}
+\mathbf 1\{A_L^{(r)}\},
+\]
+where \(A_L^{(r)}\) is the crossing event in repetition \(r\).
+
+\subsection{Applications}
+
+Percolation models appear in:
+
+\begin{itemize}
+\item Fluid flow through porous rocks and soils;
+\item Electrical conductivity of composite materials;
+\item Spread of epidemics on contact networks;
+\item Reliability of communication and transportation networks;
+\item Fracture and failure of disordered materials;
+\item Forest-fire spread and invasion processes;
+\item Gelation and polymer network formation.
+\end{itemize}
+
+Percolation concerns the emergence of long-range connectivity from independent
+local randomness. Its central object is the infinite cluster, whose appearance
+at \(p_c\) constitutes a geometric phase transition.
+
+The model is simple to define, yet it exhibits rich critical behavior, scaling
+laws, and universality. It also provides a natural framework for studying
+connectivity in physical materials, random graphs, and spreading processes.
+
+\newpage
+
+
+\section{Kinetic Monte Carlo}
+
+Kinetic Monte Carlo (KMC) is a stochastic simulation method for systems whose
+evolution is governed by a set of elementary events with known rates. Unlike
+equilibrium Monte Carlo methods, which sample a Boltzmann distribution,
+KMC generates a trajectory in physical time.
+
+Typical events include particle diffusion, adsorption, desorption, chemical
+reaction, nucleation, and growth. The method is especially useful when rare but
+important activated events dominate the long-time behavior. [72][77][78]
+
+\subsection{Continuous-Time Markov Process}
+
+Let \(X(t)\) denote the state of the system at time \(t\). The state may be a
+lattice configuration, a set of particle positions, or the populations of
+chemical species.
+
+Suppose that from a state \(x\), the system can make transitions to states
+\(y_1,\ldots,y_m\). Let the rate of transition from \(x\) to \(y_k\) be
+\[
+k_k(x).
+\]
+
+The total escape rate from state \(x\) is
+\[
+K(x)
+=
+\sum_{k=1}^m k_k(x).
+\]
+
+The waiting time \(\tau\) before the next event is exponentially distributed:
+\[
+\mathbb P(\tau>t\mid X(0)=x)
+=
+e^{-K(x)t}.
+\]
+
+Equivalently,
+\[
+\tau
+\sim
+\operatorname{Exp}\bigl(K(x)\bigr).
+\]
+
+The probability that the next event is transition \(k\) is proportional to its
+rate:
+\[
+\mathbb P(\text{next event is }k\mid X(0)=x)
+=
+\frac{k_k(x)}{K(x)}.
+\]
+
+\subsection{Master Equation}
+
+The probability \(P(x,t)\) that the system is in state \(x\) at time \(t\)
+evolves according to the master equation
+\[
+\frac{\mathrm dP(x,t)}{\mathrm dt}
+=
+\sum_{y\ne x}
+\left[
+k_{y\to x}P(y,t)
+-
+k_{x\to y}P(x,t)
+\right].
+\]
+
+The first term describes transitions into state \(x\), while the second term
+describes transitions out of \(x\).
+
+KMC generates sample trajectories whose ensemble average solves this master
+equation. Thus, it provides a stochastic realization of the underlying
+continuous-time Markov process. [73][76]
+
+\subsection{Transition-State Theory}
+
+For thermally activated events, the rate is often estimated using transition
+state theory:
+\[
+k
+=
+\nu_0
+\exp\left(-\frac{E_a}{k_BT}\right),
+\]
+where:
+
+\begin{itemize}
+\item \(\nu_0\) is an attempt frequency;
+\item \(E_a\) is the activation energy barrier;
+\item \(k_B\) is Boltzmann's constant;
+\item \(T\) is temperature.
+\end{itemize}
+
+Thus, events with lower activation barriers occur much more frequently. In
+lattice KMC, migration barriers may be obtained from density functional theory
+or other atomistic calculations. [72][79]
+
+\subsection{Lattice KMC}
+
+In lattice KMC, particles occupy sites of a graph or lattice. Each site is
+either occupied or empty:
+\[
+\eta_i\in\{0,1\}.
+\]
+
+A diffusion hop from site \(i\) to a vacant neighbouring site \(j\) may have
+rate
+\[
+k_{i\to j}
+=
+\nu_0
+\exp\left(
+-\frac{E_{i\to j}^{\mathrm{mig}}}{k_BT}
+\right).
+\]
+
+The event changes the configuration by
+\[
+\eta_i:1\to0,
+\qquad
+\eta_j:0\to1.
+\]
+
+Only configurations in which the system remains for a significant time are
+treated explicitly; fast vibrational motion is averaged out. This coarse
+graining allows KMC to reach time scales much longer than conventional molecular
+dynamics. [72][78]
+
+\section*{Direct KMC Algorithm}
+
+The direct method is the most common KMC algorithm.
+
+Initialize the system in a state \(x_0\) at time \(t_0=0\). For each step:
+
+\begin{enumerate}
+\item Identify all possible events from the current state \(x_n\).
+
+\item Assign each event \(i\) a rate \(k_i(x_n)\).
+
+\item Compute the total rate
+\[
+K(x_n)=\sum_{i=1}^m k_i(x_n).
+\]
+
+\item Draw a uniform random number \(u_1\in(0,1)\).
+
+\item Select the next event \(j\) such that
+\[
+\sum_{i=1}^{j-1}k_i(x_n)
+<
+u_1K(x_n)
+\le
+\sum_{i=1}^{j}k_i(x_n).
+\]
+
+\item Draw a second uniform random number \(u_2\in(0,1)\) and set the time
+increment
+\[
+\Delta t
+=
+-\frac{\ln u_2}{K(x_n)}.
+\]
+
+\item Update the state:
+\[
+x_{n+1}=T_j(x_n),
+\]
+where \(T_j\) is the state transformation associated with event \(j\).
+
+\item Update the time:
+\[
+t_{n+1}=t_n+\Delta t.
+\]
+\end{enumerate}
+
+\subsection{Pseudocode}
+
+\begin{verbatim}
+Initialize state x and time t = 0
+while t < t_final:
+    identify all possible events i from x
+    compute rates k_i(x)
+    K = sum_i k_i(x)
+
+    if K == 0:
+        stop
+
+    u1 = uniform random number in (0,1)
+    u2 = uniform random number in (0,1)
+
+    choose event j such that
+        cumulative rate up to j >= u1 * K
+
+    Delta_t = -log(u2) / K
+    x = apply event j to x
+    t = t + Delta_t
+\end{verbatim}
+
+Each iteration executes exactly one event and advances the physical clock by an
+exponentially distributed waiting time. [73][78]
+
+\subsection{First-Reaction Method}
+
+An alternative is the first-reaction method. For every possible event \(i\),
+draw a putative waiting time
+\[
+\tau_i
+=
+-\frac{\ln u_i}{k_i(x)},
+\qquad
+u_i\in(0,1).
+\]
+
+The next event is the one with the smallest waiting time:
+\[
+j=\arg\min_i\tau_i.
+\]
+
+The time increment is
+\[
+\Delta t=\tau_j.
+\]
+
+This method is mathematically equivalent to the direct method but may be less
+efficient when the number of possible events is large.
+
+\subsection{Example: Surface Diffusion}
+
+Consider a particle on a square lattice. It can hop to one of four vacant
+neighbouring sites. If all hops have the same rate \(k\), then the total escape
+rate is
+\[
+K=4k.
+\]
+
+The waiting time before a hop is
+\[
+\tau\sim\operatorname{Exp}(4k),
+\]
+and each direction is selected with probability
+\[
+\frac{k}{4k}=\frac14.
+\]
+
+If the rates depend on the local environment, for example
+\[
+k_{i\to j}
+=
+\nu_0
+\exp\left(
+-\frac{E_{i\to j}^{\mathrm{mig}}}{k_BT}
+\right),
+\]
+then hops with lower barriers are selected more often.
+
+\subsection{Example: Chemical Reaction Network}
+
+Consider the reactions
+\[
+A\xrightarrow{k_1}B,
+\qquad
+B\xrightarrow{k_2}C.
+\]
+
+If the current populations are \(n_A\) and \(n_B\), the possible events and
+rates are
+\[
+\begin{array}{ll}
+\text{Event} & \text{Rate}\\
+A\to B & k_1n_A,\\
+B\to C & k_2n_B.
+\end{array}
+\]
+
+The total rate is
+\[
+K=k_1n_A+k_2n_B.
+\]
+
+The next reaction is \(A\to B\) with probability
+\[
+\frac{k_1n_A}{k_1n_A+k_2n_B},
+\]
+and it is \(B\to C\) with probability
+\[
+\frac{k_2n_B}{k_1n_A+k_2n_B}.
+\]
+
+The waiting time is exponentially distributed with rate \(K\).
+
+\subsection{Observables}
+
+KMC produces a time series
+\[
+\{X(t_0),X(t_1),\ldots,X(t_n)\}.
+\]
+
+An observable \(A(X)\) can be estimated by a time average:
+\[
+\langle A\rangle
+\approx
+\frac{1}{t_{\mathrm{final}}-t_0}
+\int_{t_0}^{t_{\mathrm{final}}}A(X(t))\,\mathrm dt.
+\]
+
+For discrete event times, use
+\[
+\langle A\rangle
+\approx
+\frac{1}{t_{\mathrm{final}}-t_0}
+\sum_{n=0}^{N-1}
+A(X(t_n))(t_{n+1}-t_n).
+\]
+
+Examples include particle density, surface coverage, reaction rate, diffusion
+coefficient, and cluster-size distribution.
+
+\subsection{Advantages and Limitations}
+
+\begin{center}
+\begin{tabular}{ll}
+\hline
+Advantages & Limitations \\
+\hline
+Accesses long time scales & Requires a predefined event catalogue \\
+Handles rare events efficiently & Barrier calculations can be expensive \\
+Preserves physical time & May miss unknown reaction pathways \\
+Natural for lattice processes & State-space explosion for large systems \\
+\hline
+\end{tabular}
+\end{center}
+
+KMC is powerful when the relevant elementary events and their rates are known.
+If important pathways are omitted, the simulation may produce biased dynamics.
+On-the-fly KMC methods address this by discovering and evaluating new events as
+the simulation proceeds. [72][74]
+
+\subsection{Applications}
+
+KMC is used to model:
+
+\begin{itemize}
+\item Surface diffusion and epitaxial growth;
+\item Catalytic surface reactions;
+\item Adsorption, desorption, and reaction kinetics;
+\item Ionic transport in solid electrolytes;
+\item Defect evolution in crystalline materials;
+\item Polymerization and emulsion processes;
+\item Radiation damage and annealing;
+\item Biological and epidemiological spreading processes. [71][74][79]
+\end{itemize}
+
+Kinetic Monte Carlo simulates stochastic dynamics in real time by repeatedly
+selecting an elementary event and drawing an exponential waiting time. The
+probability of selecting an event is proportional to its rate, while the waiting
+time is controlled by the total rate out of the current state. [73][78]
+
+The method bridges microscopic transition rates and macroscopic kinetics. Its
+main strength is the ability to simulate rare activated events over time scales
+far beyond those accessible to molecular dynamics, provided the relevant event
+mechanisms are correctly specified.
+
+\newpage
+
+
+
+\section{Non-Equilibrium Statistical Mechanics}
+
+Non-equilibrium statistical mechanics describes systems whose probability
+distribution over microstates changes with time. Such systems may be relaxing
+toward equilibrium, driven by external forces, or maintained in a steady state
+by reservoirs at different temperatures, chemical potentials, or pressures.
+[81][88]
+
+In equilibrium, the distribution is time independent and is usually determined
+by energy and conserved quantities. In non-equilibrium, dynamics, rates, and
+boundary conditions are essential: many different microscopic processes can
+lead to the same equilibrium state, but produce different non-equilibrium
+behavior.
+
+\subsection{Equilibrium Versus Non-Equilibrium}
+
+For an equilibrium system with Hamiltonian \(H(x)\), inverse temperature
+\(\beta=1/(k_BT)\), and configuration \(x\), the canonical distribution is
+\[
+\pi_\beta(x)
+=
+\frac{1}{Z}
+e^{-\beta H(x)},
+\qquad
+Z=\sum_xe^{-\beta H(x)}.
+\]
+
+This distribution satisfies detailed balance: for every pair of states \(x,y\),
+\[
+\pi_\beta(x)W(x\to y)
+=
+\pi_\beta(y)W(y\to x),
+\]
+where \(W(x\to y)\) is the transition rate from \(x\) to \(y\).
+
+In a non-equilibrium system, detailed balance generally fails:
+\[
+\pi(x)W(x\to y)
+\ne
+\pi(y)W(y\to x).
+\]
+
+The imbalance produces a probability current
+\[
+J_{x\to y}
+=
+\pi(x)W(x\to y)
+-
+\pi(y)W(y\to x).
+\]
+
+Nonzero currents are a defining feature of non-equilibrium steady states.
+[89]
+
+\subsection{Master Equation}
+
+Let \(P(x,t)\) be the probability that the system is in state \(x\) at time
+\(t\). For a discrete state space, the master equation is
+\[
+\frac{\mathrm dP(x,t)}{\mathrm dt}
+=
+\sum_{y\ne x}
+\left[
+W(y\to x)P(y,t)
+-
+W(x\to y)P(x,t)
+\right].
+\]
+
+The first term is the probability inflow into \(x\), while the second term is
+the probability outflow from \(x\).
+
+The normalization condition is
+\[
+\sum_xP(x,t)=1.
+\]
+
+A stationary distribution \(P^*(x)\) satisfies
+\[
+\frac{\mathrm dP^*(x)}{\mathrm dt}=0.
+\]
+
+However, a stationary distribution need not satisfy detailed balance. In a
+non-equilibrium steady state, probability may circulate around cycles in state
+space:
+\[
+\sum_{y\ne x}J_{x\to y}\ne0.
+\]
+
+\subsection{Non-Equilibrium Steady States}
+
+A non-equilibrium steady state (NESS) is a time-independent distribution with
+nonzero currents. It is maintained by continuous driving, such as a temperature
+gradient, chemical-potential difference, external field, or particle reservoir.
+
+For example, consider two reservoirs at temperatures \(T_L\) and \(T_R\),
+connected by a small system. If
+\[
+T_L\ne T_R,
+\]
+then heat flows from the hotter reservoir to the colder one. The system may
+reach a steady state, but it is not an equilibrium state because heat continues
+to flow through it.
+
+The steady-state heat current is
+\[
+J_Q
+=
+\lim_{t\to\infty}
+\frac{\langle Q(t)\rangle}{t},
+\]
+where \(Q(t)\) is the cumulative heat transferred.
+
+\subsection{Entropy Production}
+
+For a trajectory \(\omega\) over a time interval \([0,t]\), let
+\[
+P[\omega]
+\]
+be its probability under the forward dynamics, and let
+\[
+P[\tilde\omega]
+\]
+be the probability of the time-reversed trajectory under the reversed driving
+protocol.
+
+The entropy production is
+\[
+\Delta_{\mathrm i}s[\omega]
+=
+k_B\ln
+\frac{P[\omega]}{P[\tilde\omega]}.
+\]
+
+Its ensemble average satisfies the second law:
+\[
+\langle\Delta_{\mathrm i}s\rangle\ge0.
+\]
+
+For a system coupled to heat reservoirs, a common expression is
+\[
+\langle\Delta_{\mathrm i}s\rangle
+=
+\Delta S_{\mathrm{sys}}
+-
+\sum_\alpha\frac{Q_\alpha}{T_\alpha},
+\]
+where \(Q_\alpha\) is the heat absorbed from reservoir \(\alpha\) at
+temperature \(T_\alpha\).
+
+In a non-equilibrium steady state, the system entropy is constant, so
+\[
+\dot S_{\mathrm{sys}}=0,
+\]
+and the entropy production rate is
+\[
+\dot S_{\mathrm{tot}}
+=
+-\sum_\alpha\frac{\dot Q_\alpha}{T_\alpha}
+\ge0.
+\]
+
+\subsection{Fluctuation Theorems}
+
+Fluctuation theorems quantify the probability of trajectory-level violations of
+the second law over finite times. They do not contradict the second law; rather,
+they show that such violations are exponentially unlikely.
+
+The integral fluctuation theorem states
+\[
+\left\langle e^{-\Delta_{\mathrm i}s/k_B}\right\rangle=1.
+\]
+
+By Jensen's inequality,
+\[
+\left\langle\Delta_{\mathrm i}s\right\rangle\ge0.
+\]
+
+For work \(W\) performed on a system initially in equilibrium at inverse
+temperature \(\beta\), the Jarzynski equality states
+\[
+\left\langle e^{-\beta W}\right\rangle
+=
+e^{-\beta\Delta F},
+\]
+where \(\Delta F\) is the change in equilibrium free energy.
+
+Equivalently,
+\[
+\Delta F
+=
+-k_BT\ln
+\left\langle e^{-\beta W}\right\rangle.
+\]
+
+This relation connects nonequilibrium work fluctuations to equilibrium free
+energy differences.
+
+\subsection{Linear Response Theory}
+
+When a system is weakly driven away from equilibrium, its response is often
+linear in the applied force. Let \(A\) be an observable and let \(f\) be an
+external thermodynamic force. The linear response is
+\[
+\langle A\rangle_f-\langle A\rangle_0
+=
+L_{Af}f+O(f^2).
+\]
+
+The response coefficient is given by the Kubo formula:
+\[
+L_{Af}
+=
+\beta
+\int_0^\infty
+\langle A(t)J(0)\rangle_{\mathrm{eq}}\,\mathrm dt,
+\]
+where \(J\) is the current conjugate to the driving force.
+
+Examples include:
+
+\begin{itemize}
+\item Ohm's law: \(J=\sigma E\), relating electric current \(J\) to electric
+field \(E\);
+\item Fourier's law: \(J_Q=-\kappa\nabla T\), relating heat current to a
+temperature gradient;
+\item Fick's law: \(J_N=-D\nabla n\), relating particle current to a density
+gradient.
+\end{itemize}
+
+\subsection{Onsager Relations}
+
+For coupled transport processes, Onsager reciprocity relates cross-coefficients.
+If \(J_i\) is the current conjugate to force \(X_i\), then near equilibrium
+\[
+J_i=\sum_jL_{ij}X_j.
+\]
+
+With appropriate definitions of fluxes and forces,
+\[
+L_{ij}=L_{ji}.
+\]
+
+For example, thermoelectric effects couple heat and charge transport:
+\[
+\begin{pmatrix}
+J_Q\\
+J_e
+\end{pmatrix}
+=
+\begin{pmatrix}
+L_{QQ} & L_{Qe}\\
+L_{eQ} & L_{ee}
+\end{pmatrix}
+\begin{pmatrix}
+-\nabla T/T\\
+-\nabla\phi
+\end{pmatrix}.
+\]
+
+The Onsager relation gives
+\[
+L_{Qe}=L_{eQ}.
+\]
+
+\subsection{Transport, and Relaxation}
+
+Two central problems in non-equilibrium statistical mechanics are:
+
+\begin{itemize}
+\item \textbf{Relaxation:} how an isolated system approaches equilibrium from
+a non-equilibrium initial condition.
+\item \textbf{Transport:} how currents and gradients are sustained in an open
+system connected to reservoirs.
+\end{itemize}
+
+For a nonlinear lattice with Hamiltonian
+\[
+H=\sum_i\left[\frac{p_i^2}{2m}+U(q_i)\right]
++
+\sum_{\langle i,j\rangle}V(q_i-q_j),
+\]
+an isolated system may relax toward energy equipartition, while a system
+connected to heat baths at different temperatures may develop a steady heat
+current. [88]
+
+In some low-dimensional nonlinear systems, Fourier's law fails and heat
+transport becomes anomalous. The heat current may scale differently from the
+usual diffusive prediction.
+
+\subsection{Driven Lattice Models}
+
+A simple non-equilibrium lattice model is the two-temperature kinetic Ising
+model. The lattice is divided into even and odd sublattices, which are coupled
+to heat baths at temperatures \(T_e\) and \(T_o\).
+
+If
+\[
+T_e\ne T_o,
+\]
+then each bath tries to drive the system toward equilibrium at its own
+temperature. Energy flows between the sublattices, and the steady state is
+non-equilibrium.
+
+For a spin configuration \(\sigma\), the master equation is
+\[
+\frac{\mathrm dP(\sigma,t)}{\mathrm dt}
+=
+\sum_{\sigma'}
+\left[
+W(\sigma'\to\sigma)P(\sigma',t)
+-
+W(\sigma\to\sigma')P(\sigma,t)
+\right].
+\]
+
+The transition rates may be chosen as
+\[
+W(\sigma\to\sigma')
+=
+\nu
+\exp[-\beta_{\alpha}\Delta E]_{+},
+\]
+where \(\alpha=e,o\) depends on the sublattice being updated, and
+\[
+[x]_+=\max\{x,0\}.
+\]
+
+\subsection{Stochastic Thermodynamics}
+
+Stochastic thermodynamics extends thermodynamics to individual fluctuating
+trajectories. For a trajectory \(\omega\), define:
+
+\begin{itemize}
+\item Work \(W[\omega]\);
+\item Heat \(Q[\omega]\);
+\item Entropy production \(\Delta_{\mathrm i}s[\omega]\);
+\item System entropy change \(\Delta S_{\mathrm{sys}}[\omega]\).
+\end{itemize}
+
+The first law along a trajectory is
+\[
+\Delta E[\omega]
+=
+Q[\omega]+W[\omega].
+\]
+
+The second law is expressed as
+\[
+\langle\Delta_{\mathrm i}s\rangle\ge0.
+\]
+
+These relations are useful for small systems, where fluctuations are large and
+individual trajectories can temporarily violate macroscopic thermodynamic
+inequalities.
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Feature & Equilibrium & Non-equilibrium \\
+\hline
+Probability distribution & Time independent & Generally time dependent \\
+Detailed balance & Holds & Generally fails \\
+Probability currents & Zero & May be nonzero \\
+Entropy production & Zero & Positive \\
+Driving & None & Reservoirs or external forces \\
+Typical state & Gibbs ensemble & NESS or relaxation dynamics \\
+\hline
+\end{tabular}
+\end{center}
+
+Non-equilibrium statistical mechanics generalizes equilibrium theory by making
+dynamics central. Its main tools are master equations, stochastic trajectories,
+entropy production, fluctuation theorems, and linear response theory.
+
+\newpage
+
 \chapter{Problems}
 
 \noindent
@@ -12360,7 +14687,6 @@ Reduce the mixing fraction or use a more stable mixing method; monitor both dens
 \end{table}
 
 A decisive diagnosis requires Convergence tests: varying \textbf{one setting at a time}, and trackig total Electron count, Orbital Energies, Density, and Self-Consitency-Field(SCF) Convergence. If the code is intended for all elements, also check the \textbf{Physical Model}: A simple effective-Hydrogenic Potential, is not a self-consistent all-Electron model, and heavy elements may require \emph{Relativistic treatment}.
-
 
 
 \newpage
