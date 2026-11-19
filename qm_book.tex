@@ -576,6 +576,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Kohm-Sham Asymptotic Behavior
 \item Oxygens' Local Density Approximation(LDA)
 \item Hartree Boundary Condition
+\item Maximum a Posterior of a Bayesian Inference
 \item Numerovs' solution of Poisons' Equation 
 \item 
 
@@ -9799,8 +9800,2503 @@ If [f] is the desired density, and [g] is an easy proposal density satisfying [f
 
 \newpage
 
-\chapter{Problems}
+\chapter{Statistical and Stochastic Methods}
+
 \noindent
+
+\section{Probability Distributions and Sampling}
+
+\begin{frame}{Probability Distributions and Sampling}
+  \begin{itemize}
+    \item A probability distribution describes the likelihood of possible outcomes of a random variable.
+    \item Sampling generates random values according to a specified distribution.
+    \item These tools are central to Monte Carlo simulation, statistical mechanics, quantum mechanics, data analysis, and uncertainty quantification.
+    \item The goal is to obtain unbiased samples and estimate physical observables with controlled uncertainty.
+  \end{itemize}
+\end{frame}
+
+\subsection{Basic Probability}
+
+\begin{frame}{Random Variables}
+  \begin{itemize}
+    \item A \textbf{random variable} assigns numerical values to outcomes of a random process.
+    \item A \textbf{discrete random variable} takes countable values, such as the number of particles in a detector.
+    \item A \textbf{continuous random variable} takes values in a continuous range, such as particle position or velocity.
+    \item Probability distributions may be described by a probability mass function, probability density function, or cumulative distribution function.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Probability Mass Function}
+  For a discrete random variable \(X\), the probability mass function is
+  \[
+    p_i = P(X=x_i),
+  \]
+  with
+  \[
+    p_i \ge 0,
+    \qquad
+    \sum_i p_i = 1.
+  \]
+
+  \begin{itemize}
+    \item \(p_i\) is the probability that \(X\) equals \(x_i\).
+    \item The cumulative distribution function is
+    \[
+      F(x)=P(X\le x)=\sum_{x_i\le x}p_i.
+    \]
+    \item Examples include the Bernoulli, binomial, Poisson, and discrete uniform distributions.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Probability Density Function}
+  For a continuous random variable \(X\), the probability density function \(p(x)\) satisfies
+  \[
+    p(x)\ge 0,
+    \qquad
+    \int_{-\infty}^{\infty}p(x)\,dx=1.
+  \]
+
+  The probability that \(X\) lies in an interval is
+  \[
+    P(a<X<b)=\int_a^b p(x)\,dx.
+  \]
+
+  The cumulative distribution function is
+  \[
+    F(x)=P(X\le x)=\int_{-\infty}^{x}p(t)\,dt.
+  \]
+\end{frame}
+
+\begin{frame}{Expectation and Variance}
+  For a continuous random variable, the expectation is
+  \[
+    \langle X\rangle
+    =
+    \int_{-\infty}^{\infty}x\,p(x)\,dx.
+  \]
+
+  The variance is
+  \[
+    \operatorname{Var}(X)
+    =
+    \left\langle X^2\right\rangle
+    -
+    \langle X\rangle^2,
+  \]
+  and the standard deviation is
+  \[
+    \sigma_X=\sqrt{\operatorname{Var}(X)}.
+  \]
+
+  For a discrete random variable,
+  \[
+    \langle X\rangle=\sum_i x_ip_i,
+    \qquad
+    \operatorname{Var}(X)=\sum_i x_i^2p_i-\langle X\rangle^2.
+  \]
+\end{frame}
+
+\begin{frame}{Moments and Characteristic Functions}
+  The \(n\)-th moment is
+  \[
+    \langle X^n\rangle
+    =
+    \int x^n p(x)\,dx.
+  \]
+
+  The moment-generating function, when it exists, is
+  \[
+    M_X(t)=\left\langle e^{tX}\right\rangle.
+  \]
+
+  The characteristic function is
+  \[
+    \phi_X(k)=\left\langle e^{ikX}\right\rangle.
+  \]
+
+  \begin{itemize}
+    \item Moments characterize location, spread, skewness, and tails.
+    \item The characteristic function uniquely determines a probability distribution.
+  \end{itemize}
+\end{frame}
+
+\subsection{Important Distributions}
+
+\begin{frame}{Uniform Distribution}
+  The continuous uniform distribution on \([a,b]\) has density
+  \[
+    p(x)=\frac{1}{b-a},
+    \qquad a\le x\le b.
+  \]
+
+  Its mean and variance are
+  \[
+    \langle X\rangle=\frac{a+b}{2},
+    \qquad
+    \operatorname{Var}(X)=\frac{(b-a)^2}{12}.
+  \]
+
+  \begin{itemize}
+    \item It is the basic distribution produced by most pseudorandom-number generators.
+    \item Other distributions are often obtained by transforming uniform random numbers.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Bernoulli and Binomial Distributions}
+  A Bernoulli trial has two outcomes:
+  \[
+    P(X=1)=p,
+    \qquad
+    P(X=0)=1-p.
+  \]
+
+  The binomial distribution gives the probability of \(k\) successes in \(n\) independent trials:
+  \[
+    P(X=k)
+    =
+    \binom{n}{k}p^k(1-p)^{n-k}.
+  \]
+
+  Its mean and variance are
+  \[
+    \langle X\rangle=np,
+    \qquad
+    \operatorname{Var}(X)=np(1-p).
+  \]
+\end{frame}
+
+\begin{frame}{Poisson Distribution}
+  The Poisson distribution models the number of rare independent events in a fixed interval:
+  \[
+    P(X=k)
+    =
+    \frac{\lambda^k e^{-\lambda}}{k!},
+    \qquad k=0,1,2,\ldots
+  \]
+
+  Its mean and variance are both
+  \[
+    \langle X\rangle=\lambda,
+    \qquad
+    \operatorname{Var}(X)=\lambda.
+  \]
+
+  \begin{itemize}
+    \item Common in radioactive decay, photon counting, and particle detection.
+    \item It is the limiting case of a binomial distribution when \(n\) is large and \(p\) is small.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Normal Distribution}
+  The normal, or Gaussian, distribution has density
+  \[
+    p(x)
+    =
+    \frac{1}{\sqrt{2\pi\sigma^2}}
+    \exp\left[
+      -\frac{(x-\mu)^2}{2\sigma^2}
+    \right].
+  \]
+
+  Its mean and variance are
+  \[
+    \langle X\rangle=\mu,
+    \qquad
+    \operatorname{Var}(X)=\sigma^2.
+  \]
+
+  \begin{itemize}
+    \item It arises from the central limit theorem.
+    \item Measurement noise is often modeled as Gaussian.
+    \item It is central to error analysis and statistical inference.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Exponential Distribution}
+  The exponential distribution has density
+  \[
+    p(x)=\lambda e^{-\lambda x},
+    \qquad x\ge0.
+  \]
+
+  Its cumulative distribution function is
+  \[
+    F(x)=1-e^{-\lambda x}.
+  \]
+
+  Its mean and variance are
+  \[
+    \langle X\rangle=\frac{1}{\lambda},
+    \qquad
+    \operatorname{Var}(X)=\frac{1}{\lambda^2}.
+  \]
+
+  \begin{itemize}
+    \item It models waiting times between independent random events.
+    \item It appears in radioactive decay and chemical reaction kinetics.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Boltzmann Distribution}
+  In equilibrium statistical mechanics, the probability of a microstate \(i\) with energy \(E_i\) is
+  \[
+    p_i
+    =
+    \frac{e^{-\beta E_i}}{Z},
+  \]
+  where
+  \[
+    \beta=\frac{1}{k_BT},
+    \qquad
+    Z=\sum_i e^{-\beta E_i}.
+  \]
+
+  \begin{itemize}
+    \item \(Z\) is the partition function.
+    \item Lower-energy states are more probable at low temperature.
+    \item This distribution underlies canonical-ensemble Monte Carlo simulations.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Maxwell--Boltzmann Distribution}
+  For a particle of mass \(m\) in three dimensions at temperature \(T\), the velocity distribution is
+  \[
+    p(\mathbf{v})
+    =
+    \left(\frac{m}{2\pi k_BT}\right)^{3/2}
+    \exp\left(
+      -\frac{m|\mathbf{v}|^2}{2k_BT}
+    \right).
+  \]
+
+  The speed distribution is
+  \[
+    p(v)
+    =
+    4\pi v^2
+    \left(\frac{m}{2\pi k_BT}\right)^{3/2}
+    \exp\left(
+      -\frac{mv^2}{2k_BT}
+    \right).
+  \]
+
+  \begin{itemize}
+    \item It describes molecular velocities in an ideal gas.
+    \item It is used to initialize molecular-dynamics simulations.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Other Useful Distributions}
+  \begin{itemize}
+    \item \textbf{Gamma distribution:} waiting times and sums of exponential variables.
+    \item \textbf{Beta distribution:} probabilities constrained to \([0,1]\).
+    \item \textbf{Chi-squared distribution:} sums of squared Gaussian variables.
+    \item \textbf{Students' \(t\)-distribution:} means estimated from finite samples.
+    \item \textbf{Cauchy distribution:} heavy-tailed distribution with undefined mean and variance.
+    \item \textbf{Multivariate Gaussian:} correlated vector-valued random variables.
+    \item \textbf{Dirichlet distribution:} probability distributions over categories.
+  \end{itemize}
+\end{frame}
+
+\subsection{Random Sampling}
+
+\begin{frame}{What Is Sampling?}
+  Sampling means generating values \(x_1,x_2,\ldots,x_N\) from a target distribution \(p(x)\).
+
+  Sample averages estimate distribution averages:
+  \[
+    \langle f(X)\rangle
+    =
+    \int f(x)p(x)\,dx
+    \approx
+    \frac{1}{N}\sum_{i=1}^{N}f(x_i).
+  \]
+
+  \begin{itemize}
+    \item Good sampling must reproduce the correct distribution.
+    \item Samples should be independent when the method assumes independence.
+    \item Correlated samples require careful uncertainty analysis.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Pseudorandom Numbers}
+  Computers generate deterministic sequences called pseudorandom numbers.
+
+  A pseudorandom-number generator typically produces uniform values in \([0,1)\):
+  \[
+    u\sim U(0,1).
+  \]
+
+  Important properties include:
+  \begin{itemize}
+    \item Long period and good statistical quality.
+    \item Reproducibility through a fixed seed.
+    \item Efficient generation.
+    \item Suitable parallel-stream behavior for high-performance computing.
+  \end{itemize}
+
+  Examples include Mersenne Twister, PCG, xoshiro, and cryptographically secure generators.
+\end{frame}
+
+\begin{frame}{Inverse-Transform Sampling}
+  If \(F(x)\) is a cumulative distribution function, generate \(u\sim U(0,1)\) and set
+  \[
+    x=F^{-1}(u).
+  \]
+
+  Then \(x\) is distributed according to \(p(x)\).
+
+  For the exponential distribution,
+  \[
+    F(x)=1-e^{-\lambda x}.
+  \]
+
+  Setting \(u=F(x)\) gives
+  \[
+    x=-\frac{1}{\lambda}\ln(1-u).
+  \]
+
+  Since \(1-u\) is also uniform on \((0,1)\), one often uses
+  \[
+    x=-\frac{1}{\lambda}\ln u.
+  \]
+\end{frame}
+
+\begin{frame}{Rejection Sampling}
+  To sample from a target density \(p(x)\), choose an easier proposal density \(q(x)\) and a constant \(M\) such that
+  \[
+    p(x)\le Mq(x).
+  \]
+
+  Algorithm:
+  \begin{enumerate}
+    \item Generate \(x\) from \(q(x)\).
+    \item Generate \(u\sim U(0,1)\).
+    \item Accept \(x\) if
+    \[
+      u\le\frac{p(x)}{Mq(x)}.
+    \]
+    \item Otherwise reject \(x\) and repeat.
+  \end{enumerate}
+
+  Accepted samples follow the target distribution \(p(x)\).
+\end{frame}
+
+\begin{frame}{Importance Sampling}
+  Importance sampling estimates an expectation using a proposal distribution \(q(x)\):
+  \[
+    \langle f(X)\rangle_p
+    =
+    \int f(x)p(x)\,dx
+    =
+    \int f(x)\frac{p(x)}{q(x)}q(x)\,dx.
+  \]
+
+  The Monte Carlo estimator is
+  \[
+    \langle f(X)\rangle_p
+    \approx
+    \frac{1}{N}
+    \sum_{i=1}^{N}
+    f(x_i)\frac{p(x_i)}{q(x_i)},
+    \qquad x_i\sim q(x).
+  \]
+
+  \begin{itemize}
+    \item The ratio \(p(x_i)/q(x_i)\) is the importance weight.
+    \item Efficient proposals place more samples in important regions.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Gaussian Sampling}
+  To generate standard normal samples \(z\sim N(0,1)\), use the Box--Muller transform.
+
+  Generate two independent uniform numbers \(u_1,u_2\in(0,1)\). Then
+  \[
+    z_1=\sqrt{-2\ln u_1}\cos(2\pi u_2),
+  \]
+  \[
+    z_2=\sqrt{-2\ln u_1}\sin(2\pi u_2).
+  \]
+
+  For a general Gaussian distribution with mean \(\mu\) and standard deviation \(\sigma\),
+  \[
+    x=\mu+\sigma z.
+  \]
+\end{frame}
+
+\begin{frame}{Markov-Chain Monte Carlo}
+  Markov-chain Monte Carlo constructs a random walk whose stationary distribution is the target distribution \(p(x)\).
+
+  At each step, propose a move from \(x\) to \(x'\) using a proposal distribution \(q(x'|x)\). Accept the move with probability
+  \[
+    A(x\to x')
+    =
+    \min\left[
+      1,
+      \frac{p(x')q(x|x')}{p(x)q(x'|x)}
+    \right].
+  \]
+
+  \begin{itemize}
+    \item The Metropolis--Hastings algorithm is the general form.
+    \item The Metropolis algorithm uses a symmetric proposal, \(q(x'|x)=q(x|x')\).
+    \item Early samples are discarded during burn-in.
+    \item Correlation between successive samples must be monitored.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Metropolis Algorithm}
+  For a symmetric proposal distribution, the acceptance probability simplifies to
+  \[
+    A(x\to x')
+    =
+    \min\left[
+      1,
+      \frac{p(x')}{p(x)}
+    \right].
+  \]
+
+  In Statistical Physics, for the Boltzmann distribution,
+  \[
+    \frac{p(x')}{p(x)}
+    =
+    \exp[-\beta(E'-E)].
+  \]
+
+  \begin{itemize}
+    \item Accept a move that lowers the energy.
+    \item Accept an energy-increasing move with probability \(\exp[-\beta(E'-E)]\).
+    \item This allows the system to escape local energy minima.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Gibbs Sampling}
+  Gibbs sampling updates one variable at a time from its conditional distribution.
+
+  For variables \((x_1,x_2,\ldots,x_d)\), sample
+  \[
+    x_1\sim p(x_1|x_2,\ldots,x_d),
+  \]
+  then
+  \[
+    x_2\sim p(x_2|x_1,x_3,\ldots,x_d),
+  \]
+  and continue cyclically.
+
+  \begin{itemize}
+    \item It is useful when conditional distributions are easy to sample.
+    \item It is a special case of Metropolis--Hastings with acceptance probability one.
+    \item It is widely used in Bayesian inference and statistical physics.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Sampling Error and Autocorrelation}
+  For \(N\) independent samples, the standard error of the sample mean is
+  \[
+    \operatorname{SE}
+    =
+    \frac{\sigma}{\sqrt{N}}.
+  \]
+
+  For correlated samples, the effective number of independent samples is smaller:
+  \[
+    N_{\mathrm{eff}}
+    =
+    \frac{N}{1+2\sum_{k=1}^{\infty}\rho_k},
+  \]
+  where \(\rho_k\) is the autocorrelation at lag \(k\).
+
+  \begin{itemize}
+    \item Autocorrelation increases uncertainty.
+    \item Burn-in removes unrepresentative initial samples.
+    \item Thinning may reduce storage, but does not create additional independent information.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Sampling Workflow}
+  \centering
+  \begin{tikzpicture}[
+    node distance=7mm and 8mm,
+    box/.style={
+      draw, rounded corners, align=center,
+      minimum width=29mm, minimum height=9mm,
+      fill=blue!10
+    },
+    arrow/.style={-{Stealth[length=2mm]}, thick}
+  ]
+    \node[box] (target) {Target\\distribution \(p(x)\)};
+    \node[box, right=of target] (method) {Choose\\sampling method};
+    \node[box, right=of method] (samples) {Generate\\samples};
+    \node[box, below=of samples] (diagnostic) {Check convergence\\and autocorrelation};
+    \node[box, left=of diagnostic] (estimate) {Estimate\\observables};
+    \node[box, left=of estimate] (error) {Quantify\\uncertainty};
+
+    \draw[arrow] (target) -- (method);
+    \draw[arrow] (method) -- (samples);
+    \draw[arrow] (samples) -- (diagnostic);
+    \draw[arrow] (diagnostic) -- (estimate);
+    \draw[arrow] (estimate) -- (error);
+    \draw[arrow, dashed] (error) to[bend left=25] (method);
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Summary}
+  \begin{itemize}
+    \item Probability distributions describe uncertainty and randomness in physical systems.
+    \item Key distributions include uniform, Bernoulli, binomial, Poisson, Gaussian, exponential, and Boltzmann.
+    \item Sampling methods convert random numbers into samples from a target distribution.
+    \item Inverse-transform, rejection, importance, and Markov-chain Monte Carlo methods are fundamental.
+    \item Reliable simulations require convergence tests, autocorrelation analysis, and uncertainty estimates.
+  \end{itemize}
+\end{frame}
+
+\newpage
+
+\section{Markov-Chain Monte Carlo}
+
+\begin{frame}{Markov-Chain Monte Carlo}
+  \begin{itemize}
+    \item Markov-chain Monte Carlo, or MCMC, generates samples from a probability distribution that may be difficult to sample directly.
+    \item It constructs a Markov chain whose stationary distribution is the target distribution.
+    \item It is widely used in statistical physics, Bayesian inference, quantum many-body physics, astrophysics, and machine learning.
+    \item The central idea is to perform a controlled random walk through the space of possible states.
+  \end{itemize}
+\end{frame}
+
+\subsection{Markov Chains}
+
+\begin{frame}{Markov Chains}
+  A Markov chain is a sequence of random states
+  \[
+    X_0,X_1,X_2,\ldots
+  \]
+  in which the next state depends only on the current state:
+  \[
+    P(X_{n+1}=x'|X_n=x,X_{n-1},\ldots,X_0)
+    =
+    P(X_{n+1}=x'|X_n=x).
+  \]
+
+  \begin{itemize}
+    \item \(X_n\) is the state of the system at step \(n\).
+    \item The transition probability is written \(T(x\to x')\).
+    \item The chain may evolve over a discrete or continuous state space.
+    \item In physics, a state may represent a spin configuration, molecular configuration, field configuration, or set of model parameters.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Transition Probabilities}
+  For a discrete state space, the transition matrix is
+  \[
+    T_{ij}=P(X_{n+1}=j|X_n=i).
+  \]
+
+  It satisfies
+  \[
+    T_{ij}\ge0,
+    \qquad
+    \sum_jT_{ij}=1.
+  \]
+
+  The probability distribution after \(n\) steps evolves as
+  \[
+    \pi^{(n+1)}_j
+    =
+    \sum_i\pi^{(n)}_iT_{ij}.
+  \]
+
+  In matrix form,
+  \[
+    \boldsymbol{\pi}^{(n+1)}
+    =
+    \boldsymbol{\pi}^{(n)}T.
+  \]
+\end{frame}
+
+\begin{frame}{Stationary Distribution}
+  A stationary distribution \(\pi\) satisfies
+  \[
+    \pi_j
+    =
+    \sum_i\pi_iT_{ij}.
+  \]
+
+  In matrix notation,
+  \[
+    \boldsymbol{\pi}
+    =
+    \boldsymbol{\pi}T.
+  \]
+
+  \begin{itemize}
+    \item Once the chain reaches its stationary distribution, further sampling does not change the distribution.
+    \item MCMC is designed so that the desired target distribution is the stationary distribution.
+    \item The chain must be irreducible and aperiodic for convergence to a unique stationary distribution.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Detailed Balance}
+  A sufficient condition for \(\pi\) to be stationary is detailed balance:
+  \[
+    \pi(x)T(x\to x')
+    =
+    \pi(x')T(x'\to x).
+  \]
+
+  \begin{itemize}
+    \item Detailed balance ensures that probability flow from \(x\) to \(x'\) equals flow from \(x'\) to \(x\).
+    \item It is not strictly necessary for a correct MCMC sampler, but it is a common and convenient design condition.
+    \item The Metropolis--Hastings algorithm is constructed to satisfy detailed balance.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ergodicity}
+  A Markov chain is ergodic if it can, in principle, reach every relevant region of the state space.
+
+  For a valid MCMC sampler, the chain should be:
+  \begin{itemize}
+    \item \textbf{Irreducible:} every state can be reached from every other state.
+    \item \textbf{Aperiodic:} the chain does not become trapped in a repeating cycle.
+    \item \textbf{Positive recurrent:} the chain returns to states with finite average recurrence time.
+  \end{itemize}
+
+  Under these conditions, time averages converge to ensemble averages:
+  \[
+    \langle f\rangle
+    =
+    \int f(x)\pi(x)\,dx
+    \approx
+    \frac{1}{N}
+    \sum_{n=1}^{N}f(x_n).
+  \]
+\end{frame}
+
+\subsection{Metropolis--Hastings}
+
+\begin{frame}{Metropolis--Hastings Algorithm}
+  Suppose we want samples from a target distribution \(\pi(x)\).
+
+  At each step:
+  \begin{enumerate}
+    \item Start from the current state \(x\).
+    \item Propose a new state \(x'\) using a proposal distribution \(q(x'|x)\).
+    \item Calculate the acceptance probability
+    \[
+      A(x\to x')
+      =
+      \min\left[
+        1,
+        \frac{\pi(x')q(x|x')}
+             {\pi(x)q(x'|x)}
+      \right].
+    \]
+    \item Generate \(u\sim U(0,1)\).
+    \item Accept \(x'\) if \(u\le A(x\to x')\); otherwise remain at \(x\).
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Why Metropolis--Hastings Works}
+  The acceptance rule is designed to satisfy detailed balance:
+  \[
+    \pi(x)T(x\to x')
+    =
+    \pi(x')T(x'\to x).
+  \]
+
+  The full transition probability is
+  \[
+    T(x\to x')
+    =
+    q(x'|x)A(x\to x'),
+    \qquad x'\ne x.
+  \]
+
+  \begin{itemize}
+    \item The proposal distribution \(q\) need not be the target distribution.
+    \item The acceptance probability corrects for the bias introduced by the proposal.
+    \item The target distribution may be known only up to an unknown normalization constant.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Unnormalized Target Distributions}
+  In physics, one often knows the Boltzmann weight only up to a constant:
+  \[
+    p(x)
+    =
+    \frac{1}{Z}e^{-\beta E(x)}.
+  \]
+
+  The partition function
+  \[
+    Z=\int e^{-\beta E(x)}\,dx
+  \]
+  may be impossible to compute directly.
+
+  In the Metropolis--Hastings acceptance ratio, normalization constants cancel:
+  \[
+    \frac{p(x')}{p(x)}
+    =
+    \frac{e^{-\beta E(x')}}{e^{-\beta E(x)}}
+    =
+    e^{-\beta(E'-E)}.
+  \]
+
+  \begin{itemize}
+    \item This is a major advantage of MCMC in statistical physics.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Metropolis Algorithm}
+  If the proposal distribution is symmetric,
+  \[
+    q(x'|x)=q(x|x'),
+  \]
+  the acceptance probability becomes
+  \[
+    A(x\to x')
+    =
+    \min\left[
+      1,
+      \frac{\pi(x')}{\pi(x)}
+    \right].
+  \]
+
+  For the Boltzmann distribution,
+  \[
+    A(x\to x')
+    =
+    \min\left[
+      1,
+      e^{-\beta(E'-E)}
+    \right].
+  \]
+
+  \begin{itemize}
+    \item Moves that lower the energy are always accepted.
+    \item Moves that raise the energy are accepted with probability \(e^{-\beta(E'-E)}\).
+    \item This permits exploration of the energy landscape and escape from local minima.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Metropolis Pseudocode}
+  \begin{algorithmic}[1]
+    \State Choose an initial state \(x_0\)
+    \State Choose a proposal distribution \(q(x'|x)\)
+    \For{\(n=0\) to \(N-1\)}
+      \State Propose \(x'\sim q(x'|x_n)\)
+      \State Compute
+      \[
+        A=
+        \min\left[
+          1,
+          \frac{\pi(x')q(x_n|x')}
+               {\pi(x_n)q(x'|x_n)}
+        \right]
+      \]
+      \State Generate \(u\sim U(0,1)\)
+      \If{\(u\le A\)}
+        \State \(x_{n+1}=x'\)
+      \Else
+        \State \(x_{n+1}=x_n\)
+      \EndIf
+    \EndFor
+    \State Return samples \(\{x_n\}\)
+  \end{algorithmic}
+\end{frame}
+
+\begin{frame}{Metropolis--Hastings Diagram}
+  \centering
+  \begin{tikzpicture}[
+    node distance=7mm and 9mm,
+    state/.style={
+      draw, circle, minimum size=13mm,
+      fill=blue!10, font=\small
+    },
+    box/.style={
+      draw, rounded corners, align=center,
+      minimum width=27mm, minimum height=9mm,
+      fill=orange!12, font=\small
+    },
+    arrow/.style={-{Stealth[length=2mm]}, thick}
+  ]
+    \node[state] (current) {\(x_n\)};
+    \node[box, right=of current] (proposal) {Propose\\\(x'\sim q(x'|x)\)};
+    \node[box, right=of proposal] (accept) {Accept with\\probability \(A\)};
+    \node[state, right=of accept] (next) {\(x_{n+1}\)};
+
+    \draw[arrow] (current) -- (proposal);
+    \draw[arrow] (proposal) -- (accept);
+    \draw[arrow] (accept) -- (next);
+
+    \draw[arrow, dashed, red] (accept.south)
+      to[bend left=35]
+      node[below, font=\small] {reject: remain at \(x_n\)}
+      (current.south);
+  \end{tikzpicture}
+
+  \vspace{3mm}
+  Rejected proposals still count as Markov-chain steps.
+\end{frame}
+
+\subsection{Sampling Diagnostics}
+
+\begin{frame}{Burn-In}
+  Early samples may depend strongly on the arbitrary initial state \(x_0\).
+
+  These samples are usually discarded during a burn-in period:
+  \[
+    x_1,x_2,\ldots,x_B
+    \quad\text{discarded}.
+  \]
+
+  Observables are estimated from the remaining samples:
+  \[
+    \langle f\rangle
+    \approx
+    \frac{1}{N-B}
+    \sum_{n=B+1}^{N}f(x_n).
+  \]
+
+  \begin{itemize}
+    \item Burn-in reduces bias from an unrepresentative starting point.
+    \item It does not replace convergence testing.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Autocorrelation}
+  Successive MCMC samples are often correlated.
+
+  The normalized autocorrelation at lag \(k\) is
+  \[
+    \rho_k
+    =
+    \frac{
+      \langle(f_n-\bar f)(f_{n+k}-\bar f)\rangle
+    }{
+      \operatorname{Var}(f)
+    }.
+  \]
+
+  The integrated autocorrelation time is approximately
+  \[
+    \tau_{\mathrm{int}}
+    =
+    1+2\sum_{k=1}^{\infty}\rho_k.
+  \]
+
+  The effective number of independent samples is
+  \[
+    N_{\mathrm{eff}}
+    =
+    \frac{N}{\tau_{\mathrm{int}}}.
+  \]
+\end{frame}
+
+\begin{frame}{Statistical Uncertainty}
+  For independent samples, the standard error of a sample mean is
+  \[
+    \operatorname{SE}
+    =
+    \frac{\sigma}{\sqrt{N}}.
+  \]
+
+  For correlated MCMC samples, use the effective sample size:
+  \[
+    \operatorname{SE}
+    \approx
+    \frac{\sigma}{\sqrt{N_{\mathrm{eff}}}}.
+  \]
+
+  \begin{itemize}
+    \item Strong autocorrelation reduces \(N_{\mathrm{eff}}\).
+    \item A longer chain or improved proposal may be needed.
+    \item Error bars should reflect correlation, not only the raw number of samples.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Convergence Diagnostics}
+  Common diagnostics include:
+  \begin{itemize}
+    \item Trace plots of observables versus Monte Carlo time.
+    \item Running averages and their stabilization.
+    \item Autocorrelation functions and integrated autocorrelation times.
+    \item Acceptance rates and proposal-tuning studies.
+    \item Multiple independent chains started from different initial states.
+    \item Comparison with exact results, limiting cases, or independent numerical methods.
+  \end{itemize}
+
+  \begin{itemize}
+    \item A converged chain should sample the same distribution regardless of its starting point.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Choosing Proposal Steps}
+  The proposal distribution strongly affects efficiency.
+
+  \begin{itemize}
+    \item Very small proposals: high acceptance rate but slow exploration.
+    \item Very large proposals: low acceptance rate and many rejected moves.
+    \item An intermediate proposal scale often gives the best exploration.
+    \item Adaptive methods tune proposal widths during burn-in.
+    \item For a Gaussian random-walk proposal, an acceptance rate near \(20\%\) to \(50\%\) is often a useful practical target, though the optimum depends on the problem.
+  \end{itemize}
+\end{frame}
+
+\subsection{Applications}
+
+\begin{frame}{Ising Model}
+  For the Ising model, a spin configuration is
+  \[
+    \mathbf{s}=(s_1,s_2,\ldots,s_N),
+    \qquad s_i=\pm1.
+  \]
+
+  The energy is commonly
+  \[
+    E(\mathbf{s})
+    =
+    -J\sum_{\langle i,j\rangle}s_is_j
+    -
+    h\sum_i s_i.
+  \]
+
+  The Boltzmann probability is
+  \[
+    p(\mathbf{s})
+    =
+    \frac{e^{-\beta E(\mathbf{s})}}{Z}.
+  \]
+
+  A Metropolis update may propose flipping one spin:
+  \[
+    s_i\rightarrow-s_i.
+  \]
+\end{frame}
+
+\begin{frame}{Bayesian Inference}
+  In Bayesian inference, the posterior distribution is
+  \[
+    p(\theta|\mathbf{D})
+    \propto
+    p(\mathbf{D}|\theta)p(\theta),
+  \]
+  where:
+  \begin{itemize}
+    \item \(\theta\) represents model parameters.
+    \item \(\mathbf{D}\) represents observed data.
+    \item \(p(\mathbf{D}|\theta)\) is the likelihood.
+    \item \(p(\theta)\) is the prior distribution.
+  \end{itemize}
+
+  MCMC generates samples from the posterior, allowing estimates of parameters, credible intervals, and model predictions.
+\end{frame}
+
+\begin{frame}{Quantum and Many-Body Systems}
+  \begin{itemize}
+    \item Variational Monte Carlo samples configurations weighted by a trial wave function.
+    \item Diffusion Monte Carlo evolves a distribution of walkers to approximate the ground state.
+    \item Path-integral Monte Carlo samples quantum paths at finite temperature.
+    \item MCMC can estimate energies, correlation functions, and thermodynamic quantities.
+    \item Sign problems and ergodicity can make some fermionic systems especially difficult.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{MCMC Workflow}
+  \centering
+  \begin{tikzpicture}[
+    node distance=7mm and 8mm,
+    box/.style={
+      draw, rounded corners, align=center,
+      minimum width=30mm, minimum height=9mm,
+      fill=blue!10
+    },
+    arrow/.style={-{Stealth[length=2mm]}, thick}
+  ]
+    \node[box] (target) {Define target\\distribution \(\pi(x)\)};
+    \node[box, right=of target] (initial) {Choose initial\\state \(x_0\)};
+    \node[box, right=of initial] (proposal) {Propose\\new state};
+    \node[box, below=of proposal] (accept) {Accept or\\reject proposal};
+    \node[box, left=of accept] (iterate) {Iterate Markov\\chain};
+    \node[box, left=of iterate] (diagnostics) {Burn-in and\\convergence tests};
+    \node[box, below=of diagnostics] (estimate) {Estimate observables\\and uncertainties};
+
+    \draw[arrow] (target) -- (initial);
+    \draw[arrow] (initial) -- (proposal);
+    \draw[arrow] (proposal) -- (accept);
+    \draw[arrow] (accept) -- (iterate);
+    \draw[arrow] (iterate) -- (diagnostics);
+    \draw[arrow] (diagnostics) -- (estimate);
+    \draw[arrow, dashed] (estimate) to[bend left=30] (proposal);
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Summary}
+  \begin{itemize}
+    \item MCMC constructs a Markov chain with a specified stationary distribution.
+    \item The Metropolis--Hastings algorithm is the foundational MCMC method.
+    \item It can sample distributions known only up to a normalization constant.
+    \item Burn-in, autocorrelation, and convergence diagnostics are essential.
+    \item Applications include statistical mechanics, Bayesian inference, quantum systems, and uncertainty quantification.
+  \end{itemize}
+\end{frame}
+
+\newpage
+
+
+\section{Metropolis--Hastings Algorithm}
+
+The Metropolis–Hastings (MH) algorithm, constructs a Markov chain whose stationary distribution is a target density [$\pi$], using a proposal kernel [q].
+
+Let \(\pi(x)\) be the target density on a state space \(\mathcal X\), known up to a
+normalizing constant. Let \(q(x,y)\) be a proposal density: given the current state
+\(x\), a candidate \(y\) is proposed from \(q(x,y)\).
+
+\subsection{Algorithm}
+
+Initialize \(x^{(0)}\). For \(t=0,1,2,\ldots\):
+
+\begin{enumerate}
+  \item Draw a proposal
+  \[
+      y \sim q\!\left(x^{(t)},\cdot\right).
+  \]
+
+  \item Compute the Metropolis--Hastings acceptance probability
+  \[
+      \alpha\!\left(x^{(t)},y\right)
+      =
+      \min\left\{
+      1,\,
+      \frac{\pi(y)q(y,x^{(t)})}
+           {\pi(x^{(t)})q(x^{(t)},y)}
+      \right\}.
+  \]
+
+  \item Set
+  \[
+      x^{(t+1)}
+      =
+      \begin{cases}
+      y, & \text{with probability } \alpha\!\left(x^{(t)},y\right),\\[4pt]
+      x^{(t)}, & \text{with probability } 1-\alpha\!\left(x^{(t)},y\right).
+      \end{cases}
+  \]
+\end{enumerate}
+
+\subsection{Acceptance ratio}
+
+The acceptance ratio is
+\[
+r\!\left(x^{(t)},y\right)
+=
+\frac{\pi(y)q(y,x^{(t)})}
+     {\pi(x^{(t)})q(x^{(t)},y)},
+\]
+so that
+\[
+\alpha\!\left(x^{(t)},y\right)=\min\{1,r\!\left(x^{(t)},y\right)\}.
+\]
+
+Since \(\pi\) is often known only up to a constant, write
+\(\pi(x)=C\tilde\pi(x)\). The unknown constant cancels:
+\[
+\alpha\!\left(x^{(t)},y\right)
+=
+\min\left\{
+1,\,
+\frac{\tilde\pi(y)q(y,x^{(t)})}
+     {\tilde\pi(x^{(t)})q(x^{(t)},y)}
+\right\}.
+\]
+
+\subsection{Symmetric proposal}
+
+If the proposal is symmetric, i.e.
+\[
+q(x,y)=q(y,x),
+\]
+then the proposal terms cancel and
+\[
+\alpha\!\left(x^{(t)},y\right)
+=
+\min\left\{
+1,\,
+\frac{\pi(y)}{\pi(x^{(t)})}
+\right\}.
+\]
+This is the original Metropolis algorithm.
+
+\subsection{Random-walk example}
+
+A common choice is the Gaussian random-walk proposal
+\[
+q(x,y)
+=
+\mathcal N\!\left(y;\,x,\sigma^2\right),
+\]
+which is symmetric. Given \(x^{(t)}\), propose
+\[
+y=x^{(t)}+\varepsilon,
+\qquad
+\varepsilon\sim\mathcal N(0,\sigma^2),
+\]
+and accept \(y\) with probability
+\[
+\min\left\{
+1,\,
+\frac{\pi(y)}{\pi(x^{(t)})}
+\right\}.
+\]
+
+The key formula is the acceptance probability,
+\[
+a(x,y)=\min\left\{1,\frac{\pi(y)q(y,x)}{\pi(x)q(x,y)}\right\}.
+\]
+which ensures that the resulting Markov chain has [$\pi$] as its' stationary.
+
+\newpage
+
+
+
+\section{Gibbs Sampling}
+
+
+The Gibbs sampling algorithm, samples each coordinate from its' full conditional distribution, holding the remaining coordinates fixed.
+
+Let \(X=(X_1,\ldots,X_d)\) have joint density
+\[
+\pi(x_1,\ldots,x_d).
+\]
+Gibbs sampling generates a Markov chain by updating one coordinate at a time
+using its full conditional distribution.
+
+\subsection{Algorithm}
+
+Initialize
+\[
+x^{(0)}=\left(x_1^{(0)},\ldots,x_d^{(0)}\right).
+\]
+
+For iteration \(t=1,2,\ldots\), update the coordinates in order:
+
+\begin{align}
+x_1^{(t)}
+&\sim
+\pi\!\left(x_1\mid x_2^{(t-1)},x_3^{(t-1)},\ldots,x_d^{(t-1)}\right),\\[4pt]
+x_2^{(t)}
+&\sim
+\pi\!\left(x_2\mid x_1^{(t)},x_3^{(t-1)},\ldots,x_d^{(t-1)}\right),\\[4pt]
+&\vdots\\[4pt]
+x_d^{(t)}
+&\sim
+\pi\!\left(x_d\mid x_1^{(t)},x_2^{(t)},\ldots,x_{d-1}^{(t)}\right).
+\end{align}
+
+Thus, at each update, all other components are fixed at their most recent values.
+
+\subsection{General update}
+
+For coordinate \(j\),
+\[
+x_j^{(t)}
+\sim
+\pi\!\left(
+x_j\mid
+x_1^{(t)},\ldots,x_{j-1}^{(t)},
+x_{j+1}^{(t-1)},\ldots,x_d^{(t-1)}
+\right).
+\]
+
+Equivalently, define
+\[
+x_{-j}^{(t)}
+=
+\left(
+x_1^{(t)},\ldots,x_{j-1}^{(t)},
+x_{j+1}^{(t-1)},\ldots,x_d^{(t-1)}
+\right),
+\]
+then
+\[
+x_j^{(t)}
+\sim
+\pi\!\left(x_j\mid x_{-j}^{(t)}\right).
+\]
+
+\subsection{Two-variable case}
+
+For a joint density \(\pi(x,y)\), initialize \((x^{(0)},y^{(0)})\). At iteration \(t\),
+
+\begin{align}
+x^{(t)}
+&\sim
+\pi\!\left(x\mid y^{(t-1)}\right),\\[4pt]
+y^{(t)}
+&\sim
+\pi\!\left(y\mid x^{(t)}\right).
+\end{align}
+
+The sequence
+\[
+\left(x^{(0)},y^{(0)}\right),
+\left(x^{(1)},y^{(1)}\right),
+\left(x^{(2)},y^{(2)}\right),\ldots
+\]
+is a Markov chain whose stationary distribution is \(\pi(x,y)\), under standard
+regularity conditions.
+
+\subsection{Bivariate normal example}
+
+Suppose
+\[
+(X,Y)\sim\mathcal N_2\!\left(
+\begin{pmatrix}
+\mu_X\\
+\mu_Y
+\end{pmatrix},
+\begin{pmatrix}
+\sigma_X^2 & \rho\sigma_X\sigma_Y\\
+\rho\sigma_X\sigma_Y & \sigma_Y^2
+\end{pmatrix}
+\right).
+\]
+
+The full conditional distributions are
+\[
+X\mid Y=y
+\sim
+\mathcal N\!\left(
+\mu_X+\rho\frac{\sigma_X}{\sigma_Y}(y-\mu_Y),
+\,
+\sigma_X^2(1-\rho^2)
+\right),
+\]
+and
+\[
+Y\mid X=x
+\sim
+\mathcal N\!\left(
+\mu_Y+\rho\frac{\sigma_Y}{\sigma_X}(x-\mu_X),
+\,
+\sigma_Y^2(1-\rho^2)
+\right).
+\]
+
+A Gibbs sampler alternates between these two conditional draws.
+
+\subsection{Why it works}
+
+Gibbs sampling is a special case of Metropolis--Hastings in which every proposed
+move is accepted. The transition kernel is
+\[
+K(x,\mathrm dx')
+=
+\prod_{j=1}^d
+\pi\!\left(\mathrm dx_j'\mid x_1',\ldots,x_{j-1}',x_{j+1},\ldots,x_d\right),
+\]
+and it leaves the target distribution \(\pi\) invariant.
+
+The central update rule is $x_j^{(t)}$ $\approx$ $\pi$ $\left( x_j \vert x_{-j}^(t) \right)$, where [$x_{-j}^{(t)}$] contains the newest values of coordinates before [j] and the previous values of coordinates after [j].
+
+\newpage
+
+\section{Langevin Dynamics}
+
+\begin{frame}{Langevin Dynamics}
+  \begin{itemize}
+    \item Langevin dynamics describes the motion of a particle subject to deterministic forces, friction, and random thermal noise.
+    \item It is a stochastic extension of Newtonian mechanics.
+    \item It models systems coupled to a heat bath or solvent.
+    \item It is widely used in molecular dynamics, soft matter, statistical mechanics, and nonequilibrium physics.
+  \end{itemize}
+\end{frame}
+
+\subsection{Physical Model}
+
+\begin{frame}{Physical Picture}
+  Consider a particle of mass \(m\) moving in a potential \(U(x)\).
+
+  The particle experiences:
+  \begin{itemize}
+    \item A deterministic force from the potential:
+    \[
+      F_{\mathrm{cons}}(x)=-\frac{dU}{dx}.
+    \]
+    \item A frictional drag force proportional to velocity:
+    \[
+      F_{\mathrm{friction}}=-\gamma v.
+    \]
+    \item Random thermal forces from collisions with solvent molecules:
+    \[
+      F_{\mathrm{noise}}=\sqrt{2\gamma k_BT}\,\xi(t).
+    \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Langevin Equation}
+  Newton's equation with friction and noise gives
+  \[
+    m\frac{dv}{dt}
+    =
+    -\frac{dU}{dx}
+    -
+    \gamma v
+    +
+    \sqrt{2\gamma k_BT}\,\xi(t).
+  \]
+
+  Here:
+  \begin{itemize}
+    \item \(x\) is position.
+    \item \(v=dx/dt\) is velocity.
+    \item \(\gamma\) is the friction coefficient.
+    \item \(k_B\) is Boltzmanns' constant.
+    \item \(T\) is temperature.
+    \item \(\xi(t)\) is Gaussian white noise.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Gaussian White Noise}
+  The random force \(\xi(t)\) satisfies
+  \[
+    \langle\xi(t)\rangle=0,
+  \]
+  and
+  \[
+    \langle\xi(t)\xi(t')\rangle
+    =
+    \delta(t-t').
+  \]
+
+  \begin{itemize}
+    \item The noise has zero mean.
+    \item It is uncorrelated at different times.
+    \item It represents rapid collisions with many small solvent particles.
+    \item Its strength is fixed by the fluctuation--dissipation theorem.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fluctuation--Dissipation Theorem}
+  The noise amplitude is not arbitrary. It is related to friction and temperature by
+  \[
+    \langle\xi(t)\xi(t')\rangle
+    =
+    \delta(t-t').
+  \]
+
+  For the Langevin equation,
+  \[
+    F_{\mathrm{noise}}
+    =
+    \sqrt{2\gamma k_BT}\,\xi(t).
+  \]
+
+  Therefore,
+  \[
+    \left\langle
+      F_{\mathrm{noise}}(t)
+      F_{\mathrm{noise}}(t')
+    \right\rangle
+    =
+    2\gamma k_BT\,\delta(t-t').
+  \]
+
+  \begin{itemize}
+    \item Friction dissipates energy.
+    \item Thermal noise injects energy.
+    \item Their balance maintains thermal equilibrium.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Underdamped and Overdamped Limits}
+  The full Langevin equation is underdamped:
+  \[
+    m\frac{dv}{dt}
+    =
+    -\frac{dU}{dx}
+    -
+    \gamma v
+    +
+    \sqrt{2\gamma k_BT}\,\xi(t).
+  \]
+
+  When friction is very large and inertia is negligible, \(m\,dv/dt\approx0\). This gives the overdamped Langevin equation:
+  \[
+    \gamma\frac{dx}{dt}
+    =
+    -\frac{dU}{dx}
+    +
+    \sqrt{2\gamma k_BT}\,\xi(t).
+  \]
+
+  \begin{itemize}
+    \item The underdamped form includes inertial effects.
+    \item The overdamped form is appropriate for strongly damped motion in a viscous medium.
+  \end{itemize}
+\end{frame}
+
+\subsection{Stochastic Form}
+
+\begin{frame}{Overdamped Stochastic Differential Equation(SDE)}
+  The overdamped Langevin equation can be written as
+  \[
+    dx
+    =
+    -\frac{1}{\gamma}
+    \frac{dU}{dx}\,dt
+    +
+    \sqrt{\frac{2k_BT}{\gamma}}\,dW_t.
+  \]
+
+  In the standard SDE form,
+  \[
+    dx=a(x)\,dt+b\,dW_t,
+  \]
+  where
+  \[
+    a(x)
+    =
+    -\frac{1}{\gamma}
+    \frac{dU}{dx},
+    \qquad
+    b=\sqrt{\frac{2k_BT}{\gamma}}.
+  \]
+
+  \begin{itemize}
+    \item The deterministic drift pushes the particle downhill in potential energy.
+    \item The stochastic term represents thermal agitation.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Free Particle}
+  For a free particle, \(U(x)=0\). The underdamped Langevin equation becomes
+  \[
+    m\frac{dv}{dt}
+    =
+    -\gamma v
+    +
+    \sqrt{2\gamma k_BT}\,\xi(t).
+  \]
+
+  The velocity relaxes toward thermal equilibrium with characteristic time
+  \[
+    \tau=\frac{m}{\gamma}.
+  \]
+
+  At long times,
+  \[
+    \langle v(t)\rangle\rightarrow0,
+  \]
+  and
+  \[
+    \langle v^2(t)\rangle
+    \rightarrow
+    \frac{k_BT}{m}.
+  \]
+
+  This is the equipartition result.
+\end{frame}
+
+\begin{frame}{Harmonic Potential}
+  For a harmonic potential,
+  \[
+    U(x)=\frac{1}{2}kx^2.
+  \]
+
+  The restoring force is
+  \[
+    F_{\mathrm{cons}}=-kx.
+  \]
+
+  The Langevin equation becomes
+  \[
+    m\frac{dv}{dt}
+    =
+    -kx-\gamma v
+    +
+    \sqrt{2\gamma k_BT}\,\xi(t).
+  \]
+\end{frame}
+
+  \begin{itemize}
+    \item The particle oscillates while experiencing damping and random noise.
+    \item At equilibrium, the position distribution is Gaussian:
+    \[
+      p(x)
+      \propto
+      \exp\left(
+        -\frac{kx^2}{2k_BT}
+      \right).
+    \]
+  \end{itemize}
+
+\newpage
+
+\section{Stochastic Differential Equations}
+
+\begin{frame}{Stochastic Differential Equations}
+  \begin{itemize}
+    \item A stochastic differential equation describes a system evolving deterministically while being driven by random fluctuations.
+    \item It combines ordinary differential equations with a noise term.
+    \item SDEs model diffusion, thermal motion, chemical reactions, population dynamics, financial processes, and noisy physical systems.
+    \item The solution is generally a random process rather than a single deterministic function.
+  \end{itemize}
+\end{frame}
+
+\subsection{Mathematical Foundations}
+
+\begin{frame}{General Form of an SDE}
+  A common form of a stochastic differential equation is
+  \[
+    dX_t
+    =
+    a(X_t,t)\,dt
+    +
+    b(X_t,t)\,dW_t.
+  \]
+
+  Here:
+  \begin{itemize}
+    \item \(X_t\) is the stochastic state variable at time \(t\).
+    \item \(a(X_t,t)\) is the drift coefficient.
+    \item \(b(X_t,t)\) is the diffusion or noise coefficient.
+    \item \(W_t\) is a Wiener process, also called Brownian motion.
+  \end{itemize}
+
+  The first term represents deterministic evolution; the second represents random fluctuations.
+\end{frame}
+
+\begin{frame}{Wiener Process}
+  A standard Wiener process \(W_t\) satisfies:
+  \begin{itemize}
+    \item \(W_0=0\).
+    \item Increments are independent:
+    \[
+      W_{t+\Delta t}-W_t
+      \perp
+      \mathcal{F}_t.
+    \]
+    \item Increments are Gaussian:
+    \[
+      W_{t+\Delta t}-W_t
+      \sim
+      \mathcal{N}(0,\Delta t).
+    \]
+    \item Paths are continuous but nowhere differentiable.
+  \end{itemize}
+
+  In discrete time,
+  \[
+    \Delta W_n
+    =
+    W_{t_{n+1}}-W_{t_n}
+    =
+    \sqrt{\Delta t}\,\xi_n,
+  \]
+  where \(\xi_n\sim\mathcal{N}(0,1)\).
+\end{frame}
+
+\begin{frame}{Drift and Diffusion}
+  The drift term determines the average tendency of the system:
+  \[
+    a(X_t,t)\,dt.
+  \]
+
+  The diffusion term determines the strength and structure of random fluctuations:
+  \[
+    b(X_t,t)\,dW_t.
+  \]
+
+  \begin{itemize}
+    \item If \(b=0\), the SDE reduces to an ordinary differential equation.
+    \item If \(a=0\), the process is purely diffusive.
+    \item In multiple dimensions, \(a\) is a vector and \(b\) is generally a matrix.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Itô and Stratonovich Interpretations}
+  The stochastic integral may be interpreted in different ways.
+
+  The Itô interpretation uses the left endpoint of each time interval:
+  \[
+    \int_0^t b(X_s,s)\,dW_s.
+  \]
+
+  The Stratonovich interpretation uses the midpoint:
+  \[
+    \int_0^t b(X_s,s)\circ dW_s.
+  \]
+
+  \begin{itemize}
+    \item Itô calculus is natural for finance, Markov processes, and many numerical schemes.
+    \item Stratonovich calculus preserves ordinary chain-rule calculus.
+    \item The two interpretations are related by a drift correction.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Itô Formula}
+  For a function \(f(X_t,t)\), the Itô formula is
+  \[
+    df
+    =
+    \left(
+      \frac{\partial f}{\partial t}
+      +
+      a\frac{\partial f}{\partial x}
+      +
+      \frac{1}{2}b^2
+      \frac{\partial^2 f}{\partial x^2}
+    \right)dt
+    +
+    b\frac{\partial f}{\partial x}\,dW_t.
+  \]
+
+  \begin{itemize}
+    \item The extra second-derivative term distinguishes Itô calculus from ordinary calculus.
+    \item It arises because \((dW_t)^2=dt\) in the mean-square sense.
+    \item It is essential for deriving Fokker--Planck equations and transformation rules.
+  \end{itemize}
+\end{frame}
+
+\subsection{Important SDEs}
+
+\begin{frame}{Brownian Motion}
+  Brownian motion is described by
+  \[
+    dX_t=dW_t.
+  \]
+
+  Its solution is
+  \[
+    X_t=X_0+W_t.
+  \]
+
+  \begin{itemize}
+    \item The mean displacement is zero:
+    \[
+      \langle X_t\rangle=X_0.
+    \]
+    \item The mean-square displacement grows linearly:
+    \[
+      \langle(X_t-X_0)^2\rangle=t.
+    \]
+    \item This is the mathematical model of diffusion and random motion.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Geometric Brownian Motion}
+  Geometric Brownian motion satisfies
+  \[
+    dX_t
+    =
+    \mu X_t\,dt
+    +
+    \sigma X_t\,dW_t.
+  \]
+
+  Its exact solution is
+  \[
+    X_t
+    =
+    X_0
+    \exp\left[
+      \left(\mu-\frac{1}{2}\sigma^2\right)t
+      +
+      \sigma W_t
+    \right].
+  \]
+
+  \begin{itemize}
+    \item It models multiplicative noise and positive-valued processes.
+    \item It is used in population dynamics, growth models, and financial mathematics.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ornstein--Uhlenbeck Process}
+  The Ornstein--Uhlenbeck process satisfies
+  \[
+    dX_t
+    =
+    -\theta X_t\,dt
+    +
+    \sigma\,dW_t,
+  \]
+  where \(\theta>0\).
+
+  Its solution is
+  \[
+    X_t
+    =
+    X_0e^{-\theta t}
+    +
+    \sigma
+    \int_0^t e^{-\theta(t-s)}\,dW_s.
+  \]
+
+  \begin{itemize}
+    \item The process is mean-reverting toward zero.
+    \item Its stationary variance is
+    \[
+      \operatorname{Var}(X_\infty)
+      =
+      \frac{\sigma^2}{2\theta}.
+    \]
+    \item It models thermal noise, velocity fluctuations, and relaxation processes.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Langevin Equation}
+  The Langevin equation for a particle with velocity \(v\) is
+  \[
+    m\frac{dv}{dt}
+    =
+    -\gamma v
+    +
+    \sqrt{2\gamma k_BT}\,\xi(t),
+  \]
+  where \(\xi(t)\) is Gaussian white noise satisfying
+  \[
+    \langle\xi(t)\rangle=0,
+    \qquad
+    \langle\xi(t)\xi(t')\rangle
+    =
+    \delta(t-t').
+  \]
+
+  In SDE form,
+  \[
+    dv
+    =
+    -\frac{\gamma}{m}v\,dt
+    +
+    \sqrt{\frac{2\gamma k_BT}{m^2}}\,dW_t.
+  \]
+
+  \begin{itemize}
+    \item It describes Brownian motion with friction and thermal noise.
+    \item It is a foundation of molecular dynamics and nonequilibrium statistical mechanics.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fokker--Planck Equation}
+  The probability density \(p(x,t)\) for the SDE
+  \[
+    dX_t=a(X_t,t)\,dt+b(X_t,t)\,dW_t
+  \]
+  evolves according to the Fokker--Planck equation:
+  \[
+    \frac{\partial p}{\partial t}
+    =
+    -
+    \frac{\partial}{\partial x}
+    \left[a(x,t)p(x,t)\right]
+    +
+    \frac{1}{2}
+    \frac{\partial^2}{\partial x^2}
+    \left[
+      b^2(x,t)p(x,t)
+    \right].
+  \]
+
+  \begin{itemize}
+    \item It describes the evolution of the full probability distribution.
+    \item It connects individual stochastic trajectories to ensemble behavior.
+  \end{itemize}
+\end{frame}
+
+\subsection{Numerical Methods}
+
+\begin{frame}{Euler--Maruyama Method}
+  The simplest numerical method for an SDE is the Euler--Maruyama method.
+
+  For
+  \[
+    dX_t=a(X_t,t)\,dt+b(X_t,t)\,dW_t,
+  \]
+  use
+  \[
+    X_{n+1}
+    =
+    X_n
+    +
+    a(X_n,t_n)\Delta t
+    +
+    b(X_n,t_n)\Delta W_n.
+  \]
+
+  Here,
+  \[
+    \Delta W_n
+    =
+    \sqrt{\Delta t}\,\xi_n,
+    \qquad
+    \xi_n\sim\mathcal{N}(0,1).
+  \]
+
+  \begin{itemize}
+    \item It is explicit and easy to implement.
+    \item Its strong convergence order is \(1/2\).
+    \item Its weak convergence order is \(1\).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Milstein Method}
+  The Milstein method improves accuracy by including an additional stochastic term:
+  \[
+    \begin{aligned}
+      X_{n+1}
+      &=
+      X_n
+      +
+      a(X_n,t_n)\Delta t
+      +
+      b(X_n,t_n)\Delta W_n \\
+      &\quad+
+      \frac{1}{2}
+      b(X_n,t_n)b'(X_n,t_n)
+      \left[
+        (\Delta W_n)^2-\Delta t
+      \right].
+    \end{aligned}
+  \]
+
+  \begin{itemize}
+    \item It has strong convergence order \(1\) for sufficiently smooth coefficients.
+    \item It requires the derivative \(b'(x)\).
+    \item It is more accurate than Euler--Maruyama for the same time step.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Strong and Weak Convergence}
+  Strong convergence measures the accuracy of individual trajectories:
+  \[
+    \left\langle
+      |X_T-X_T^{\Delta t}|
+    \right\rangle
+    =
+    \mathcal{O}\left((\Delta t)^\alpha\right).
+  \]
+
+  Weak convergence measures the accuracy of expectation values:
+  \[
+    \left|
+      \langle f(X_T)\rangle
+      -
+      \langle f(X_T^{\Delta t})\rangle
+    \right|
+    =
+    \mathcal{O}\left((\Delta t)^\beta\right).
+  \]
+
+  \begin{itemize}
+    \item Euler--Maruyama: \(\alpha=1/2\), \(\beta=1\).
+    \item Milstein: \(\alpha=1\), typically \(\beta=1\).
+    \item Strong accuracy is needed for pathwise simulations; weak accuracy is often sufficient for averages.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Stability and Time Step}
+  \begin{itemize}
+    \item The time step \(\Delta t\) must resolve both deterministic dynamics and noise.
+    \item Explicit methods may become unstable for stiff systems.
+    \item Implicit methods improve stability but are more expensive.
+    \item Multiple independent noise realizations are needed to estimate averages and uncertainty.
+    \item The same random numbers should be reused when comparing different numerical schemes or parameters.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Euler--Maruyama Algorithm}
+  \begin{algorithmic}[1]
+    \State Set initial condition \(X_0\)
+    \State Choose time step \(\Delta t\)
+    \State Set \(t_0=0\)
+    \For{\(n=0\) to \(N-1\)}
+      \State Generate \(\xi_n\sim\mathcal{N}(0,1)\)
+      \State Compute \(\Delta W_n=\sqrt{\Delta t}\xi_n\)
+      \State Update
+      \[
+        X_{n+1}
+        =
+        X_n
+        +
+        a(X_n,t_n)\Delta t
+        +
+        b(X_n,t_n)\Delta W_n
+      \]
+      \State Set \(t_{n+1}=t_n+\Delta t\)
+    \EndFor
+    \State Return trajectory \(\{X_n\}\)
+  \end{algorithmic}
+\end{frame}
+
+\begin{frame}{SDE Simulation Workflow}
+  \centering
+  \begin{tikzpicture}[
+    node distance=7mm and 8mm,
+    box/.style={
+      draw, rounded corners, align=center,
+      minimum width=30mm, minimum height=9mm,
+      fill=blue!10
+    },
+    arrow/.style={-{Stealth[length=2mm]}, thick}
+  ]
+    \node[box] (model) {Define SDE\\\(dX_t=a\,dt+b\,dW_t\)};
+    \node[box, right=of model] (initial) {Set initial\\condition \(X_0\)};
+    \node[box, right=of initial] (noise) {Generate Wiener\\increments};
+    \node[box, below=of noise] (update) {Apply numerical\\integrator};
+    \node[box, left=of update] (ensemble) {Repeat for many\\noise realizations};
+    \node[box, left=of ensemble] (analysis) {Compute averages,\\variances, distributions};
+    \node[box, below=of analysis] (validation) {Check convergence\\and uncertainty};
+
+    \draw[arrow] (model) -- (initial);
+    \draw[arrow] (initial) -- (noise);
+    \draw[arrow] (noise) -- (update);
+    \draw[arrow] (update) -- (ensemble);
+    \draw[arrow] (ensemble) -- (analysis);
+    \draw[arrow] (analysis) -- (validation);
+    \draw[arrow, dashed] (validation) to[bend left=25] (model);
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Applications}
+  \begin{itemize}
+    \item Brownian motion and particle diffusion.
+    \item Molecular dynamics with thermostat noise.
+    \item Chemical reaction kinetics and population dynamics.
+    \item Noise-driven electronic circuits and lasers.
+    \item Climate and geophysical fluid dynamics.
+    \item Financial modeling and risk analysis.
+    \item Bayesian filtering, data assimilation, and uncertainty quantification.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Summary}
+  \begin{itemize}
+    \item SDEs combine deterministic dynamics with random noise.
+    \item The Wiener process provides the mathematical model of Brownian noise.
+    \item Drift controls average motion; diffusion controls fluctuations.
+    \item Euler--Maruyama and Milstein methods are fundamental numerical integrators.
+    \item Fokker--Planck equations describe the evolution of probability distributions.
+    \item Reliable simulations require convergence tests, stable time stepping, and ensemble averaging.
+  \end{itemize}
+\end{frame}
+
+\newpage
+
+\section{Bayesian Inference and Parameter Estimation}
+
+\begin{frame}{Bayesian Inference and Parameter Estimation}
+  \begin{itemize}
+    \item Bayesian inference updates knowledge about unknown parameters using data and a probability model.
+    \item It combines prior information with observational evidence.
+    \item The result is a posterior probability distribution, rather than a single estimated value.
+    \item It is widely used in physics for model calibration, data analysis, uncertainty quantification, and inverse problems.
+  \end{itemize}
+\end{frame}
+
+\subsection{Bayesian Framework}
+
+\begin{frame}{Bayes' Theorem}
+  Let \(\theta\) represent unknown model parameters and \(\mathbf{D}\) represent observed data.
+
+  Bayes' theorem states
+  \[
+    p(\theta|\mathbf{D})
+    =
+    \frac{
+      p(\mathbf{D}|\theta)p(\theta)
+    }{
+      p(\mathbf{D})
+    }.
+  \]
+
+  \begin{itemize}
+    \item \(p(\theta|\mathbf{D})\) is the posterior distribution.
+    \item \(p(\mathbf{D}|\theta)\) is the likelihood.
+    \item \(p(\theta)\) is the prior distribution.
+    \item \(p(\mathbf{D})\) is the evidence or marginal likelihood.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Interpreting Bayes' Theorem}
+  The posterior can be written as
+  \[
+    p(\theta|\mathbf{D})
+    \propto
+    p(\mathbf{D}|\theta)p(\theta).
+  \]
+
+  \begin{itemize}
+    \item The prior encodes knowledge before observing data.
+    \item The likelihood measures how well a parameter set explains the data.
+    \item The posterior combines both sources of information.
+    \item The evidence is often treated as a normalization constant:
+    \[
+      p(\mathbf{D})
+      =
+      \int p(\mathbf{D}|\theta)p(\theta)\,d\theta.
+    \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Prior Distributions}
+  A prior distribution represents beliefs or knowledge about parameters before data are observed.
+
+  Common choices include:
+  \begin{itemize}
+    \item Uniform prior: little prior preference within a finite range.
+    \item Gaussian prior: parameters expected near a known mean.
+    \item Exponential prior: positive parameters such as rates or scales.
+    \item Gamma prior: positive scale or rate parameters.
+    \item Beta prior: probabilities constrained to \([0,1]\).
+    \item Jeffreys prior: objective prior based on parameterization invariance.
+  \end{itemize}
+
+  \begin{itemize}
+    \item Priors should be physically meaningful and clearly documented.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Likelihood Function}
+  The likelihood is the probability of the observed data given parameters:
+  \[
+    \mathcal{L}(\theta)
+    =
+    p(\mathbf{D}|\theta).
+  \]
+
+  For independent measurements \(d_i\) with Gaussian errors \(\sigma_i\),
+  \[
+    p(\mathbf{D}|\theta)
+    =
+    \prod_{i=1}^{N}
+    \frac{1}{\sqrt{2\pi\sigma_i^2}}
+    \exp\left[
+      -\frac{
+        \left(d_i-f(x_i;\theta)\right)^2
+      }{
+        2\sigma_i^2
+      }
+    \right].
+  \]
+
+  Here, \(f(x_i;\theta)\) is the model prediction.
+\end{frame}
+
+\begin{frame}{Log-Likelihood}
+  It is usually more convenient to work with the logarithm of the likelihood:
+  \[
+    \ln\mathcal{L}(\theta)
+    =
+    \ln p(\mathbf{D}|\theta).
+  \]
+
+  For independent Gaussian errors,
+  \[
+    \ln\mathcal{L}(\theta)
+    =
+    -\frac{1}{2}
+    \sum_{i=1}^{N}
+    \left[
+      \frac{
+        \left(d_i-f(x_i;\theta)\right)^2
+      }{
+        \sigma_i^2
+      }
+      +
+      \ln(2\pi\sigma_i^2)
+    \right].
+  \]
+
+  \begin{itemize}
+    \item Maximizing the likelihood is equivalent to minimizing the negative log-likelihood.
+    \item For known Gaussian errors, this is closely related to least-squares fitting.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Posterior Distribution}
+  The posterior is
+  \[
+    p(\theta|\mathbf{D})
+    \propto
+    \mathcal{L}(\theta)p(\theta).
+  \]
+
+  In logarithmic form,
+  \[
+    \ln p(\theta|\mathbf{D})
+    =
+    \ln\mathcal{L}(\theta)
+    +
+    \ln p(\theta)
+    +
+    \text{constant}.
+  \]
+
+  \begin{itemize}
+    \item The posterior contains all Bayesian information about the parameters.
+    \item It can be summarized by a mode, mean, variance, or credible interval.
+    \item It is often high-dimensional and sampled using MCMC.
+  \end{itemize}
+\end{frame}
+
+\subsection{Parameter Estimation}
+
+\begin{frame}{Point Estimates}
+  Common point estimates are:
+  \begin{itemize}
+    \item Posterior mean:
+    \[
+      \langle\theta\rangle
+      =
+      \int\theta p(\theta|\mathbf{D})\,d\theta.
+    \]
+    \item Posterior median: value \(m\) such that
+    \[
+      P(\theta\le m|\mathbf{D})=0.5.
+    \]
+    \item Maximum a posteriori estimate:
+    \[
+      \theta_{\mathrm{MAP}}
+      =
+      \operatorname*{arg\,max}_\theta
+      p(\theta|\mathbf{D}).
+    \]
+    \item Maximum-likelihood estimate:
+    \[
+      \theta_{\mathrm{MLE}}
+      =
+      \operatorname*{arg\,max}_\theta
+      p(\mathbf{D}|\theta).
+    \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Maximum Likelihood and MAP}
+  The maximum-likelihood estimate uses only the likelihood:
+  \[
+    \theta_{\mathrm{MLE}}
+    =
+    \operatorname*{arg\,max}_\theta
+    p(\mathbf{D}|\theta).
+  \]
+
+  The maximum a posteriori estimate includes the prior:
+  \[
+    \theta_{\mathrm{MAP}}
+    =
+    \operatorname*{arg\,max}_\theta
+    p(\mathbf{D}|\theta)p(\theta).
+  \]
+
+  \begin{itemize}
+    \item With a uniform prior, MAP and MLE coincide.
+    \item A Gaussian prior adds a regularization term to the optimization problem.
+    \item Bayesian inference provides a full distribution, not only a point estimate.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Credible Intervals}
+  A \(100(1-\alpha)\%\) credible interval contains parameter values with posterior probability \(1-\alpha\).
+
+  For a central credible interval,
+  \[
+    P\left(
+      \theta_L\le\theta\le\theta_U
+      \mid\mathbf{D}
+    \right)
+    =
+    1-\alpha.
+  \]
+
+  For a \(95\%\) credible interval,
+  \[
+    \alpha=0.05.
+  \]
+
+  \begin{itemize}
+    \item A credible interval is a statement about the parameter given the data and prior.
+    \item It differs conceptually from a frequentist confidence interval.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Uncertainty Propagation}
+  If \(y=g(\theta)\), the posterior distribution of \(y\) is obtained by transforming samples of \(\theta\).
+
+  Given samples
+  \[
+    \theta^{(1)},\theta^{(2)},\ldots,\theta^{(N)},
+  \]
+  compute
+  \[
+    y^{(i)}=g\left(\theta^{(i)}\right).
+  \]
+
+  Then estimate
+  \[
+    \langle y\rangle
+    \approx
+    \frac{1}{N}\sum_{i=1}^{N}y^{(i)}.
+  \]
+
+  \begin{itemize}
+    \item This naturally propagates nonlinear parameter uncertainty.
+    \item It is especially useful for simulation-based physical models.
+  \end{itemize}
+\end{frame}
+
+\subsection{Computational Methods}
+
+\begin{frame}{Analytical Bayes}
+  For some simple models, the posterior can be calculated analytically.
+
+  For a Gaussian likelihood and Gaussian prior,
+  \[
+    p(\theta)
+    =
+    \mathcal{N}(\mu_0,\sigma_0^2),
+  \]
+  and
+  \[
+    p(d|\theta)
+    =
+    \mathcal{N}(\theta,\sigma^2),
+  \]
+  the posterior is also Gaussian:
+  \[
+    p(\theta|d)
+    =
+    \mathcal{N}(\mu_N,\sigma_N^2).
+  \]
+
+  \begin{itemize}
+    \item Such cases are called conjugate models.
+    \item Most realistic physics problems require numerical methods.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Markov-Chain Monte Carlo}
+  MCMC samples from the posterior distribution:
+  \[
+    p(\theta|\mathbf{D})
+    \propto
+    \mathcal{L}(\theta)p(\theta).
+  \]
+
+  In the Metropolis--Hastings algorithm, propose a new parameter vector \(\theta'\) and accept it with probability
+  \[
+    A(\theta\to\theta')
+    =
+    \min\left[
+      1,
+      \frac{
+        p(\theta'|\mathbf{D})q(\theta|\theta')
+      }{
+        p(\theta|\mathbf{D})q(\theta'|\theta)
+      }
+    \right].
+  \]
+
+  For a symmetric proposal,
+  \[
+    A(\theta\to\theta')
+    =
+    \min\left[
+      1,
+      \frac{
+        \mathcal{L}(\theta')p(\theta')
+      }{
+        \mathcal{L}(\theta)p(\theta)
+      }
+    \right].
+  \]
+\end{frame}
+
+\begin{frame}{Bayesian MCMC Algorithm}
+  \begin{algorithmic}[1]
+    \State Choose an initial parameter vector \(\theta_0\)
+    \State Choose a prior \(p(\theta)\)
+    \State Choose a likelihood \(p(\mathbf{D}|\theta)\)
+    \State Choose a proposal distribution \(q(\theta'|\theta)\)
+    \For{\(n=0\) to \(N-1\)}
+      \State Propose \(\theta'\sim q(\theta'|\theta_n)\)
+      \State Compute
+      \[
+        \log\alpha
+        =
+        \ln\mathcal{L}(\theta')
+        +
+        \ln p(\theta')
+        -
+        \ln\mathcal{L}(\theta_n)
+        -
+        \ln p(\theta_n)
+      \]
+      \State Generate \(u\sim U(0,1)\)
+      \If{\(\ln u\le\log\alpha\)}
+        \State \(\theta_{n+1}=\theta'\)
+      \Else
+        \State \(\theta_{n+1}=\theta_n\)
+      \EndIf
+    \EndFor
+    \State Return posterior samples \(\{\theta_n\}\)
+  \end{algorithmic}
+\end{frame}
+
+\begin{frame}{Bayesian Workflow}
+  \centering
+  \begin{tikzpicture}[
+    node distance=7mm and 8mm,
+    box/.style={
+      draw, rounded corners, align=center,
+      minimum width=30mm, minimum height=9mm,
+      fill=blue!10
+    },
+    arrow/.style={-{Stealth[length=2mm]}, thick}
+  ]
+    \node[box] (model) {Define physical\\model \(f(x;\theta)\)};
+    \node[box, right=of model] (prior) {Choose\\prior \(p(\theta)\)};
+    \node[box, right=of prior] (likelihood) {Define likelihood\\\(p(\mathbf{D}|\theta)\)};
+    \node[box, below=of likelihood] (posterior) {Compute posterior\\\(p(\theta|\mathbf{D})\)};
+    \node[box, left=of posterior] (sampling) {Sample posterior\\using MCMC};
+    \node[box, left=of sampling] (inference) {Estimate parameters\\and uncertainties};
+    \node[box, below=of inference] (validation) {Validate model\\and predictions};
+
+    \draw[arrow] (model) -- (prior);
+    \draw[arrow] (prior) -- (likelihood);
+    \draw[arrow] (likelihood) -- (posterior);
+    \draw[arrow] (posterior) -- (sampling);
+    \draw[arrow] (sampling) -- (inference);
+    \draw[arrow] (inference) -- (validation);
+    \draw[arrow, dashed] (validation) to[bend left=25] (model);
+  \end{tikzpicture}
+\end{frame}
+
+\subsection{Model Comparison}
+
+\begin{frame}{Model Evidence}
+  For a model \(\mathcal{M}\), the evidence is
+  \[
+    p(\mathbf{D}|\mathcal{M})
+    =
+    \int
+    p(\mathbf{D}|\theta,\mathcal{M})
+    p(\theta|\mathcal{M})
+    \,d\theta.
+  \]
+
+  The posterior probability of a model is
+  \[
+    p(\mathcal{M}|\mathbf{D})
+    \propto
+    p(\mathbf{D}|\mathcal{M})p(\mathcal{M}).
+  \]
+
+  \begin{itemize}
+    \item The evidence rewards models that explain the data well.
+    \item It penalizes overly complex models through Occam's factor.
+    \item It is often difficult to compute directly.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes Factor}
+  The Bayes factor comparing two models \(\mathcal{M}_1\) and \(\mathcal{M}_2\) is
+  \[
+    K
+    =
+    \frac{
+      p(\mathbf{D}|\mathcal{M}_1)
+    }{
+      p(\mathbf{D}|\mathcal{M}_2)
+    }.
+  \]
+
+  \begin{itemize}
+    \item \(K>1\): data favor model \(\mathcal{M}_1\).
+    \item \(K<1\): data favor model \(\mathcal{M}_2\).
+    \item Larger \(| \ln K |\) indicates stronger evidence.
+  \end{itemize}
+
+  \begin{itemize}
+    \item Bayes factors compare models, while posterior distributions quantify uncertainty within a model.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Example: Linear Model}
+  Consider the model
+  \[
+    d_i=mx_i+c+\epsilon_i,
+  \]
+  where
+  \[
+    \epsilon_i\sim\mathcal{N}(0,\sigma^2).
+  \]
+
+  The parameters are
+  \[
+    \theta=(m,c).
+  \]
+
+  The likelihood is
+  \[
+    p(\mathbf{D}|m,c)
+    \propto
+    \exp\left[
+      -\frac{1}{2\sigma^2}
+      \sum_{i=1}^{N}
+      \left(d_i-mx_i-c\right)^2
+    \right].
+  \]
+
+  With priors \(p(m)\) and \(p(c)\), the posterior is
+  \[
+    p(m,c|\mathbf{D})
+    \propto
+    p(\mathbf{D}|m,c)p(m)p(c).
+  \]
+\end{frame}
+
+\begin{frame}{Posterior Surface}
+  \centering
+\begin{tikzpicture}[scale=0.85]
+    \draw[->] (0,0) -- (7,0) node[right] {$m$};
+    \draw[->] (0,0) -- (0,4.5) node[above] {$c$};
+
+    \draw[fill=red!8,  draw=red!60] (3.5,2.2) ellipse (2.8 and 1.54);
+    \draw[fill=red!15, draw=red!60] (3.5,2.2) ellipse (2.1 and 1.155);
+    \draw[fill=red!25, draw=red!60] (3.5,2.2) ellipse (1.4 and 0.77);
+    \draw[fill=red!40, draw=red!60] (3.5,2.2) ellipse (0.7 and 0.385);
+
+    \fill[blue] (3.5,2.2) circle (2.5pt);
+    \node[blue, above right] at (3.6,2.3) {MAP estimate};
+
+    \node[red!60] at (5.8,3.5) {high posterior};
+    \node[red!60] at (1.5,0.8) {low posterior};
+\end{tikzpicture}
+
+
+  \vspace{2mm}
+  The posterior may be narrow, broad, skewed, or multimodal.
+\end{frame}
+
+\begin{frame}{Summary}
+  \begin{itemize}
+    \item Bayesian inference combines prior knowledge with data through Bayes' theorem.
+    \item The likelihood measures agreement between a model and observations.
+    \item The posterior distribution quantifies uncertainty in parameters.
+    \item Point estimates include the posterior mean, median, Maximum a posterior(MAP), and Maximum Likelihood Estimate(MLE).
+    \item MCMC is the standard method for sampling complex posteriors.
+    \item Bayesian methods support uncertainty propagation, model comparison, and inverse problems.
+  \end{itemize}
+\end{frame}
+
+\newpage
+
+\chapter{Problems}
+
+\noindent
+
 1. Using the effective Hydrogenic model, construct spherically averaged densities containing 28, 92, and 94 electrons. Verify that each density integrates to the requested Electron number. \\
 
 For further details, study: \\
@@ -10059,12 +12555,6 @@ In a self-consistent atomic calculation, the electron density determines \(V_{\m
 
 
 
-
-
-
-
-
-
 \printindex
-%\label{sec:index}
+\label{sec:index}
 \end{document}
