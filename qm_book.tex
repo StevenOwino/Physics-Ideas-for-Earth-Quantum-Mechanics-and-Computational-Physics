@@ -578,6 +578,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Maximum a Posterior of a Bayesian Inference
 \item Numerovs' solution of Poisons' Equation 
 \item Illustration of the motion of a Double Pendulum
+\item Graph of the four Harmonic Oscillator response curves
 
 \end{enumerate}
 
@@ -1697,7 +1698,7 @@ $\frac{\partial}{\partial(t)}$ $\rho (x,t)$ + $\nabla$ $\cdot$ $\mathbf J$ (x,t)
 $\rho$ (x,t) = | $\Psi (x,t) |^2$,  \\
 $\mathbf J$ (x,t) = $\frac{\hbar} {m}$ Im $[\psi^*$ $\nabla \psi]$. \\
 
-$\bullet$ (4) Fourier transforms:\\
+$\bullet$ (4) Fourier transforms:  \\
 $\psi x$ = $\frac{1}{\sqrt2 \pi}$ $\int{dk}$ $\phi$ (k) $e^{ikx}$, $\Phi (k)$ = $\frac{1}{\sqrt2\pi}$ $\int{dx}$ $\Psi$ (x) $e^{-ikx}$, \\
 $\int${dx}| $\Psi (x) |^2$ = $\int {dk}$ | $\Phi k |^2$. \\
 $\frac{1}{2\pi}$ $\int_ {-\infty}^{\infty}$ $e^{ikx}{dx}$ = $\delta(k)$, \\
@@ -2568,7 +2569,7 @@ The Decay Width is then, $\Gamma = \hbar W$.  \\
 
     4. Spectral Line Shape (Lorentzian)  \\
 
-Because the State has a Finite Lifetime $\tau$, the Energy of the Emitted Particle (e.g., a Photon), is not a single Delta-Function Peak, but a \emph{Distribution}. Taking the Fourier Transform of the Decaying Exponential, $e^{-\Gamma t / 2\hbar}$ leads to the \textbf{Lorentzian (Cauchy) Distribution}:  \\
+Because the State has a Finite Lifetime $\tau$, the Energy of the Emitted Particle (e.g., a Photon), is not a single Delta-Function Peak, but a \emph{Distribution}. Taking the Fourier-transform\index{Fourier-transform} of the Decaying Exponential, $e^{-\Gamma t / 2\hbar}$ leads to the \textbf{Lorentzian (Cauchy) Distribution}:  \\
 $ I(E) \propto \frac{1}{(E - E_0)^2 + (\Gamma/2)^2} $  \\
 The Full Width at Half Maximum (FWHM) of this Peak, is exactly $\Gamma$. See \ref{fig:BW.png}.  \\
 
@@ -4883,7 +4884,7 @@ Where:  \\
 
 In many cases, $T_{fi}$ is calculated using the Interaction Potential $V$. To First Order in Perturbation Theory (the \textbf{First Born Approximation}), the T-Matrix Element is the Matrix Element of the Potential:  \\
 $ T_{fi} \approx \langle f | V | i \rangle $  \\
-For Scattering of a Particle by a Potential $V(\mathbf{r})$, if the Initial and Final States are Plane Waves $e^{i\mathbf{k}_i \cdot \mathbf{r}}$, and $e^{i\mathbf{k}_f \cdot \mathbf{r}}$, the T-Matrix Element is proportional to the \textbf{Fourier transform} of the Potential:  \\
+For Scattering of a Particle by a Potential $V(\mathbf{r})$, if the Initial and Final States are Plane Waves $e^{i\mathbf{k}_i \cdot \mathbf{r}}$, and $e^{i\mathbf{k}_f \cdot \mathbf{r}}$, the T-Matrix Element is proportional to the \textbf{Fourier-transform\index{Fourier-transform}} of the Potential:  \\
 $T_{fi} \propto \int e^{-i\mathbf{k}_f \cdot \mathbf{r}} V(\mathbf{r}) e^{i\mathbf{k}_i \cdot \mathbf{r}} d^3r = \int V(\mathbf{r}) e^{i\mathbf{q} \cdot \mathbf{r}} d^3r$ \\
 where $\mathbf{q} = \mathbf{k}_i - \mathbf{k}_f$ is the Momentum Transfer.  \\
 
@@ -4906,7 +4907,7 @@ Cross Section:       & The Differential Cross Section $\frac{d\sigma}{d\Omega}$,
 
     \textbf{The First Born Approximation}  \\
 
-The first Born approximation is a Perturbative method, for Estimating the Scattering of a Quantum Particle by a Potential. It replaces the exact Scattering Wave in the Interaction region, with the Incident Wave, yielding a Scattering Amplitude proportional to the Momentum-Space Fourier Transform of the Potential. The approximation is useful when the Interaction is sufficiently weak, although its' validity depends on the Potential, and the Energy of the Incident Particle.  \\
+The first Born approximation is a Perturbative method, for Estimating the Scattering of a Quantum Particle by a Potential. It replaces the exact Scattering Wave in the Interaction region, with the Incident Wave, yielding a Scattering Amplitude proportional to the Momentum-Space Fourier-transform\index{Fourier-transform} of the Potential. The approximation is useful when the Interaction is sufficiently weak, although its' validity depends on the Potential, and the Energy of the Incident Particle.  \\
 
 
 \subsection{Scattering Setup}
@@ -4945,7 +4946,7 @@ Amplitude is
     e^{-i\mathbf{q}\cdot\mathbf{r}}\,
     V(\mathbf{r})\,d^3r.
 \end{equation}
-Thus, the Born Amplitude is proportional to the Fourier Transform of the Potential evaluated at the Momentum Transfer $\mathbf{q}$.  \\
+Thus, the Born Amplitude is proportional to the Fourier-transform\index{Fourier-transform} of the Potential evaluated at the Momentum Transfer $\mathbf{q}$.  \\
 
 The Differential Cross Section is
 \begin{equation}
@@ -5472,7 +5473,7 @@ The Yukawa Potential is the Greens'-Function solution of the screened Poisson Eq
 =
 -4\pi\delta^{(3)}(\mathbf{r}).
 \]
-With the Fourier-Transform Convention
+With the Fourier-transform\index{Fourier-transform} Convention
 $\widetilde{V}(\mathbf{q})=\int d^3r\,e^{-i\mathbf{q}\cdot\mathbf{r}}V(r)$, its' Transform is
 \[
 \widetilde{V}(\mathbf{q})
@@ -5662,7 +5663,7 @@ If the Operator $\mathcal{L}$ is Linear, and the BCs(Bondary Conditions) are Hom
 $u(\mathbf{x}, t) = X(\mathbf{x})T(t) $
 Substituting this into the PDE, allows us to split the equation into two independent ODEs linked by a \emph{Separation Constant} $\lambda$.
 
-     \textbf{Fourier Transforms}  \\
+     \textbf{Fourier-transforms\index{Fourier-transform}}  \\
 
 For problems on an Infinite Domain ($-\infty < x < \infty$), we Transform the Spatial Coordinate to the Frequency Domain:
 $ \hat{u}(k, t) = \int_{-\infty}^{\infty} u(x, t) e^{-ikx} dx $
@@ -9156,7 +9157,7 @@ The exact reduced radial wavefunction is proportional to [r $e^{-r}$].  \\
 
 The plot shows the numerical inward integration (blue line), closely matching the exact normalized solution (orange points). The profile rises sharply from zero, peaks near $\frac{r}{a_0}$ $\approx$ 1, at u(r) $\approx$ 0.73, then decays toward zero.  \\
 
-The wavefunction for the specified trial Energy ofelements apply the Numerov integration. However, it  alone does not search for an Energy eigenvalue.
+The wavefunction for the specified trial Energy of elements apply the Numerov integration. However, it  alone does not search for an Energy eigenvalue.
 For a trial Energy that is not an eigenvalue, the outward-integrated wavefunction generally grows at large (r).  \\
 
 \paragraph{Electronic density for Helium atom}
@@ -15040,6 +15041,17 @@ sensitive dependence on initial conditions.
 \end{figure}
 
 \newpage
+
+\chapter{Damped Haromic Oscillator}
+
+The graph shows the four free-response curves. It uses the same natural frequency, and initial conditions for each case: [x(0) = 1], and [$\dot{x}$(0) = $0$]. The damping cases correspond to damping ratios [$\zeta$ = $0$], [0 < $\zeta$ < 1], [$\zeta$ = 1], and [$\zeta$ > 1].
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{damping_graph.pdf}
+  \label{damping_graph.pdf}
+  \caption{Graph of the four Harmonic Oscillator response curves}
+\end{figure}
 
 \begin{thebibliography}{99}
 
