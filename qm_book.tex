@@ -69,7 +69,7 @@
 \usepackage{physics}
 \usepackage{bm}
 \usepackage{algorithm,algpseudocode}
-
+\usepgflibrary{fpu}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Interlude:  Set up PRINTING (default) or SCREEN VIEWING %%%%
@@ -569,8 +569,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Dominated Convergence
 \item Illustration of the Mandelbrot set
 \item Fractal Boundary, and Zooming of the Mandelbrot Set
-\item Illustration of the Julia set
-\item
+\item Illustration of the Julia sets
 \item Exact Inward Intergration
 \item Electronic Density for Helium Atom
 \item Kohm-Sham Asymptotic Behavior
@@ -578,7 +577,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Hartree Boundary Condition
 \item Maximum a Posterior of a Bayesian Inference
 \item Numerovs' solution of Poisons' Equation 
-\item 
+\item Illustration of the motion of a Double Pendulum
 
 \end{enumerate}
 
@@ -8224,11 +8223,11 @@ time or program runtime.
 
 \noindent
 
-The Mandelbrot set is a fundamental object in complex dynamics. It is
+The Mandelbrot set\index{Mandelbrot set} is a fundamental object in complex dynamics. It is
 defined by iterating a simple quadratic map over the complex plane and
 retaining the parameters for which the resulting orbit remains
 bounded. Despite its elementary definition, the set has intricate
-geometry, a fractal boundary, and deep connections to Julia sets,
+geometry, a fractal boundary, and deep connections to Julia sets\index{Julia sets},
 periodic orbits, and the stability of dynamical systems.
 
 \subsection{Definition}
@@ -8245,7 +8244,7 @@ Starting from $z_0=0$, generate the orbit
 \end{equation}
 
 \begin{definition}
-The Mandelbrot set is the set of complex parameters for which this
+The Mandelbrot set\index{Mandelbrot set} is the set of complex parameters for which this is the set of complex parameters for which this
 orbit remains bounded:
 \begin{equation}
   \mathcal{M}
@@ -8300,7 +8299,7 @@ complicated boundary regions.
 
 \noindent
 
-The Mandelbrot set is compact and connected. It lies within the disk
+The Mandelbrot set\index{Mandelbrot set} is compact and connected. It lies within the disk
 $|c|\leq 2$ and is symmetric about the real axis: if $c\in\mathcal{M}$,
 then $\overline{c}\in\mathcal{M}$. This symmetry follows because
 complex conjugation commutes with the iteration:
@@ -8341,11 +8340,11 @@ A point $c=a+bi$ is in the main cardioid when
 This test can speed up rendering by identifying many points known to
 lie inside the set without iterating them.
 
-\subsection{Connection with Julia sets}
+\subsection{Connection with Julia sets\index{Julia sets}}
 
 \noindent
 
-For a fixed parameter $c$, the filled Julia set is
+For a fixed parameter $c$, the filled Julia sets\index{ Julia sets} is
 \begin{equation}
   K_c=
   \left\{z\in\mathbb{C}:
@@ -8355,7 +8354,7 @@ For a fixed parameter $c$, the filled Julia set is
 where $f_c^{\,n}$ denotes $n$ repeated applications of $f_c$. The
 Julia set $J_c$ is the boundary of $K_c$.
 
-The Mandelbrot set is a parameter-space object: it asks whether the
+The Mandelbrot set\index{Mandelbrot set} is a parameter-space object: it asks whether the
 critical point $z=0$ has a bounded orbit. For the quadratic map,
 $0$ is the unique critical point, since $f_c'(z)=2z$. A fundamental
 connection is
@@ -8365,7 +8364,7 @@ connection is
   K_c\text{ is connected}.
 \end{equation}
 Thus the Mandelbrot set records, in parameter space, which quadratic
-Julia sets are connected.
+Julia sets\index{Julia sets} are connected.
 
 \subsection{Periodic orbits and bulbs}
 
@@ -8379,7 +8378,7 @@ $p$-fold iterate at that point is less than one:
   \left|(f_c^{\,p})'(\alpha)\right|<1.
 \end{equation}
 Regions of parameter space associated with attracting periodic orbits
-form components of the Mandelbrot set, commonly called
+form components of the Mandelbrot set\index{Mandelbrot set}, commonly called
 \emph{hyperbolic components}. The main cardioid corresponds to an
 attracting fixed point, while attached bulbs correspond to attracting
 cycles of other periods.
@@ -8423,7 +8422,7 @@ it does not change the definition of the set.
 
 \noindent
 
-The boundary of the Mandelbrot set contains detail at arbitrarily
+The boundary of the Mandelbrot set\index{Mandelbrot set} contains detail at arbitrarily
 small scales. Zooming into selected boundary regions reveals
 self-similar patterns, miniature copies, spirals, and branching
 filaments. The visual resemblance of different regions does not mean
@@ -8441,27 +8440,27 @@ critical point $0$ under the family of maps $f_c(z)=z^2+c$. Its
 simple iteration rule generates a compact, connected set with a
 highly intricate boundary. The set organizes the dynamics of
 quadratic maps: its points correspond exactly to parameters whose
-filled Julia sets are connected, while its components reflect the
+filled Julia sets\index{Julia sets} are connected, while its components reflect the
 appearance and stability of attracting periodic orbits.
 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{Fractal Boundary and Zooming of the Mandelbrot Set.pdf}
-  \caption{Fractal Boundary and Zooming of the Mandelbrot Set}
-  \label{fig:Fractal Boundary and Zooming of the Mandelbrot Set.pdf}
+  \includegraphics[width=0.9\textwidth]{Fractal Boundary and Zooming of the Mandelbrot set.pdf}
+  \caption{Fractal Boundary and Zooming of the Mandelbrot set\index{Mandelbrot set}}
+  \label{fig:Fractal Boundary and Zooming of the Mandelbrot set.pdf}
 \end{figure}
 
 
-\textbf{Julia Sets: Definition, and Numerical Visualization}  \\
+\textbf{Julia sets\index{Julia sets}: Definition, and Numerical Visualization}  \\
 
-Here is superficial discussion of a Julia set, including the Mathematical definition, an escape-time visualization method, and Python code to generate a figure. \\
+Here is superficial discussion of a Julia sets\index{Julia sets}, including the Mathematical definition, an escape-time visualization method, and Python code to generate a figure. \\
 
-\subsection{Julia Set}  
+\subsection{Julia sets\index{Julia sets}}
 
 \noindent
 
-A Julia set is a fractal associated with iterating a complex function.
+A Julia sets\index{Julia sets}, is a fractal associated with iterating a complex function.
 For the quadratic family, the function is
 \[
 f_c(z)=z^2+c,
@@ -8477,9 +8476,9 @@ z_{n+1}=f_c(z_n)=z_n^2+c,
 The behavior of this orbit depends on both the initial point \(z_0\)
 and the parameter \(c\).
 
-\subsection{Filled Julia Set and Julia Set}
+\subsection{Filled Julia sets\index{Julia sets} and Julia sets\index{Julia sets}}
 
-The \emph{filled Julia set} \(K_c\) consists of the initial points whose
+The \emph{filled Julia sets\index{Julia sets}} \(K_c\) consists of the initial points whose
 orbits remain bounded:
 \[
 K_c=
@@ -8489,12 +8488,12 @@ K_c=
 \]
 Here \(f_c^{\,n}\) means applying \(f_c\) \(n\) times.
 
-The \emph{Julia set} \(J_c\) is the boundary of the filled Julia set:
+The \emph{Julia sets\index{Julia sets}} \(J_c\) is the boundary of the filled Julia sets\index{Julia sets}:
 \[
 J_c=\partial K_c.
 \]
 Informally, it separates points with bounded orbits from points whose
-orbits escape to infinity. Depending on \(c\), the Julia set may be
+orbits escape to infinity. Depending on \(c\), the Julia sets\index{Julia sets} may be
 connected or disconnected.
 
 \subsection{Why Escape Can Be Detected}
@@ -8512,8 +8511,8 @@ met.
 
 For example, when \(c=0\), the iteration is \(z_{n+1}=z_n^2\).
 Points with \(\lvert z_0\rvert\leq 1\) have bounded orbits, while points
-with \(\lvert z_0\rvert>1\) escape. Thus the filled Julia set is the
-unit disk and its Julia set is the unit circle.
+with \(\lvert z_0\rvert>1\) escape. Thus the filled Julia sets\index{Julia sets} is the
+unit disk and its Julia sets\index{Julia sets} is the unit circle.
 
 \subsection{Escape-Time Visualization}
 
@@ -8529,7 +8528,7 @@ z_{n+1}=z_n^2+c
 until either \(\lvert z_n\rvert>R\), or the iteration limit is reached.
 The number of iterations needed to escape is called the \emph{escape
 time}. Points that do not escape within the limit are treated as
-approximate points of the filled Julia set.
+approximate points of the filled Julia sets\index{Julia sets}.
 
 This method produces an approximation, not an exact classification:
 an orbit that has not escaped after \(N_{\max}\) steps might escape later.
@@ -8556,14 +8555,14 @@ Color the pixel according to its recorded value
 \noindent
 
 The following script computes and saves an escape-time image. The
-parameter \(c\) controls the shape of the Julia set. For instance,
-\(c=-0.8+0.156i\) gives a commonly illustrated connected Julia set.
+parameter \(c\) controls the shape of the Julia sets\index{Julia sets}. For instance,
+\(c=-0.8+0.156i\) gives a commonly illustrated connected Julia sets\index{Julia sets}.
 
 \begin{lstlisting}[language=Python]
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Fixed parameter defining this Julia set
+# Fixed parameter defining this Julia sets
 c = -0.8 + 0.156j
 
 # Viewing window in the complex plane
@@ -8601,7 +8600,7 @@ plt.imshow(
 )
 plt.xlabel("Re(z)")
 plt.ylabel("Im(z)")
-plt.title(rf"Julia set for $c={c.real}{c.imag:+.3f}i$")
+plt.title(rf"Julia sets for $c={c.real}{c.imag:+.3f}i$")
 plt.colorbar(label="Escape iteration")
 plt.tight_layout()
 plt.savefig("julia_set.png", dpi=200)
@@ -8615,9 +8614,9 @@ or iteration limit changes the appearance and detail of the image.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{Julia Set.pdf}
-  \caption{Illustration of the Julia Set}
-  \label{fig:Julia Set.pdf}
+  \includegraphics[width=0.9\textwidth]{Julia sets.pdf}
+  \caption{Illustration of the Julia sets\index{Julia sets}}
+  \label{fig:Julia sets.pdf}
 \end{figure}
 
 \subsection{Interpreting the Image}
@@ -8630,10 +8629,10 @@ escape. Fine filaments and repeated structures arise because nearby
 starting points can have sharply different orbit behavior.
 
 The parameter \(c\) is fixed while the starting point \(z_0\) varies.
-This differs from the Mandelbrot set, where the starting point is fixed
-at \(z_0=0\) and the parameter \(c\) varies. The Mandelbrot set is
-closely related to the quadratic Julia sets: it consists of the
-parameters \(c\) for which the corresponding filled Julia set \(K_c\)
+This differs from the Mandelbrot set\index{Mandelbrot set}, where the starting point is fixed
+at \(z_0=0\) and the parameter \(c\) varies. The Mandelbrot set\index{Mandelbrot set} is
+closely related to the quadratic Julia sets\index{Julia sets}: it consists of the
+parameters \(c\) for which the corresponding filled Julia sets\index{Julia sets} \(K_c\)
 is connected.
 
 
@@ -8935,12 +8934,12 @@ finite or infinite eigenvalue.  \\
 The key distinction is that the ordinary Schur decomposition applies to a single matrix, while the QZ decomposition applies to the matrix pair \((A,B)\).
 
 
-\section{Spherical Bessel Functions, and the Radial Schr\"odinger Equation}
+\section{Spherical Bessel Functions\index{Spherical Bessel Functions}, and the Radial Schr\"odinger Equation}
 
 \noindent
 
 
-Spherical Bessel functions arise when the time-independent
+Spherical Bessel Functions\index{Spherical Bessel Functions} arise when the time-independent
 Schr\"odinger equation is separated in spherical coordinates for a
 spherically symmetric, constant potential. The angular separation
 produces an orbital-angular-momentum quantum number $\ell$, and the
@@ -9031,7 +9030,7 @@ Since $d/dr=k\,d/dx$, equation~\eqref{eq:radial-constant} becomes
   \label{eq:spherical-bessel}
 \end{equation}
 This is the spherical Bessel differential equation. Its two
-linearly independent solutions are the spherical Bessel functions
+linearly independent solutions are the Spherical Bessel Functions\index{Spherical Bessel Functions}
 $j_\ell(x)$ and $y_\ell(x)$:
 \begin{equation}
   R_\ell(r)=A\,j_\ell(kr)+B\,y_\ell(kr),
@@ -9070,7 +9069,7 @@ The full separated solution is then
   =A\,j_\ell(kr)Y_{\ell m}(\theta,\phi).
 \end{equation}
 
-For $\ell=0$, the spherical Bessel function reduces to
+For $\ell=0$, the Spherical Bessel Functions\index{Spherical Bessel Functions} reduces to
 \begin{equation}
   j_0(kr)=\frac{\sin(kr)}{kr},
 \end{equation}
@@ -9081,7 +9080,7 @@ $\sin(kr)/(kr)$.
 
 \noindent
 
-The spherical Bessel function is a radial solution in a
+The Spherical Bessel Functions\index{Spherical Bessel Functions} is a radial solution in a
 constant-potential region, but boundary conditions determine which
 values of $k$ are allowed. For example, consider an infinite spherical
 well of radius $a$, with $V(r)=V_0$ for $r<a$ and an infinite barrier
@@ -9099,7 +9098,7 @@ If $\alpha_{\ell n}$ is the $n$th positive zero of $j_\ell$, then
   \qquad
   E_{\ell n}=V_0+\frac{\hbar^2\alpha_{\ell n}^2}{2ma^2}.
 \end{equation}
-Thus, the spherical Bessel functions describe the radial shape, while
+Thus, the Spherical Bessel Functions\index{Spherical Bessel Functions} describe the radial shape, while
 the boundary conditions select the allowed energy levels.
 
 \subsection{When the potential is not constant}
@@ -9107,7 +9106,7 @@ the boundary conditions select the allowed energy levels.
 \noindent
 
 For a general central potential $V(r)$, the radial equation contains
-the additional $r$-dependent term $E-V(r)$. Spherical Bessel functions
+the additional $r$-dependent term $E-V(r)$. Spherical Bessel Functions\index{Spherical Bessel Functions}
 are then not generally exact solutions over the entire radial
 domain. They remain useful in regions where the potential is
 constant, and they can also serve as basis functions in expansions
@@ -9117,8 +9116,8 @@ If $E<V_0$ in a constant-potential region, define
 \begin{equation}
   \kappa^2=\frac{2m(V_0-E)}{\hbar^2}.
 \end{equation}
-The radial solutions are then modified spherical Bessel functions
-rather than oscillatory spherical Bessel functions.
+The radial solutions are then modified Spherical Bessel Functions\index{Spherical Bessel Functions}
+rather than oscillatory Spherical Bessel Functions\index{Spherical Bessel Functions}.
 
 Separation of the Schr\"odinger equation in spherical coordinates
 produces a radial equation containing the angular-momentum term
@@ -14877,6 +14876,170 @@ In a self-consistent atomic calculation, the electron density determines \(V_{\m
   \caption{Numerovs' solution of Poisons' Equation}
 \end{figure}
 
+\newpage
+
+
+
+\chapter{The Double Pendulum}
+
+\section{Physical Model}
+
+A double pendulum consists of two point masses, \(m_1\) and \(m_2\),
+connected by rigid, massless rods of lengths \(l_1\) and \(l_2\). The
+first rod is attached to a fixed pivot. The system moves in a vertical
+plane under gravity \(g\), with no friction or air resistance.
+
+Let \(\theta_1\) and \(\theta_2\) be the angles the rods make with the
+downward vertical. The generalized coordinates are therefore
+\[
+q_1=\theta_1,\qquad q_2=\theta_2.
+\]
+Define the angular difference
+\[
+\Delta=\theta_1-\theta_2.
+\]
+
+\subsection{Positions and Velocities}
+
+Choose the origin at the pivot, with \(x\) horizontal and \(y\) positive
+upward. The mass positions are
+\[
+\begin{aligned}
+x_1 &= l_1\sin\theta_1,
+& y_1 &= -l_1\cos\theta_1,\\
+x_2 &= l_1\sin\theta_1+l_2\sin\theta_2,
+& y_2 &= -l_1\cos\theta_1-l_2\cos\theta_2.
+\end{aligned}
+\]
+Differentiating with respect to time gives the velocities. In
+particular,
+\[
+v_1^2=l_1^2\dot{\theta}_1^{\,2},
+\]
+and
+\[
+v_2^2
+=l_1^2\dot{\theta}_1^{\,2}
++l_2^2\dot{\theta}_2^{\,2}
++2l_1l_2\dot{\theta}_1\dot{\theta}_2\cos\Delta.
+\]
+
+\subsection{Kinetic, and Potential Energy}
+
+The kinetic energy is
+\[
+\begin{aligned}
+T
+&=\frac12m_1v_1^2+\frac12m_2v_2^2\\
+&=\frac12(m_1+m_2)l_1^2\dot{\theta}_1^{\,2}
++\frac12m_2l_2^2\dot{\theta}_2^{\,2}
++m_2l_1l_2\dot{\theta}_1\dot{\theta}_2\cos\Delta.
+\end{aligned}
+\]
+
+Taking the zero of gravitational potential energy at the pivot height,
+the potential energy is
+\[
+V=-(m_1+m_2)gl_1\cos\theta_1-m_2gl_2\cos\theta_2.
+\]
+
+The Lagrangian, defined as kinetic energy minus potential energy, is
+\[
+\mathcal{L}=T-V.
+\]
+
+\subsection{Equations of Motion}
+
+For each generalized coordinate \(\theta_i\), the Euler--Lagrange
+equation is
+\[
+\frac{d}{dt}\left(\frac{\partial\mathcal{L}}
+{\partial\dot{\theta}_i}\right)
+-\frac{\partial\mathcal{L}}{\partial\theta_i}=0.
+\]
+Applying these equations gives the coupled nonlinear equations
+\[
+\begin{aligned}
+&(m_1+m_2)l_1^2\ddot{\theta}_1
++m_2l_1l_2\cos\Delta\,\ddot{\theta}_2
++m_2l_1l_2\sin\Delta\,\dot{\theta}_2^{\,2}
++(m_1+m_2)gl_1\sin\theta_1=0,\\[4pt]
+&m_2l_2^2\ddot{\theta}_2
++m_2l_1l_2\cos\Delta\,\ddot{\theta}_1
+-m_2l_1l_2\sin\Delta\,\dot{\theta}_1^{\,2}
++m_2gl_2\sin\theta_2=0.
+\end{aligned}
+\]
+
+These equations can be written in matrix form as
+\[
+M(\theta)
+\begin{pmatrix}
+\ddot{\theta}_1\\
+\ddot{\theta}_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+-m_2l_1l_2\sin\Delta\,\dot{\theta}_2^{\,2}
+-(m_1+m_2)gl_1\sin\theta_1\\
+m_2l_1l_2\sin\Delta\,\dot{\theta}_1^{\,2}
+-m_2gl_2\sin\theta_2
+\end{pmatrix},
+\]
+where the mass matrix is
+\[
+M(\theta)=
+\begin{pmatrix}
+(m_1+m_2)l_1^2 & m_2l_1l_2\cos\Delta\\
+m_2l_1l_2\cos\Delta & m_2l_2^2
+\end{pmatrix}.
+\]
+Solving this \(2\times2\) system gives the angular accelerations
+\(\ddot{\theta}_1\) and \(\ddot{\theta}_2\) at any state.
+
+\subsection{Energy Conservation}
+
+Because the ideal double pendulum has no explicit time dependence in its
+Lagrangian and no dissipative forces, its total mechanical energy is
+conserved:
+\[
+E=T+V=\text{constant}.
+\]
+This provides a useful check when numerically integrating the equations
+of motion.
+
+\section{Small-Angle Approximation}
+
+For small angles, use
+\[
+\sin\theta_i\approx\theta_i,\qquad
+\cos(\theta_1-\theta_2)\approx1,
+\]
+and neglect terms quadratic in angular velocities. The equations become
+\[
+\begin{aligned}
+(m_1+m_2)l_1^2\ddot{\theta}_1
++m_2l_1l_2\ddot{\theta}_2
++(m_1+m_2)gl_1\theta_1 &=0,\\
+m_2l_1l_2\ddot{\theta}_1
++m_2l_2^2\ddot{\theta}_2
++m_2gl_2\theta_2 &=0.
+\end{aligned}
+\]
+This linear approximation describes motion near the stable hanging
+equilibrium. The full equations are nonlinear, and can exhibit highly
+sensitive dependence on initial conditions.
+
+\newpage
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.2\textwidth]{double pendulum.pdf}
+  \label{double pendulum.pdf}
+  \caption{Illustration of the motion of a double pendulum\index{double pendulum}}
+\end{figure}
+
+\newpage
 
 \begin{thebibliography}{99}
 
