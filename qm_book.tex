@@ -556,6 +556,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Quantum Tunneling through a Potential Barrier
 \item Minizing Energy for a Ground State search
 \item Estimated Ground Search Energy, with its' Analytical Soluion
+\item Two-level-system trajectories with stochastic decay jumps
 \item Breit-Wigner Distribution
 \item The relation between Phi, Theta, and Psi
 \item Illustration of Brillouin Zone
@@ -579,6 +580,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Numerovs' solution of Poisons' Equation 
 \item Illustration of the motion of a Double Pendulum
 \item Graph of the four Harmonic Oscillator response curves
+\item Graph of Noisy Data and its' interpolations
 
 \end{enumerate}
 
@@ -1523,7 +1525,7 @@ No-cloning-theorem\index{No-cloning-theorem} $\longrightarrow$ One cannot create
   
 Teleportation\index{Teleportation} $\longrightarrow$ Same quantum state in different locations.  \\
 
-See \ref{fig:qho.png} for the Quantum-Harmonic-Oscillator\index{Quantum-Harmonic-Oscillator} $\longrightarrow$  \\
+See figure \ref{fig:qho.png} for the Quantum-Harmonic-Oscillator\index{Quantum-Harmonic-Oscillator} $\longrightarrow$  \\
 \noindent
 $\hat H$ = $\hbar \omega$  $\left(\hat {a}^\dagger \hat {a} + \frac{1}{2} \right)$ = $\hbar \omega$ $\left(\hat N + \frac{1}{2} \right)$, where $\hat {a}$ = ${\sqrt \frac{m \omega}{2 \hbar}}$ $\left( \hat x + \frac{i}{m \omega} \hat p \right)$; \\
 $\hat {a}^\dagger$ = ${\sqrt \frac{m \omega}{2 \hbar}}$ $\left( \hat x - \frac{i}{m \omega} \hat p \right)$, and  \\
@@ -1582,15 +1584,15 @@ Degrees of Freedom $\longrightarrow$ The minimum number of measurements needed t
 \end{center}
 \end{figure}
 
-$\mathbf{\textbf{Ideas that work[linear, and angular momentum of a field}}$
+$\mathbf{\textbf{Ideas that work[linear, and angular momentum of a field]}}$
 
 $\bullet$ A perfect crystal lattice( i.e. a One-Dimensional system) is effectively empty, for an electron in the lowest band,
 even though the space is full of atoms.  \\
 
 $\bullet$ The absolute value of Energy is equivalent to the fraction of a reduced mass of a proton-electron system, times Charge to the fourth power,
-over twice an integer squared times the square of the Plancks' constant $\longrightarrow$ $|E|$ = $\frac{\mu Q^4}{{2n^2} \hbar^2}$  \\
+over twice an integer squared times the square of the Plancks' constant $\longrightarrow$ |E| = $\frac{\mu Q^4}{{2n^2} \hbar^2}$  \\
   
-$\bullet$ There are two special classes of polarizations(See the definition on Subsection~\ref{sec:Polarization}), those that are purely real(i.e, $\bar P_z$ = $P_z$ $\forall$ z $\in$ N),
+$\bullet$ There are two special classes of polarizations(See its' definition in section \ref{sec:Definitions}), those that are purely real(i.e, $\bar P_z$ = $P_z$ $\forall$ z $\in$ N),
 and those that are purely complex(i.e, $P_z \cap \bar P$ = {0} $\forall$ z $\in$ N). \\
   
 $\bullet$ The half-form of the Hilbert space is the completion w.r.t. $\vert s \vert^2$ = $\int_\Xi$ ${\widetilde{(s1,s2)}}$  of the space
@@ -1626,7 +1628,7 @@ $\bullet$ Expected-value\index{Expected-value} of the j-th Momentum component $\
 Negative Energy $\longrightarrow$ Bound State  \\
 
 Planck’s quantization rule for Energy/Planck’s postulate  $\longrightarrow$ The Energy of oscillators, such as pendulums, mass–spring systems, and electric
-oscillators, varies continuously in terms of the frequency. See page \pageref{sec:Ideas}.
+oscillators, varies continuously in terms of the frequency. See section \pageref{sec:Ideas}.
 \[
 E = nh\nu, \quad n = 0, 1, 2, 3, \dots
 \]
@@ -4074,6 +4076,17 @@ $\left\{
 \mid \psi_0 \rangle \text{ if $\zeta$ < 1 - $\langle \psi(t) \mid \psi(t) \rangle$} \\
 \end{array}
 \right\}.$
+
+\medskip
+
+The graph shows one trajectorys' excited-state probability in red, and the ensemble average in cyan. It uses a small time step for the non-Hermitian evolution between, jumps.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{mcwf_visual.pdf}
+  \caption{Two-level-system trajectories with stochastic decay jumps}
+  \label{fig:mcwf_visual.pdf}
+\end{figure}
 
 Concept of Magnitude\index{Concept of Magnitude} $\rightarrow$ If w = 3 + 4i, then $\mid w \mid$ = $\sqrt{\Re(w^2) + \Im(w^2)}$ = $\sqrt{3^2 + 4^2}$ = 5  \\
 
@@ -8345,7 +8358,7 @@ lie inside the set without iterating them.
 
 \noindent
 
-For a fixed parameter $c$, the filled Julia sets\index{ Julia sets} is
+For a fixed parameter $c$, the filled Julia sets\index{Julia sets} is
 \begin{equation}
   K_c=
   \left\{z\in\mathbb{C}:
@@ -8353,7 +8366,7 @@ For a fixed parameter $c$, the filled Julia sets\index{ Julia sets} is
   \text{ is bounded}\right\},
 \end{equation}
 where $f_c^{\,n}$ denotes $n$ repeated applications of $f_c$. The
-Julia set $J_c$ is the boundary of $K_c$.
+Julia sets\index{Julia sets} $J_c$ is the boundary of $K_c$.
 
 The Mandelbrot set\index{Mandelbrot set} is a parameter-space object: it asks whether the
 critical point $z=0$ has a bounded orbit. For the quadratic map,
@@ -10216,7 +10229,7 @@ If [f] is the desired density, and [g] is an easy proposal density satisfying [f
 \end{frame}
 
 \begin{frame}{Markov-Chain Monte Carlo}
-  Markov-chain Monte Carlo constructs a random walk whose stationary distribution is the target distribution \(p(x)\).
+  Markov-chain Monte Carlo\index{Markov-chain Monte Carlo} constructs a random walk whose stationary distribution is the target distribution \(p(x)\).
 
   At each step, propose a move from \(x\) to \(x'\) using a proposal distribution \(q(x'|x)\). Accept the move with probability
   \[
@@ -10336,14 +10349,14 @@ If [f] is the desired density, and [g] is an easy proposal density satisfying [f
     \item Probability distributions describe uncertainty and randomness in physical systems.
     \item Key distributions include uniform, Bernoulli, binomial, Poisson, Gaussian, exponential, and Boltzmann.
     \item Sampling methods convert random numbers into samples from a target distribution.
-    \item Inverse-transform, rejection, importance, and Markov-chain Monte Carlo methods are fundamental.
+    \item Inverse-transform, rejection, importance, and Markov-chain Monte Carlo\index{Markov-chain Monte Carlo} methods are fundamental.
     \item Reliable simulations require convergence tests, autocorrelation analysis, and uncertainty estimates.
   \end{itemize}
 \end{frame}
 
 \newpage
 
-\section{Markov-Chain Monte Carlo}
+\section{Markov-Chain Monte Carlo...Continued}
 
 \begin{frame}{Markov-Chain Monte Carlo}
   \begin{itemize}
@@ -10357,7 +10370,7 @@ If [f] is the desired density, and [g] is an easy proposal density satisfying [f
 \subsection{Markov Chains}
 
 \begin{frame}{Markov Chains}
-  A Markov chain is a sequence of random states
+  A Markov chain\index{Markov chain} is a sequence of random states
   \[
     X_0,X_1,X_2,\ldots
   \]
@@ -10442,7 +10455,7 @@ If [f] is the desired density, and [g] is an easy proposal density satisfying [f
 \end{frame}
 
 \begin{frame}{Ergodicity}
-  A Markov chain is ergodic if it can, in principle, reach every relevant region of the state space.
+  A Markov chain\index{Markov chain} is ergodic if it can, in principle, reach every relevant region of the state space.
 
   For a valid MCMC sampler, the chain should be:
   \begin{itemize}
@@ -10836,7 +10849,7 @@ If [f] is the desired density, and [g] is an easy proposal density satisfying [f
 
 \section{Metropolis--Hastings Algorithm}
 
-The Metropolis–Hastings (MH) algorithm, constructs a Markov chain whose stationary distribution is a target density [$\pi$], using a proposal kernel [q].
+The Metropolis–Hastings\index{Metropolis--Hastings} (MH) algorithm, constructs a Markov chain whose stationary distribution is a target density [$\pi$], using a proposal kernel [q].
 
 Let \(\pi(x)\) be the target density on a state space \(\mathcal X\), known up to a
 normalizing constant. Let \(q(x,y)\) be a proposal density: given the current state
@@ -10958,7 +10971,7 @@ Let \(X=(X_1,\ldots,X_d)\) have joint density
 \[
 \pi(x_1,\ldots,x_d).
 \]
-Gibbs sampling generates a Markov chain by updating one coordinate at a time
+Gibbs sampling generates a Markov chain\index{Markov chain} by updating one coordinate at a time
 using its full conditional distribution.
 
 \subsection{Algorithm}
@@ -12295,7 +12308,7 @@ quantities such as temperature, entropy, pressure, and free energy.
 A \emph{statistical ensemble} is a probability distribution over the allowed
 microstates of a system. Instead of following one system in time, one imagines
 many identical copies of the system, each possibly in a different microstate,
-and computes averages over that distribution. [26][27]
+and computes averages over that distribution.
 
 \section{Microstates and Observables}
 
@@ -12406,7 +12419,7 @@ Z(N,V,T)
 e^{-\beta H(\mathbf r,\mathbf p)}
 \,\mathrm d\mathbf r\,\mathrm d\mathbf p,
 \]
-where \(H\) is the Hamiltonian and \(h\) is Planck's constant. [28][29]
+where \(H\) is the Hamiltonian and \(h\) is Planck's constant.
 
 The Helmholtz free energy is
 \[
@@ -12604,7 +12617,7 @@ The Ising and Potts models are fundamental lattice models in statistical
 mechanics. They describe interacting degrees of freedom, or spins, placed on
 the sites of a graph or lattice, and are used to study magnetism, phase
 transitions, critical phenomena, and spatially correlated discrete data.
-[31][35]
+
 
 Let \(G=(V,E)\) be a finite graph, with vertex set \(V\) and edge set \(E\).
 Two vertices \(i,j\in V\) are nearest neighbours if \((i,j)\in E\); this is
@@ -12887,7 +12900,7 @@ finite number of discrete states.
 
 
 
-\section{Lattice Gases and Lattice Models}
+\section{Lattice gases\index{Lattice gases} and Lattice Models}
 
 A lattice gas represents particles by occupation variables on lattice sites, while a lattice model is the broader class of models whose degrees of freedom live on the sites, edges, or faces of a graph.
 
@@ -13162,14 +13175,14 @@ A phase transition occurs when a thermodynamic quantity, such as density,
 magnetization, or free energy, changes nonanalytically as a control parameter
 such as temperature or chemical potential crosses a critical value.
 
-For lattice gases, a common transition is between a low-density gas phase and a
+For lattice gases\index{Lattice gases}, a common transition is between a low-density gas phase and a
 high-density liquid or ordered phase. For the hard-core lattice gas, increasing
 the fugacity \(z\) increases the density, and on certain lattices the model can
 exhibit multiple extremal Gibbs measures at high activity. [42][47]
 
 \section*{Dynamical Lattice Gases}
 
-Lattice gases can also be used as dynamical models. In a lattice-gas cellular
+Lattice gases\index{Lattice gases} can also be used as dynamical models. In a lattice-gas cellular
 automaton, particles occupy sites and move along discrete directions. At each
 time step, particles stream to neighbouring sites and then collide according to
 local rules that conserve particle number and momentum.
@@ -13214,7 +13227,7 @@ equilibrium distribution. [50]
 
 \section*{Applications}
 
-Lattice gases and lattice models are used to study:
+Lattice gases\index{Lattice gases}, and lattice models are used to study:
 
 \begin{itemize}
 \item Condensation, evaporation, and liquid--vapor coexistence;
@@ -13243,7 +13256,7 @@ Lattice Boltzmann model & Probability distributions & Fluid-flow simulation \\
 \end{tabular}
 \end{center}
 
-Lattice gases are occupation-number versions of lattice spin models. Their
+Lattice gases\index{Lattice gases} are occupation-number versions of lattice spin models. Their
 simple local structure makes them especially useful for studying how microscopic
 interaction rules produce macroscopic thermodynamics, phase transitions, and
 fluid-like collective behavior.
@@ -13533,7 +13546,7 @@ Therefore, the statistical error of an average is roughly
 
 Near critical points, single-spin Metropolis updates may suffer from critical
 slowing down, where autocorrelation times grow rapidly with system size.
-Cluster algorithms, such as the Swendsen--Wang and Wolff algorithms, can reduce
+Cluster\index{cluster} algorithms, such as the Swendsen--Wang and Wolff algorithms, can reduce
 this problem substantially. [56][59]
 
 \subsection{Other Monte Carlo Updates}
@@ -13594,17 +13607,17 @@ For a single-spin Ising update, the Energy change is $\Delta$E = $2 \sigma_i \le
 
 
 
-\section{Percolation}
+\section{Percolation\index{Percolation}}
 
-Percolation is a fundamental model in probability theory and statistical
+Percolation\index{Percolation} is a fundamental model in probability theory and statistical
 mechanics. It describes how local random connections can produce global
 connectivity, such as fluid flow through a porous medium, disease spread through
 a population, or electrical conduction through a random network. [70]
 
 The central question is: for which probability \(p\) does there exist an
-infinite connected cluster of open sites or bonds?
+infinite connected cluster\index{cluster} of open sites or bonds?
 
-\subsection{Bond Percolation}
+\subsection{Bond Percolation\index{Percolation}}
 
 Let \(\mathbb Z^d\) be the \(d\)-dimensional integer lattice. Its vertices are
 \[
@@ -13613,7 +13626,7 @@ V=\mathbb Z^d,
 and two vertices are adjacent if they differ by one unit in exactly one
 coordinate.
 
-In bond percolation, each edge \(e\) is declared open with probability \(p\)
+In Bond Percolation\index{Percolation}, each edge \(e\) is declared open with probability \(p\)
 and closed with probability \(1-p\), independently of all other edges. Thus,
 \[
 \mathbb P(e\text{ is open})=p.
@@ -13624,18 +13637,18 @@ The resulting random subgraph is denoted
 \mathbb Z^d_p.
 \]
 
-A \emph{cluster} is a connected component of this random subgraph. The cluster
+A \emph{cluster} is a connected component of this random subgraph. The cluster\index{cluster}
 containing a vertex \(x\) is written
 \[
 C(x).
 \]
 
-The central event is the existence of an infinite cluster:
+The central event is the existence of an infinite cluster\index{cluster}:
 \[
 \{|C(0)|=\infty\}.
 \]
 
-The percolation probability is
+The Percolation\index{Percolation} probability is
 \[
 \theta(p)
 =
@@ -13651,21 +13664,21 @@ p_c(\mathbb Z^d)
 
 For \(p<p_c\), all clusters are finite almost surely, and the system is said to
 be \emph{subcritical}. For \(p>p_c\), there is a positive probability of an
-infinite cluster, and the system is \emph{supercritical}. [64][70]
+infinite cluster\index{cluster}, and the system is \emph{supercritical}. [64][70]
 
-\subsection{Site Percolation}
+\subsection{Site Percolation\index{Percolation}}
 
-In site percolation, each vertex rather than each edge is open independently
+In Site Percolation\index{Percolation}, each vertex rather than each edge is open independently
 with probability \(p\):
 \[
 \mathbb P(x\text{ is open})=p.
 \]
 
-A cluster is a connected set of open vertices. Two open vertices belong to the
-same cluster if there is a path between them consisting entirely of open
+A cluster\index{cluster} is a connected set of open vertices. Two open vertices belong to the
+same cluster\index{cluster} if there is a path between them consisting entirely of open
 vertices.
 
-For the hexagonal lattice, critical site percolation occurs at
+For the hexagonal lattice, critical Site Percolation\index{Percolation} occurs at
 \[
 p_c=\frac12.
 \]
@@ -13674,12 +13687,12 @@ This means that, when each hexagon is colored independently with probability
 
 \subsection{Cluster Properties}
 
-Let \(C(0)\) be the open cluster containing the origin. Its size is
+Let \(C(0)\) be the open cluster\index{cluster} containing the origin. Its size is
 \[
 |C(0)|.
 \]
 
-The expected cluster size is
+The expected cluster\index{cluster} size is
 \[
 \chi(p)
 =
@@ -13696,7 +13709,7 @@ p\uparrow p_c,
 \]
 where \(\gamma\) is a critical exponent.
 
-The probability that the origin belongs to an infinite cluster behaves as
+The probability that the origin belongs to an infinite cluster\index{cluster} behaves as
 \[
 \theta(p)
 \sim
@@ -13714,10 +13727,10 @@ clusters near criticality:
 |p-p_c|^{-\nu}.
 \]
 
-\subsection{Percolation Threshold}
+\subsection{Percolation\index{Percolation} Threshold}
 
-The percolation threshold \(p_c\) is the transition point between regimes with
-only finite clusters and regimes with an infinite cluster.
+The Percolation\index{Percolation} threshold \(p_c\) is the transition point between regimes with
+only finite clusters and regimes with an infinite cluster\index{cluster}.
 
 \begin{center}
 \begin{tabular}{lll}
@@ -13731,12 +13744,12 @@ Supercritical & \(p>p_c\) & Infinite cluster exists \\
 \end{tabular}
 \end{center}
 
-For bond percolation on the square lattice \(\mathbb Z^2\), it is known that
+For Bond Percolation\index{Percolation} on the square lattice \(\mathbb Z^2\), it is known that
 \[
 p_c=\frac12.
 \]
 
-For site percolation on the triangular lattice, the critical probability is also
+For Site Percolation\index{Percolation} on the triangular lattice, the critical probability is also
 \[
 p_c=\frac12.
 \]
@@ -13748,7 +13761,7 @@ estimated numerically.
 
 On a finite lattice \(\Lambda_L=\{1,\ldots,L\}^d\), there are no infinite
 clusters. Instead, one studies a \emph{spanning cluster}: a connected open
-cluster joining opposite sides of the box.
+cluster\index{cluster} joining opposite sides of the box.
 
 For example, in two dimensions, define the crossing event
 \[
@@ -13777,9 +13790,9 @@ As \(L\to\infty\),
 At criticality, the crossing probability approaches a nontrivial limiting value,
 reflecting scale invariance.
 
-\subsection{Percolation, and Random Graphs}
+\subsection{Percolation\index{Percolation}, and Random Graphs}
 
-Percolation can be defined on any graph \(G=(V,E)\). Given \(p\in[0,1]\),
+Percolation\index{Percolation} can be defined on any graph \(G=(V,E)\). Given \(p\in[0,1]\),
 form the random subgraph \(G_p\) by retaining each edge independently with
 probability \(p\).
 
@@ -13802,9 +13815,9 @@ a giant component emerges, while all remaining components are typically of order
 This is analogous to the phase transition in the Erd\H{o}s--R\'enyi random
 graph \(G(n,p)\).
 
-\subsection{Bootstrap Percolation}
+\subsection{Bootstrap Percolation\index{Percolation}}
 
-Bootstrap percolation is a dynamical variant. Initially, each site is infected
+Bootstrap Percolation\index{Percolation} is a dynamical variant. Initially, each site is infected
 independently with probability \(p\). At each subsequent step, an uninfected
 site becomes infected if it has at least \(\ell\) infected neighbours.
 
@@ -13826,12 +13839,12 @@ The process \emph{percolates} if eventually every site becomes infected:
 \bigcup_{t\ge0}A_t=V.
 \]
 
-For majority bootstrap percolation on a finite graph, a site becomes infected
+For majority bootstrap Percolation\index{Percolation} on a finite graph, a site becomes infected
 when at least half of its neighbours are infected. [66]
 
 \subsection{Monte Carlo Simulation}
 
-A simple Monte Carlo simulation of site percolation proceeds as follows:
+A simple Monte Carlo simulation of Site Percolation\index{Percolation} proceeds as follows:
 
 \begin{enumerate}
 \item Choose a finite \(L\times L\) lattice.
@@ -13854,7 +13867,7 @@ where \(A_L^{(r)}\) is the crossing event in repetition \(r\).
 
 \subsection{Applications}
 
-Percolation models appear in:
+Percolation\index{Percolation} models appear in:
 
 \begin{itemize}
 \item Fluid flow through porous rocks and soils;
@@ -13866,8 +13879,8 @@ Percolation models appear in:
 \item Gelation and polymer network formation.
 \end{itemize}
 
-Percolation concerns the emergence of long-range connectivity from independent
-local randomness. Its central object is the infinite cluster, whose appearance
+Percolation\index{Percolation} concerns the emergence of long-range connectivity from independent
+local randomness. Its central object is the infinite cluster\index{cluster}, whose appearance
 at \(p_c\) constitutes a geometric phase transition.
 
 The model is simple to define, yet it exhibits rich critical behavior, scaling
@@ -15052,6 +15065,64 @@ The graph shows the four free-response curves. It uses the same natural frequenc
   \label{damping_graph.pdf}
   \caption{Graph of the four Harmonic Oscillator response curves}
 \end{figure}
+
+\newpage
+
+\chapter{Noisy Data and Cubic Splines}
+
+\section{Interpolation}
+
+Interpolation is the process of constructing a function that passes through a given set of data points. Suppose the data are
+\[
+(x_0,y_0), (x_1,y_1), \ldots, (x_n,y_n),
+\]
+where the nodes \(x_i\) are distinct. An interpolating function \(p(x)\) satisfies
+\[
+p(x_i)=y_i, \qquad i=0,1,\ldots,n.
+\]
+
+A polynomial interpolant can be written in Lagrange form as
+\[
+p(x)=\sum_{i=0}^{n} y_i L_i(x),
+\]
+where
+\[
+L_i(x)=\prod_{\substack{j=0\\j\ne i}}^{n}
+\frac{x-x_j}{x_i-x_j}.
+\]
+Each basis polynomial has the property \(L_i(x_j)=1\) when \(i=j\), and \(L_i(x_j)=0\) otherwise, so the interpolant passes through every data point.
+
+For many data points, a single high-degree polynomial can oscillate substantially between nodes. A common alternative is \emph{piecewise cubic spline interpolation}. On each interval \([x_i,x_{i+1}]\), the spline is a cubic polynomial. The pieces are chosen to match the data and to join smoothly: the function and its first and second derivatives are continuous at the interior nodes.
+
+A natural cubic spline also satisfies the endpoint conditions
+\[
+S''(x_0)=0,
+\qquad
+S''(x_n)=0.
+\]
+These conditions determine a unique natural cubic spline for distinct, ordered nodes.
+
+Interpolation exactly reproduces the supplied values, including measurement errors. Therefore, when data are noisy, an interpolating spline may follow the noise rather than the underlying trend. A smoothing spline addresses this by balancing closeness to the observations against smoothness. One standard definition is the function \(f\) that minimizes
+\[
+\sum_{i=0}^{n} w_i\bigl(y_i-f(x_i)\bigr)^2
++
+\lambda \int_{x_0}^{x_n} \bigl(f''(x)\bigr)^2\,dx,
+\]
+where \(w_i\) are observation weights and \(\lambda\geq 0\) controls the degree of smoothing. Small \(\lambda\) emphasizes fitting the data; larger \(\lambda\) penalizes curvature and produces a smoother fit.
+
+
+Below is an example that plots noisy samples, the true function, a natural cubic interpolating spline, and a cubic smoothing spline. It uses csaps-cpp for the smoothing spline, and gnuplot for the graph. The smooth value controls the tradeoff between following noisy data and smoothing it.
+
+Using the "csaps API", the smoothing spline takes "csaps::DoubleArray" query values, and returns an array of predictions.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Noisy Data and Cubic Splines.pdf}
+  \label{Noisy Data and Cubic Splines.pdf}
+  \caption{Graph of Noisy Data and its' interpolations}
+\end{figure}
+
+\newpage
 
 \begin{thebibliography}{99}
 
