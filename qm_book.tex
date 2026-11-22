@@ -583,6 +583,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Illustration of a 2D Molecular Dynamics
 \item Graph of the four Harmonic Oscillator response curves
 \item Graph of Noisy Data and its' interpolations
+\item Graph of Millikan Oil-Drop Experiment(Illustrative Data)
 
 \end{enumerate}
 
@@ -2301,7 +2302,7 @@ $\mathbf r > \mathbf a$,  \\
 
 $\tan \delta_{l}$ $\equiv$  - $\frac{\mathbf B_{(l)}}{\mathbf A_{(l)}}$.  \\
 
-$\bullet$ (63) Shooting Method\index{Shooting Method}(defines the relationship between the function value and the baseline, ensuring clarity in its representation):  \\
+$\bullet$ (63) Shooting Method defines the relationship between the function value and the baseline, ensuring clarity in its representation):  \\
 
 The shooting Method\index{Shooting Method} solves boundary value problem(BVPs), by converting them into initial value problems(IVPs), and iteratively adjusting the initial slope until the solution matches the second boundary condition. \\
 
@@ -3075,7 +3076,7 @@ The Hamiltonian operator is
   =\frac{\hat{p}^{\,2}}{2m}
    +\frac{1}{2}m\omega^2\hat{x}^{\,2}.
 \end{equation}
-The stationary-state Schr\"odinger equation is
+The Stationary-State\index{Stationary-State} Schr\"odinger equation is
 \begin{equation}
   \hat{H}\psi(x)=E\psi(x).
 \end{equation}
@@ -6175,7 +6176,7 @@ The method identifies candidates, not automatically Maxima or Minima. One must c
 
 \subsection{Statement of the Law}
 
-Gauss' Law relates the Electric Field through a closed surface, to the Electric Charge enclosed by that surface. In SI units, its' Integral Form is
+Gauss' Law\index{Gauss' Law} relates the Electric Field through a closed surface, to the Electric Charge enclosed by that surface. In SI units, its' Integral Form is
 \[
 \boxed{
 \oint_{\partial V}\mathbf{E}\cdot d\mathbf{A}
@@ -6227,7 +6228,8 @@ which is Coulombs' Electric Field.
 
 \subsection{Gauss' Law in Matter}
 
-In \emph{Material Media}, it is often useful to introduce the Electric Displacement Field \(\mathbf{D}\). Its' Divergence is related to the Free Charge Density \(\rho_{\mathrm{free}}\):
+In \emph{Material Media}, it is often useful to introduce the Electric Displacement Field \(\mathbf{D}\). Its' Divergence is related to the Free Charge Density\index{Charge Density}
+\(\rho_{\mathrm{free}}\):
 \[
 \nabla\cdot\mathbf{D}=\rho_{\mathrm{free}},
 \qquad
@@ -6239,7 +6241,7 @@ where \(\varepsilon\) is the Permittivity.
 
 \subsection{Gauss' Law as a Constraint in Field Theory}
 
-In Canonical Electrodynamics, Gauss'' Law is also a Constraint on
+In Canonical Electrodynamics, Gauss' Law\index{Gauss' Law} is also a Constraint on
 Physical States. In Operator Form,
 \[
 \left(\nabla\cdot\hat{\mathbf{E}}(\mathbf{x})
@@ -6249,7 +6251,7 @@ It restricts the allowed States, and ensures that Physical States satisfy the \e
 
 \subsection{Conclusion}
 
-\emph{Gauss' Law says that Electric Charge is the Source of Electric-Field Flux. Its' Integral Form, is especially useful when the Charge Distribution has Symmetry, while its' Differential form expresses the local relation between, Charge Density and the Divergence of the Electric Field}.
+\emph{Gauss' Law says that Electric Charge is the Source of Electric-Field Flux. Its' Integral Form, is especially useful when the Charge Distribution has Symmetry, while its' Differential form expresses the local relation between, Charge Density\index{Charge Density} and the Divergence of the Electric Field}.
 
 \subsection{A Brief Review of the Neumann Boundary Condition}
 
@@ -6704,6 +6706,7 @@ Symmetry Breaking distinguishes the Symmetry of the governing Laws from the \emp
 \item Franck-Hertz
 \item Davisson-Germer  
 \item Photo-electric effect{The corpuscular nature of electromagnetic radiation}
+\item Millikans' Oil-Drop
 \item Youngs' double-slit
 \item Stern-Gerlach  
 \item EPR   
@@ -9122,7 +9125,7 @@ $
 
 We'll demonstrate its' inward, and outward integration, whilst the distances are measured in Bohr radii($a_0$), and energies in Rydbergs. See \eqref{eq:Rydberg}.
 
-The $Z_{eff}$, is the effective charge in the preliminary Hydrogenic potential; We study \emph{convergence}; unit-free Energy Eigenvalues/dimensionless Energy Eigenvalues, with respect to the radial mesh, and the extrapolation to  $r = 0$; We then define a \emph{shooting residual\index{shooting residual}} at the origin, locate bound-state energies, and introduce \emph{Numerovs' method}, which exploits the absence of a first-derivative term in the radial equation.(Assumes no such delta-function exists at $\Psi^{prime}$ (x = 0) = $0$) \\
+The $Z_{eff}$, is the effective charge in the preliminary Hydrogenic potential; We study \emph{convergence}; unit-free Energy Eigenvalues/dimensionless Energy Eigenvalues, with respect to the radial mesh, and the extrapolation to  $r = 0$; We then define a \emph{shooting residual} at the origin, locate bound-state energies, and introduce \emph{Numerovs' method}, which exploits the absence of a first-derivative term in the radial equation.(Assumes no such delta-function exists at $\Psi^{prime}$ (x = 0) = $0$) \\
 
 We finally \emph{NORMALIZE}; see \pageref{ch:Special Potentials}; the radial orbitals, and construct a spherically averaged density by filling each subshell with up to  $2(2 \ell + 1)$ electrons.  \\
 
@@ -9364,7 +9367,7 @@ A uniform mesh is used to resolve the compact orbital, and the valence tail, sim
 \item NIST LDA value = -74.473077 Ha
 \end{enumerate}
 
-Where (Ha) is Hartree Energy. Experiment, and more accurate many-body calculations, describe a different level of approximation.  \\
+Where (Ha) is Hartree Energy\index{Hartree Energy}. Experiment, and more accurate many-body calculations, describe a different level of approximation.  \\
 
 \begin{figure}[H]
   \centering
@@ -15092,7 +15095,7 @@ The number of Angular-Momentum Channels is the closest match: it limits which Or
 
 But it does not set which elements are available in the Periodic Table. That is usually determined by the codes' supported-element data, such as its basis sets, or pseudopotentials. Radial spacing, $R_{\max}$, Energy Mesh, and Density Mixing are numerical, or Convergence settings.
 
-The limitation of the Periodic Table (specifically in the context of Nuclear Physics, and the Hartree-Fock-Bogoliubov, or similar mean-field calculations used to map the "nuclear landscape") is typically the **Energy Mesh**.
+The limitation of the Periodic Table (specifically in the context of Nuclear Physics, and the Hartree-Fock-Bogoliubov, or similar mean-field calculations used to map the "nuclear landscape") is typically the \textbf{Energy Mesh\index{Energy Mesh}}.
 
 While the other factors mentioned are critical parameters for the Convergence, and Accuracy of a specific calculation, the Energy Mesh determines the resolution, and stability of the \emph{quasiparticle Spectrum}. If the Mesh is too coarse, the model cannot accurately capture the shell effects, and pairing correlations necessary to determine the drip lines, and \emph{Stability of Isotopes}, which are the primary constraints, when attempting to complete a theoretical Periodic Table of Nuclei.
 
@@ -15111,7 +15114,7 @@ Density Mixing & Determines the ability of the model to handle transition densit
 
 \newpage
 
-There is no single inherent “Periodic Table limitation”; these are **numerical or model limits**, and the symptom usually identifies which one is active. Check them in this order
+There is no single inherent “Periodic Table limitation”; these are \textbf{numerical or model limits}, and the symptom usually identifies which one is active. Check them in this order
 \begin{table}[ht]
 \centering
 \begin{tabular}{p{0.22\linewidth} p{0.34\linewidth} p{0.36\linewidth}}
@@ -15192,7 +15195,7 @@ These are the equations a relativistic radial solver integrates; Numerovs' usual
 
 \section{The Poisson Equation, and its' solution}
 
-The \textbf{Poisson equation}, relates an electrostatic Potential, to the charge density that produces it. In SI units,
+The \textbf{Poisson equation}, relates an electrostatic Potential, to the charge density\index{Charge Density} that produces it. In SI units,
 
 \[
 \nabla^2\phi(\mathbf r)=-\frac{\rho(\mathbf r)}{\varepsilon_0},
@@ -15226,11 +15229,11 @@ Each small charge element \(\rho(\mathbf r')d^3r'\) contributes its Coulomb pote
 =-4\pi\delta(\mathbf r-\mathbf r').
 \]
 
-A solution also depends on its **boundary conditions**. For a finite computational region, the Potential, or its normal derivative, must be specified at the boundary. Different boundary conditions can produce different solutions.  \\
+A solution also depends on its' \textbf{boundary conditions}. For a finite computational region, the Potential, or its normal derivative, must be specified at the boundary. Different boundary conditions can produce different solutions.  \\
 
 \textbf{Spherically symmetric charge density}
 
-For an atom whose charge density depends only on distance \(r\) from the nucleus, the Potential is also radial: \(\phi=\phi(r)\). The Laplacian becomes
+For an atom whose charge density\index{Charge Density} depends only on distance \(r\) from the nucleus, the Potential is also radial: \(\phi=\phi(r)\). The Laplacian becomes
 
 \[
 \nabla^2\phi(r)
@@ -15272,13 +15275,13 @@ If the total charge is \(Q\), then far from the charge distribution,
 
 \textbf{Applying it to an Atomic Electron Density}
 
-If \(n(r)\) is the Electron **number density**, its charge density is
+If \(n(r)\) is the Electron \textbf{number density}, its charge density\index{Charge Density} is
 
 \[
 \rho_e(r)=-e\,n(r),
 \]
 
-where \(e>0\) is the elementary charge. For a nucleus of charge \(+Ze\) at the origin, the full charge density is
+where \(e>0\) is the elementary charge. For a nucleus of charge \(+Ze\) at the origin, the full charge density\index{Charge Density} is
 
 \[
 \rho_{\mathrm{total}}(\mathbf r)
@@ -15294,7 +15297,7 @@ One can solve Poissons' equation for the nuclear, and electronic contributions s
 \frac{Ze}{4\pi\varepsilon_0 r}.
 \]
 
-The electronic potential is obtained by substituting \(\rho_e=-en\) into the spherical solution. An Electrons' Potential Energy is \(-e\phi\), so the Electron–Electron Hartree Energy is
+The electronic potential is obtained by substituting \(\rho_e=-en\) into the spherical solution. An Electrons' Potential Energy is \(-e\phi\), so the Electron–Electron Hartree Energy\index{Hartree Energy} is
 
 \[
 V_{\mathrm H}(r)
@@ -15865,9 +15868,281 @@ Using the "csaps API", the smoothing spline takes "csaps::DoubleArray" query val
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{Noisy Data and Cubic Splines.pdf}
+  \includegraphics[width=0.9\textwidth]{Noisy Data and Cubic Splines.pdf}
   \label{Noisy Data and Cubic Splines.pdf}
   \caption{Graph of Noisy Data and its' interpolations}
+\end{figure}
+
+\chapter{The Millikan Oil-Drop Experiment}
+
+\section{Purpose}
+
+The Millikan oil-drop experiment measures the electric charge carried
+by individual microscopic oil droplets. Its central result is that
+the measured droplet charges are consistent with integer multiples
+of a smallest charge magnitude:
+\begin{equation}
+|q|=ne,
+\qquad n=1,2,3,\ldots,
+\label{eq:quantization}
+\end{equation}
+where \(e\) is the elementary charge. The experiment therefore
+provided evidence that electric charge is quantized and enabled a
+measurement of the elementary charge. Millikan's work built on
+experiments conducted with Harvey Fletcher; the oil-drop method was
+reported in 1909, with a prominent measurement published in 1913.
+
+\subsection{Apparatus and physical idea}
+
+The apparatus contains two horizontal, parallel metal plates separated
+by a distance \(d\). A potential difference \(V\) across the plates
+produces an approximately uniform electric field of magnitude
+\begin{equation}
+E=\frac{V}{d}.
+\label{eq:field}
+\end{equation}
+A fine mist of oil is sprayed into the space between the plates.
+Individual droplets are viewed through a microscope and illuminated
+from the side. Some droplets acquire electric charge, for example
+when electrons attach to them.
+
+With the electric field off, a droplet falls through air. After a
+short transient, it reaches terminal speed: its downward effective
+weight is balanced by the upward viscous drag. With the field on, the
+electrical force changes the droplet's motion. The voltage can be
+adjusted until a droplet is suspended, or its upward and downward
+terminal speeds can be measured.
+
+The experiment combines these motion measurements with the known
+properties of oil and air to infer a droplet's radius and mass, then
+uses the electric force to determine its charge.
+
+\subsection{Forces on a droplet}
+
+Let the droplet have radius \(a\), oil density \(\rho_o\), and charge
+\(q\). Let \(\rho_{\mathrm{air}}\) be the air density, \(\eta\) the
+dynamic viscosity of air, and \(g\) the gravitational acceleration.
+The droplet's volume and mass are
+\begin{equation}
+\mathcal V=\frac{4}{3}\pi a^3,
+\qquad
+m=\frac{4}{3}\pi a^3\rho_o.
+\end{equation}
+Because the droplet displaces air, the downward effective weight is
+\begin{equation}
+W_{\mathrm{eff}}
+=mg-\rho_{\mathrm{air}}\mathcal V g
+=\frac{4}{3}\pi a^3
+(\rho_o-\rho_{\mathrm{air}})g.
+\label{eq:effective-weight}
+\end{equation}
+
+For a spherical droplet moving slowly through air, Stokes' law gives
+the viscous drag magnitude
+\begin{equation}
+F_{\mathrm{drag}}=6\pi\eta a v,
+\label{eq:stokes}
+\end{equation}
+where \(v\) is the droplet's speed relative to the air. Drag acts
+opposite the direction of motion.
+
+\subsection{Finding the droplet radius from its' falling speed}
+
+First turn off the electric field and measure the droplet's downward
+terminal speed \(v_f\). At terminal speed, the net force is zero, so
+the effective weight equals the viscous drag:
+\begin{equation}
+\frac{4}{3}\pi a^3
+(\rho_o-\rho_{\mathrm{air}})g
+=6\pi\eta a v_f.
+\label{eq:fall-balance}
+\end{equation}
+Solving for the radius gives
+\begin{equation}
+a=
+\sqrt{
+\frac{9\eta v_f}
+{2g(\rho_o-\rho_{\mathrm{air}})}
+}.
+\label{eq:radius}
+\end{equation}
+The droplet's effective downward force can then be calculated using
+Equation~\eqref{eq:effective-weight}.
+
+\subsection{Small-droplet correction}
+
+For very small droplets, air does not behave exactly as a continuous
+viscous fluid at the droplet surface. A slip correction, often called
+the Cunningham correction, is therefore applied. One common
+convention writes the drag as
+\begin{equation}
+F_{\mathrm{drag}}
+=\frac{6\pi\eta a v}{C_c},
+\qquad C_c>1.
+\label{eq:cunningham}
+\end{equation}
+With this convention, the falling-speed equation becomes
+\begin{equation}
+\frac{4}{3}\pi a^3
+(\rho_o-\rho_{\mathrm{air}})g
+=\frac{6\pi\eta a v_f}{C_c}.
+\label{eq:fall-corrected}
+\end{equation}
+Since \(C_c\) depends on droplet size and air conditions, the corrected
+radius is generally found iteratively. The correction matters because
+the inferred charge depends on the inferred radius.
+
+\subsection{Measuring the charge}
+
+\textbf{Suspending a droplet}
+
+Choose the electric-field direction so that the electrical force on
+the droplet acts upward. Adjust the voltage until the droplet is
+stationary. At suspension, electrical force balances effective weight:
+\begin{equation}
+|q|E=W_{\mathrm{eff}}.
+\end{equation}
+Thus
+\begin{equation}
+|q|=\frac{W_{\mathrm{eff}}}{E}
+=\frac{
+\frac{4}{3}\pi a^3(\rho_o-\rho_{\mathrm{air}})g
+}{E}.
+\label{eq:charge-suspension}
+\end{equation}
+Using \(E=V/d\), this can also be written
+\begin{equation}
+|q|=
+\frac{
+\frac{4}{3}\pi a^3(\rho_o-\rho_{\mathrm{air}})g\,d
+}{V}.
+\end{equation}
+The sign of \(q\) is determined by the direction of the force relative
+to the applied field. For an electron-bearing droplet, the charge is
+negative; Equation~\eqref{eq:charge-suspension} gives its magnitude.
+
+\subsection{Using falling and rising speeds}
+
+Instead of suspending the droplet, one can measure its downward
+terminal speed \(v_f\) with the field off and its upward terminal
+speed \(v_r\) with the field on. For upward motion, drag and effective
+weight both act downward. The upward electrical force therefore
+balances their sum:
+\begin{equation}
+|q|E=W_{\mathrm{eff}}+F_{\mathrm{drag},r}.
+\end{equation}
+In the basic Stokes approximation,
+\begin{align}
+W_{\mathrm{eff}}&=6\pi\eta a v_f,\\
+F_{\mathrm{drag},r}&=6\pi\eta a v_r.
+\end{align}
+Consequently,
+\begin{equation}
+|q|=\frac{6\pi\eta a}{E}(v_f+v_r).
+\label{eq:charge-speeds}
+\end{equation}
+Including the slip correction under the convention of
+Equation~\eqref{eq:cunningham} gives
+\begin{equation}
+|q|=\frac{6\pi\eta a}{C_c E}(v_f+v_r).
+\label{eq:charge-speeds-corrected}
+\end{equation}
+The speed method and the suspension method express the same force
+balance in different ways.
+
+\subsection{Testing charge quantization}
+
+Repeat the measurement for many droplets. Each droplet may carry a
+different amount of charge, but the inferred values are found to be
+consistent with integer multiples of a common elementary magnitude:
+\begin{equation}
+|q_i|=n_i e,
+\qquad n_i\in\mathbb{Z}_{>0}.
+\end{equation}
+A simple model for measured data is
+\begin{equation}
+q_i=n_i e+\epsilon_i,
+\label{eq:data-model}
+\end{equation}
+where \(\epsilon_i\) represents measurement error. The data can be
+analyzed by looking for a value of \(e\) and integers \(n_i\) that
+make the residuals
+\begin{equation}
+r_i=q_i-n_i e
+\end{equation}
+small compared with the experimental uncertainties.
+
+A graph of measured droplet charge against droplet number should show
+points near integer multiples of \(e\). Horizontal reference lines at
+\(e,2e,3e,\ldots\) make the pattern easier to see. A spline curve may
+be used as a visual aid between points, but it is not evidence for
+quantization: the physically important observation is that the
+individual measurements cluster near integer multiples of one unit.
+
+\subsection{Result and significance}
+
+Millikan's measurements gave a value of
+\(1.5924(17)\times10^{-19}\,\mathrm{C}\) for the elementary charge
+magnitude, about \(0.6\%\) below the currently accepted value. The
+SI-defined value of the elementary charge is
+\begin{equation}
+e=1.602176634\times10^{-19}\,\mathrm{C}.
+\label{eq:modern-e}
+\end{equation}
+<citation src="1"></citation>
+
+The result established a method for measuring the charge of
+individual droplets and provided compelling evidence for discrete
+units of electric charge. Together with measurements of the
+electron's charge-to-mass ratio, a value for the electron's mass
+could also be obtained.
+
+\subsection{Assumptions and sources of uncertainty}
+
+The calculation relies on several experimental and physical
+assumptions:
+\begin{itemize}
+  \item The droplet is approximately spherical and has known density.
+  \item Its measured speed is terminal, so acceleration can be
+  neglected.
+  \item Stokes' law, with any required small-particle correction,
+  adequately describes drag.
+  \item The electric field between the plates is sufficiently uniform,
+  so \(E\approx V/d\).
+  \item Air viscosity, air density, plate spacing, voltage, and
+  observed speeds are measured accurately.
+  \item Evaporation, convection, Brownian motion, and changes in
+  droplet charge during an observation are controlled or accounted
+  for.
+\end{itemize}
+Because the inferred radius is obtained from the falling speed and the
+charge depends strongly on that radius, errors in speed, viscosity,
+or the drag correction can significantly affect the final charge
+estimate.
+
+The method proceeds in three main steps:
+\begin{enumerate}
+  \item Measure a droplet's terminal falling speed with the electric
+  field off and infer its radius from the balance of effective weight
+  and viscous drag.
+  \item Apply a known electric field and measure the voltage needed to
+  suspend the droplet, or measure its rising speed.
+  \item Calculate the droplet's charge and repeat for many droplets
+  to test whether their charges are integer multiples of a common
+  elementary charge.
+\end{enumerate}
+The experiment's central conclusion is that measured oil-drop charges
+are consistent with
+\[
+|q|=ne,
+\]
+where \(n\) is an integer and \(e\) is the elementary charge.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{millikan_plot.pdf}
+  \label{millikan_plot.pdf}
+  \caption{Graph of Millikan Oil-Drop Experiment(Illustrative Data)}
 \end{figure}
 
 \newpage
