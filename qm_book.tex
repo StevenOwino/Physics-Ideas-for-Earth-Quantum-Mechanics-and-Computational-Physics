@@ -70,6 +70,7 @@
 \usepackage{bm}
 \usepackage{algorithm,algpseudocode}
 \usepgflibrary{fpu}
+\usepackage{siunitx}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Interlude:  Set up PRINTING (default) or SCREEN VIEWING %%%%
@@ -579,6 +580,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Maximum a Posterior of a Bayesian Inference
 \item Numerovs' solution of Poisons' Equation 
 \item Illustration of the motion of a Double Pendulum
+\item Illustration of a 2D Molecular Dynamics
 \item Graph of the four Harmonic Oscillator response curves
 \item Graph of Noisy Data and its' interpolations
 
@@ -4282,8 +4284,10 @@ For example, when \(W\) is the trivial Line Bundle,
 
 \subsection{Examples}
 
-\paragraph{De Rham Operator.}
-The Index of the de Rham Operator is the Euler Characteristic:
+\paragraph{De Rham Operator}
+
+The Index of the de Rham Operator is the Euler Characteristic\index{Euler Characteristic}:
+
 \begin{equation}
 \operatorname{ind}(d+d^*)
 =
@@ -4310,7 +4314,8 @@ unchanged by many Geometric Deformations, even when the Kernels of the Operators
 \section{Holomorphic Euler Characteristic}
 
 Let \(X\) be a Compact Complex Manifold, and let \(\mathcal{F}\) be a Coherent Analytic Sheaf on \(X\). Its' \(q\)-th Sheaf Cohomology Group is
-denoted by \(H^q(X,\mathcal{F})\). Since \(X\) is Compact, these Groups are Finite-Dimensional Complex Vector Spaces. The Holomorphic Euler Characteristic of \(\mathcal{F}\) is the alternating sum
+denoted by \(H^q(X,\mathcal{F})\). Since \(X\) is Compact, these Groups are Finite-Dimensional Complex Vector Spaces. The Holomorphic Euler Characteristic of
+\(\mathcal{F}\). is the alternating sum
 \begin{equation}
 \chi(X,\mathcal{F})
 =
@@ -4367,7 +4372,7 @@ Therefore,
 =
 \int_X e^{c_1(L)}\smile\operatorname{Td}(T_X).
 \end{equation}
-This formula expresses the Holomorphic Euler Characteristic as a
+This formula expresses the Holomorphic Euler Characteristic\index{Euler Characteristic} as a
 Topological quantity determined by Characteristic Classes.
 
 \subsection{Examples}
@@ -4410,7 +4415,7 @@ The Dolbeault operator \(E\),
 \[
 \bar{\partial}_E+\bar{\partial}_E^*,
 \]
-is an Elliptic Operator. Its' Index is the Holomorphic Euler Characteristic:
+is an Elliptic Operator. Its' Index is the Holomorphic Euler Characteristic\index{Euler Characteristic}:
 \begin{equation}
 \operatorname{ind}(\bar{\partial}_E)
 =
@@ -4422,7 +4427,7 @@ Thus Hirzebruch-Riemann-Roch is a special case of the Atiyah--Singer Index Theor
 
 \subsection{Remarks}
 
-The Holomorphic Euler Characteristic is an alternating sum of Holomorphic Cohomology Dimensions.
+The Holomorphic Euler Characteristic\index{Euler Characteristic} is an alternating sum of Holomorphic Cohomology Dimensions.
 \[
 \chi_{\mathrm{top}}(X)=\sum_k(-1)^k\dim H^k(X,\mathbb{C}).
 \]
@@ -5623,7 +5628,7 @@ For example, Invariance under Time Translations gives Conservation of Energy, wh
 
 \chapter{Time-Dependent Problems}
 
-There's no possible State with E = 0, as illustrated by Figure \ref{fig:Ground state search.png}; Thus, it is convenient to adopt Periodic Boundary Conditions, which require that the Wave-Function is unaffected by a translation of any of the Three Cartesian Coordinates.  \\
+There's no possible State with E = 0, as illustrated by Figure \ref{fig:Ground state search.png}; Thus, it is convenient to adopt Periodic Boundary Conditions\index{Periodic Boundary Conditions}, which require that the Wave-Function is unaffected by a translation of any of the Three Cartesian Coordinates.  \\
 
 Depending on the context (Physics, Mathematics, or Engineering), "Time-Dependent Problems" refers to Systems where the State Variables change over Time, governed by Differential Equations.  \\
 
@@ -13497,7 +13502,7 @@ L^{\gamma/\nu},
 \]
 where \(\gamma\) is the susceptibility exponent.
 
-To reduce boundary effects, one commonly uses periodic boundary conditions:
+To reduce boundary effects, one commonly uses Periodic Boundary Conditions\index{Periodic Boundary Conditions}:
 \[
 \sigma_{i+L}=\sigma_i.
 \]
@@ -13942,10 +13947,10 @@ rate:
 \frac{k_k(x)}{K(x)}.
 \]
 
-\subsection{Master Equation}
+\subsection{Probability Equation}
 
 The probability \(P(x,t)\) that the system is in state \(x\) at time \(t\)
-evolves according to the master equation
+evolves according to the equation
 \[
 \frac{\mathrm dP(x,t)}{\mathrm dt}
 =
@@ -13960,7 +13965,7 @@ k_{x\to y}P(x,t)
 The first term describes transitions into state \(x\), while the second term
 describes transitions out of \(x\).
 
-KMC generates sample trajectories whose ensemble average solves this master
+KMC generates sample trajectories whose ensemble average solves this
 equation. Thus, it provides a stochastic realization of the underlying
 continuous-time Markov process. [73][76]
 
@@ -14249,7 +14254,7 @@ time is controlled by the total rate out of the current state. [73][78]
 
 The method bridges microscopic transition rates and macroscopic kinetics. Its
 main strength is the ability to simulate rare activated events over time scales
-far beyond those accessible to molecular dynamics, provided the relevant event
+far beyond those accessible to molecular dynamics\index{molecular dynamics}, provided the relevant event
 mechanisms are correctly specified.
 
 \newpage
@@ -15055,6 +15060,311 @@ sensitive dependence on initial conditions.
 
 \newpage
 
+
+\chapter{An Introduction to Molecular Dynamics}
+
+Molecular dynamics (MD) is a computational method for studying the motion
+and properties of atoms and molecules. It advances a system through time
+by numerically integrating equations of motion derived from a model of the
+interatomic potential energy. A trajectory can be used to estimate
+structural, thermodynamic, and dynamical properties. The results depend on
+the potential model, numerical settings, and sampling procedure.
+
+
+\section{Classical molecular dynamics}
+
+In classical molecular dynamics\index{molecular dynamics}, each particle is represented by its
+position, velocity, and mass. For a system of \(N\) particles, the position
+and momentum of particle \(i\) are denoted by \(\bm{r}_i\) and \(\bm{p}_i\),
+and its mass by \(m_i\). The system's potential energy is a function of all
+particle positions:
+\[
+U = U(\bm{r}_1,\bm{r}_2,\ldots,\bm{r}_N).
+\]
+
+The force on particle \(i\) is the negative gradient of the potential:
+\[
+\bm{F}_i = -\nabla_{\bm{r}_i} U.
+\]
+Newton's equations of motion are
+\[
+\frac{d\bm{r}_i}{dt} = \frac{\bm{p}_i}{m_i},
+\qquad
+\frac{d\bm{p}_i}{dt} = \bm{F}_i.
+\]
+Equivalently,
+\[
+m_i\frac{d^2\bm{r}_i}{dt^2} = \bm{F}_i.
+\]
+
+The collection of positions and momenta at a given time defines a point
+in phase space. An MD simulation approximates the path of this point as
+time evolves.
+
+\subsection{Interatomic potential energy}
+
+The potential energy, also called the force field or interaction model,
+determines the forces and therefore strongly influences the simulation
+results. A general potential may be written as
+\[
+U = U_{\mathrm{bonded}} + U_{\mathrm{nonbonded}}.
+\]
+
+A simple molecular mechanics model can include bond stretching, angle
+bending, torsional interactions, and nonbonded interactions:
+\[
+\begin{aligned}
+U_{\mathrm{bonded}} &=
+\sum_{\text{bonds }(i,j)}
+ \frac{k_{ij}^{(b)}}{2}(r_{ij}-r_{ij}^{0})^2
++
+\sum_{\text{angles }(i,j,k)}
+ \frac{k_{ijk}^{(\theta)}}{2}(\theta_{ijk}-\theta_{ijk}^{0})^2
+\\
+&\quad+
+\sum_{\text{dihedrals }(i,j,k,l)}
+ V_{ijkl}(\phi_{ijkl}),\\
+U_{\mathrm{nonbonded}} &=
+\sum_{i<j}
+\left[
+4\epsilon_{ij}
+\left(
+\left(\frac{\sigma_{ij}}{r_{ij}}\right)^{12}
+-
+\left(\frac{\sigma_{ij}}{r_{ij}}\right)^6
+\right)
++
+\frac{q_iq_j}{4\pi\epsilon_0 r_{ij}}
+\right].
+\end{aligned}
+\]
+Here \(r_{ij}=\lVert\bm{r}_i-\bm{r}_j\rVert\), \(q_i\) is the charge of
+particle \(i\), and \(\epsilon_0\) is the vacuum permittivity. The
+Lennard--Jones term is a common model for short-range repulsion and
+dispersion attraction. The Coulomb term describes electrostatic
+interactions between point charges. Real force fields may use different
+functional forms, parameters, and long-range electrostatics methods.
+
+For a pair potential \(u(r_{ij})\), the force on particle \(i\) due to
+particle \(j\) is
+\[
+\bm{F}_{ij}
+=
+-\frac{du(r_{ij})}{dr_{ij}}
+\frac{\bm{r}_i-\bm{r}_j}{r_{ij}}.
+\]
+The total force is the sum of contributions from all interactions involving
+particle \(i\).
+
+\subsection{Numerical time integration}
+
+The equations of motion generally have no closed-form solution for a
+many-particle interacting system. MD therefore advances the positions and
+velocities by small time steps \(\Delta t\).
+
+A widely used method is velocity Verlet. Given positions \(\bm{r}_i(t)\),
+velocities \(\bm{v}_i(t)\), and forces \(\bm{F}_i(t)\), one step is
+\[
+\bm{r}_i(t+\Delta t)
+=
+\bm{r}_i(t)
++\bm{v}_i(t)\Delta t
++\frac{\bm{F}_i(t)}{2m_i}\Delta t^2,
+\]
+followed by calculation of the new forces, and then
+\[
+\bm{v}_i(t+\Delta t)
+=
+\bm{v}_i(t)
++\frac{\bm{F}_i(t)+\bm{F}_i(t+\Delta t)}{2m_i}\Delta t.
+\]
+Velocity Verlet is time-reversible for conservative dynamics and is
+commonly used because it is simple and has good energy behavior for
+sufficiently small time steps.
+
+The time step must be small enough to resolve the fastest relevant motions.
+If it is too large, the trajectory may become inaccurate or unstable.
+Constraints on selected bond lengths can sometimes permit a larger time
+step by removing very rapid vibrations from the integration.
+
+\section{Boundary conditions and interaction ranges}
+
+A finite simulation box contains far fewer particles than a macroscopic
+sample. Periodic boundary conditions approximate a bulk material by
+replicating the box in space. A particle leaving one side of the box
+re-enters through the opposite side.
+
+For a cubic box of side length \(L\), a minimum-image displacement between
+particles can be computed componentwise as
+\[
+\Delta r_\alpha
+\leftarrow
+\Delta r_\alpha -
+L\,\operatorname{round}\!\left(\frac{\Delta r_\alpha}{L}\right),
+\qquad
+\alpha\in\{x,y,z\}.
+\]
+This gives the shortest periodic displacement when the interaction cutoff
+is chosen consistently with the box dimensions.
+
+Short-range interactions are often truncated beyond a cutoff distance
+\(r_c\). Truncation can introduce discontinuities in the energy or force,
+so simulations may use shifted or smoothly switched potentials. Long-range
+electrostatic interactions require additional treatment, such as Ewald
+summation or particle-mesh methods, when they cannot be accurately
+represented by a simple cutoff.
+
+\subsection{Temperature and kinetic energy}
+
+The instantaneous kinetic energy is
+\[
+K = \sum_{i=1}^{N}\frac{1}{2}m_i\lVert\bm{v}_i\rVert^2.
+\]
+For a classical system with \(f\) unconstrained degrees of freedom, the
+kinetic temperature is commonly estimated from
+\[
+T = \frac{2K}{f k_{\mathrm{B}}},
+\]
+where \(k_{\mathrm{B}}\) is Boltzmann's constant. For \(N\) unconstrained
+particles in three dimensions, \(f\) is approximately \(3N\), with
+adjustments for constraints and removed center-of-mass motion.
+
+Temperature is an ensemble-level quantity. Its instantaneous estimate
+fluctuates during a finite simulation, even when the average temperature
+is well controlled.
+
+\subsection{Statistical ensembles}
+
+An ensemble specifies which macroscopic quantities are controlled or
+conserved.
+
+\begin{description}
+  \item[\(NVE\), microcanonical ensemble:]
+  The particle number \(N\), volume \(V\), and total energy \(E\) are
+  fixed. In an ideal numerical simulation with conservative forces, total
+  energy should remain approximately constant.
+
+  \item[\(NVT\), canonical ensemble:]
+  The particle number, volume, and temperature are controlled. A thermostat
+  modifies the dynamics or samples configurations so that the system
+  represents a prescribed temperature distribution.
+
+  \item[\(NPT\), isothermal--isobaric ensemble:]
+  The particle number, external pressure, and temperature are controlled.
+  A barostat changes the simulation-box volume, often together with a
+  thermostat.
+\end{description}
+
+Thermostats and barostats are not interchangeable numerical decorations:
+they alter the equations of motion or sampling procedure. The choice of
+method can affect dynamical properties, so it should match the simulation's
+purpose.
+
+\subsection{Equilibration and sampling}
+
+An MD calculation commonly has two stages. During equilibration, the system
+relaxes from its initial configuration toward the intended thermodynamic
+state. During production, configurations and observables are recorded for
+analysis.
+
+A typical workflow is:
+\begin{enumerate}
+  \item Choose a system composition, force field, and simulation cell.
+  \item Generate initial coordinates and assign or initialize velocities.
+  \item Minimize the energy if needed to remove severe overlaps or
+        unfavorable contacts.
+  \item Equilibrate using the selected ensemble and monitor energy,
+        temperature, pressure, and structural stability.
+  \item Run a production trajectory and save configurations or observables
+        at appropriate intervals.
+  \item Analyze the trajectory and estimate uncertainties from the
+        correlated samples.
+\end{enumerate}
+
+The initial configuration and velocity assignment should be consistent
+with the intended simulation. Repeated measurements along one trajectory
+are generally correlated; treating every saved frame as an independent
+sample can underestimate uncertainty.
+
+\subsection{Properties calculated from trajectories}
+
+MD trajectories can be used to estimate many properties. For an observable
+\(A\), a time average over a production interval \(T_{\mathrm{prod}}\) is
+\[
+\langle A\rangle
+\approx
+\frac{1}{T_{\mathrm{prod}}}
+\int_0^{T_{\mathrm{prod}}} A(t)\,dt,
+\]
+or, for discrete samples,
+\[
+\langle A\rangle
+\approx
+\frac{1}{M}\sum_{k=1}^{M} A(t_k).
+\]
+Common observables include potential energy, kinetic energy, pressure,
+radial distribution functions, mean-square displacement, and
+autocorrelation functions.
+
+For example, the mean-square displacement is
+\[
+\operatorname{MSD}(t)
+=
+\left\langle
+\left\lVert\bm{r}_i(t_0+t)-\bm{r}_i(t_0)\right\rVert^2
+\right\rangle_{i,t_0}.
+\]
+For ordinary diffusion in \(d\) dimensions, the long-time diffusion
+coefficient can be estimated from
+\[
+D = \lim_{t\to\infty}\frac{\operatorname{MSD}(t)}{2dt}.
+\]
+This estimate requires a time range where the motion is diffusive and
+sufficient sampling to reduce statistical error.
+
+\subsection{Accuracy, convergence, and limitations}
+
+MD is an approximate model-based method. Its reliability depends on several
+factors:
+\begin{itemize}
+  \item \textbf{Potential model:} the force field must describe the relevant
+        chemistry and physical interactions adequately.
+  \item \textbf{Time step:} the integration step must resolve the fastest
+        motions included in the model.
+  \item \textbf{System size:} the simulation cell must be large enough to
+        reduce unwanted finite-size effects.
+  \item \textbf{Sampling:} the trajectory must be long enough to explore
+        relevant configurations and estimate averages.
+  \item \textbf{Statistical analysis:} uncertainties should account for
+        temporal correlation and limited sampling.
+\end{itemize}
+
+Classical MD does not explicitly represent electronic degrees of freedom
+and usually treats nuclei as classical particles. It can therefore be
+inadequate when quantum effects, chemical reactions, or electronic
+rearrangements are essential, unless an appropriate extension or
+specialized potential is used. A trajectory is not automatically a
+prediction of physical reality: conclusions should be tested for
+sensitivity to model choices, numerical parameters, and sampling.
+
+
+Molecular dynamics\index{molecular dynamics} computes particle trajectories by integrating
+Newton's equations under forces derived from an interaction model. The
+potential energy determines the physical model, the integrator advances
+the system in time, and boundary conditions and ensemble controls define
+the simulated environment. Reliable conclusions require careful setup,
+equilibration, adequate sampling, and validation of numerical and model
+assumptions.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{2D Molecular Dynamics.pdf}
+  \label{2D Molecular Dynamics.pdf}
+  \caption{Illustration of a 2D Molecular Dynamics}
+\end{figure}
+
+\newpage
+
 \chapter{Damped Harmonic Oscillator}
 
 The graph shows the four free-response curves. It uses the same natural frequency, and initial conditions for each case: [x(0) = 1], and [$\dot{x}$(0) = $0$]. The damping cases correspond to damping ratios [$\zeta$ = $0$], [0 < $\zeta$ < 1], [$\zeta$ = 1], and [$\zeta$ > 1].
@@ -15072,7 +15382,7 @@ The graph shows the four free-response curves. It uses the same natural frequenc
 
 \section{Interpolation}
 
-Interpolation is the process of constructing a function that passes through a given set of data points. Suppose the data are
+Interpolation\index{Interpolation} is the process of constructing a function that passes through a given set of data points. Suppose the data are
 \[
 (x_0,y_0), (x_1,y_1), \ldots, (x_n,y_n),
 \]
@@ -15111,7 +15421,7 @@ Interpolation exactly reproduces the supplied values, including measurement erro
 where \(w_i\) are observation weights and \(\lambda\geq 0\) controls the degree of smoothing. Small \(\lambda\) emphasizes fitting the data; larger \(\lambda\) penalizes curvature and produces a smoother fit.
 
 
-Below is an example that plots noisy samples, the true function, a natural cubic interpolating spline, and a cubic smoothing spline. It uses csaps-cpp for the smoothing spline, and gnuplot for the graph. The smooth value controls the tradeoff between following noisy data and smoothing it.
+Below is an example that plots noisy samples, the true function, a natural cubic interpolating spline, and a cubic smoothing spline\index{cubic smoothing spline}. It uses csaps-cpp for the smoothing spline, and gnuplot for the graph. The smooth value controls the tradeoff between following noisy data and smoothing it.
 
 Using the "csaps API", the smoothing spline takes "csaps::DoubleArray" query values, and returns an array of predictions.
 
@@ -15126,11 +15436,12 @@ Using the "csaps API", the smoothing spline takes "csaps::DoubleArray" query val
 
 \begin{thebibliography}{99}
 
-\bibitem{Morten}
-Morten Hjorth-Jensen, Lectures on Computational Physics, (2015).
+\bibitem{Thijssen}
+Thijssen Jos, Computational Physics, (1999,2003,2007,2012)
 
 \bibitem{Thijssen}
 Thijssen Jos, Computational Physics, (1999,2003,2007,2012)
+
 
 \end{thebibliography}
 \printindex
