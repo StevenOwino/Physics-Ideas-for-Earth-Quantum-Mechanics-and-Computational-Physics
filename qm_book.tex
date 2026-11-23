@@ -9142,7 +9142,7 @@ The exact reduced radial wavefunction is proportional to [r $e^{-r}$].  \\
 
 The plot shows the numerical inward integration (blue line), closely matching the exact normalized solution (orange points). The profile rises sharply from zero, peaks near $\frac{r}{a_0}$ $\approx$ 1, at u(r) $\approx$ 0.73, then decays toward zero.  \\
 
-The wavefunction for the specified trial Energy of elements apply the Numerov integration. However, it  alone does not search for an Energy eigenvalue.
+The wavefunction for the specified trial Energy of elements apply the Numerov integration\index{Numerov integration}. However, it  alone does not search for an Energy eigenvalue.
 For a trial Energy that is not an eigenvalue, the outward-integrated wavefunction generally grows at large (r).  \\
 
 \paragraph{Electronic density for Helium atom}
@@ -9350,7 +9350,7 @@ Before self-consistency, calculation in Rydbergs mixes orbitals and densities, f
 
 An (LDA) exchange-correlation potential follows the exponentially small density, it also decays rapidly. This short-ranged (LDA) tail, is not the exact Kohn–Sham asymptotic behavior; it is one manifestation of the (LDA) self-interaction error.  \\
 
-For a finite neutral system, the exact Kohn–Sham potential has the asymptotic form:
+For a finite neutral system, the exact Kohn–Sham potential\index{Kohn–Sham potential} has the asymptotic form:
 
 $v_s(r)$ $\sim$ $-\frac{1}{r}$ \qquad $(r\to\infty)$ in atomic units. A useful way to show this is to plot $-r v_s(r)$, which approaches 1 at large (r). \\
 
@@ -9363,7 +9363,7 @@ This idealized asymptotic curve is $v_s(r)$ = $\frac{-1}{r}$, so the plotted qua
   \caption{Kohm-Sham Asymptotic Behavior}
 \end{figure}
 
-A uniform mesh is used to resolve the compact orbital, and the valence tail, simultaneously. Agreement with the NIST value checks reproduced same non-spin-polarized LDA calculation e.g. for Oxygen, we have the values:
+A uniform mesh is used to resolve the compact orbital, and the valence tail, simultaneously. Agreement with the NIST value\index{NIST value} checks reproduced same non-spin-polarized LDA calculation e.g. for Oxygen, we have the values:
 \begin{enumerate}
 \item Converged in 27 iterations
 \item Total energy = -74.473075389 Ha
@@ -9697,7 +9697,7 @@ functional and its variational principle. They do not assert that
 \(E_{\mathrm{xc}}[n]\) is known in closed form, nor that every
 practical approximation to it is exact. In computations, the
 accuracy of a DFT result depends substantially on the approximation
-used for the exchange-correlation functional.
+used for the exchange-correlation functional\index{exchange-correlation functional}
 
 For a fixed electron number and interaction, the first
 Hohenberg--Kohn theorem states that the nondegenerate ground-state
@@ -9720,7 +9720,7 @@ and minimizing it.
 
 For large $\ell$, accumulated numerical error prevents accurate inward integration all the way to extremely small radii. We introduce a method tailored to second-order equations, without a first-derivative term.  \\
 
-Numerov's method is designed for equations of the form  $x^n$ = f(t)x + q(t), and achieves high accuracy using a three-point recurrence by expanding the series solution one step forward and one step backward. \\
+Numerovs' method\index{Numerovs' method} is designed for equations of the form  $x^n$ = f(t)x + q(t), and achieves high accuracy using a three-point recurrence by expanding the series solution one step forward and one step backward. \\
 
 Numerov integration can be used to calculate radial orbitals for atoms across the periodic table, but the potential must represent the atom you’re modeling.
 
@@ -10053,7 +10053,7 @@ in that case, absolute error is more informative.
 
 \noindent
 
-The von Neumann method—more commonly called \textbf{acceptance–rejection sampling}, generates random numbers from a target non-uniform distribution by proposing candidates from an easy-to-sample distribution, and accepting only those that pass a probability test. It was introduced by John von Neumann in 1951.  \\
+The von Neumann method—more commonly called \index{acceptance–rejection sampling}, generates random numbers from a target non-uniform distribution by proposing candidates from an easy-to-sample distribution, and accepting only those that pass a probability test. It was introduced by John von Neumann in 1951.  \\
 
 The von Neumann method, also called the \emph{acceptance--rejection method},
 is a Monte Carlo technique for generating random numbers from a target
