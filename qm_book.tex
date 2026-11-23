@@ -393,6 +393,8 @@ DP@rint:#1\endcsname\relax\phantom
 
 \pagenumbering{arabic}
 
+\setlength{\emergencystretch}{2em}
+
 \begin{document}
 \begin{titlepage}
  % Set the cover background color (e.g., MidnightBlue)
@@ -400,8 +402,8 @@ DP@rint:#1\endcsname\relax\phantom
 % Change text color to white for readability
     %\color{white}
     \centering
-    \noindent
-    \includegraphics[width=18.0cm]{Hydrogen_Spectrum.pdf}
+    %\noindent
+    \includegraphics[width=12.0cm]{Hydrogen_Spectrum.pdf}
     %\vspace*{\fill}
     %\vspace*{1cm} % Adjust to push text down from the top
     {\Huge \textbf{Physics Ideas for Earth}}\\[2cm]
@@ -450,7 +452,7 @@ DP@rint:#1\endcsname\relax\phantom
 
 \section{Units}
 
-c, G, $\mu_0$, $\epsilon_0$, $\hbar$ = 1  \\
+c, G, $\mu_0$, $\epsilon_0$, $\hbar$ = 1
 
 NOTE: The way these constants appear in a solution, is governed by dimensional analysis, not by the differential equation.
 
@@ -465,7 +467,7 @@ NOTE: The way these constants appear in a solution, is governed by dimensional a
 Speed of light in vacuum    & $c$             & $3.00 \times 10^8$         & \unit{\meter\per\second} \\
 Planck's constant           & $h$             & $6.63 \times 10^{-34}$     & \unit{\joule\second} \\
 Reduced Planck's constant   & $\hbar$         & $1.05 \times 10^{-34}$     & \unit{\joule\second} \\
-Gravitational constant      & $G$             & $6.67 \times 10^{-11}$     & \unit{\meter\cubed\per\kilogram\per\second\squared} \\
+Gravitational constant      & $G$             & $6.67 \times 10^{-11}$     & \unit{\meter\cubed\per\kilogram\per\second\squared}  \\
 Boltzmann constant          & $k_{\text{B}}$  & $1.38 \times 10^{-23}$     & \unit{\joule\per\kelvin} \\
 Elementary charge           & $e$             & $1.60 \times 10^{-19}$     & \unit{\coulomb} \\
 Electron mass               & $m_{\text{e}}$  & $9.11 \times 10^{-31}$     & \unit{\kilogram} \\
@@ -483,23 +485,45 @@ Rydberg constant            & $R_{\infty}$    & $1.10 \times 10^7$         & \un
 \section{Preface}
 
 
-The \emph{cover} shows  a schematic/map of the Hydrogen Spectrum/Energy shifts, and splitting of spectral lines. Several series named for those who contributed most to their determination[Lyman(from 1906 to 1914), Balmer(1885), Paschen(1908), Brackett(1922), Pfund(1924), and Humphreys(1953)], with the corresponding wavelength. A lot of intellectual buggage isn't exhaustive in this book at all. \\
+The \emph{cover} shows  a schematic/map of the Hydrogen Spectrum/Energy shifts, and splitting of spectral lines.
+Several series named for those who contributed most to their determination[Lyman(from 1906 to 1914), Balmer(1885),
+Paschen(1908), Brackett(1922), Pfund(1924), and Humphreys(1953)], with the corresponding wavelength.
+A lot of intellectual buggage isn't exhaustive in this book at all.
 
- The motivation for this study, is that of the idea that this subject is too engaging to be restricted only to the professional. Special Relaltivity + Quantum Mechanics = Quantum Field Theory. This exposition is relying on an Understanding of the following principles: Classical Action(S = $\int L [q,\dot{q}] dt$ = $\int L [q, \frac{dq}{d\tau}] d\tau$), the Lagrangian(L) $\implies$ L, Hamilton Equations Of Motion, ($\dot{g} = [g, H_{Total}]$), Poisson Brackets, Jacobi Identity, Summation/Product Laws, Constraint Equations, Gauge Transformation(Corresponding to the same state), Heaviside Units, Maxwell Theory(Illustration of the general ideas of constraints), Fermis' Theory, Schr$\ddot{o}$dinger Equation($i \hbar \frac{d \psi}{dt} H^\prime \psi$, Wave Function, Scalar/Vector/Tensor/Spinor Fields, Curvilinear/Flat coordinates, Energy Density, Commutation and Ordering Factors, Electrodynamics, and Renormalization Group.
+ The motivation for this study, is that of the idea that this subject is too engaging to be restricted only to the professional.
+ Special Relaltivity + Quantum Mechanics = Quantum Field Theory. This exposition is relying on an Understanding of the following principles:
+ Classical Action(S = $\int L [q,\dot{q}] dt$ = $\int L [q, \frac{dq}{d\tau}] d\tau$),
+ the Lagrangian(L) $\implies$ L, Hamilton Equations Of Motion, ($\dot{g} = [g, H_{Total}]$),
+ Poisson Brackets, Jacobi Identity, Summation/Product Laws, Constraint Equations,
+ Gauge Transformation(Corresponding to the same state), Heaviside Units,
+ Maxwell Theory(Illustration of the general ideas of constraints), Fermis' Theory,
+ Schr$\ddot{o}$dinger Equation($i \hbar \frac{d \psi}{dt} H^\prime \psi$,
+ Wave Function, Scalar/Vector/Tensor/Spinor Fields, Curvilinear/Flat coordinates, Energy Density, Commutation and Ordering Factors, Electrodynamics, and Renormalization Group.
 
-  I henceforth assume the \emph{"Principle of Locality"} in general, where the action (S), in the equation of motion is given by a four dimensional integral over a given Lagrangian density(See \ref{para:Canonical Quantization} ), where:  \\
+  I henceforth assume the \emph{"Principle of Locality"} in general, where the action (S),
+  in the equation of motion is given by a four dimensional integral over a given Lagrangian density(See \ref{para:Canonical Quantization} ), where:
 
-L = $\int d^3 (x) \mathcal{L}(\phi, \partial_\mu \phi)$, and S = $\int d^4 (x) \mathcal{L} (\phi, \partial_\mu \phi)$ = $\int$ dt L  \\
+L = $\int d^3 (x) \mathcal{L}(\phi, \partial_\mu \phi)$, and S = $\int d^4 (x)
+\mathcal{L} (\phi, \partial_\mu \phi)$ = $\int$ dt L
 
- %$\int$ ${d^4}$(x) $\left[ - \frac{1}{\sum}\partial_\mu \phi \quad \partial^{\mu} \phi - V(\phi) \right]$; $\forall$ parameters in V($\phi$) constant.  \\
+ %$\int$ ${d^4}$(x) $\left[ - \frac{1}{\sum}\partial_\mu \phi \quad \partial^{\mu} \phi - V(\phi) \right]$; $\forall$ parameters in V($\phi$) constant.
 
-The framework of attempting to comprehend nature is on Energy scales \ldots. I do not give References/Citations of original papers, and the Bibliography given, makes no pretence of being exhaustive.
+The framework of attempting to comprehend nature is on Energy scales \ldots.
+I do not give References/Citations of original papers, and the Bibliography given, makes no pretence of being exhaustive.
 
-Abstract Mathematics(models of inductive reasoning), is availed to avoid non-sensical answers or intuitions, and bogus non-differentiable functions. This is the task for the human mind; to see this truth, and preserve it.  \\
-It's accepted that the Angular Momentum of a closed system, is conserved(hence production of particles by conversion of Gravitational Energy, into matter Energy, conditioned by Biological factors).  \\
-The origin of the Universe(a Physical picture of a polarizable space, and characterized as young, by $\frac{\epsilon} {\epsilon_0}$ $\approx$ 1, with an Energy Density when expressed in \emph{Newtonian Units} [\unit{\joule\meter}], is not a reproducible event, and cannot be duplicated in the laboratory. In trying to eliminate the Riemann curvature tensor, there's also the Ricci curvature tensor, assuming the Photon travels without a shift in Energy or Frequency(red shift).  \\
-String Theory is a highly sophisticated Theoretical laboratory(rather than experimental), it's defined at the Planck Energy($10^{19}$ GeV), as any Physical theory that you can possibly come up with, it cannot be tested with the present technology, and it's tightly constrained, as much as the Graviton emerges as a massless state, with Spin-2.  \\
-Space-time is beyond being verified experimentally, and of the vacua states, only one is needed to be isolated, and the  Cosmological constant is very close to 0. However, in this theory, when there's spontaneous symmetry breaking, one does not know how to keep the Cosmological constant 0, perhaps a solution will be found to isolate the one vacuum.
+Abstract Mathematics(models of inductive reasoning), is availed to avoid non-sensical answers or intuitions, and bogus non-differentiable functions.
+This is the task for the human mind; to see this truth, and preserve it.  \\
+It's accepted that the Angular Momentum of a closed system, is conserved(hence production of particles by conversion of Gravitational Energy,
+into matter Energy, conditioned by Biological factors).  \\
+The origin of the Universe(a Physical picture of a polarizable space, and characterized as young, by $\frac{\epsilon} {\epsilon_0}$ $\approx$ 1,
+with an Energy Density when expressed in \emph{Newtonian Units} [\unit{\joule\meter}], is not a reproducible event,
+and cannot be duplicated in the laboratory. In trying to eliminate the Riemann curvature tensor, there's also the Ricci curvature tensor, assuming the Photon travels without a shift in Energy or Frequency(red shift).  \\
+String Theory is a highly sophisticated Theoretical laboratory(rather than experimental),
+it's defined at the Planck Energy($10^{19}$ GeV), as any Physical theory that you can possibly come up with,
+it cannot be tested with the present technology, and it's tightly constrained, as much as the Graviton emerges as a massless state, with Spin-2.  \\
+Space-time is beyond being verified experimentally, and of the vacua states, only one is needed to be isolated,
+and the  Cosmological constant is very close to 0. However, in this theory, when there's spontaneous symmetry breaking,
+one does not know how to keep the Cosmological constant 0, perhaps a solution will be found to isolate the one vacuum.
 
 There's no Space/Time for boredom! Have fun, and ask a Physics lab fundamental questions.
 
@@ -508,33 +532,48 @@ The letters in bold transform like vectors!, and the entire notes parses on TeX 
 These are notes/references, contains a few functional code!, and compiling.
 
 
-\First{An} electron plays a central role, and can be assumed to move in a spherically symmetric field, where all binding Energies are negative. These are advanced core notes(reference sheet), describing how particles behave like waves; the state of a given system[internal structure], and its' probabilities),
+An electron plays a central role, and can be assumed to move in a spherically symmetric field,
+where all binding Energies are negative. These are advanced core notes(reference sheet), describing how particles behave like waves;
+the state of a given system[internal structure], and its' probabilities),
 and some equations of Mathematical Physics[some Ttheorems are mentioned to emphasize the concept of Unitarity].
-The key important formulas are the Schr$\ddot{o}$dinger equation, 
+The key important formulas are the Schr$\ddot{o}$dinger equation,
 Uncertainty Principle, energy levels of the hydrogen atom, harmonic oscillator energy,
-and the Hamiltonian energy(of which describes how a system evolves in time). 
-Included, are physical quantities, long expressions, Gauge Theory, 
-important systems(like the Harmonic Oscillator, the energy levels of the Hydrogen atom), Mathematical tools, 
+and the Hamiltonian energy(of which describes how a system evolves in time).
+Included, are physical quantities, long expressions, Gauge Theory,
+important systems(like the Harmonic Oscillator, the energy levels of the Hydrogen atom), Mathematical tools,
 important inequalities, and some advanced notes on Quantum Field Theory. The multiplication by $i$ makes it possible
 to carry over to QM(Quantum Mechanics)...this is one of the most striking features of Classical Mechanics(CM)-namely,
 the correspondence between observables, and one-parameter groups of symmetries. We hereby have a Mathematical model
 capable in principle, of supplying the answer to any Physical question we might ask. The fact that the eigenvalues check with
 the observed spectrum of the hydrogen atom, when one takes $\mathbf K$ = $\frac{\hbar}{2 \pi}$, which provides a confirmation
 of the identity of $\hbar$, with $\frac{\hbar}{2 \pi}$. Your objective, reader, is to show in theorems of analysis, providing
-\emph{asymptotic formulas for the eigenvalue distribution of differential operators}. \\
-Don't try to read these notes linearly, instead, come back here as a formula reference. \\
+\emph{asymptotic formulas for the eigenvalue distribution of differential operators}.
+Don't try to read these notes linearly, instead, come back here as a formula reference.
 
-Look up, and study these topics from the literature: Quantum particle in a box, Tensor fields, the Standard Model of elementary particles, the magnetic dipole moment of the electron, the force of Gravity, and High Energy Physics.
+Look up, and study these topics from the literature: Quantum particle in a box,
+Tensor fields, the Standard Model of elementary particles, the magnetic dipole moment of the electron, the force of Gravity, and High Energy Physics.
 
 \newpage
 
 \section{Why Quantum Mechanics?}
 
-A complete description of the state of a Physical System, in Classical Mechanics, is effected by stating all its Coordinates, and Velocities at a given instant; With these initial data, the \emph{Equations Of Motion} completely determine the behaviour of the system at all subsequent instants. \\
-In Quantum Mechanics, such a description is in principle impossible, since the Coordinates, and the corresponding Velocities, cannot exist simultaneously.
-Thus a description of the state of a Quantum System is effected by means of a smaller number of quantities, than in Classical Mechanics, i.e. it is less detailed than a Classical description.  \\
-A very important consequence follows from this, regarding the nature of the \textbf{predictions}, made in Quantum Mechanics. Whereas a Classical description suffices to predict the future motion of a mechanical system with complete accuracy, the less detailed description given in Quantum Mechanics evidently cannot be enough to do this. This means that, even if an \emph{Electron} is in a state described in the most complete manner possible in Quantum Mechanics, its' behaviour at subsequent instants, is still in principle \textbf{uncertain}. Hence Quantum Mechanics, cannot make completely definite predictions concerning the future behaviour of the Electron. For a given initial state of the Electron, a subsequent \textbf{measurement} can give various results. The problem in Quantum Mechanics, consists in determining the \textbf{probability} of obtaining various results on performing this \emph{measurement}. It is understood, of course, that in some cases, the \emph{probability} of a given result of \emph{measurement} may be equal to  \textbf{unity}, i.e. \emph{certainty}, so that the result of that \emph{measurement} is \emph{unique}.  \\
-Completely described states, occur as a result of the \emph{simultaneous measurement} of a complete set of Physical quantities. From the results of such a \emph{measurement}, it's possible to determine the probability of various results of any subsequent \emph{measurement}, regardless of the history of the Electron, prior to the first \emph{measurement}.
+A complete description of the state of a Physical System, in Classical Mechanics,
+is effected by stating all its Coordinates, and Velocities at a given instant;
+With these initial data, the \emph{Equations Of Motion} completely determine the behaviour of the system at all subsequent instants.
+In Quantum Mechanics, such a description is in principle impossible, since the Coordinates,
+and the corresponding Velocities, cannot exist simultaneously.
+Thus a description of the state of a Quantum System is effected by means of a smaller number of quantities,
+than in Classical Mechanics, i.e. it is less detailed than a Classical description.  \\
+A very important consequence follows from this, regarding the nature of the \textbf{predictions},
+made in Quantum Mechanics. Whereas a Classical description suffices to predict the future motion of a mechanical system with complete accuracy,
+the less detailed description given in Quantum Mechanics evidently cannot be enough to do this.
+This means that, even if an \emph{Electron} is in a state described in the most complete manner possible in Quantum Mechanics,
+its' behaviour at subsequent instants, is still in principle \textbf{uncertain}. Hence Quantum Mechanics,
+cannot make completely definite predictions concerning the future behaviour of the Electron. For a given initial state of the Electron, a subsequent \textbf{measurement} can give various results. The problem in Quantum Mechanics,
+consists in determining the \textbf{probability} of obtaining various results on performing this \emph{measurement}. It is understood, of course, that in some cases, the \emph{probability} of a given result of \emph{measurement} may be equal to  \textbf{unity}, i.e. \emph{certainty}, so that the result of that \emph{measurement} is \emph{unique}.
+Completely described states, occur as a result of the \emph{simultaneous measurement} of a complete set of Physical quantities.
+From the results of such a \emph{measurement}, it's possible to determine the probability of various results of any subsequent \emph{measurement},
+regardless of the history of the Electron, prior to the first \emph{measurement}.
 
 \newpage
 
@@ -578,7 +617,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Oxygens' Local Density Approximation(LDA)
 \item Hartree Boundary Condition
 \item Maximum a Posterior of a Bayesian Inference
-\item Numerovs' solution of Poisons' Equation 
+\item Numerovs' solution of Poisons' Equation
 \item Illustration of the motion of a Double Pendulum
 \item Illustration of a 2D Molecular Dynamics
 \item Graph of the four Harmonic Oscillator response curves
@@ -606,7 +645,7 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 \item Classical vs. Quantum Oscillator
 \item Limitations of Nuclear Mean-Field Calculations for the Periodic Table
 \item Symptoms Inherent on the Periodic Table, and its' limitation
-\item 
+\item
 \item
 \item
 
@@ -617,37 +656,37 @@ Completely described states, occur as a result of the \emph{simultaneous measure
 
 \section{Diagnostic}
 
-(a) Show that $y = 2x^2$ is a solution to the differential equation: $\frac{1}{2}x^2y''-xy'+y$ = 0, \\
+(a) Show that $y = 2x^2$ is a solution to the differential equation: $\frac{1}{2}x^2y''-xy'+y$ = 0,
 
-(b) If $y_1(t)$ = $e^{3t}$, and $y_2(t)$ = $e^{-3t}$ are solutions to $y'' - 9y$ = 0, what is the general solution? Note that $y_1$ and  \\
-$y_2$ are NOT constant multiples of one another, so they are linearly independent. Thus the general solution in the differential equation is  \\
-y(t) = $c_1e^{3t} + c_2e^{-3t}$. \\
+(b) If $y_1(t)$ = $e^{3t}$, and $y_2(t)$ = $e^{-3t}$ are solutions to $y'' - 9y$ = 0, what is the general solution? Note that $y_1$ and
+$y_2$ are NOT constant multiples of one another, so they are linearly independent. Thus the general solution in the differential equation is
+y(t) = $c_1e^{3t} + c_2e^{-3t}$.
 
-(c) If $y^{''} - 2y^{'} + 5y $= 0, has the associated characteristic equation $\lambda^2 - 2\lambda + 5$ = 0,  \\
+(c) If $y^{''} - 2y^{'} + 5y $= 0, has the associated characteristic equation $\lambda^2 - 2\lambda + 5$ = 0,
 by the quadratic formula, the roots of the characteristic equation are 1$\pm 2{i}$.
-Therefore, the general solution to this differential equation is y(x) = $e^x(c_1cos2{x}+c_2sin2{x})$.  \\
+Therefore, the general solution to this differential equation is y(x) = $e^x(c_1cos2{x}+c_2sin2{x})$.
 
-(d) Knowing when to apply the $\mathbf{\textbf{Product and Chain Rules, Total and Partial Derivatives}}$.  \\
+(d) Knowing when to apply the $\mathbf{\textbf{Product and Chain Rules, Total and Partial Derivatives}}$.
 
-NOTE: $\frac{\hbar}{i}$ = -i$\hbar$ (Multiplying by -i is the same as dividing by i.)  \\
+NOTE: $\frac{\hbar}{i}$ = -i$\hbar$ (Multiplying by -i is the same as dividing by i.)
 
-(e) $\int (a_0 x^4 + 4a_1 x^3 + 6a_2 x^2 + 4a_3 x + a_4)^{- \frac{1}{2}}$ dx $\rightarrow$ NO ANTIDERIVATIVE.  \\
+(e) $\int (a_0 x^4 + 4a_1 x^3 + 6a_2 x^2 + 4a_3 x + a_4)^{- \frac{1}{2}}$ dx $\rightarrow$ NO ANTIDERIVATIVE.
 
-PS: Many functions don't have anti-derivatives. The above example is a "purple flourencense hair dye, its' BOGUS! -- E.T.Jaynes"  \\
+PS: Many functions don't have anti-derivatives. The above example is a "purple flourencense hair dye, its' BOGUS! -- E.T.Jaynes"
 
-(f) $\int_{\theta=0}^{2 \pi}$ $\int_{\phi=0}^{\frac{\pi}{3}}$ $\int_{\rho=1}^{2 \cos \phi}$ $p^2 \sin \phi$ d$\rho$ d$\phi$ d$\theta$ = $\frac{11 \pi}{24}$  \\
+(f) $\int_{\theta=0}^{2 \pi}$ $\int_{\phi=0}^{\frac{\pi}{3}}$ $\int_{\rho=1}^{2 \cos \phi}$ $p^2 \sin \phi$ d$\rho$ d$\phi$ d$\theta$ = $\frac{11 \pi}{24}$
 
-    \textbf{Cylindrical Coordinates(A combination of both Polar, and Cartesian Cordinates)}  \\
+    \textbf{Cylindrical Coordinates(A combination of both Polar, and Cartesian Cordinates)}
 
 $\int_{-3}^{3}$ $\int_{0}^{\sqrt{9 - x^2}}$ $\int_{0}^{9 - x^2 - y^2}$ $\sqrt{x^2 + y^2}$ dz dy dx = \ldots
 
-Polar Conversion of (x,y,z), is (r, $\theta$, z) \ldots where $r^2$ = $x^2 + y^2$, Tan$\theta$ = $\frac{y}{x}$, and z = z.  \\
+Polar Conversion of (x,y,z), is (r, $\theta$, z) \ldots where $r^2$ = $x^2 + y^2$, Tan$\theta$ = $\frac{y}{x}$, and z = z.
 
-For (r, $\theta$, z) $\to$ (x,y,z), we have x = r Cos$\Theta$, y = r Sin$\Theta$, and z = z.  \\
+For (r, $\theta$, z) $\to$ (x,y,z), we have x = r Cos$\Theta$, y = r Sin$\Theta$, and z = z.
 
-Here, the "Floor" is r, $\Theta$, giving the Volume being Integrated over as the Intervals, ($-3 \leq x \leq 3$), and ($0 \leq y \leq \sqrt{9 - x^2}$) \ldots Which is "the Floor".  \\ 
+Here, the "Floor" is r, $\Theta$, giving the Volume being Integrated over as the Intervals, ($-3 \leq x \leq 3$), and ($0 \leq y \leq \sqrt{9 - x^2}$) \ldots Which is "the Floor".
 
-The $\sqrt{9 - x^2}$, is the closed semi-circle in the region of Integration.[Upper Half- Circle, with Radius = 3].  \\
+The $\sqrt{9 - x^2}$, is the closed semi-circle in the region of Integration.[Upper Half- Circle, with Radius = 3].
 
 \begin{tikzpicture}
     % Draw the arc from 0 to 180 degrees
@@ -662,7 +701,7 @@ The $\sqrt{9 - x^2}$, is the closed semi-circle in the region of Integration.[Up
     \draw[dashed] (0,0) -- (2.12, 2.12) node[midway, above left] {$r=3$};
 \end{tikzpicture}
 
-Or \ldots  \\
+Or \ldots
 
 \begin{tikzpicture}
     % Draw only the curved part
@@ -674,13 +713,14 @@ Or \ldots  \\
 \end{tikzpicture}
 
 
-$\therefore$. $0 \leq \theta \leq \pi$, and $0 \leq r \leq 3$. For the height (z), its' Integration Bounds are: $0 \leq z \leq 9 - x^2 - y^2$, o $\implies$ the (x-y) Plane,
-and $9 -x^2 - y^2$, is Paraboloid opening down Vertex at z = 9.[a semi-cylindrical base topped with a Parabolic Dome.]  \\
+$\therefore$. $0 \leq \theta \leq \pi$, and $0 \leq r \leq 3$.
+For the height (z), its' Integration Bounds are: $0 \leq z \leq 9 - x^2 - y^2$, o $\implies$ the (x-y) Plane,
+and $9 -x^2 - y^2$, is Paraboloid opening down Vertex at z = 9.[a semi-cylindrical base topped with a Parabolic Dome].
 
-In Polar/Cylindrical, $9 - x^2 - y^2$ = $9 - (x^2 + y^2)$ = $9 - r^2$.   \\
+In Polar/Cylindrical, $9 - x^2 - y^2$ = $9 - (x^2 + y^2)$ = $9 - r^2$.
 
-\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0cm,1cm)}, z={(0cm,0cm)}] 
-% Note: I am using a custom projection for a 3D-like effect. 
+\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0cm,1cm)}, z={(0cm,0cm)}]
+% Note: I am using a custom projection for a 3D-like effect.
 % x and y are defined to create a perspective view.
 
 % Define a coordinate system for 3D feel
@@ -713,7 +753,7 @@ In Polar/Cylindrical, $9 - x^2 - y^2$ = $9 - (x^2 + y^2)$ = $9 - r^2$.   \\
     % 5. Axis labels
     \draw[->, thick] (0,0) -- (4,0) node[right] {$x$};
     \draw[->, thick] (0,0) -- (0,4) node[right] {$y$};
-    \draw[->, thick] (0,0) -- (0,0) ++(0,0) node[left] {$z$}; 
+    \draw[->, thick] (0,0) -- (0,0) ++(0,0) node[left] {$z$};
     % Since Z is vertical in this projection, we label the height
     \draw[->, thick] (0,0) -- (0,10) node[above] {$z$};
 
@@ -723,9 +763,9 @@ In Polar/Cylindrical, $9 - x^2 - y^2$ = $9 - (x^2 + y^2)$ = $9 - r^2$.   \\
 \end{scope}
 \end{tikzpicture}
 
-The new Bounds in Cylindrial Coordinates are: $0 \leq r \leq 3$, $0 \leq \theta \leq \pi$, and $0 \leq z \leq 9 - r^2$.  \\
+The new Bounds in Cylindrial Coordinates are: $0 \leq r \leq 3$, $0 \leq \theta \leq \pi$, and $0 \leq z \leq 9 - r^2$.
 
-\textbf{NOTE}: [dy, dx], become [r dr d$\theta$].  \\
+\textbf{NOTE}: [dy, dx], become [r dr d$\theta$].
 
 The original Integral, now becomes: $\int_{\theta=0}^{\pi}$ $\int_{r=0}^3$ $\int_{z=0}^{9 -r^2}$ $r^2$ dz dr d$\theta$:
 \[
@@ -738,7 +778,7 @@ The original Integral, now becomes: $\int_{\theta=0}^{\pi}$ $\int_{r=0}^3$ $\int
 \end{aligned}
 \]
 
-\textbf{NOTE}: While Integrating w.r.t (r), applying the Power Rule, we have:  \\
+\textbf{NOTE}: While Integrating w.r.t (r), applying the Power Rule, we have:
 
 $
 \int 9r^2\,dr=3r^3,\qquad \int r^4\,dr=\frac{r^5}{5}.
@@ -826,10 +866,11 @@ $
  
 \noindent
 
-For lessons on Integration, see \url{https://mediaspace.itap.purdue.edu/media/Spring+2023+-+MA261+-+Chen+%287A30%29/1_y3xfdsxr}.  \\
+For lessons on Integration, see \url{https://mediaspace.itap.purdue.edu/media/Spring+2023+-+MA261+-+Chen+%287A30%29/1_y3xfdsxr}
 
+\medskip
 
-PROCEED  \\
+PROCEED
 
 %\vspace{2\MySkip}
 
@@ -837,26 +878,30 @@ PROCEED  \\
 
 Elementary logic functions(Boolean gates), or Disjunctive Normal Forms, and Quantum Circuits, are not part of this material.
 
-$\bullet$ Schr$\ddot{o}$dinger Equation: General linear homogeneous solution(from translation operators), to the Time-Dependent Schr$\ddot{o}$dinger Equation $\longrightarrow$ \\
+$\bullet$ Schr$\ddot{o}$dinger Equation: General linear homogeneous solution(from translation operators),
+to the Time-Dependent Schr$\ddot{o}$dinger Equation $\longrightarrow$
 
 \begin{equation}
 \psi(x,t) = \sum_{n = 1}^\infty C_n \psi(x) e^{- \frac{i E t}{\hbar}}, \mathbf{\textbf{\quad t = 0}}
 \end{equation}
 
-$\bullet$ Integral form, time-dependent $\longrightarrow$  \\
+$\bullet$ Integral form, time-dependent $\longrightarrow$
 \begin{equation}
 \psi(x,t) = \int \mathbf K[x,t:q_0,t_0]\psi(q_0,t_0)dx_0, \mathbf{\textbf{where K is the kernel or propagator}}.
 \end{equation}
 
-Schr$\ddot{o}$dinger Time Independent Equation  \\
+Schr$\ddot{o}$dinger Time Independent Equation
 \begin{equation}
 \boxed{E \psi_0 (x) = - \frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2}  + V \psi_0 (x)}
 \end{equation}
 
 
-$\bullet$ The identity Zero: Zero has no multiplicative inverse!!  \\
+$\bullet$ The identity Zero: Zero has no multiplicative inverse!!
 
-$\bullet$ Informational Warning: All descriptions here are in the literature, and not original. DO NOT attempt to frame a physical picture!!, or take Relativity of simultaneity, into sufficient account, since it's incomplete; characteristic quantities of Black Holes, the total mass of space-time........ Quantum Field Theory of Particle Physics follows, once these principles are mastered. \\
+$\bullet$ Informational Warning: All descriptions here are in the literature, and not original.
+DO NOT attempt to frame a physical picture!!, or take Relativity of simultaneity, into sufficient account, since it's incomplete;
+characteristic quantities of Black Holes, the total mass of space-time........
+Quantum Field Theory of Particle Physics follows, once these principles are mastered.
 
 $\bullet$ On Rational numbers: If (a) $\neq$ 0, there is no rational number($\mathbb Q$), where (b) $\times$ 0 = (a), can be fulfilled.
 
@@ -865,118 +910,124 @@ $\bullet$ On Rational numbers: If (a) $\neq$ 0, there is no rational number($\ma
 \chapter{\textbf{Familiar, Recognized, And Understood Equations}}
 \label{ch:Familiar, recognized, and understood equations}
 
- If $ \frac{d \alpha} {dt} $ = 0 $\forall$ t, then $\alpha$ is constant \\
+ If $ \frac{d \alpha} {dt} $ = 0 $\forall$ t, then $\alpha$ is constant
 
- $(f,\phi,) = \lim_{\alpha \to 0} (f, \phi_n) = 0 $ \\
+ $(f,\phi,) = \lim_{\alpha \to 0} (f, \phi_n) = 0 $
 
- $\frac{d \sigma} {d \Omega}$ = $|f(\theta, \phi)|^2$  \\
+ $\frac{d \sigma} {d \Omega}$ = $|f(\theta, \phi)|^2$
 
- $ e^{i \mathbf a \cdot \mathbf X} e^{1 \mathbf b \cdot \mathbf P} \phi_0$ is also a minimum uncertainty state  \\
+ $ e^{i \mathbf a \cdot \mathbf X} e^{1 \mathbf b \cdot \mathbf P} \phi_0$ is also a minimum uncertainty state
 
- $a^\dagger |n \rangle$ = $\sqrt{n + 1} |n +1 \rangle$ \\
+ $a^\dagger |n \rangle$ = $\sqrt{n + 1} |n +1 \rangle$
 
 \begin{equation}
-{\hat j_\pm} \mid j,m \rangle = \hbar \sqrt{j (j + 1) - m \mid m \pm 1)} \mid j, m \pm 1 \rangle
-\end{equation} 
+{\hat j_\pm} \ket j,m = \hbar \sqrt{j (j + 1) - m(m \pm 1)} \ket j, m \pm 1
+\end{equation}
 
-$\implies$ \\
+$\implies$
 
-Angular-momentum\index{Angular-momentum} \text{identity/Discrete orientation, with Quantum-number}\index{Quantum-number}. \quad (In units of $\frac{\hbar}{2\pi}$).  \\
+Angular-momentum\index{Angular-momentum} \text{identity/Discrete orientation, with Quantum-number}\index{Quantum-number}.
+\quad (In units of $\frac{\hbar}{2\pi}$).
   
-A(t) = $e^{+ \frac{iHt}{h}} \mathbf {A}e^{- \frac{iHt}{h}}$  \\
+A(t) = $e^{+ \frac{iHt}{h}} \mathbf {A}e^{- \frac{iHt}{h}}$
   
-$\hat{\mathbf{H}}$ = $p \hat q - \mathbf L$ \\
+$\hat{\mathbf{H}}$ = $p \hat q - \mathbf L$
  
-ct' = $ \gamma(ct - \beta x)$ \\
+ct' = $ \gamma(ct - \beta x)$
  
-E = $ ( \mathbf {p^2} c^2 + m^2 c^2)^ \frac{1}{2}$  \\
+E = $ ( \mathbf {p^2} c^2 + m^2 c^2)^ \frac{1}{2}$
 
-$ \mathbf E$ = -$ \frac{\mathbf {\dot A}}{c} - \nabla \varphi$   \\
+$ \mathbf E$ = -$ \frac{\mathbf {\dot A}}{c} - \nabla \varphi$
  
-$ \forall F \in H L^2(\mathbb C,\mu_\hbar)$, we have:  \\
+$ \forall F \in H L^2(\mathbb C,\mu_\hbar)$, we have:
 \begin{equation}
 \Vert T_\mathbf a F \Vert^2 L^2(\mathbb C^n,\mu_\hbar)
 = (\pi \hbar)^{-n} \int \mathbb C_n  e^{- \hbar \vert \mathbf{a} \vert^2}  \mathbf{e}^{-2 \mathbb{R} (\bar{\mathbf{a}} \cdot {\mathbf{a}})} \vert \mathbf F (\mathbf z + \hbar \mathbf a ) \vert^2  \mathbf e^{- \frac{\vert \mathbf x \vert^2} {\hbar}}  dx
 = (\pi \hbar)^{-n} \int \mathbb C_n e^{- \frac{\vert \mathbf z + \hbar \vert^2}{\hbar}} \vert \mathbf F(\mathbf z +\hbar \mathbf a) \vert^2 dz
 \end{equation}
 \noindent
-= $\Vert \mathbf{F} \Vert^2$ $L^2(\mathbb{C^n}$,$\mu \hbar)$  \\
+= $\Vert \mathbf{F} \Vert^2$ $L^2(\mathbb{C^n}$,$\mu \hbar)$
   
-$\prod (e^X)$ = $e^{\pi (X)}$ = $ \sum_{x=0}^\infty \frac{\pi X^m}{m!}$ (Each element is a product of Lie algebra elements. Its power series is finite dimensional, and closed.)  \\
+$\prod (e^X)$ = $e^{\pi (X)}$ = $ \sum_{x=0}^\infty \frac{\pi X^m}{m!}$ (Each element is a product of Lie algebra elements. Its power series is finite dimensional, and closed.)
                                                                   
-The Hilbert-Schmidt-norm\index{Hilbert-Schmidt-norm} of a matrix X $\in$ $M_n(\mathbb C)$ $\longrightarrow$  \\
-\begin{equation} 
-\Vert X \Vert^2_{HS} = \sum_{j,k = 1}^{n} |X_{jk}|^2  
+The Hilbert-Schmidt-norm\index{Hilbert-Schmidt-norm} of a matrix X $\in$ $M_n(\mathbb C)$ $\longrightarrow$
+\begin{equation}
+\Vert X \Vert^2_{HS} = \sum_{j,k = 1}^{n} |X_{jk}|^2
 \end{equation}
   
-Cauchy-Schwarz inequality\index{Cauchy-Schwarz inequality} 
+Cauchy-Schwarz inequality\index{Cauchy-Schwarz inequality}
 \begin{equation}
-\Vert {XY} \Vert_{HS} \leq \Vert X \Vert_{HS} \Vert Y \Vert_{HS} \forall X,Y \in M_n(\mathbb C) 
+\Vert {XY} \Vert_{HS} \leq \Vert X \Vert_{HS} \Vert Y \Vert_{HS} \forall X,Y \in M_n(\mathbb C)
 \end{equation}
 
 SO(3)\index{SO(3)} $\longrightarrow$
-\begin{equation} 
+\begin{equation}
 \sigma_{\ell} = \pi'_{\ell} \circ \phi^{-1} = \pi_\ell
 \end{equation}
 
-$\hat \otimes \longrightarrow$ Hilbert tensor product \\
+$\hat \otimes \longrightarrow$ Hilbert tensor product
 
-A complete bounded norm-preserving orthonormal vector, and closed unitary bilinear mapping,  \\
-such that, $\psi$: $\mathscr H$ $\times$ $\mathscr H$ $\rightarrow$ G.  \\
+A complete bounded norm-preserving orthonormal vector, and closed unitary bilinear mapping,
+such that, $\psi$: $\mathscr H$ $\times$ $\mathscr H$ $\rightarrow$ G.
 
-If U $\in$ $\mathscr L (\mathscr H)$ and V $\in$ $\mathscr L (\mathscr K)$ are unitary, then so is U $\otimes$ V .  \\
+If U $\in$ $\mathscr L (\mathscr H)$ and V $\in$ $\mathscr L (\mathscr K)$ are unitary, then so is U $\otimes$ V .
 
-U $\otimes$ V $(U \otimes V )^*$ = $I$ (sesquilinear or conjugate linear mapping)  \\
+U $\otimes$ V $(U \otimes V )^*$ = $I$ (sesquilinear or conjugate linear mapping)
 
-If s $\rightarrow$ $U_s$ $\in$ $\mathscr L (\mathscr H)$, and t $\rightarrow$ $V_t$ $\in$ $\mathscr L (\mathscr H)$ are strongly continuous unitary representations of topological groups G and H , respectively, then (s, t) $\rightarrow$ $U_s$ $\otimes$ $V_t$ $\in$ $\mathscr L (\mathscr H \otimes \mathscr H')$ is a strongly continuous unitary representation of the product topological group G $\times$ H.  \\
+If s $\rightarrow$ $U_s$ $\in$ $\mathscr L (\mathscr H)$, and t $\rightarrow$ $V_t$ $\in$ $\mathscr L (\mathscr H)$ are strongly continuous unitary representations of topological groups G and H , respectively, then (s, t) $\rightarrow$ $U_s$ $\otimes$ $V_t$ $\in$ $\mathscr L (\mathscr H \otimes \mathscr H')$ is a strongly continuous unitary representation of the product topological group G $\times$ H.
 
-$\mathbf{\textbf{Proof}}$. If (s, t) $\rightarrow$ (s0, t0) (i.e., s $\rightarrow$  $s_0$, and t $\rightarrow$ $t_0$), then ($U_s$ $\otimes$ $V_t$) (x) $\otimes$ (y) = $U_s$(x) $\otimes$ $V_t$(y) $\rightarrow$ $U_s0$(x) $\otimes$ $V_t0$(y) = ($U_s0$ $\otimes$ $V_t0$)  $\otimes$ y . Thus (s, t) $\rightarrow$ $U_s$ $\otimes$ $V_t$ is strongly continuous on H $\odot$ H' (with the set of all finite sums($\sum_{1}^n$ ($x_k$ $\otimes$ $y_k$).  \\
+$\mathbf{\textbf{Proof}}$. If (s, t) $\rightarrow$ (s0, t0) (i.e., s $\rightarrow$  $s_0$, and t $\rightarrow$ $t_0$), then ($U_s$ $\otimes$ $V_t$) (x) $\otimes$ (y) = $U_s$(x) $\otimes$ $V_t$(y) $\rightarrow$ $U_s0$(x) $\otimes$ $V_t0$(y) = ($U_s0$ $\otimes$ $V_t0$)  $\otimes$ y . Thus (s, t) $\rightarrow$ $U_s$ $\otimes$ $V_t$ is strongly continuous on H $\odot$ H' (with the set of all finite sums($\sum_{1}^n$ ($x_k$ $\otimes$ $y_k$).
 
-Feynmann Path-Integral\index{Path-Integral} $\longrightarrow$  \\
+Feynmann Path-Integral\index{Path-Integral} $\longrightarrow$
 \begin{equation}
 e^{- \frac{i t \hat {H}}{\hbar}} \psi (X_0) = C \int_{\text{paths with} \\ X(0)=X_0} exp\left\{ \frac{i}{\hbar}(x(\cdot),0,t) \right\} \psi(x(t)) Dx
 \end{equation}
  
-Gauge-transformation $\longrightarrow$ \\
+Gauge-transformation $\longrightarrow$
 \begin{equation} \label{eq:Gauge-transformation}
 U_\gamma Q^{1}_{pre}(f)U^{-1}_{\gamma} = Q^{2}{_{pre}}(f), \quad where (U_\gamma) \text{is the map, and "pre" is for pre-quantization\index{pre-quantization}}.
 \end{equation}
 
 $a^{\prime}$ = $a - \nabla \psi$ $\quad$  $\phi^{\prime}$ = $\phi$ + $\frac{1}{c}$ $\frac{\partial \psi}{\partial t}$
 
-\boxed{\text{This was David Bohms' view of the character of Electromagnetic potentials.}} 
+\boxed{\text{This was David Bohms' view of the character of Electromagnetic potentials.}}
+\[
+\begin{aligned}
+\psi_n(r,\phi) &= f(r)e^{-in\phi},\\
+\int_0^\infty |f(r)|^2\,r\,dr &< \infty.
+\end{aligned}
+\]
+Here \(n\) is an integer, and \(f\) is an arbitrary
+holomorphic function\index{holomorphic function} on \(\mathbb{C}\).
 
-\begin{equation}
-\psi_n(r,\phi) = f(r) e^{-i n\phi},\quad \text{where n is an integer, and f is an arbitrary holomorphic function\index{holomorphic function} on} \mathbb (C), with
-\int_0^{\infty}\mid f(r)\mid^2r dr < \infty
-\end{equation}
  
-Sympletic-potential\index{Sympletic-potential} $\longrightarrow$ $\theta$ = $\frac{1}{2}$(p dx - x dp) = $\frac{1}{{2m} \omega}$(p dy - y dp)  \\
+Sympletic-potential\index{Sympletic-potential} $\longrightarrow$ $\theta$ = $\frac{1}{2}$(p dx - x dp) = $\frac{1}{{2m} \omega}$(p dy - y dp)
   
-Fourier-transform($\mathcal{F})$\index{Fourier-transform} $\longrightarrow$ A constant multiple of a unitary map $\longrightarrow$ $\psi(p)$ = - $\int_\mathbb R$ $\phi$(x)$e^{- \frac{{ixp}}{\hbar}}$ dx dp  \\
+Fourier-transform($\mathcal{F})$\index{Fourier-transform} $\longrightarrow$ A constant multiple of a unitary map $\longrightarrow$ $\psi(p)$ = - $\int_\mathbb R$ $\phi$(x)$e^{- \frac{{ixp}}{\hbar}}$ dx dp
   
-$C_c^{\infty}(\mathbb {R^n})$ $\longrightarrow$ Space of smooth, compactly supported functions\index{Space of smooth, compactly supported functions} \\
+$C_c^{\infty}(\mathbb {R^n})$ $\longrightarrow$ Space of smooth, compactly supported functions\index{Space of smooth, compactly supported functions}
 \end{note}
 
 \section{\textbf{Common nomenclacture}}
 \paragraph{Nomenclecture}
 \begin{enumerate}
-    \item Written in polar coordinates, $\rho$ and $\theta$ are in the unit circle; When $\rho < 1$, we have the series u = $ \sum_{\nu=1}^\infty a_\nu \rho^{\nu} \cos \nu \theta$  
-    \item $\pm$ means $-1^{|r|}$ 
+    \item Written in polar coordinates, $\rho$ and $\theta$ are in the unit circle; When $\rho < 1$, we have the series u = $ \sum_{\nu=1}^\infty a_\nu \rho^{\nu} \cos \nu \theta$
+    \item $\pm$ means $-1^{|r|}$
     \item $\nabla$ - nabla Differential operator in ordinary 3D space
-    \item $\nabla$h - Gradient of scalar h 
-    \item $\nabla$ $\cdot$ $\mathbf A$ - Divergence of a vector 
-    \item $\nabla^2$ - Laplacian operator in ordinary 3D space spacetime $\longrightarrow$ $\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$ 
-    \item $\Box$ - nabla operator in 3D Minskowski spacetime 
+    \item $\nabla$h - Gradient of scalar h
+    \item $\nabla$ $\cdot$ $\mathbf A$ - Divergence of a vector
+    \item $\nabla^2$ - Laplacian operator in ordinary 3D space spacetime
+    $\longrightarrow$ $\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$
+    \item $\Box$ - nabla operator in 3D Minskowski spacetime
     \item $\Box^2$ - d'Alembertian operator in Minskowski 4D spacetime /4D generalization of the Laplacian operator
-    \item $\overline{V}$ = ($V^\perp)^\perp$ is the closure of V 
+    \item $\overline{V}$ = ($V^\perp)^\perp$ is the closure of V
     \item $g_{i,j}, g^{i,j}$ - Covariant, contraviant metric tensor of 3D space, or its components
-    \item $\epsilon_0$ - Permitivity\index{Permitivity} of free space 
+    \item $\epsilon_0$ - Permitivity\index{Permitivity} of free space
     \item $\mu_0$ - Permeability\index{Permeability} of free space
-    \item $\rho, \phi$, z - Cylindrical corodinates in 3D space 
-    \item $\sigma$ - Spacetime interval in 4D 
-    \item $\phi$ - Electromagnetic scalar potential 
-    \item $\omega$ - Angular-frequency\index{Angular-frequency}/speed 
+    \item $\rho, \phi$, z - Cylindrical corodinates in 3D space
+    \item $\sigma$ - Spacetime interval in 4D
+    \item $\phi$ - Electromagnetic scalar potential
+    \item $\omega$ - Angular-frequency\index{Angular-frequency}/speed
 
 \end{enumerate}
 
@@ -995,15 +1046,26 @@ I would like to appreciate \LaTeX{} ,  and
 
 \chapter{Physical Ideas That Captivate}
 
-\section{Characteristics of describing Energy}\label{sec:Characteristics of describing Energy}
+\section{Characteristics of describing Energy}
+\label{sec:Characteristics of describing Energy}
 
-We'll not expend electronic ink for philosophical arguments! i.e. How long will $\mathbb Z$ remain a bachelor, cold fusion, climate change, why Wave-functions overlap[Adding together several plane waves of different wavelengths can produce a wave that is relatively localized], determinism(e.g. Wigners' friend, Schr$\ddot{o}$dingers' cat), why periodicity of Quantum numbers lead to periodicity of chemical elements, Spin-flip transitions(oscillating magnetic monopoles/distance transverse magnetic fields($\mathbf B$), produced by an oscillating magnetic dipole, paradox of time-dilation, is the Earth an Inertial frame, Relativistic Doppler Effect, \ldots etc. \\
-Ultra-cold atoms(lock-stepped with the same spin), have been realized in the laboratory(Bose-Einstein condensate[BEC]), through observing the center of mass system(a trick) of wave-like properties of atoms, so that the Pauli exclusion principle is NOT violated.  \\
-This technology, although limited(interaction with the external envinroment, depolarizes particles), has applications in Quantum computers(cryptography - Quantum key distribution ; Refer to figure \ref{fig:Binary Entropy Diagram.png}), and is realized only for very low temperature Kelvin scales, not for Classical computers.  \\
-Even the speed of light (C) - has been stopped!, using slow light pulses. The wave-particle duality(using a super-computer), was proved by an experiment in 1974, by John Clauser( concludes that the wave-function collapse is an objective $\mathbb R$ process - not a physical process, and not Relativistic Invariant - agreed). The idea of measurement of the wave-function, with any apparatus(alters the azimuthal Quantum number/angular momentum of the orbital plane - resulting to a breakup of Eigenvalues into a one-dimensional unitary representation cylindrical symmetry of 2j + 1, from spherical symmetry of j.  \\
+\medskip
+
+We'll not expend electronic ink for philosophical arguments!
+i.e. How long will $\mathbb Z$ remain a bachelor, cold fusion, climate change,
+why Wave-functions overlap[Adding together several plane waves of different
+wavelengths can produce a wave that is relatively localized], determinism(e.g.
+Wigners' friend, Schr$\ddot{o}$dingers' cat), why periodicity of Quantum numbers
+lead to periodicity of chemical elements, Spin-flip transitions(oscillating
+magnetic monopoles/distance transverse magnetic fields($\mathbf B$), produced by
+an oscillating magnetic dipole, paradox of time-dilation, is the Earth an
+Inertial frame, Relativistic Doppler Effect, \ldots etc.
+Ultra-cold atoms(lock-stepped with the same spin), have been realized in the laboratory(Bose-Einstein condensate[BEC]), through observing the center of mass system(a trick) of wave-like properties of atoms, so that the Pauli exclusion principle is NOT violated.
+This technology, although limited(interaction with the external envinroment, depolarizes particles), has applications in Quantum computers(cryptography - Quantum key distribution ; Refer to figure \ref{fig:Binary Entropy Diagram.png}), and is realized only for very low temperature Kelvin scales, not for Classical computers.
+Even the speed of light (C) - has been stopped!, using slow light pulses. The wave-particle duality(using a super-computer), was proved by an experiment in 1974, by John Clauser( concludes that the wave-function collapse is an objective $\mathbb R$ process - not a physical process, and not Relativistic Invariant - agreed). The idea of measurement of the wave-function, with any apparatus(alters the azimuthal Quantum number/angular momentum of the orbital plane - resulting to a breakup of Eigenvalues into a one-dimensional unitary representation cylindrical symmetry of 2j + 1, from spherical symmetry of j.
 Why, currently no answer/solutions...maybe its' even a wrong question. Considering Faradays' Law, knowing the Fourier transform, invoke a linear, and orthogonal transformation of Stokes' theorem, generalizing how the Electric Field remains Constant, the Magnetic Field too (curl$\mathbf E$) = - ($\frac{\partial \mathbf B}{\partial t}$), with $\iint_s \mathbf F dS$ = $\int_c \mathbf F dt$, where (C) is a closed curve, and $\mathbf F$ is a Vector Field defined in $\mathbb C$. It can be calculated, by making the Electric Field Constant, and varying the Magnetic Field e.g.
-$\mathbf B(t)$ = $\langle tx, ty, -2tz \rangle$, $0<t<\infty$. Note that in general, the z component of angular momentum is $\hbar$m, with probability 1, and (m) is the state of the Magnetic Quantum number.  \\
-This analysis is fiducial, and is based on the Theory of Complex Numbers, Maxwells' equations, Fourier transform, homogeneous linear differential equations, the double-slit experiment(the results on the screen is a transmitted split beam intensity profile), Stern-Gerlach experiment(represents an entangled Magnetic moment of Silver atoms), and Schr$\ddot{o}$dingers' equation.  \\
+$\mathbf B(t)$ = $\langle tx, ty, -2tz \rangle$, $0<t<\infty$. Note that in general, the z component of angular momentum is $\hbar$m, with probability 1, and (m) is the state of the Magnetic Quantum number.
+This analysis is fiducial, and is based on the Theory of Complex Numbers, Maxwells' equations, Fourier transform, homogeneous linear differential equations, the double-slit experiment(the results on the screen is a transmitted split beam intensity profile), Stern-Gerlach experiment(represents an entangled Magnetic moment of Silver atoms), and Schr$\ddot{o}$dingers' equation.
 
 \begin{tikzpicture}[
   >=Stealth,
@@ -1035,11 +1097,17 @@ This analysis is fiducial, and is based on the Theory of Complex Numbers, Maxwel
   \node[right=5pt] at (3,-0.8) {\(S_z=-\hbar/2\)};
 \end{tikzpicture}
 
-\noindent
+\medskip
 
-There are no visible sources of some forms though, they're(strange, and arbitrary) schematic representation of Physical ideas(Force, Momentum, Energy, Mass, Work, Acceleration. Length Of Interval, Time, and Velocity)...which are all approximations!  \\
-The simultaneous probability distributions of various observables, given differential equations, which may be integrated, show how these observables change in time.  \\
-Keep in mind, we've evolved from thinking the Sun was static, (It's a linear combination of a Stationary State[ \textbf{NOT} static], its' \emph{probabilities} don't change!!, and that it revolves around the Earth{defined also a linear combination of a Stationary State, with no changing probabilities), it's now the other way around.  \\
+There are no visible sources of some forms though,
+they're(strange, and arbitrary) schematic representation of Physical ideas(Force, Momentum, Energy,
+Mass, Work, Acceleration. Length Of Interval, Time, and Velocity)...which are all approximations!
+The simultaneous probability distributions of various observables,
+given differential equations, which may be integrated, show how these observables change in time.
+Keep in mind, we've evolved from thinking the Sun was static, (It's a linear combination of a Stationary State[ \textbf{NOT} static],
+its' \emph{probabilities} don't change!!,
+and that it revolves around the Earth{defined also a linear combination of a Stationary State, with no changing probabilities),
+it's now the other way around.
 
 \begin{figure}
 \begin{center}
@@ -1054,13 +1122,14 @@ Keep in mind, we've evolved from thinking the Sun was static, (It's a linear com
 \paragraph{Axioms of Quantum Mechanics}
 \noindent
 
-In Dirac notation, an element of space state is a Ket($\mid \quad \rangle$). Time at $t_0$ is defined by specifying a Ket $\mid \Psi(t_0) \rangle$, belonging to  a Vector space.  \\
+In Dirac notation, an element of space state is a Ket($\mid \quad \rangle$).
+Time at $t_0$ is defined by specifying a Ket $\mid \Psi(t_0) \rangle$, belonging to  a Vector space.
 
 \begin{enumerate}
   \item \textbf{A1}: The wave-function is the complete description of a quantum system of an abstract vector space(state space $\epsilon$).
   \item \textbf{A2}: Hermitian operators are observables.
   \item \textbf{A3}: The measurement axiom; A measurable physical quantity A, is described by an observable A, acting on $\epsilon$.
-  \item \textbf{A4}: Time evolution via the Schr$\ddot{o}$dinger equation.            
+  \item \textbf{A4}: Time evolution via the Schr$\ddot{o}$dinger equation.
 \end{enumerate}
 
 \paragraph{Illustrating Vectors\index{Vectors}} \label{para:Illustrating Vectors}
@@ -1072,63 +1141,63 @@ In Dirac notation, an element of space state is a Ket($\mid \quad \rangle$). Tim
 \caption{Vector pointing towards the Sun}
 \end{figure}
 
-\section{Some Conceptual Frameworks; \texttt{The names in color are Nobel prize receipients, and nomenees.}}
+\section{Some Conceptual Frameworks; texttt{The names in color are Nobel prize receipients, and nomenees.}}
 
-$\bullet$ Copenhagen interpretation(s) - $\color{blue}{\text{Bohr, Heisenberg, Pauli}}$, von Weis$\ddot{a}$cker, $\color{blue}{\text{Peierls}}$. \\  
+$bullet$ Copenhagen interpretation(s) - $\color{blue}{\text{Bohr, Heisenberg, Pauli}}$, von Weis$\ddot{a}$cker, $\color{blue}{\text{Peierls}}$.
 
-$\bullet$ Non-local Hidden Variables - $\color{blue}{\text{de Broglie}}$, Bohm, Maudlin, Goldstein, Hardy. \\  
+$bullet$ Non-local Hidden Variables - $\color{blue}{\text{de Broglie}}$, Bohm, Maudlin, Goldstein, Hardy.
 
-$\bullet$ Convival Solipism - Zwirn \\ 
+$bullet$ Convival Solipism - Zwirn  
 
-$\bullet$ Modal Interpretations - Kochen, Dieks, van Fraassen, Bub, Sipe.  \\
+$bullet$ Modal Interpretations - Kochen, Dieks, van Fraassen, Bub, Sipe.  
 
-$\bullet$ Conscienceness-induced Collapse - $\color{blue}{\text{Wigner}}$, von Neumann, $\color{blue}{\text{Josephson}}$.  \\
+$bullet$ Conscienceness-induced Collapse - $\color{blue}{\text{Wigner}}$, von Neumann, $\color{blue}{\text{Josephson}}$.
 
-$\bullet$ Objective Collapse Models - Ghiradi-Rimini-Weber, Pearl, $\color{blue}{\text{Penrose}}$, Tumulka.  \\
+$bullet$ Objective Collapse Models - Ghiradi-Rimini-Weber, Pearl, $\color{blue}{\text{Penrose}}$, Tumulka.
 
-$\bullet$ Consistent/Decoherent Histories - Griffiths, Omn$\acute{e}$s, $\color{blue}{\text{Gell-Mann}}$, Hartle.  \\
+$bullet$ Consistent/Decoherent Histories - Griffiths, Omn$\acute{e}$s, $\color{blue}{\text{Gell-Mann}}$, Hartle.
 
-$\bullet$ Super-determinsm - $\color{blue}{\text{t'Hooft}}$, Hossenfelder.  \\
+$bullet$ Super-determinsm - $\color{blue}{\text{t'Hooft}}$, Hossenfelder.
                                                 
-$\bullet$ Rational Interpretations(LQG) - Rovelli (\emph{ Approximates the curvature of Space, using the geometry of a Tetrahedron}) \\
+$bullet$ Rational Interpretations(LQG) - Rovelli (emph{ Approximates the curvature of Space, using the geometry of a Tetrahedron}) 
                                                 
-$\bullet$ Ensemble Interpretations - Ballentine, $\color{blue}{\text{Einstein}}$  \\
+$bullet$ Ensemble Interpretations - Ballentine, $\color{blue}{\text{Einstein}}$
                                                 
-$\bullet$ Informational Interpretation - $\color{blue}{\text{Zellinger}}$, Brukner, Bulb.  \\
+$bullet$ Informational Interpretation - $\color{blue}{\text{Zellinger}}$, Brukner, Bulb.
                                                 
-$\bullet$ Many-Worlds Interpretation - Everett, Hawking, Science-fiction fans. \\
+$bullet$ Many-Worlds Interpretation - Everett, Hawking, Science-fiction fans. 
 
 
-\begin{remark}  \\
+\begin{remark}
 
-$\mathbf{\textbf{Required reading:}}$ \\
+$\mathbf{textbf{Required reading:}}$
 
-$\bullet$ Spectrum of the harmonic oscillator \\
+$bullet$ Spectrum of the harmonic oscillator 
   
-$\bullet$ Spectral Theorem \\
+$bullet$ Spectral Theorem 
  
-$\bullet$ Linear Algebra(particularly Matrix Theory)  \\
+$bullet$ Linear Algebra(particularly Matrix Theory)  
 
-$\bullet$ Continuous Functional Calculus(systems of 2nd order differential equations for vector-valued functions, and factoring) \\
+$bullet$ Continuous Functional Calculus(systems of 2nd order differential equations for vector-valued functions, and factoring) 
  
-$\bullet$ Measure Theory  \\
+$bullet$ Measure Theory  
 
-$\bullet$ Equi-partition theorem(law of equi-partition of Energy)  \\
+$bullet$ Equi-partition theorem(law of equi-partition of Energy)  
 
-$\bullet$ Electromagnetic theory of light. \\
+$bullet$ Electromagnetic theory of light. 
 
 \end{remark}
 
 \newpage
 
 \chapter{Terminology}
-\section{Definitions} \label{sec:Definitions}
+\section{Definitions} label{sec:Definitions}
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=10cm]{qho.png}
 \end{center}
-\caption{This is a figure of the Quantum Harmonic Oscillator. It is defined by $E_n$ = ($n + \frac{1}{2}) \hbar \omega$}
+\caption{This is a figure of the Quantum Harmonic Oscillator. It is defined by $E_n$ = ($n + frac{1}{2}) hbar omega$}
 \label{fig:qho.png}
 \end{figure}
 
@@ -1140,7 +1209,7 @@ $\bullet$ Electromagnetic theory of light. \\
 \label{fig:relativistic mass increase.png}
 \end{figure}
 
-\underline{Derivation of Time-dilation\index{Time-dilation}}  \\
+\underline{Derivation of Time-dilation\index{Time-dilation}}
 
 $\frac{Distance}{Length}$ = ${\sin \theta}^{-1}$
 
@@ -1195,24 +1264,32 @@ $\therefore$ $\sin \theta$ = ${\sqrt{1 - \left(\frac{V}{c} \right)^2}}$ $\implie
 
 %\index{Jacobi Identity|(}
 
-Quantum-Theory\index{Quantum-Theory} $\rightarrow$ A generalization/systematic refinement of classical mechanics \\
+Quantum-Theory\index{Quantum-Theory} $\rightarrow$ A generalization/systematic refinement of classical mechanics.
  
-Quantum-communication/computation $\longrightarrow$ Manipulating qubits with quantum gates; Qubits being transmitted between different parties; Exploring applications based on sending information, rather than processing it.  \\
+Quantum-communication/computation $\longrightarrow$ Manipulating qubits with quantum gates; Qubits being transmitted between different parties; Exploring applications based on sending information, rather than processing it.
 
-Quantum Fourier Transform\index{Quantum Fourier Transform} $\longrightarrow$ 
+Quantum Fourier Transform\index{Quantum Fourier Transform} $\longrightarrow$
 \begin{equation}
 \phi = \sum_{k = 0}^{n - 1} y_k \mid k> = \frac{1}{\sqrt 2} \sum_{k = 0}^{n - 1} e^{ \frac{2 \pi {ijk}}{N}} \mid k> = \frac{1}{\sqrt 2} \sum_{k = 0}^{N - 1} \omega^{jk} \mid k> \text{\quad For N = 2, \quad k = 0,1 \quad and} \quad \omega = e^{\frac{2 \pi}{N}})
 \end{equation}
 
   
-An-entangled-pair\index{An-entangled-pair} $\longrightarrow$ Applying one qubit by manipulating the larger set of the four possible states.  \\
+An-entangled-pair\index{An-entangled-pair} $\longrightarrow$ Applying one qubit by manipulating the larger set of the four possible states.
 
 Von Neumann entropy\index{entropy} $\longrightarrow$
 \begin{equation}
-S(\rho) = - tr(\rho \ln \rho) = - \sum_j \lambda_j \ln \lambda_j \text{(These are diagonalized values);} S(\rho) = 0 \iff \rho^2 = \rho \text{(case of a pure state/projector)}
+\begin{aligned}
+S(\rho)
+  &= -\operatorname{tr}(\rho \ln \rho)
+   = -\sum_j \lambda_j \ln \lambda_j,
+   &&\text{where the \(\lambda_j\) are the eigenvalues of \(\rho\)},\\
+S(\rho) &= 0
+  &&\iff \rho^2 = \rho
+   &&\text{(\(\rho\) is a pure-state projector).}
+\end{aligned}
 \end{equation}
- 
-Maximally mixed state $\longrightarrow$ $S(\rho_m)$ = - N $\frac{1}{N} \ln \frac{1}{N}$ = $\ln N$  \\
+
+Maximally mixed state $\longrightarrow$ $S(\rho_m)$ = - N $\frac{1}{N} \ln \frac{1}{N}$ = $\ln N$
 
 Gibbs entropy(classical statistical mechanics) $\longrightarrow$
 \begin{equation}
@@ -1220,14 +1297,20 @@ S_G = - k_B \sum_i {P_i \ln P_i}, where \quad k_B \text{is the Bolzmann constant
 \end{equation}
   
 Shannon entropy(classical information theory) $\longrightarrow$
+
 \begin{equation}
-H(X) = \mathbf E(\log_b P(X)) = - \sum_x P(x) \log_b P(x), \text{where H is for Shannon,} \mathbf E \text{is the expectation/average value, X is a variable, and P is probabilities}
+H(X) = \mathbf E(\log_b P(X)) = - \sum_x P(x) \log_b P(x),
 \end{equation}
+
+where H is for Shannon, $\mathbf{E}$ is the expectation/average value, (X) is a variable, and (P) is probabilities.
   
 State-reduction\index{State-reduction} $\longrightarrow$
 
-The effective two-level Hamiltonian( $\hat H_{eff}$ = $\begin{pmatrix}0 & \Omega \cr \Omega & \vartriangle - i \frac{\Gamma}{2} \end{pmatrix} )$, dissipating via spontaneous emission, during "measurement", included in the dynamics(A Quantum trajectory is NOT reversible).
-Note that $[\hat H_{eff}, \hat H^\dagger_{eff}]$ $\neq$ 0, this Hamiltonian also generates a non-unitary dynamics $e^{- i \hbar_{eff}(t)}$ $\neq$ $e^{i \hat H^\dagger_{eff}(t)}$  \\
+The effective two-level Hamiltonian
+$\hat H_{eff}$ = $\begin{pmatrix}0 & \Omega \cr \Omega & \vartriangle - i \frac{\Gamma}{2} \end{pmatrix} )$,
+dissipating via spontaneous emission, during "measurement", included in the dynamics(A Quantum trajectory is NOT reversible).
+Note that $[\hat H_{eff}, \hat H^\dagger_{eff}]$ $\neq$ 0,
+this Hamiltonian also generates a non-unitary dynamics $e^{- i \hbar_{eff}(t)}$ $\neq$ $e^{i \hat H^\dagger_{eff}(t)}$
 
 Measurement-of-a-state\index{Measurement-of-a-state}(indicates a loss of energy) $\longrightarrow$
 \begin{equation}
@@ -1235,36 +1318,38 @@ Measurement-of-a-state\index{Measurement-of-a-state}(indicates a loss of energy)
 \end{equation}
 \noindent
 
-$\log_b$ $\text{can take any of the values 2[Classical bits], e[the Natural Logarithm], and Base 10[orders of magnitude]}$ \\
+$\log_b$ $\text{can take any of the values 2[Classical bits], e[the Natural Logarithm], and Base 10[orders of magnitude]}$
 
-$H_{bin}(p)$ = $ -p \log p - (1 - p) \log (1 - p)$ $\rightarrow$ e.g. $H_{bin}(\frac{1}{2})$ = $ - \frac{1}{2} \log \frac{1}{2} - \frac{1}{2} \log \frac{1}{2}$ = $\log 2$  \\
+$H_{bin}(p)$ = $ -p \log p - (1 - p) \log (1 - p)$ $\rightarrow$ e.g. $H_{bin}(\frac{1}{2})$ = $ - \frac{1}{2} \log \frac{1}{2} - \frac{1}{2} \log \frac{1}{2}$ = $\log 2$
 
 Normalization\index{Normalization} - technical manipulation of Mathematical symbols(to
-eliminate the physical vacuum contribution, and to simplify the one electron contribution).  \\
+eliminate the physical vacuum contribution, and to simplify the one electron contribution).
  
-Vacuum-region\index{Vacuum-region} $\rightarrow$ discontinuity of fields in the small. \\ 
+Vacuum-region\index{Vacuum-region} $\rightarrow$ discontinuity of fields in the small.
 
 See figure \ref{fig:relativistic mass increase.png} \quad Limit\index{Limit} - $\forall$ total infinities, the degrees of freedom ceases to increase
-without limit as shorter and shorter time intervals are considered. \\
+without limit as shorter and shorter time intervals are considered.
 
 Wave-equation\index{Wave-equation} $\longrightarrow$
 \begin{equation}
 \frac{\partial^2u(x,t)}{\partial t^2} = c^2 \frac{\partial^2 u(x,t)}{\partial x^2}  \text{[Relates acceleration and curvature].}
 \end{equation}
   
-Decoherence - The inevitable interaction of a system and its environment(quantum-to-classical transition; It's a fundamental limiting factor in the useful operation of Quantum Computers).  \\
+Decoherence - The inevitable interaction of a system and its environment(quantum-to-classical transition;
+It's a fundamental limiting factor in the useful operation of Quantum Computers).
                                                                          
-Spin(total-angular-momentum)\index{Spin(total-angular-momentum)}/directional quantization) - a particle $\ell$ of non-negative integer or half integer. The Hilbert space for such a particle is
+Spin(total-angular-momentum)\index{Spin(total-angular-momentum)}/directional quantization) - a particle $\ell$ of non-negative integer or half integer.
+The Hilbert space for such a particle is
 $\mathscr L^2(\mathbb R^3) \hat \otimes V_{\ell}$, where $V_{\ell}$ is an irreducible projective representation of SO(3)
 of dimension 2$\ell$ + 1
 
-Photons - A collection of an indefinite number of indistingishable particles, that obey Bose-Einstein statistics, with integer spin $\mathbb 1$.  \\
+Photons - A collection of an indefinite number of indistingishable particles, that obey Bose-Einstein statistics, with integer spin $\mathbb 1$.
 
-Boson(Bose-Einstein statistics) - A particle with an integer spin  \\
+Boson(Bose-Einstein statistics) - A particle with an integer spin
 
-Fermion(Fermi-Dirac statistics) - A particle with half-integer spin e.g. an electron  \\
+Fermion(Fermi-Dirac statistics) - A particle with half-integer spin e.g. an electron
 
-For j,k,l $\in$ {1,2,3} $\text{we define}$ $\epsilon_{j,k,l}$ $\text{by the formula:}$  \\
+For j,k,l $\in$ {1,2,3} $\text{we define}$ $\epsilon_{j,k,l}$ $\text{by the formula:}$
 \begin{equation}
 \epsilon_{j,k,l} = \left\{
 \begin{array}{ll}
@@ -1275,23 +1360,25 @@ For j,k,l $\in$ {1,2,3} $\text{we define}$ $\epsilon_{j,k,l}$ $\text{by the form
 \right.
 \end{equation}
 
-e.g $\epsilon_{3,2,1}$ = -1 and $\epsilon _{2,1,2}$ = 0.  \\
+e.g $epsilon_{3,2,1}$ = -1 and $epsilon _{2,1,2}$ = 0.  
 
-The commutation relations for the basis ${F_1,F_2,F_3}$ for SO(3) may be written(using the summation convention!) as:  \\
+The commutation relations for the basis ${F_1,F_2,F_3}$ for SO(3) may be written(using the summation convention!) as:
 
-$[F_j,F_k]$ = $\epsilon_{j,k,l}F_l$  \\
+$[F_j,F_k]$ = $epsilon_{j,k,l}F_l$  
 
-i.e. if we take j=1 and k=2, then the sum on $\ell$ gives a nonzero value only when $\ell$ = 3, and we recover the relation $[F_1,F_2]$ = $F_3$  \\
+i.e. if we take j=1 and k=2, then the sum on $ell$ gives a nonzero value only when $ell$ = 3, and we recover the relation $[F_1,F_2]$ = $F_3$  
 
-Invariant\index{Invariant} $\rightarrow$ The density $\nu$ is irreducible under translations in the real directions. \\
+Invariantindex{Invariant} $rightarrow$ The density $nu$ is irreducible under translations in the real directions. 
  
-Polarization\index{Polarization} $\rightarrow$ The set of directions in which the elements of the Quantum Subspace are Co-Variantly Constant.  \\
+Polarizationindex{Polarization} $rightarrow$ The set of directions in which the elements of the Quantum Subspace are Co-Variantly Constant.  
  
-Covariant-derivative\index{Covariant-derivative} -$\rightarrow$ A conection $\nabla$ operator for a vector field.  \\
+Covariant-derivative\index{Covariant-derivative} -$\rightarrow$ A conection $\nabla$ operator for a vector field.
   
-Integrability\index{Integrability} $\rightarrow$ Two complex vector fields X and Y lie in $P_z$ at each point z, then so does [X,Y] \\
+Integrability\index{Integrability} $\rightarrow$ Two complex vector fields X and Y lie in $P_z$ at each point z, then so does [X,Y]
  
-Hermitian-line-bundle\index{Hermitian-line-bundle} $\longrightarrow$ (L,$\nabla$) connection of $L^{{\otimes}{k}}$ having a curvature $\frac{\omega}{\hbar}$ for any positive integer n(things behave nicely when k tends to $\infty$)  \\
+Hermitian-line-bundle\index{Hermitian-line-bundle} $\longrightarrow$
+(L,$\nabla$) connection of $L^{{\otimes}{k}}$ having a curvature $\frac{\omega}{\hbar}$
+for any positive integer n(things behave nicely when k tends to $\infty$)
 
 Half-form-space\index{Half-form-space} $\longrightarrow$
 \begin{equation}
@@ -1299,14 +1386,14 @@ s = (\psi \circ q ) \otimes \sqrt{q^*(\beta)}
 \end{equation}
 
 A measurable-function\index{measurable-function} $\psi$: X $\longrightarrow$ $\mathbb C$ is said to be integrable,
-if $\int_X$ $\mid \psi \mid$ d$\mu$ < $\infty$    \\
+if $\int_X$ $\mid \psi \mid$ d$\mu$ < $\infty$
 
 Density of $\mu$ w.r.t. $\nu$ $\longrightarrow$
 \begin{equation}
 \mu(E) = \int_E \rho \quad d\mu \quad \forall E \in \omega
 \end{equation}
 
-supposing $\mu$ and $\nu$ are two $\sigma$-finite measures on a measure space(X,$\Omega$), 
+supposing $\mu$ and $\nu$ are two $\sigma$-finite measures on a measure space(X,$\Omega$),
 and that $\mu$ is absolutely continuos w.r.t. $\nu$: then there exists a non-negative, measurable function $\rho$ on X. \\
  
 Monotone-class\index{Monotone-class} $\longrightarrow$ Suppose $\mathscr M$ is a monotone class of subsets of a set X, and suppose $\mathscr M$ contains an
@@ -1333,8 +1420,8 @@ If $\Vert \cdot \Vert$: V $\longrightarrow$ $\mathbb R$, then
 
 $\Vert \cdot \Vert$ is a norm on V  \\
 
-Hilbert-space\index{Hilbert-space} $\longrightarrow$ A vector space $\mathscr H$ over $\mathbb R$ or $\mathbb C$, equipped with an inner product $\langle \cdot, \cdot \rangle$,  
- such that $\mathscr H$ is complete in the norm above.       
+Hilbert-space\index{Hilbert-space} $\longrightarrow$ A vector space $\mathscr H$ over $\mathbb R$ or $\mathbb C$, equipped with an inner product $\langle \cdot, \cdot \rangle$,
+ such that $\mathscr H$ is complete in the norm above.
  [For a seperable infinite dimensional $\mathscr H$, the partially ordered set of all questions in QM(Quantum Mechanics), is isomorphic
  to the partially ordered set of all closed sub-spaces].  \\
 
@@ -1377,12 +1464,12 @@ expressed by a $\prec$ b, with the properties:  $\left\{
             \right.$
 \medskip
 
-$\text{Then P is said to be partially ordered or semi-ordered, by the relation $\prec$}$.  \\
+$\text{Then P is said to be partially ordered or semi-ordered, by the relation $\prec$}$.
 
 Curl\index{Curl} $\longrightarrow$ Measure of the rotation in the vector field about the points in the direction of the normal vector $\mathbf N$, and Stokes theorem justifies this interpretation. \\
  
-Amperes Law(line integral along a closed path) $\longrightarrow$ $\oint \mathbf B \cdot d \mathbf l$ = $\mu_0 \mathbf l_{encl}$, 
-where $\mu_0$ is the magnetic constant, and $l_{encl}$ is the net current enclosed by the path.  \\
+Amperes Law(line integral along a closed path) $\longrightarrow$ $\oint \mathbf B \cdot d \mathbf l$ = $\mu_0 \mathbf l_{encl}$,
+where $\mu_0$ is the magnetic constant, and $l_{encl}$ is the net current enclosed by the path.
   
 Equi-partition-principle\index{Equi-partition-principle} $\longrightarrow$
 \begin{equation}
@@ -1398,7 +1485,7 @@ Pauli-exclusion-principle\index{Pauli-exclusion-principle} $\longrightarrow$ No 
  
 Self-adjoint $\longrightarrow$ $T(F(\phi), \psi)$ = $T(F(\psi), \phi)$ = $T(\phi, F(\psi))$  \\
  
-Eigenvalue-equation\index{Eigenvalue-equation} $\longrightarrow$ An equation, where the operator, operating on a function, produces a constant, times the function. [The function is called 
+Eigenvalue-equation\index{Eigenvalue-equation} $\longrightarrow$ An equation, where the operator, operating on a function, produces a constant, times the function. [The function is called
 an Eigenfunction, and the resulting numeric is called the Eigenvalue]. Eigen here is the German word meaning self, or own.  \\
                
 Hamiltonian-energy\index{Hamiltonian-energy}(discrete)   $\longrightarrow$
@@ -1419,7 +1506,7 @@ Gibbs Inequality $\longrightarrow$ $H(f_1,...,f_n)$ $\leq$ ${- \sum_{j=1}^{m} f_
  
 Projection-valued-measure\index{Projection-valued-measure}associated with f(A) $\longrightarrow$ f(A')  \\
   
-[ f(A) is the self-adjoint\index{self-adjoint} operator, corresponding to the observable $f(A')$ ]. \\ 
+[ f(A) is the self-adjoint\index{self-adjoint} operator, corresponding to the observable $f(A')$ ]. \\
 
 E $\rightarrow$ $P^{A}_{f^{-1}(E)}$. Note that the operators corresponding to the Energy and Momentum observables\index{observables} of a
 quantum system are obtainable as infinitesimal generators of certain one-parameter groups\index{groups} of unitary operators. \\
@@ -1447,7 +1534,7 @@ Discrete\index{Discrete} $\longrightarrow$ A representation which can be decompo
 Schurs' Lemma\index{Schurs' Lemma}(only true in $\mathbb C$ representations, NOT $\mathbb R$ vector spaces) $\longrightarrow$ Let T be $\in$ R(L,M), then L restricted to the orthogonal complement of the null space
 of T, is $\equiv$ to M restricted to the Closure\index{Closure} the Range of T.  \\
   
-Degeneracy\index{Degeneracy} $\longrightarrow$ Occurrence of multiple eigenvalues/states sharing the same energy. \\ 
+Degeneracy\index{Degeneracy} $\longrightarrow$ Occurrence of multiple eigenvalues/states sharing the same energy. \\
 
 Zeeman-effect\index{Zeeman-effect} $\longrightarrow$ Splitting apart of Eigenvalues, hence of Spectral Lines, in a Magnetic Field. \\
 
@@ -1469,7 +1556,7 @@ Clebsch-Gordan-coefficient\index{Clebsch-Gordan-coefficient}(expansion)/vector c
 \mid J,M \rangle = \sum_{m_1 = {-j_1}}^{j_1} \sum_{m_2 = {-j_2}}^{j_2} \langle{JM} \mid {m_1,m_2} \rangle \langle{m_1,m_2} \mid J^{'},M^{'} \rangle = \delta_{jj^{'}} \delta_{MM^{'}}
 \end{equation}
     
-Hydrogen\index{Hydrogen} hyperfine split $\longrightarrow$ $\mathbf{\text{Energy shift/difference}}$ of the lowest antiparallel state of the spin of the protons magnetic moment and the electrons magnetic field, pointing in the same direction(corresponds to the fine-structure\index{fine-structure} splitting).  \\  
+Hydrogen\index{Hydrogen} hyperfine split $\longrightarrow$ $\mathbf{\text{Energy shift/difference}}$ of the lowest antiparallel state of the spin of the protons magnetic moment and the electrons magnetic field, pointing in the same direction(corresponds to the fine-structure\index{fine-structure} splitting).  \\
     
 Collision-broadening\index{Collision-broadening} $\longrightarrow$ Distortion of an emitted wave during radiation, thus smearing the spectral line. \\
  
@@ -1678,11 +1765,11 @@ $\mathbf{\textbf{A few constants:}}$  \\
 
 $\hbar$*c $\simeq$197.327 MeV $ \cdot$ fm  \\
 
-Coupling/Fine structure constant\index{Coupling/Fine structure constant} $\alpha$ $\rightarrow$ $\frac{e^2}{4 \pi \epsilon_0 \hbar c}$ $\simeq$ $\frac{1}{137.036}$, $m_e$ $c^2$ $\simeq$ 0.511 MeV, $m_p$ $c^2$ $\simeq$ 9.38 MeV. 
-Described as deviations in the electron spin/removal of energy degeneracy of the orbital quantum number $\ell$:  
+Coupling/Fine structure constant\index{Coupling/Fine structure constant} $\alpha$ $\rightarrow$ $\frac{e^2}{4 \pi \epsilon_0 \hbar c}$ $\simeq$ $\frac{1}{137.036}$, $m_e$ $c^2$ $\simeq$ 0.511 MeV, $m_p$ $c^2$ $\simeq$ 9.38 MeV.
+Described as deviations in the electron spin/removal of energy degeneracy of the orbital quantum number $\ell$:
 E = $E_{n,\ell}$[Energy shifts, and splitting of spectral lines]. \\
 
-Bohr Radius $\longrightarrow$ $r_B$ = $\frac{4 \pi \epsilon_0 \hbar^2}{e^2{m_e}}$ $\approx$ 0.53 $\times$ $10^{-10}$m  
+Bohr Radius $\longrightarrow$ $r_B$ = $\frac{4 \pi \epsilon_0 \hbar^2}{e^2{m_e}}$ $\approx$ 0.53 $\times$ $10^{-10}$m
 
 \subsection{Useful Formulae}
 
@@ -1776,7 +1863,7 @@ $\text{This is Hadamards' Lemma using Taylors' expansion, with}$
 (ad_A) \text{as an adjoint action;}\quad (ad_A(X) = [A,X])
 \end{equation}
 
-Note that $e^A$ $e^B$ $\neq$ $e^{A + B}$ = $e^C$, with C = A + B + $\frac{1}{2}$[A,B] + $\frac{1}{12}$([A,[A,B]] - $\frac{1}{12}$[B[A,B]]) + ...,  
+Note that $e^A$ $e^B$ $\neq$ $e^{A + B}$ = $e^C$, with C = A + B + $\frac{1}{2}$[A,B] + $\frac{1}{12}$([A,[A,B]] - $\frac{1}{12}$[B[A,B]]) + ...,
 Its' not evident what the higher terms(...) refer to, although its' been expanded and expressed in terms of commutators. \\
  
 $e^A Be^{-A}$ = B + [A,B], if  [A,[A,B]] = 0, \\ 
@@ -1830,7 +1917,7 @@ $(T^\dagger)^\dagger$ = T,  \\
 
 $(ST)^\dagger$ = $T^\dagger S^\dagger$. \\
 
-$\bullet$ (22) Hermitian operator T\index{Hermitian operator T}: $T^\dagger$ = T \\ 
+$\bullet$ (22) Hermitian operator T\index{Hermitian operator T}: $T^\dagger$ = T \\
 
 $\bullet$ (23) unitary operator U\index{unitary operator U}: $U^\dagger U$ = $UU^\dagger$ = $\mathbf{1}$.  \\
 
@@ -1852,11 +1939,11 @@ $\langle Tv \mid$ = $\langle v \mid T^\dagger$, \\
 
 $\langle u \mid T^\dagger v \rangle$ = $\langle Tu \mid v \rangle$. \\ 
 
-$\mid \alpha_1 v_1$ + $\alpha_2 v_2 \rangle$ = $\alpha_1 \mid v_1 \rangle$ + $\alpha_2 \mid v_2 \rangle$,  \\ 
+$\mid \alpha_1 v_1$ + $\alpha_2 v_2 \rangle$ = $\alpha_1 \mid v_1 \rangle$ + $\alpha_2 \mid v_2 \rangle$,  \\
 
-$\langle \alpha_1 v_1$ + $\alpha_2 v_2 \mid$ = $\alpha_1^* \langle v_1 \mid $ + $\alpha_2^* \langle v_2 \mid $.  \\  
+$\langle \alpha_1 v_1$ + $\alpha_2 v_2 \mid$ = $\alpha_1^* \langle v_1 \mid $ + $\alpha_2^* \langle v_2 \mid $.  \\
 
-T = $\mid u \rangle$ $\langle w \mid$ $\longrightarrow$ $T^\dagger$ = $\mid w \rangle$ $\langle u \mid$, \\ 
+T = $\mid u \rangle$ $\langle w \mid$ $\longrightarrow$ $T^\dagger$ = $\mid w \rangle$ $\langle u \mid$, \\
 
 $\mathbf{\textbf{tr}}$T = $\langle \mathbf w \mid \mathbf u \rangle$.  \\
 
@@ -1936,7 +2023,7 @@ $\hat{a}^\dagger \varphi_n$ = $\sqrt{n + 1} \varphi_n + 1$,  \\
 
 $\hat{a} \varphi_n$ = $\sqrt{n} \varphi_{n - 1}$, \\
 
-$\hat{x}_H(t)$ = $\hat{x} \cos \omega{t} + \frac{\hat{p}}{m \omega} \sin{\omega{t}}$,  \\  
+$\hat{x}_H(t)$ = $\hat{x} \cos \omega{t} + \frac{\hat{p}}{m \omega} \sin{\omega{t}}$,  \\
 
 $\hat{p}_H(t)$ = $\hat{p} \cos \omega{t} - m \omega \hat{x} \sin \omega{t}$.  \\
 
@@ -1968,7 +2055,7 @@ $[\hat{L}_y, \hat{L}_z]$ = $i \hbar \hat{L}_x$, \\
 
 $[\hat{L}_z, \hat{L}_x]$ = $i \hbar \hat{L}_y$,  \\
 
-$\hat{L}^2$ $\equiv$ $\hat{L}_x \hat{L}_x + \hat{L}_y \hat{L}_y + \hat{L}_z \hat{L}_z$, $[\hat{L}^2$, $\hat{L}_i] = 0$. \\ 
+$\hat{L}^2$ $\equiv$ $\hat{L}_x \hat{L}_x + \hat{L}_y \hat{L}_y + \hat{L}_z \hat{L}_z$, $[\hat{L}^2$, $\hat{L}_i] = 0$. \\
 
 $\nabla^2$ = $\frac{\mathbf 1} {r}$ $\frac{\partial^2}{\partial \mathbf r^2}$ $\mathbf r$ - $\frac{\mathbf 1} {\mathbf r^2}$ $\frac{\hat L^2} {\hbar^2}$,  \\
 
@@ -2002,13 +2089,13 @@ $ (- {\frac{\hbar^2}{2m}}$ $ \frac{d^2}{dr^2}$ + V(r) + $\frac{\hbar^2 \ell (\el
 
 $\bullet$ (34) Spin one-half\index{Spin one-half} \\
 
-$\hat{H}$ = $- \mu \cdot B$, $\hat{\mu}$ = $ g \frac{e \hbar}{2mc}$ $\frac{1}{\hbar} \hat{S}$,  \\  
+$\hat{H}$ = $- \mu \cdot B$, $\hat{\mu}$ = $ g \frac{e \hbar}{2mc}$ $\frac{1}{\hbar} \hat{S}$,  \\
 
 $\mu_B$ = $\frac{e \hbar}{2m_eC}$, $ \hat{\mu_e}$ = -2 $ \mu_B$ $\frac{\hat{\mathbf S}}{\hbar}$.  \\
 
-$\mid 1 \rangle$ $\equiv$ $\mid Z; + \rangle$ = $\mid + \rangle$ = $\begin{pmatrix}1\cr0\cr\end{pmatrix}$,  \\ 
+$\mid 1 \rangle$ $\equiv$ $\mid Z; + \rangle$ = $\mid + \rangle$ = $\begin{pmatrix}1\cr0\cr\end{pmatrix}$,  \\
 
-$\mid 2 \rangle$ $\equiv$ $\mid Z; - \rangle$ = $\mid - \rangle$ = $\begin{pmatrix}0\cr1\cr\end{pmatrix}$, \\ 
+$\mid 2 \rangle$ $\equiv$ $\mid Z; - \rangle$ = $\mid - \rangle$ = $\begin{pmatrix}0\cr1\cr\end{pmatrix}$, \\
 
 $\hat{S}_i$ = $\frac{\hbar}{2} \sigma_i$, $\sigma_x$ = $\begin{pmatrix}0 & 1\cr 1 & 0\cr\end{pmatrix}$, \\
 
@@ -2024,7 +2111,7 @@ $e^{i \mathbf a \cdot \sigma}$ = $\mathbf{1} \cos \mathbf a + i {\mathbf \sigma}
 
 $ \mathbf a$ = $\hat{\mathbf a} a$, a = $|\mathbf a|$.  \\  
 
-$\hat{S_n}$ $\equiv$ $\mathbf n \cdot \hat{S}$ = $\frac{\hbar}{2} \mathbf n \cdot \sigma$, $\hat{S_n} \mid \mathbf n; \pm \rangle$ =  $\pm \frac{\hbar}{2} \mid \mathbf n; \pm \rangle$, \\ 
+$\hat{S_n}$ $\equiv$ $\mathbf n \cdot \hat{S}$ = $\frac{\hbar}{2} \mathbf n \cdot \sigma$, $\hat{S_n} \mid \mathbf n; \pm \rangle$ =  $\pm \frac{\hbar}{2} \mid \mathbf n; \pm \rangle$, \\
 
 $\mid \mathbf n \rangle$ $\equiv$ $\mid \mathbf n ; + \rangle$,  \\
 
@@ -2052,7 +2139,7 @@ $[\hat{\mathbf J^2},\hat{\mathbf J_i}] $ = 0.  \\
 
 $ \hat{\mathbf J_ \pm}$ = $\hat{\mathbf J_x} \pm i \hat{\mathbf J_y}$, $ \hat{(J_ \pm)^\dagger}$ = $\hat{\mathbf J_\mp}$, \\
 
-$\hat{\mathbf J_x}$ = $\frac{1}{2} (\hat{\mathbf J_+} + \hat{\mathbf J_-})$, $\hat{\mathbf J_y}$ = $\frac{1}{2i}(\hat{\mathbf J_+} - \hat{\mathbf J_-})$,  \\  
+$\hat{\mathbf J_x}$ = $\frac{1}{2} (\hat{\mathbf J_+} + \hat{\mathbf J_-})$, $\hat{\mathbf J_y}$ = $\frac{1}{2i}(\hat{\mathbf J_+} - \hat{\mathbf J_-})$,  \\
 
 $[\hat{\mathbf J_z}, \hat{\mathbf J_ \pm}]$ = $ \pm \hbar \hat{\mathbf J_ \pm}$, $[\hat{\mathbf J_+}, \hat{\mathbf J_-}]$ = $2 \hbar \hat{\mathbf J_z}$,  \\
 
@@ -2066,11 +2153,11 @@ $\mathbf m$ = $ - \mathbf j,...,\mathbf j$  \\
 
 $\hat{\mathbf j_\pm} | {\mathbf jm} \rangle$ = $\hbar$ $\sqrt{{{\mathbf j} {(\mathbf j + 1)}} - {\mathbf m}{(\mathbf m \pm 1)}}$ $ | \mathbf j, \mathbf m \pm 1 \rangle$. \\
 
-$\hat{R^\dagger_n}(\alpha) \hat{\mathbf J} \hat{R_n}(\alpha)$ = $\mathcal R_n (\alpha) \hat{\mathbf J}$,  \\ 
+$\hat{R^\dagger_n}(\alpha) \hat{\mathbf J} \hat{R_n}(\alpha)$ = $\mathcal R_n (\alpha) \hat{\mathbf J}$,  \\
 
 $\hat{\mathbf R_n}(\alpha)$ = $e^{ - i \frac{\alpha}{\hbar} {\mathbf n} \cdot {\mathbf J}}$. \\
 
-$\bullet$ (37) addition of angular momentum\index{addition of angular momentum}:  \\ 
+$\bullet$ (37) addition of angular momentum\index{addition of angular momentum}:  \\
 
 $\hat{\mathbf J}$ = $\hat{\mathbf J_1} + \hat{\mathbf J_2}$.  \\
 
@@ -2083,7 +2170,7 @@ $\mid {j_1} {j_2 ;} \mathbf{jm} \rangle$ CSCO\index{CSCO}: \\
 
 $(\hat{\mathbf J^2_1}, \hat{J^2_2}, \hat{\mathbf j^2}, \hat{j_z})$.  \\
 
-$j_1 \otimes j_2$ = $(j_1 + j_2) \oplus  (j_1 + j_2 - 1)\oplus...\oplus \mid j_1 - j_2 \rangle$.  \\  
+$j_1 \otimes j_2$ = $(j_1 + j_2) \oplus  (j_1 + j_2 - 1)\oplus...\oplus \mid j_1 - j_2 \rangle$.  \\
 
 \begin{equation}
 \mid  \mathbf j_1 \mathbf j_2; \mathbf{jm} \rangle = \sum_{\mathbf m_1 + \mathbf m_2 = \mathbf m} \mid {\mathbf j_1}{\mathbf j_2}; {\mathbf m_1}{\mathbf m_2} \rangle \underbrace{\langle{\mathbf j_1 \mathbf j_2}; {\mathbf m_1 \mathbf m_2} \mid {\mathbf j_1 \mathbf j_2}; \mathbf{jm} \rangle}_{\text{Clebsh-Gordan- coefficient\index{Clebsch-Gordan-coefficient}}}
@@ -2122,13 +2209,13 @@ $\mathit E_{n \ell {\mathbf j m_j}}$ = $ - \frac{e^2}{2 \mathbf a_0}$ $ \frac{1}
 
 $\bullet$ (42) Density matrix: \\ 
  
-$\mathit E$ = $[ (\mathbf p_1, \mid \psi_1 \rangle), ..., ( \mathit p_n, \mid \psi_n \rangle)]$,  
-$\mathit p_1,...,\mathit p_n$ > 0, \\ 
+$\mathit E$ = $[ (\mathbf p_1, \mid \psi_1 \rangle), ..., ( \mathit p_n, \mid \psi_n \rangle)]$,
+$\mathit p_1,...,\mathit p_n$ > 0, \\
 
 $p_1 +...+ p_n$ = 1,  \\ 
    
-$\rho_\mathit E$ $\equiv$ $\sum_{a = 1}^n$ $\mathit p_a \mid \psi_a \rangle \langle \psi_a \mid$, 
-$\langle \hat{\mathit Q \rangle_\mathit E}$ = tr $ (\mathit Q_{\rho_{\mathit E}})$.   
+$\rho_\mathit E$ $\equiv$ $\sum_{a = 1}^n$ $\mathit p_a \mid \psi_a \rangle \langle \psi_a \mid$,
+$\langle \hat{\mathit Q \rangle_\mathit E}$ = tr $ (\mathit Q_{\rho_{\mathit E}})$.
 General $\rho$ is positive semi-definite, and $\mathbf{tr}(\rho)$ = 1. \\
 
 Pure state $\longleftrightarrow$ $\mathbf \mathbf{tr}(\rho^2)$ = 1.  \\
@@ -2147,9 +2234,9 @@ $\mid  \psi AB \rangle$ = $ \sum_{k = 1}^r$ $\sqrt {\mathit p_k}$ $\mid \mathbf 
 
 $r \leq$ $\mathbf d_A$ $\leq$ $\mathbf d_B$, \\
 
-$\rho_A$ = $ \sum_{k =1}^r$ $ \mathit p_k \mid \mathit k_A \rangle \langle \mathit k_A \mid$,  \\  
+$\rho_A$ = $ \sum_{k =1}^r$ $ \mathit p_k \mid \mathit k_A \rangle \langle \mathit k_A \mid$,  \\
 
-$\rho_B$ = $ \sum_{k =1}^r$ $ \mathit p_k \mid \mathit k_B  \rangle \langle \mathbf k_B \mid$,  \\  
+$\rho_B$ = $ \sum_{k =1}^r$ $ \mathit p_k \mid \mathit k_B  \rangle \langle \mathbf k_B \mid$,  \\
 
 $\langle k_A \mid k'_A \rangle$ = $\delta_{k,k'}$, \\  
 
@@ -2162,13 +2249,13 @@ $\bullet$ (45) Lindblad equation\index{Lindblad equation}:  \\
 
 $\bullet$ (46) electromagnetic couplings\index{electromagnetic couplings}:  \\
 
-$\hat{H}$ = $\frac{1}{2m}(\hat{\mathbf p}) - \frac{q}{c}$ $\mathbf A$ $(\hat{x}, t)^2$ + q $\phi(\hat{\mathbf x, t})$ (no spin).  \\ 
+$\hat{H}$ = $\frac{1}{2m}(\hat{\mathbf p}) - \frac{q}{c}$ $\mathbf A$ $(\hat{x}, t)^2$ + q $\phi(\hat{\mathbf x, t})$ (no spin).  \\
 
 $\bullet$ (47) Go to equation \eqref{eq:Gauge-transformation} \quad Gauge-transformations\index{Gauge-transformations}:  \\
 
 $\mathbf A'$ = $\mathbf A + \nabla \wedge$,   \\  
 
-$\phi'$ = $\phi$ - $\frac{1}{c}$ $ \frac{\partial \wedge}{\partial {\mathbf t}}$, \\  
+$\phi'$ = $\phi$ - $\frac{1}{c}$ $ \frac{\partial \wedge}{\partial {\mathbf t}}$, \\
 
 $\Psi'$ = $\exp(i \frac{q \wedge}{\hbar c})$ $\Psi$.  \\
 
@@ -2180,7 +2267,7 @@ $\bullet$ (49) Time-independent Perturbation:  non-degenerate:  \\
 
 $\mid n \rangle_\lambda$ = $\mid n^{(0)} \rangle - \lambda$ $\sum_{k \neq n} \frac{\delta \mathbf H_{kn}} {\mathbf E^{(0)}_k - \mathbf E^{(0)}_n}$ $\mid k^{(0)} \rangle$ + $\mathcal O (\lambda^2)$,  \\
 
-$E_n (\lambda)$ = $ E^{(0)}_n$ + $ \lambda \delta \mathbf H_{nm}$ - $\lambda^2$ $\sum_{k \neq n} \frac{ | \delta \mathbf H_{kn} |^2} {\mathbf E^{(0)}_k - \mathbf E^{(0)}_n}$ + $\mathcal O (\lambda^3)$. \\ 
+$E_n (\lambda)$ = $ E^{(0)}_n$ + $ \lambda \delta \mathbf H_{nm}$ - $\lambda^2$ $\sum_{k \neq n} \frac{ | \delta \mathbf H_{kn} |^2} {\mathbf E^{(0)}_k - \mathbf E^{(0)}_n}$ + $\mathcal O (\lambda^3)$. \\
 
  $\bullet$ (50) Degeneracy\index{Degeneracy} lifted at $\mathcal O (\lambda)$: good-basis\index{good-basis}: \\
 
@@ -2236,11 +2323,11 @@ The Constant Transition Rate of Energy, to a Final State.  \\
 
 $\bullet$ (54) Adiabatic-approximation\index{Adiabatic-approximation}: \\ 
 
-$\mid \Psi(t) \rangle$ $\simeq$ $e^{i \theta_k(t)} e^{i \gamma_k(t)} \mid \Psi_k(t) \rangle$,  \\  
+$\mid \Psi(t) \rangle$ $\simeq$ $e^{i \theta_k(t)} e^{i \gamma_k(t)} \mid \Psi_k(t) \rangle$,  \\
 
-$\hat{\mathbf H} (t) \mid \Psi_k(t) \rangle$ = $\mathbf E_k(t) \mid \Psi_k(t) \rangle$, \\   
+$\hat{\mathbf H} (t) \mid \Psi_k(t) \rangle$ = $\mathbf E_k(t) \mid \Psi_k(t) \rangle$, \\
 
-$\theta_k(t)$ = $ -\frac{1}{\hbar} \int_0^t \mathbf E_k(\mathbf t') {\mathbf dt'}$, \\ 
+$\theta_k(t)$ = $ -\frac{1}{\hbar} \int_0^t \mathbf E_k(\mathbf t') {\mathbf dt'}$, \\
 
 $\gamma_k(t)$ = $\int_0^t \nu_k(t') {\mathbf dt'}$, \\ 
 
@@ -2278,7 +2365,7 @@ $\mid \Psi_s \mid^2$ $\simeq$ $\frac{ \frac{1}{4} \Gamma^2} {(\mathbf E - \mathb
 
 Energy dependence of the squared scattering amplitude $ \mid \Psi_s \mid^2$ near resonance. It's sharp enough to be an unstable particle. \\
 
-$\bullet$ (60) Scattering in 3D:  \\  
+$\bullet$ (60) Scattering in 3D:  \\
 \begin{equation}
 \Psi(\mathbf r) = \varphi(\mathbf r) + \Psi_s(\mathbf r) \simeq e^{ikz} + f_k(\theta, \phi) \frac{e^{ikr}}{\mathbf r}, \mathbf r \gg a.
 \end{equation}
@@ -2299,7 +2386,7 @@ $f_k(\theta)$ = $\frac{\sqrt(4 \pi)} {\mathbf k} \sum_{l = 0}^\infty \sqrt{2l + 
 
 $\sigma$ = $\frac{4 \pi}{\mathbf k^2} \sum_{l = 0}^\infty(2 l + 1) \sin^2 \delta_{l}$.  \\
 
-$\Psi \mathbf r \mid_l$ = $\mathbf A_{l} \mathbf j_{l} \mathbf(kr) + \mathbf B_{l} \mathbf n_{l} \mathbf{kr} \mathbf Y_{l 0} (\theta)$,  \\  
+$\Psi \mathbf r \mid_l$ = $\mathbf A_{l} \mathbf j_{l} \mathbf(kr) + \mathbf B_{l} \mathbf n_{l} \mathbf{kr} \mathbf Y_{l 0} (\theta)$,  \\
 
 $\mathbf r > \mathbf a$,  \\
 
@@ -2321,7 +2408,7 @@ A \textbf{Stationary State} in Quantum Mechanics, is a State of a System, where 
 
     1. Mathematical Definition  \\
 
-A State $|\Psi(t)\rangle$ is Stationary, if it is an Eigenstate of the Hamiltonian $\hat{H}$, with Energy Eigenvalue $E$: \\ 
+A State $|\Psi(t)\rangle$ is Stationary, if it is an Eigenstate of the Hamiltonian $\hat{H}$, with Energy Eigenvalue $E$: \\
 $ \hat{H} |\psi_n\rangle = E_n |\psi_n\rangle $\\
 The full Time-Dependent Wave-Function, is obtained by multiplying the Spatial part $\psi_n(\mathbf{r})$, by the Time-Evolution Factor: \\
 $\Psi(\mathbf{r}, t) = \psi_n(\mathbf{r}) e^{-i E_n t / \hbar}$.  \\
@@ -2771,7 +2858,7 @@ Where $e$, is the Elementary Charge, and $m_e$ is the Electron Mass. The constan
 
 The Electron possesses an Intrinsic Angular Momentum $\mathbf{S}$, known as Spin. Unlike the Orbital Moment, this is not due to Physical Rotation. The Spin Magnetic Moment $\boldsymbol{\mu}_S$, is expressed as:  \\
 $ \boldsymbol{\mu}_S = -g_e \frac{e}{2m_e} \mathbf{S} $  \\
-Where $g_e$, is the \textbf{Electron g-factor}.  \\ 
+Where $g_e$, is the \textbf{Electron g-factor}.  \\
 
   \textbf{Dirac Theory}  \\
 
@@ -3430,7 +3517,7 @@ $\bullet$  d'Alemberts' Principle $\longrightarrow$  $\sum_i \langle \mathbf {F}
 
 $\bullet$  $n^{th}$ Taylor Polynomial about x = $x_0$ for f,  \\
 
-$p_n(x)$ = $f(x_0) + f'(x_0)(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 +...\frac{f^{(n)}{(x_0)}}{n!}(x - x_0)^n $,  \\    
+$p_n(x)$ = $f(x_0) + f'(x_0)(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 +...\frac{f^{(n)}{(x_0)}}{n!}(x - x_0)^n $,  \\
 $\sum_{k=0}^\infty$ $\frac{ ({-i} * {\frac{\theta}{2} * {X} )^k}} {k!}$  \\
 
 $\bullet$ Airy equation $\longrightarrow$ $\frac{d^2 \psi} {dU^2}$ - $u \psi (u) = 0$  \\
@@ -3503,9 +3590,9 @@ $\bullet$ Abelian/Commutatitive\index{Abelian/Commutatitive} $\longrightarrow$
 \begin{equation} \label{eq:Abelian/Commutatitive}
 \forall a,b \in G, \quad a \cdot b = b \cdot a
 \end{equation}
-$\bullet$ Matrix representation of 2-D Hilbert space\index{Matrix representation of 2-D Hilbert space} $\longrightarrow$  \\ 
+$\bullet$ Matrix representation of 2-D Hilbert space\index{Matrix representation of 2-D Hilbert space} $\longrightarrow$  \\
 
-$H^2$ = $\frac{1}{2}$ $\begin{pmatrix}1 & 1 \cr 1 & -1 \end{pmatrix}$ $\begin{pmatrix}1 & 1 \cr 1 & -1 \end{pmatrix}$ = $\begin{pmatrix}1 & 0 \cr 0 & 1 \end{pmatrix}$ = I,  \\  
+$H^2$ = $\frac{1}{2}$ $\begin{pmatrix}1 & 1 \cr 1 & -1 \end{pmatrix}$ $\begin{pmatrix}1 & 1 \cr 1 & -1 \end{pmatrix}$ = $\begin{pmatrix}1 & 0 \cr 0 & 1 \end{pmatrix}$ = I,  \\
 
 where H is for the Hadamard gate, and (I) is the identity.  \\
 
@@ -3529,7 +3616,7 @@ $\bullet$ $\mathbf{\textbf{Hookes' Law}\index{Hookes' Law}}$ $\longrightarrow$ \
 
 F = - $\frac{dV}{dx}$ = - $\frac{d}{dx}$ $\left( \frac{1}{2} k {x^2} \right)$ = -k x = m a = m $\frac{d^2(x)}{dt^2}$ \\
 
-$\bullet$ Energy-spectrum\index{Energy-spectrum} of the Transmon qubit $\longrightarrow$  \\ 
+$\bullet$ Energy-spectrum\index{Energy-spectrum} of the Transmon qubit $\longrightarrow$  \\
 
 $\omega_j$ = $\left( \omega - \frac{\delta}{2} \right) j$ + $\frac{\delta}{2} j^2$ \\
 
@@ -3569,7 +3656,7 @@ One-Dimensional Time-independent Schr$\ddot{o}$dinger Equation $\longrightarrow$
 
 -$\frac{i \hbar^2}{2m}$ $\frac{d^2 \psi}{d {X}^2}$ + V$\psi$ = $\hat {H} \psi$  \\
 
-Q2. Heisenberg Uncertainty Principle/Minimum uncertainty wave-packet $\longrightarrow$ \\ 
+Q2. Heisenberg Uncertainty Principle/Minimum uncertainty wave-packet $\longrightarrow$ \\
 
 $\vartriangle{x} \vartriangle{p}$ $\geq$ $\frac{\hbar}{2}$(Note that $| \frac{i \hbar \langle \psi \mid\psi \rangle}{2i} \mid^2$ = $ \sqrt{\frac{\hbar^2}{4}}$ = $\frac{\hbar}{2}$). \\
 
@@ -3623,7 +3710,7 @@ $E_n$ = $\frac{n^2 \pi^2 \hbar^2}{2{m}{L}^2}$ \\
  
 (c) Probability\index{Probability} \\
  
-$\mathbf {P}$ = $\int_0^{ \frac{L}{2}}|\psi_1|^2$ dx  
+$\mathbf {P}$ = $\int_0^{ \frac{L}{2}}|\psi_1|^2$ dx
               = $\frac{2}{L}$ $\int_0^{\frac{L}{2}}$ $\sin^2$ $\left( \frac{\pi {x}}{L} \right)$ dx  \\
   
 Result:  \\
@@ -3765,11 +3852,11 @@ Time Evolution  \\
 
 Start: \\
  
-    $\langle \mathbf {A} \rangle$ = $\langle \psi$|$\mathbf {\hat A}$|$\psi \rangle$ \\ 
+    $\langle \mathbf {A} \rangle$ = $\langle \psi$|$\mathbf {\hat A}$|$\psi \rangle$ \\
 
 Differentiate: \\
  
-$\frac{d}{dt} \langle \mathbf {A} \rangle$ = $\langle$ $\frac{\partial \psi}{\partial t}$|$\mathbf A$|$\psi \rangle$ + $\langle \psi$|$\mathbf A$|$\frac{\partial \psi}{\partial t} \rangle$ + $\langle \psi$|$\frac{\partial \mathbf A}{\partial t}$|$\psi \rangle$   \\   
+$\frac{d}{dt} \langle \mathbf {A} \rangle$ = $\langle$ $\frac{\partial \psi}{\partial t}$|$\mathbf A$|$\psi \rangle$ + $\langle \psi$|$\mathbf A$|$\frac{\partial \psi}{\partial t} \rangle$ + $\langle \psi$|$\frac{\partial \mathbf A}{\partial t}$|$\psi \rangle$   \\
         
 Use Schr$\ddot{o}dinger$ equation:  \\
   
@@ -3777,7 +3864,7 @@ Use Schr$\ddot{o}dinger$ equation:  \\
     
 Substitute: \\
  
-$\frac{d \langle \mathbf A \rangle}{dt}$ = $\frac{i}{\hbar}$ $\langle$[$\mathbf {\hat H}$, $\mathbf {\hat A}$] $\rangle$ + $\langle \frac{\partial \mathbf A}{\partial t} \rangle$  \\  
+$\frac{d \langle \mathbf A \rangle}{dt}$ = $\frac{i}{\hbar}$ $\langle$[$\mathbf {\hat H}$, $\mathbf {\hat A}$] $\rangle$ + $\langle \frac{\partial \mathbf A}{\partial t} \rangle$  \\
                               
     
  (b) Apply to position \\  
@@ -3863,7 +3950,7 @@ $E_{n}^{(1)}$ = $\langle n^{(0)}$|V|$n^{(0)} \rangle$ \\
 
 (b) Second Order  \\
   
-$E_{n}^{(2)}$ = $\sum_{k \neq n}$ $\frac{| \langle {k}|{V}|{n} \rangle |^2}{E_{n}^{(0)} - E_{k}^{(0)}}$ \\ 
+$E_{n}^{(2)}$ = $\sum_{k \neq n}$ $\frac{| \langle {k}|{V}|{n} \rangle |^2}{E_{n}^{(0)} - E_{k}^{(0)}}$ \\
     
 (c) Degeneracy\index{Degeneracy} \\
  
@@ -3937,7 +4024,7 @@ Discrete Fourier Transform $\rightarrow$  \\
 Consider the space of 2$\pi$ periodic functions f: $\mathbb R$ $\rightarrow$ $\mathbb C$, with a continuous 1st derivative;  \\
 We have $E_k(x)$ = $e^{ikx}$, k $\in$ $\mathbb Z$. \\
 Using Eulers' formula($e^{i \alpha}$ = $\cos \alpha + i \sin \alpha)$; $e^{2 \pi i}$ = 1,
-$E_k(x) \text{by substitution}$, $\equiv$ $E_k(x)$ = $\cos(kx) + i \sin(kx)$;  
+$E_k(x) \text{by substitution}$, $\equiv$ $E_k(x)$ = $\cos(kx) + i \sin(kx)$;
 Here $E_k$ is an orthonormal set.  \\
 
 Now, for the Hermitian Scalar Product <f,g> = $\frac{1}{2 \pi}$ $\int_0^{2 \pi}$ $\overline {f(x)}$ $\cdot$ g(x) dx, we have:  \\
@@ -3983,12 +4070,12 @@ $f_j$ = $\sum_{k = 0}^{N - 1}$ $C_k$ $E_{kj}$ = $\frac{1}{\sqrt N}$ $\sum_{k = 0
 
 Langranges' Theorem $\rightarrow$  \\ 
 
-Let G be a group of an order $|G|_n$; Then, $\forall$ a $\in$ G, $a^n$ = e; 
+Let G be a group of an order $|G|_n$; Then, $\forall$ a $\in$ G, $a^n$ = e;
 So, $\mathbb Z_p^*$ = G. It has a multiplicative inverse.  \\
 
 Fermats' Little Theorem $\rightarrow$ Let p be a prime; Then $\forall$ a $\in$ $\mathbb Z_p^*$, $a^{p - 1}$ = 1 mod p, (a) is not divisible by p. \\
 
-In an RSA setting, m = $p \cdot q$, p and q are Primes; For n = $|\mathbb Z_m^*|$ = (p -1) $\cdot$ (q - 1); 
+In an RSA setting, m = $p \cdot q$, p and q are Primes; For n = $|\mathbb Z_m^*|$ = (p -1) $\cdot$ (q - 1);
 If (a) is not divisible by p or q, then $a^{(p - 1)(q - 1)}$ = 1 mod {pq}. \\
 
 Hadamard $\longrightarrow$ H; $ \mid 0>$ $\rightarrow$  \\
@@ -4012,7 +4099,7 @@ Lowest-Landau-level\index{Lowest-Landau-level} $\rightarrow$  \\
 \Psi_m(z) \propto z^m e^{-|z|^2}
 \end{equation}
 
-\begin{remark}  
+\begin{remark}
 Quantum Fourier Transform $\rightarrow$ $U_{QFT}$ is not a Hermitian operator,
 $U_{QFT}$ $\neq$ $U_{QFT}^{\dagger}$. It creates an equally weighted superposition of states, leaving amplitudes as complex numbers,
 while Hadamard leves them as $\mathbb R$. QFT also allows derivation of Fourier Basis, used in Quantum Mechanics inorder to ease and describe  various calculations involved in the Theory.
@@ -4028,7 +4115,7 @@ For a complete derivation, see Dynkins' analysis of Lie groups.
 
 Perturbed-System\index{Perturbed-System} $\rightarrow$  \\
 
-$\hat H$ = $\frac{\hat p^2}{2m}$ + $\frac{1}{2} m^2 \omega^2 x^2$ - $\frac{\lambda}{2} x^2$,  
+$\hat H$ = $\frac{\hat p^2}{2m}$ + $\frac{1}{2} m^2 \omega^2 x^2$ - $\frac{\lambda}{2} x^2$,
 with an exact solution of E $\approx$ $\frac{\hbar}{2}$ - $\frac{\hbar \lambda}{4m \omega}$  \\
 
 Perturbation-Theory\index{Perturbation-Theory} $\rightarrow$ \\
@@ -4040,10 +4127,10 @@ Note that $\psi^{(0)}$(x) = c$e^{- \frac{x^2}{4 \sigma^2}}$ and $\sigma^2$ = $\f
 
 Cross-Product\index{Cross-Product} $\rightarrow$ \\ 
     
-The cross product of u = $(u_1,u_2,u_3)$ and v = $(v_1,v_2,v_3)$ is a vector                                                                                            
+The cross product of u = $(u_1,u_2,u_3)$ and v = $(v_1,v_2,v_3)$ is a vector
 (u $\times$ v) = \\
 
-$\begin{pmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \cr u_1 & u_2 & u_3 \cr v_1 & v_2 & v_3 \end{pmatrix}$ =  
+$\begin{pmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \cr u_1 & u_2 & u_3 \cr v_1 & v_2 & v_3 \end{pmatrix}$ =
 ($u_2v_3 - u_3v_2)\mathbf{i}$ + ($u_3v_1 - v_1u_3)\mathbf{j}$ + ($u_1v_2 - u_2v_1)\mathbf{k}$.  \\
     
 The vector (u $\times$ v) is perpendicular to u and v.  \\
@@ -4052,7 +4139,7 @@ The cross product (v $\times$ u) is -(u $\times$ v).  \\
 
 Note that (u $\times$ u) = 0,  \\
  
-$\Vert u  \times v \Vert$ = $\Vert u \Vert$ $\Vert v \Vert \mid \sin \theta \mid$, and $\mid u \cdot v \mid$ = $\Vert u \Vert$ $\Vert v \Vert$ $\mid \cos \theta 
+$\Vert u  \times v \Vert$ = $\Vert u \Vert$ $\Vert v \Vert \mid \sin \theta \mid$, and $\mid u \cdot v \mid$ = $\Vert u \Vert$ $\Vert v \Vert$ $\mid \cos \theta
 \mid$.  \\
 
 Time evolution Hamiltonian operator\index{Time evolution Hamiltonian operator} \label{eq:
@@ -4072,7 +4159,7 @@ An abrupt projection of a system to an Eigenstate $\psi_0$, with a dissipative p
 
 The evolution of the system starts from zero, ruled by the effective Hamiltonian. The modification of $\psi (t)$ by $\mathbf{\textbf{non-observation}}$ of spontaneous emission, reduces the population of the state excited by 1 - $\frac{1}{2} \Gamma$dt, while the ground-state remains unchanged. Every $\mathbf{\textbf{quantum jump}}$ projecting the system into the ground-state constitutes a $\mathbf{\textbf{measurement\index{measurement}}}$.  \\
 
-Monte Carlo Wave-function(MCWF) simulation\index{Monte Carlo Wave-function(MCWF) simulation} $\rightarrow$  \\ 
+Monte Carlo Wave-function(MCWF) simulation\index{Monte Carlo Wave-function(MCWF) simulation} $\rightarrow$  \\
 
 $\psi$(t) $\hookrightarrow$ $\mid \psi(t + dt) \rangle$ $\equiv$  \\
 
@@ -4106,9 +4193,9 @@ x = 1, y = 0, and z = 1, is a solution. \\
 
 If x and y are allowed to be complex, then there are three solutions (if x is non-zero). It has
 three cube roots. A real number has one real cube root, and two further cube roots which form a
-complex conjugate pair. For instance, the cube roots of 1 are: 1, $\frac{1}{2}$ + $\frac{\sqrt 3}{2}$, $ - \frac{1}{2}$ - $\frac{\sqrt 3}{2}$.  \\ 
+complex conjugate pair. For instance, the cube roots of 1 are: 1, $\frac{1}{2}$ + $\frac{\sqrt 3}{2}$, $ - \frac{1}{2}$ - $\frac{\sqrt 3}{2}$.  \\
 
-Note that,  \\ 
+Note that,  \\
 the principal cube root of a negative number is a complex number, instance $\sqrt[3]{-8}$ is NOT -2, but rather (1 + i$\sqrt{3}$). Quartic equations can also be solved in terms of cube roots and square roots. \\
 
 Seiberg-Witten functional\index{Seiberg-Witten functional} $\rightarrow$ $D_{A \varphi}$ = 0,  \\
@@ -4158,7 +4245,7 @@ Note that [$\partial^\mu, \partial^nu$ = [$\partial^{\mu \nu}$]. The matching-in
 \includegraphics[width=10cm]{BW.png}
 \caption{Breit-Wigner distribution}.
 \label{fig:BW.png}
-\end{figure} 
+\end{figure}
 
 \cite{https://citizendium.org/wiki/index.php?title=Particle_in_a_box&oldid=984214}
 
@@ -4415,7 +4502,7 @@ where \(K_X^2\) denotes the Self-Intersection Number of the Canonical Class, and
 
 \subsection{Relation to the Dolbeault Index}
 
-The Dolbeault operator \(E\), 
+The Dolbeault operator \(E\),
 \[
 \bar{\partial}_E+\bar{\partial}_E^*,
 \]
@@ -4506,7 +4593,7 @@ The Eigenvalues of $\hat{S}_z$ are $\pm \hbar/2$, denoted as "Spin-Up" $|\uparro
 
 The relationship between the Spin Angular Momentum $\mathbf{S}$, and the Magnetic Moment $\boldsymbol{\mu}_s$ is:  \\
 $ \boldsymbol{\mu}_s = -g_e \frac{e}{2m_e} \mathbf{S} $  \\
-Where $g_e$ is the \textbf{Electron g-factor}.   \\ 
+Where $g_e$ is the \textbf{Electron g-factor}.   \\
   Diracs' Relativistic Theory predicted $g_e = 2$.  \\
   \textbf{Quantum Electrodynamics (QED) corrects this slightly: ($g_e \approx 2.002319$), making it one of the most Accurately Tested Predictions in Physics}.
 
@@ -4566,7 +4653,7 @@ $ Y_\ell^m(\theta, \phi) = \sqrt{\frac{(2\ell+1)}{4\pi} \frac{(\ell-m)!}{(\ell+m
 Where:  \\
   $\ell$ is the \textbf{Orbital Quantum Number} ($\ell = 0, 1, 2, \dots$).  \\
   $m$ is the \textbf{Magnetic Quantum Number} ($m = -\ell, -\ell+1, \dots, 0, \dots, \ell-1, \ell$).  \\
-  $P_\ell^m(\cos \theta)$ are the \textbf{Associated Legendre Polynomials}. See (\pageref{ssec:Legendre Polynomials}).  \\ 
+  $P_\ell^m(\cos \theta)$ are the \textbf{Associated Legendre Polynomials}. See (\pageref{ssec:Legendre Polynomials}).  \\
 
 
 
@@ -4619,7 +4706,7 @@ $\ell$ & \textbf{Name} & \textbf{Number of $m$ states} & \textbf{Shape} \\
 
 \newpage
 
-    \noindent\textbf{Common Applications}  \\
+    \noindent\textbf{Common Applications}
 
 \begin{tabularx}{\linewidth}{
   @{}>{\bfseries}l @{\quad} X@{}
@@ -4629,15 +4716,11 @@ Geophysics:     & Modeling Earth's Gravitational, and Magnetic Fields. \\
 Chemistry:      & Describing Molecular Orbitals, and Chemical-Bonding Symmetry. \\
 \end{tabularx}
 
-\noindent
-
 \medskip
 
-     \noindent\textbf{Summary}  \\
-
-Space-Inversion, or Parity\index{Parity} transformation property of the wave-function is:  \\
-$Y^m_\ell (\theta, \phi)$ $\rightarrow$ $\boxed{Y^m_\ell(\pi - \theta, \phi + \pi) = (-1)^{\ell}$ $Y^m_\ell$ $(\theta, \phi)}$, $\boxed{\ell = \nu_1 + \nu_2 + \nu_3}$, which is a homogeneous polynomial of rank $\ell$ in the unit vector $\vec{x}$.  \\
-Since $\vec{x}$ = - $\vec{x}$, a spherical harmonic change of sign factor,  \\
+Space-Inversion, or Parity\index{Parity} transformation property of the wave-function is:
+$Y^m_\ell (\theta, \phi)$ $\rightarrow$ $\boxed{Y^m_\ell(\pi - \theta, \phi + \pi) = (-1)^{\ell}$ $Y^m_\ell$ $(\theta, \phi)}$, $\boxed{\ell = \nu_1 + \nu_2 + \nu_3}$, which is a homogeneous polynomial of rank $\ell$ in the unit vector $\vec{x}$.
+Since $\vec{x}$ = - $\vec{x}$, a spherical harmonic change of sign factor,
 $\implies$
 $\left\{
 \begin{array}{ll}
@@ -4650,31 +4733,33 @@ $\left\{
 
 \chapter{Field Scattering, and Absorption of Radiation in a Bound System}
 
-When an External Field (such as an Electromagnetic Wave) Interacts with a Bound System (such as an Atom, Ion, or Quantum dot), the System can either Scatter the incoming Radiation, or Absorb it, to reach an Excited State. This is typically analyzed using \textbf{Time-Dependent Perturbation Theory}.  \\
+When an External Field (such as an Electromagnetic Wave) Interacts with a Bound System (such as an Atom, Ion, or Quantum dot), the System can either Scatter the incoming Radiation, or Absorb it, to reach an Excited State. This is typically analyzed using \textbf{Time-Dependent Perturbation Theory}.
 
-    1. The Interaction Hamiltonian  \\
-
-\noindent
-
-A Bound System described by an Unperturbed Hamiltonian $H_0$, is subjected to a Time-Dependent Perturbation $V(t)$. For an Electromagnetic Wave, the Interaction is often treated in the \textbf{Electric Dipole Approximation}:  \\
-$ V(t) = -\mathbf{d} \cdot \mathbf{E}_0 \cos(\omega t) $  \\
-Where $\mathbf{d} = q\mathbf{r}$, is the Electric Dipole Operator, and $\mathbf{E}_0$, is the Amplitude of the Electric Field.  \\
-
-    2. Absorption: Transitions to Excited States  \\
+    1. The Interaction Hamiltonian
 
 \noindent
 
-Absorption occurs when the Frequency of the incoming Field $\omega$, matches the Energy difference between the \emph{Ground State} $|i\rangle$, and an Excited State $|f\rangle$.  \\
+A Bound System described by an Unperturbed Hamiltonian $H_0$, is subjected to a Time-Dependent Perturbation $V(t)$.
+For an Electromagnetic Wave, the Interaction is often treated in the \textbf{Electric Dipole Approximation}:
+$ V(t) = -\mathbf{d} \cdot \mathbf{E}_0 \cos(\omega t) $
+Where $\mathbf{d} = q\mathbf{r}$, is the Electric Dipole Operator, and $\mathbf{E}_0$, is the Amplitude of the Electric Field.
 
-     Fermis' Golden Rule  \\
+    2. Absorption: Transitions to Excited States
 
 \noindent
 
-The Transition Rate $W_{i \to f}$ (probability per unit time) for Absorption, is given by Fermis' Golden Rule:  \\
-$ W_{i \to f} = \frac{2\pi}{\hbar} |\langle f | V | i \rangle|^2 \delta(E_f - E_i - \hbar\omega) $  \\
-The Dirac Delta Function $\delta(E_f - E_i - \hbar\omega)$, enforces the \textbf{*Conservation of Energy}. The term $|\langle f | V | i \rangle|^2$, determines the strength of the Transition, based on the Overlap of the Wave-Functions, and the Selection Rules. See (\pageref{para:Wignar-Eckart Theorem})  \\
+Absorption occurs when the Frequency of the incoming Field $\omega$, matches the Energy difference between the \emph{Ground State} $|i\rangle$,
+and an Excited State $|f\rangle$.
 
-    3. Scattering: Elastic, and Inelastic  \\
+     Fermis' Golden Rule\index{Fermis' Golden Rule}
+
+\noindent
+
+The Transition Rate $W_{i \to f}$ (probability per unit time) for Absorption, is given by Fermis' Golden Rule:
+$ W_{i \to f} = \frac{2\pi}{\hbar} |\langle f | V | i \rangle|^2 \delta(E_f - E_i - \hbar\omega) $
+The Dirac Delta Function $\delta(E_f - E_i - \hbar\omega)$, enforces the \textbf{*Conservation of Energy}. The term $|\langle f | V | i \rangle|^2$, determines the strength of the Transition, based on the Overlap of the Wave-Functions, and the Selection Rules. See (\pageref{para:Wignar-Eckart Theorem})
+
+    3. Scattering: Elastic, and Inelastic
 
 \noindent
 
@@ -4743,7 +4828,7 @@ sample.  \\
 
 \noindent
 
-Let the Incident Photon have Frequency $\nu_0$, and Energy $E_0=h\nu_0$, where $h$ is Plancks' Constant. In Stokes Scattering, the Molecule gains Energy $\Delta E$, and the Scattered Photon loses the same amount: 
+Let the Incident Photon have Frequency $\nu_0$, and Energy $E_0=h\nu_0$, where $h$ is Plancks' Constant. In Stokes Scattering, the Molecule gains Energy $\Delta E$, and the Scattered Photon loses the same amount:
 \begin{equation}
   h\nu_{\mathrm{S}} = h\nu_0-\Delta E.
 \end{equation}
@@ -4831,7 +4916,7 @@ This Selection Rule, differs from that of Infrared Absorption, which requires a 
 
 \noindent
 
-Raman Spectra, are commonly reported using the Raman Shift(The Frequency difference between Incident, and Scattered Light). In Wavenumber Units, 
+Raman Spectra, are commonly reported using the Raman Shift(The Frequency difference between Incident, and Scattered Light). In Wavenumber Units,
 \begin{equation}
   \Delta\tilde{\nu}
   = \tilde{\nu}_0-\tilde{\nu}_{\mathrm{scattered}},
@@ -4912,31 +4997,29 @@ where $\mathbf{q} = \mathbf{k}_i - \mathbf{k}_f$ is the Momentum Transfer.  \\
 
 \newpage
 
-    5. Key Properties  \\
-
-\noindent
+    5. Key Properties
 
 \begin{tabularx}{\linewidth}{
-  @{}>{\bfseries}l @{\quad} X@{}
+  @{}>{\bfseries}p{2.6cm}@{\hspace{0.5em}}X@{}
 }
-Unitarity:           & $\sum_f |S_{fi}|^2 = 1$, ensuring Probability Conservation.  \\
-Time Reversal:       & If the System is Time-Reversal Invariant, $S_{fi} = S_{if}^*$.  \\
-Energy Conservation: & $S_{fi}$ is Non-Zero only if $E_i = E_f$.  \\
-Cross Section:       & The Differential Cross Section $\frac{d\sigma}{d\Omega}$, is directly proportional to $|T_{fi}|^2$.  \\
+Unitarity:           & $\sum_f |S_{fi}|^2 = 1$, ensuring probability conservation. \\
+Time Reversal:       & If the system is time-reversal invariant, $S_{fi} = S_{if}^*$. \\
+Energy Conservation: & $S_{fi}$ is nonzero only if $E_i = E_f$. \\
+Cross Section:       & The differential cross section $\frac{d\sigma}{d\Omega}$ is directly proportional to $|T_{fi}|^2$. \\
 \end{tabularx}
 
 \bigskip
 
-    \textbf{The First Born Approximation}  \\
+    \textbf{The First Born Approximation}
 
-The first Born approximation is a Perturbative method, for Estimating the Scattering of a Quantum Particle by a Potential. It replaces the exact Scattering Wave in the Interaction region, with the Incident Wave, yielding a Scattering Amplitude proportional to the Momentum-Space Fourier-transform\index{Fourier-transform} of the Potential. The approximation is useful when the Interaction is sufficiently weak, although its' validity depends on the Potential, and the Energy of the Incident Particle.  \\
-
+The first Born approximation is a Perturbative method, for Estimating the Scattering of a Quantum Particle by a Potential. It replaces the exact Scattering Wave in the Interaction region, with the Incident Wave, yielding a Scattering Amplitude proportional to the Momentum-Space Fourier-transform\index{Fourier-transform} of the Potential. The approximation is useful when the Interaction is sufficiently weak, although its' validity depends on the Potential, and the Energy of the Incident Particle.
 
 \subsection{Scattering Setup}
 
 \noindent
 
-Consider a Particle of Reduced Mass $\mu$, and Incident Wave Vector $\mathbf{k}$, Scattering from a Potential $V(\mathbf{r})$. For Elastic Scattering, the Outgoing Wave Vector $\mathbf{k}'$, has the same Magnitude as the Incident one:
+Consider a Particle of Reduced Mass $\mu$, and Incident Wave Vector $\mathbf{k}$,
+Scattering from a Potential $V(\mathbf{r})$. For Elastic Scattering, the Outgoing Wave Vector $\mathbf{k}'$, has the same Magnitude as the Incident one:
 \begin{equation}
   |\mathbf{k}'|=|\mathbf{k}|=k.
 \end{equation}
@@ -4952,7 +5035,7 @@ At large distances from the Scattering Center, the Wave Function has the Asympto
   + f(\mathbf{k}',\mathbf{k})\frac{e^{ikr}}{r},
   \qquad r\rightarrow\infty,
 \end{equation}
-where $f(\mathbf{k}',\mathbf{k})$ is the Scattering Amplitude.  \\
+where $f(\mathbf{k}',\mathbf{k})$ is the Scattering Amplitude.
 
 \subsection{First Born scattering amplitude} 
 
@@ -4968,7 +5051,8 @@ Amplitude is
     e^{-i\mathbf{q}\cdot\mathbf{r}}\,
     V(\mathbf{r})\,d^3r.
 \end{equation}
-Thus, the Born Amplitude is proportional to the Fourier-transform\index{Fourier-transform} of the Potential evaluated at the Momentum Transfer $\mathbf{q}$.  \\
+Thus, the Born Amplitude is proportional to the
+Fourier-transform\index{Fourier-transform} of the Potential evaluated at the Momentum Transfer $\mathbf{q}$.
 
 The Differential Cross Section is
 \begin{equation}
@@ -4990,15 +5074,16 @@ For a Spherically Symmetric Potential $V(r)$, Integration over the Angular Coord
   = -\frac{2\mu}{\hbar^2q}
     \int_0^\infty rV(r)\sin(qr)\,dr.
 \end{equation}
-This form makes explicit how the Angular Dependence of the Scattering is related to the Spatial Shape of the Potential.  \\
+This form makes explicit how the Angular Dependence of the Scattering is related to the Spatial Shape of the Potential.
 
 \subsection{Validity and limitations}
 
 \noindent
 
-Long-Range Potentials, such as the Coulomb Potential, require special care, because the standard Scattering Boundary Conditions, and Born treatment, may not apply directly.\\
-
-The first Born Approximation estimates a Scattering Amplitude, by Fourier-Transforming the Potential at the Momentum Transfer. It provides a connection between the Spatial Structure of an Interaction, and the Angular Distribution of Scattered Particles. Its' valuable.  
+Long-Range Potentials, such as the Coulomb Potential, require special care, because the standard Scattering Boundary Conditions,
+and Born treatment, may not apply directly.
+The first Born Approximation estimates a Scattering Amplitude, by Fourier-Transforming the Potential at the Momentum Transfer.
+It provides a connection between the Spatial Structure of an Interaction, and the Angular Distribution of Scattered Particles. Its' valuable.
 
 \newpage
 
@@ -5008,9 +5093,9 @@ Consider Dyson Series, up to the $2^{nd}$ term. The probability of a perturbed w
 \begin{equation}
 P_{fi} = \left| - \frac{i}{\hbar} \int_{0}^t \langle \psi_f \mid \hat V (t^{\prime}) \mid \psi_i \rangle e^{i \omega_{fi} (t^{\prime})} dt^{\prime} \right|^2
 \end{equation}
-Where $\hat V(t)$, is a time-dependent operator, and $\omega_{fi}$ = $\frac{E_f -  E_i}{\hbar}$ = $\frac{i}{\hbar}$ $\left[\langle \psi_f \mid \hat H_0 \mid \psi_f \rangle - \langle \psi_i \mid \hat H_0 \mid \psi_i \rangle \right]$ = Transition frequency. As a function of $\omega_{fi}$, the transition probability has a diffraction pattern. \\
+Where $\hat V(t)$, is a time-dependent operator, and $\omega_{fi}$ = $\frac{E_f -  E_i}{\hbar}$ = $\frac{i}{\hbar}$ $\left[\langle \psi_f \mid \hat H_0 \mid \psi_f \rangle - \langle \psi_i \mid \hat H_0 \mid \psi_i \rangle \right]$ = Transition frequency. As a function of $\omega_{fi}$, the transition probability has a diffraction pattern.
 
-The Transition Probability of finding the System in a State $\mid \psi_f \rangle$, of Energy ($E_f$), is \emph{maximum only when} $E_i$ = $E_f$, or $\omega_{fi} \simeq 0$. The central peak becomes narrower, and higher as time increases(A property of the Dirac Delta Function)See Equation~\ref{eq:Dirac Delta Function}, hence yields a transition probability of $\mathbf{\textbf{unit time}}$, and guarantees conservation of Energy, in the limit (t) $\rightarrow$ $\infty$. Note that $\iff$ $E_f$ $\neq$ $E_i$ = $0$. A constant \emph{Perturbation}\index{Perturbation} (time-independent), neither removes, nor adds Energy to a system, it causes Energy conservation transitions. \\
+The Transition Probability of finding the System in a State $\mid \psi_f \rangle$, of Energy ($E_f$), is \emph{maximum only when} $E_i$ = $E_f$, or $\omega_{fi} \simeq 0$. The central peak becomes narrower, and higher as time increases(A property of the Dirac Delta Function)See Equation~\ref{eq:Dirac Delta Function}, hence yields a transition probability of $\mathbf{\textbf{unit time}}$, and guarantees conservation of Energy, in the limit (t) $\rightarrow$ $\infty$. Note that $\iff$ $E_f$ $\neq$ $E_i$ = $0$. A constant \emph{Perturbation}\index{Perturbation} (time-independent), neither removes, nor adds Energy to a system, it causes Energy conservation transitions.
 
 
 
@@ -5083,13 +5168,13 @@ Because the solutions depend on $\mathbf{k}$, the Energy $E_n(\mathbf{k})$ varie
 
     4. Relation to Plane Waves  \\
 
-In the Limit where the Periodic Potential $V(\mathbf{r}) \to 0$ (the "Free Electron" Limit), the Periodic part $u_{n\mathbf{k}}(\mathbf{r})$, becomes a Constant.  \\ 
+In the Limit where the Periodic Potential $V(\mathbf{r}) \to 0$ (the "Free Electron" Limit), the Periodic part $u_{n\mathbf{k}}(\mathbf{r})$, becomes a Constant.  \\
 The Wave-unction then reduces to a standard Plane Wave:  \\
 $\psi(\mathbf{r}) \propto e^{i\mathbf{k} \cdot \mathbf{r}} $
 This allows us to express $u_{n\mathbf{k}}(\mathbf{r})$ as a Fourier Series, over the Reciprocal Lattice Vectors $\mathbf{G}$:  \\
 $\psi_{n\mathbf{k}}(\mathbf{r}) = \sum_{\mathbf{G}} C_{n, \mathbf{k}-\mathbf{G}} e^{i(\mathbf{k}-\mathbf{G}) \cdot \mathbf{r}}$
 
-Since a full 3D Brillouin Zone is difficult to render in a 2D image, the most common way to visualize this in TikZ is to draw the \textbf{2D Brillouin Zone for a Square Lattice}.  \\ 
+Since a full 3D Brillouin Zone is difficult to render in a 2D image, the most common way to visualize this in TikZ is to draw the \textbf{2D Brillouin Zone for a Square Lattice}.  \\
 
 The diagram illustrates the Reciprocal Lattice Points, the Perpendicular Bisectors (Bragg Planes), and the resulting first Brillouin Zone (the Central Square).
 
@@ -5113,7 +5198,7 @@ The diagram illustrates the Reciprocal Lattice Points, the Perpendicular Bisecto
     \draw[dashed, gray] (-1.5*\sz, -0.5*\sz) -- (1.5*\sz, -0.5*\sz);
 
     % 3. Highlight the First Brillouin Zone (the central square)
-    \draw[thick, blue, fill=blue!10] 
+    \draw[thick, blue, fill=blue!10]
         (-0.5*\sz, -0.5*\sz) rectangle (0.5*\sz, 0.5*\sz);
 
     % 4. Label high symmetry points
@@ -5240,7 +5325,7 @@ This equation states that, Shifting in Momentum, and then Shifting in Position i
 
    5. Physical Significance  \\
 
-The Weyl Form is the starting point for the \textbf{Stone-von Neumann Theorem}. The Theorem proves that, any Irreducible Representation of the Weyl Relations, is Unitarily Equivalent to the Schr$\ddot{o}$dinger Representation. \emph{Essentially, it proves that the "Wave-Function" approach to Quantum Mechanics, is the only possible way to realize the CCR for a Finite Number of Particles}. 
+The Weyl Form is the starting point for the \textbf{Stone-von Neumann Theorem}. The Theorem proves that, any Irreducible Representation of the Weyl Relations, is Unitarily Equivalent to the Schr$\ddot{o}$dinger Representation. \emph{Essentially, it proves that the "Wave-Function" approach to Quantum Mechanics, is the only possible way to realize the CCR for a Finite Number of Particles}.
 
 \paragraph{Segal-Bargmann Space}
 
@@ -5606,7 +5691,7 @@ Most Time-Dependent Problems are expressed as an \textbf{Initial Value Problem (
 $\frac{\partial u(\mathbf{x}, t)}{\partial t} = \mathcal{L}[u(\mathbf{x}, t)]$  \\
 Where: \\
  $u(\mathbf{x}, t)$ is the Dependent Variable (e.g., Temperature, Displacement).  \\
- $\mathbf{x}$ represents the Spatial Coordinates.  \\ 
+ $\mathbf{x}$ represents the Spatial Coordinates.  \\
  $t$ represents Time.  \\
 
  $\mathcal{L}$ is a Differential Operator representing the Physics of the System.  \\
@@ -5622,7 +5707,7 @@ $ u(\mathbf{x}, t) = g(\mathbf{x}, t) \quad \text{for } \mathbf{x} \in \partial 
    \textbf{The Heat Equation (Parabolic)}  \\
 
 Describes Diffusion Processes. It is Characterized by a First-Order Time Derivative, and a Second-Order Spatial Derivative.  \\
-$ \frac{\partial u}{\partial t} = \alpha \nabla^2 u $   
+$ \frac{\partial u}{\partial t} = \alpha \nabla^2 u $
 
 \textbf{Behavior}: Smoothing, and Dissipative. Information spreads infinitely fast, and Gradients Flatten Over Time.  \\
 
@@ -5807,7 +5892,7 @@ enclosed Flux, or equivalently to the Loop Integral of the Potential.
 
 \subsection{Interpretation}
 
-The Aharonov--Bohm effect is a Quantum-Mechanical Interference Effect, not a Classical Force, acting on the Particle along its' Path. Its' Observable Prediction is the 
+The Aharonov--Bohm effect is a Quantum-Mechanical Interference Effect, not a Classical Force, acting on the Particle along its' Path. Its' Observable Prediction is the
 Flux-Dependent Phase Shift
 \[
 \Delta\varphi=\frac{q\Phi_B}{\hbar}.
@@ -6707,13 +6792,13 @@ Symmetry Breaking distinguishes the Symmetry of the governing Laws from the \emp
 \begin{enumerate}
 
 \item Franck-Hertz
-\item Davisson-Germer  
+\item Davisson-Germer
 \item Photo-electric effect{The corpuscular nature of electromagnetic radiation}
 \item Millikans' Oil-Drop
 \item Youngs' double-slit
-\item Stern-Gerlach  
-\item EPR   
-\item Badurek-Rauch-Tuppinger  
+\item Stern-Gerlach
+\item EPR
+\item Badurek-Rauch-Tuppinger
 \item SQUID(A Superconducting Quantum Interference Device (SQUID) experiment, measures extremely weak magnetic fields by exploiting Josephson junctions(A
 Transmon device for Quantum Computation)). \\
 
@@ -7421,7 +7506,7 @@ The Runge-Lenz \emph{Vector}, is a conserved Vector, specific to the Coulomb pro
 
 \section{Proof of Fouriers' Theorem}
 
-“Fourier’s theorem” can refer to several results. The following is a standard Fourier-series version: Dirichlet’s convergence theorem.  
+“Fourier’s theorem” can refer to several results. The following is a standard Fourier-series version: Dirichlet’s convergence theorem.
 
 Let \(f\) be a \(2\pi\)-periodic, piecewise continuously differentiable
 function. Its Fourier coefficients are
@@ -8194,7 +8279,7 @@ for run \(i\). The arithmetic mean is
 \]
 
 Report the units and specify whether the measured quantity is compilation
-time or program runtime. 
+time or program runtime.
 
 \begin{itemize}
   \item Linux/macOS compilation: \texttt{time gcc hello.c -o hello}
@@ -9380,7 +9465,7 @@ Where (Ha) is Hartree Energy\index{Hartree Energy}. Experiment, and more accurat
 \end{figure}
 
 
-The Periodic Table presents a Uniform-Grid(Mesh) Algorithm, and \emph{remains reliable}. 
+The Periodic Table presents a Uniform-Grid(Mesh) Algorithm, and \emph{remains reliable}.
 
 
 
@@ -10063,7 +10148,7 @@ candidates from a simpler proposal distribution and accepts each candidate
 with a probability chosen so that the accepted values have the desired
 distribution.
 
-\subsubsection{Problem}
+\subsection{Problem}
 
 \noindent
 
@@ -15085,14 +15170,14 @@ entropy production, fluctuation theorems, and linear response theory.
 
 \noindent
 
-1. Using the effective Hydrogenic model, construct spherically averaged densities containing 28, 92, and 94 electrons. Verify that each density integrates to the requested Electron number. \\
+1. Using the effective Hydrogenic model, construct spherically averaged densities containing 28, 92, and 94 electrons. Verify that each density integrates to the requested Electron number.
 
-For further details, study: \\
-\url{https://en.wikipedia.org/wiki/Electron_configurations_of_the_elements}, 
-and  \\
-\url{https://www.nist.gov/pml/atomic-reference-data-electronic-structure-calculations/atomic-reference-data-electronic-8}.  \\  
+For further details, study:
+\url{https://en.wikipedia.org/wiki/Electron_configurations_of_the_elements},
+and
+\url{https://www.nist.gov/pml/atomic-reference-data-electronic-structure-calculations/atomic-reference-data-electronic-8}.
 
-2. Determine whether the limitation of the Periodic Table is the radial spacing, radial extent[$r_{max}$], Energy Mesh, number of Angular-Momentum channels, or Density Mixing.  \\
+2. Determine whether the limitation of the Periodic Table is the radial spacing, radial extent[$r_{max}$], Energy Mesh, number of Angular-Momentum channels, or Density Mixing.
 
 The number of Angular-Momentum Channels is the closest match: it limits which Orbital Angular Momenta the basis can represent, which can constrain calculations for some elements.
 
@@ -15118,33 +15203,34 @@ Density Mixing & Determines the ability of the model to handle transition densit
 \newpage
 
 There is no single inherent “Periodic Table limitation”; these are \textbf{numerical or model limits}, and the symptom usually identifies which one is active. Check them in this order
+
 \begin{table}[ht]
 \centering
-\begin{tabular}{p{0.22\linewidth} p{0.34\linewidth} p{0.36\linewidth}}
+\begin{tabularx}{\linewidth}{|p{0.22\linewidth}|X|X|}
 \hline
 \textbf{Possible limitation} & \textbf{Typical symptom} & \textbf{How to test} \\
 \hline
 \textbf{Radial spacing \(dr\)} &
 Orbitals or densities change noticeably when the grid is refined; sharp near-nucleus features look poorly resolved. &
 Reduce \(dr\), keeping the radial extent fixed, and compare orbital energies and integrated electron counts. \\
-
+\hline
 \textbf{Radial extent \(r_{\max}\)} &
 Bound orbitals are cut off before decaying; results change when the grid is extended. &
 Increase \(r_{\max}\) while keeping \(dr\) fixed. This is distinct from spacing. \\
-
+\hline
 \textbf{Energy mesh / eigenvalue search} &
 A required eigenvalue is missed, or the solver finds the wrong node count or fails to bracket a state. &
 Refine the energy scan and verify that each orbital has the expected number of radial nodes and satisfies the outer boundary condition. \\
-
+\hline
 \textbf{Angular-momentum channels \(l_{\max}\)} &
 Electron count or total density is wrong for atoms whose occupied shells include higher-\(l\) orbitals. &
 Include every occupied subshell; increase \(l_{\max}\) and check whether the density and energy converge. \\
-
+\hline
 \textbf{Density mixing} &
 SCF iterations oscillate, diverge, or stall, even though individual orbital solves appear stable. &
 Reduce the mixing fraction or use a more stable mixing method; monitor both density and energy changes per iteration. \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 A decisive diagnosis requires Convergence tests: varying \textbf{one setting at a time}, and trackig total Electron count, Orbital Energies, Density, and Self-Consitency-Field(SCF) Convergence. If the code is intended for all elements, also check the \textbf{Physical Model}: A simple effective-Hydrogenic Potential, is not a self-consistent all-Electron model, and heavy elements may require \emph{Relativistic treatment}.
@@ -15156,7 +15242,7 @@ A decisive diagnosis requires Convergence tests: varying \textbf{one setting at 
 
 \section{Dirac-equation solver}
 
-For a spherically symmetric potential V(r), the Dirac equation separates into coupled radial equations.  \\
+For a spherically symmetric potential V(r), the Dirac equation separates into coupled radial equations.
 
 Using the spinor:
 $\Psi_{nkm}$(r) = $\frac{1}{r}$  $\begin{pmatrix}P_{nm}(r) & \Omega_{km}  \hat{r} \cr \imath Q_{nm}(r) & \omega{-km}  \hat{r} \end{pmatrix}$
@@ -15174,9 +15260,9 @@ The radial equations in Atomic Units ($\hbar = m_e = e = 1$) are:
    - \frac{1}{c}\bigl(\varepsilon - V(r)\bigr)P.
 \end{align}
 
-Here P(r), and Q(r), are the large and small radial components, (c) is the speed of light in atomic units, and $\varepsilon$ is the total Energy including the rest Energy.  \\
+Here P(r), and Q(r), are the large and small radial components, (c) is the speed of light in atomic units, and $\varepsilon$ is the total Energy including the rest Energy.
 
-The Angular Quantum Number is:  \\
+The Angular Quantum Number is:
 
 \[
 \kappa =
@@ -15186,15 +15272,17 @@ The Angular Quantum Number is:  \\
 \end{cases}
 \]
 
-For a bound orbital, solve these coupled equations with regular behavior at the origin, and decay at large (r), adjusting $\varepsilon$ to satisfy both boundary conditions.  \\
+For a bound orbital, solve these coupled equations with regular behavior at the origin,
+and decay at large (r), adjusting $\varepsilon$ to satisfy both boundary conditions.
 
-Normalize the radial functions using:  \\
+Normalize the radial functions using:
 
 \[
 \int_0^\infty \left(P^2(r)+Q^2(r)\right)\,dr=1.
 \]
 
-These are the equations a relativistic radial solver integrates; Numerovs' usual scalar recurrence, cannot be applied directly without adapting it to this coupled system.  \\
+These are the equations a relativistic radial solver integrates; Numerovs' usual scalar recurrence,
+cannot be applied directly without adapting it to this coupled system.
 
 \section{The Poisson Equation, and its' solution}
 
@@ -15210,7 +15298,9 @@ where \(\phi\) is the electric Potential, \(\rho\) is charge per unit volume, an
 \mathbf E(\mathbf r)=-\nabla\phi(\mathbf r).
 \]
 
-The Laplacian \(\nabla^2\phi\) describes how the Potential curves in space. Poissons' equation says that this curvature is set by the local charge density. In a region with no charge, \(\rho=0\), it reduces to Laplaces' equation, \(\nabla^2\phi=0\).
+The Laplacian \(\nabla^2\phi\) describes how the Potential curves in space.
+Poissons' equation says that this curvature is set by the local charge density.
+In a region with no charge, \(\rho=0\), it reduces to Laplaces' equation, \(\nabla^2\phi=0\).
 
 \textbf{Solution in free space}
 
@@ -15225,18 +15315,22 @@ If the Potential vanishes at infinity, the solution can be written as the Coulom
 \,d^3r'.
 \]
 
-Each small charge element \(\rho(\mathbf r')d^3r'\) contributes its Coulomb potential at \(\mathbf r\); the Total Potential is the sum of those contributions. This formula solves Poissons' equation because the Coulomb kernel satisfies:  
+Each small charge element \(\rho(\mathbf r')d^3r'\) contributes its Coulomb potential at \(\mathbf r\);
+The Total Potential is the sum of those contributions. This formula solves Poissons' equation because the Coulomb kernel satisfies:
 
 \[
 \nabla^2\left(\frac{1}{|\mathbf r-\mathbf r'|}\right)
 =-4\pi\delta(\mathbf r-\mathbf r').
 \]
 
-A solution also depends on its' \textbf{boundary conditions}. For a finite computational region, the Potential, or its normal derivative, must be specified at the boundary. Different boundary conditions can produce different solutions.  \\
+A solution also depends on its' \textbf{boundary conditions}.
+For a finite computational region, the Potential, or its normal derivative, must be specified at the boundary.
+Different boundary conditions can produce different solutions.
 
 \textbf{Spherically symmetric charge density}
 
-For an atom whose charge density\index{Charge Density} depends only on distance \(r\) from the nucleus, the Potential is also radial: \(\phi=\phi(r)\). The Laplacian becomes
+For an atom whose charge density\index{Charge Density} depends only on distance \(r\) from the nucleus,
+the Potential is also radial: \(\phi=\phi(r)\). The Laplacian becomes
 
 \[
 \nabla^2\phi(r)
@@ -15267,7 +15361,9 @@ For a regular Potential at the origin and \(\phi(\infty)=0\), its solution is
 \right].
 \]
 
-The first term is the contribution from charge inside radius \(r\), acting as concentrated at the center. The second is the contribution from charge outside \(r\); for spherical shells, that contribution is constant throughout the interior of each shell.
+The first term is the contribution from charge inside radius \(r\), acting as concentrated at the center.
+The second is the contribution from charge outside \(r\); for spherical shells,
+that contribution is constant throughout the interior of each shell.
 
 If the total charge is \(Q\), then far from the charge distribution,
 
@@ -15300,7 +15396,8 @@ One can solve Poissons' equation for the nuclear, and electronic contributions s
 \frac{Ze}{4\pi\varepsilon_0 r}.
 \]
 
-The electronic potential is obtained by substituting \(\rho_e=-en\) into the spherical solution. An Electrons' Potential Energy is \(-e\phi\), so the Electron–Electron Hartree Energy\index{Hartree Energy} is
+The electronic potential is obtained by substituting \(\rho_e=-en\) into the spherical solution.
+An Electrons' Potential Energy is \(-e\phi\), so the Electron–Electron Hartree Energy\index{Hartree Energy} is
 
 \[
 V_{\mathrm H}(r)
@@ -15315,7 +15412,8 @@ V_{\mathrm H}(r)
 \right].
 \]
 
-The equation above is positive, because it represents repulsion between electrons. In Atomic Units, where \(e=\varepsilon_0=1\) under the usual Coulomb-unit convention,
+The equation above is positive, because it represents repulsion between electrons.
+In Atomic Units, where \(e=\varepsilon_0=1\) under the usual Coulomb-unit convention,
 
 \[
 V_{\mathrm H}(r)
@@ -15330,7 +15428,9 @@ V_{\mathrm H}(r)
 
 if \(n(r)\) is the usual number density per unit volume. The factor \(4\pi\) arises from the spherical volume element \(d^3r=4\pi r^2dr\).
 
-In a self-consistent atomic calculation, the electron density determines \(V_{\mathrm H}\) through Poissons' equation; that potential is used to calculate orbitals, which in turn produce a new density. The process is repeated until the density and potential stop changing appreciably.  \\
+In a self-consistent atomic calculation, the electron density determines \(V_{\mathrm H}\) through Poissons' equation;
+that potential is used to calculate orbitals, which in turn produce a new density.
+The process is repeated until the density and potential stop changing appreciably.
 
 \begin{figure}[H]
   \centering
@@ -15811,7 +15911,9 @@ assumptions.
 
 \chapter{Damped Harmonic Oscillator}
 
-The graph shows the four free-response curves. It uses the same natural frequency, and initial conditions for each case: [x(0) = 1], and [$\dot{x}$(0) = $0$]. The damping cases correspond to damping ratios [$\zeta$ = $0$], [0 < $\zeta$ < 1], [$\zeta$ = 1], and [$\zeta$ > 1].
+The graph shows the four free-response curves. It uses the same natural frequency,
+and initial conditions for each case: [x(0) = 1], and [$\dot{x}$(0) = $0$].
+The damping cases correspond to damping ratios [$\zeta$ = $0$], [0 < $\zeta$ < 1], [$\zeta$ = 1], and [$\zeta$ > 1].
 
 \begin{figure}[H]
   \centering
@@ -15826,7 +15928,8 @@ The graph shows the four free-response curves. It uses the same natural frequenc
 
 \section{Interpolation}
 
-Interpolation\index{Interpolation} is the process of constructing a function that passes through a given set of data points. Suppose the data are
+Interpolation\index{Interpolation} is the process of constructing a function that passes through a given set of data points.
+Suppose the data are
 \[
 (x_0,y_0), (x_1,y_1), \ldots, (x_n,y_n),
 \]
@@ -15844,9 +15947,14 @@ where
 L_i(x)=\prod_{\substack{j=0\\j\ne i}}^{n}
 \frac{x-x_j}{x_i-x_j}.
 \]
-Each basis polynomial has the property \(L_i(x_j)=1\) when \(i=j\), and \(L_i(x_j)=0\) otherwise, so the interpolant passes through every data point.
+Each basis polynomial has the property \(L_i(x_j)=1\) when \(i=j\), and \(L_i(x_j)=0\) otherwise,
+so the interpolant passes through every data point.
 
-For many data points, a single high-degree polynomial can oscillate substantially between nodes. A common alternative is \emph{piecewise cubic spline interpolation}. On each interval \([x_i,x_{i+1}]\), the spline is a cubic polynomial. The pieces are chosen to match the data and to join smoothly: the function and its first and second derivatives are continuous at the interior nodes.
+For many data points, a single high-degree polynomial can oscillate substantially between nodes.
+A common alternative is \emph{piecewise cubic spline interpolation}.
+On each interval \([x_i,x_{i+1}]\), the spline is a cubic polynomial.
+The pieces are chosen to match the data and to join smoothly:
+The function and its first and second derivatives are continuous at the interior nodes.
 
 A natural cubic spline also satisfies the endpoint conditions
 \[
@@ -15856,16 +15964,22 @@ S''(x_n)=0.
 \]
 These conditions determine a unique natural cubic spline for distinct, ordered nodes.
 
-Interpolation exactly reproduces the supplied values, including measurement errors. Therefore, when data are noisy, an interpolating spline may follow the noise rather than the underlying trend. A smoothing spline addresses this by balancing closeness to the observations against smoothness. One standard definition is the function \(f\) that minimizes
+Interpolation exactly reproduces the supplied values, including measurement errors.
+Therefore, when data are noisy, an interpolating spline may follow the noise rather than the underlying trend.
+A smoothing spline addresses this by balancing closeness to the observations against smoothness.
+One standard definition is the function \(f\) that minimizes
 \[
 \sum_{i=0}^{n} w_i\bigl(y_i-f(x_i)\bigr)^2
 +
 \lambda \int_{x_0}^{x_n} \bigl(f''(x)\bigr)^2\,dx,
 \]
-where \(w_i\) are observation weights and \(\lambda\geq 0\) controls the degree of smoothing. Small \(\lambda\) emphasizes fitting the data; larger \(\lambda\) penalizes curvature and produces a smoother fit.
+where \(w_i\) are observation weights and \(\lambda\geq 0\) controls the degree of smoothing.
+Small \(\lambda\) emphasizes fitting the data; larger \(\lambda\) penalizes curvature and produces a smoother fit.
 
 
-Below is an example that plots noisy samples, the true function, a natural cubic interpolating spline, and a cubic smoothing spline\index{cubic smoothing spline}. It uses csaps-cpp for the smoothing spline, and gnuplot for the graph. The smooth value controls the tradeoff between following noisy data and smoothing it.
+Below is an example that plots noisy samples, the true function, a natural cubic interpolating spline,
+and a cubic smoothing spline\index{cubic smoothing spline}. It uses csaps-cpp for the smoothing spline,
+and gnuplot for the graph. The smooth value controls the tradeoff between following noisy data and smoothing it.
 
 Using the "csaps API", the smoothing spline takes "csaps::DoubleArray" query values, and returns an array of predictions.
 
