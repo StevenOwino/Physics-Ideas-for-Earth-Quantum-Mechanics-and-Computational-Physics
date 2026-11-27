@@ -646,7 +646,8 @@ regardless of the history of the Electron, prior to the first \emph{measurement}
 \item Kohm-Sham Asymptotic Behavior
 \item Oxygens' Local Density Approximation(LDA)
 \item Hartree Boundary Condition
-\item Maximum a Posterior of a Bayesian Inference
+\item Variance of the integrated autocorrelation-time estimate
+\item Maximum a Posteriori (MAP) of a Bayesian inference
 \item Numerovs' solution of Poisons' Equation
 \item Illustration of the motion of a Double Pendulum
 \item Illustration of a 2D Molecular Dynamics
@@ -16508,6 +16509,13 @@ tail vanish, yields the Madras--Sokal result
 so the relative standard error of $\hattau(W)$ is
 $\sqrt{2(2W+1)/n}\approx\sqrt{4W/n}$, growing like $\sqrt W$.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.1\textwidth]{Variance of the integrated autocorrelation-time estimate.pdf}
+  \label{Variance of the integrated autocorrelation-time estimate.pdf}
+  \caption{Variance of the integrated autocorrelation-time estimate}
+\end{figure}
+
 \subsection{Choosing the window: Sokals' automatic rule}
 
 The window must be large enough that the bias is negligible but small enough
@@ -16528,7 +16536,7 @@ once the window is $c$ autocorrelation times wide.''
 
 \subsection{Why $c\approx 4$--$10$ is sensible}
 
-For $\rho(t)=e^{-t/\tau}$, the relative mean-squared error is, using the two
+For $\rho(t)=e^{-t/\tau}$, the relative mean-squared error(MSE) is, using the two
 contributions above,
 \begin{equation}
   \mathrm{MSE}(W)/\tau^2\;\approx\;e^{-2W/\tau}+\frac{4W}{n}.
