@@ -1,1 +1,1 @@
-Physics Ideas For Earth
+Brief Physics Ideas For Earth
